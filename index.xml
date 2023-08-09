@@ -1,65 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Yuexi Wang</title>
-    <link>https://SulmanOlieko.github.io/</link>
-      <atom:link href="https://SulmanOlieko.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <title>Sulman Olieko</title>
+    <link>https://sulmanolieko.github.io/</link>
+      <atom:link href="https://sulmanolieko.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Sulman Olieko</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 7 Aug 2023 00:00:00 +0300</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 7 Aug 2023 00:00:00 +0300</lastBuildDate>
     <image>
-      <url>https://SulmanOlieko.github.io/img/icon-192.png</url>
+      <url>https://sulmanolieko.github.io/img/icon-192.png</url>
       <title>Sulman Olieko</title>
-      <link>https://SulmanOlieko.github.io/</link>
+      <link>https://sulmanolieko.github.io/</link>
     </image>
     
     <item>
-      <title>Approximate Bayesian Computation via Classification</title>
-      <link>https://yxwang99.github.io/publication/abc-gan/</link>
-      <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
-      <guid>https://yxwang99.github.io/publication/abc-gan/</guid>
+      <title>Title of paper</title>
+      <link>https://sulmanolieko.github.io/publication/.../</link>
+      <pubDate>Mon, 7 Aug 2023 00:00:00 +0300</pubDate>
+      <guid>https://sulmanolieko.github.io/publication/.../</guid>
       <description>&lt;!-- raw HTML omitted --&gt;
 &lt;!-- raw HTML omitted --&gt;
 </description>
     </item>
     
-    <item>
-      <title>Adversarial Bayesian Simulation</title>
-      <link>https://yxwang99.github.io/publication/abs/</link>
-      <pubDate>Wed, 24 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>https://yxwang99.github.io/publication/abs/</guid>
-      <description>&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Data Augmentation for Bayesian Deep Learning</title>
-      <link>https://yxwang99.github.io/publication/da-dl/</link>
-      <pubDate>Mon, 15 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>https://yxwang99.github.io/publication/da-dl/</guid>
-      <description>&lt;!-- raw HTML omitted --&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Variable Selection with ABC Bayesian Forests</title>
-      <link>https://yxwang99.github.io/publication/abcforest/</link>
-      <pubDate>Tue, 16 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>https://yxwang99.github.io/publication/abcforest/</guid>
-      <description>&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Uncertainty Quantification for Sparse Deep Learning</title>
-      <link>https://yxwang99.github.io/publication/uq-dl/</link>
-      <pubDate>Sat, 29 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>https://yxwang99.github.io/publication/uq-dl/</guid>
-      <description>&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-</description>
-    </item>
+    <!-- Add more papers here -->
     
   </channel>
 </rss>
