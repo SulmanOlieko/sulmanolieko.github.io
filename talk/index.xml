@@ -3,7 +3,7 @@
   <channel>
     <title>Recent &amp; Upcoming Talks | Sulman Olieko</title>
     <link>https://sulmanolieko.github.io/talk/</link>
-      <atom:link href="https://yxwang99.github.io/talk/index.xml" rel="self" type="application/rss+xml" />
+      <atom:link href="https://sulmanolieko.github.io/talk/index.xml" rel="self" type="application/rss+xml" />
     <description>Recent &amp; Upcoming Talks</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
