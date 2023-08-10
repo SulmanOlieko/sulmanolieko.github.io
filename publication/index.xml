@@ -1,61 +1,63 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Publications | Yuexi Wang</title>
-    <link>https://yxwang99.github.io/publication/</link>
-      <atom:link href="https://yxwang99.github.io/publication/index.xml" rel="self" type="application/rss+xml" />
+    <title>Publications | Sulman Olieko</title>
+    <link>https://sulmanolieko.github.io/publication/</link>
+      <atom:link href="sulmanolieko.github.io/publication/index.xml" rel="self" type="application/rss+xml" />
     <description>Publications</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 23 Oct 2022 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 07 Aug 2023 00:00:00 +0300</lastBuildDate>
     <image>
-      <url>https://yxwang99.github.io/img/icon-192.png</url>
+      <url>https://sulmanolieko.github.io/img/icon-192.png</url>
       <title>Publications</title>
-      <link>https://yxwang99.github.io/publication/</link>
+      <link>https://sulmanolieko.github.io/publication/</link>
     </image>
     
     <item>
-      <title>Approximate Bayesian Computation via Classification</title>
-      <link>https://yxwang99.github.io/publication/abc-gan/</link>
-      <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
-      <guid>https://yxwang99.github.io/publication/abc-gan/</guid>
+      <title>Publication 1 Title</title>
+      <link>https://sulmanolieko.github.io/publication/.../</link>
+      <pubDate>Sun, 07 Aug 2023 00:00:00 +0300</pubDate>
+      <guid>https://sulmanolieko.github.io/publication/.../</guid>
       <description>&lt;!-- raw HTML omitted --&gt;
 &lt;!-- raw HTML omitted --&gt;
 </description>
     </item>
     
     <item>
-      <title>Adversarial Bayesian Simulation</title>
-      <link>https://yxwang99.github.io/publication/abs/</link>
-      <pubDate>Wed, 24 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>https://yxwang99.github.io/publication/abs/</guid>
+      <title>Publication 2 Title</title>
+      <link>https://sulmanolieko.github.io/publication/.../</link>
+      <pubDate>Wed, 07 Aug 2023 00:00:00 +0300</pubDate>
+      <guid>https://sulmanolieko.github.io/publication/.../</guid>
       <description>&lt;!-- raw HTML omitted --&gt;
 &lt;!-- raw HTML omitted --&gt;
 </description>
     </item>
     
     <item>
-      <title>Data Augmentation for Bayesian Deep Learning</title>
-      <link>https://yxwang99.github.io/publication/da-dl/</link>
-      <pubDate>Mon, 15 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>https://yxwang99.github.io/publication/da-dl/</guid>
+      <title>Publication 3 Title</title>
+      <link>https://sulmanolieko.github.io/publication/.../</link>
+      <pubDate>Mon, 07 Aug 2023 00:00:00 +0300</pubDate>
+      <guid>https://sulmanolieko.github.io/publication/.../</guid>
       <description>&lt;!-- raw HTML omitted --&gt;
 </description>
     </item>
     
     <item>
-      <title>Variable Selection with ABC Bayesian Forests</title>
-      <link>https://yxwang99.github.io/publication/abcforest/</link>
-      <pubDate>Tue, 16 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>https://yxwang99.github.io/publication/abcforest/</guid>
+      <title>Publication 4 Title</title>
+      <link>https://sulmanolieko.github.io/publication/.../</link>
+      <pubDate>Tue, 07 Aug 2023 00:00:00 +0300</pubDate>
+      <guid>https://sulmanolieko.github.io/publication/.../</guid>
       <description>&lt;!-- raw HTML omitted --&gt;
 &lt;!-- raw HTML omitted --&gt;
 </description>
     </item>
     
     <item>
-      <title>Uncertainty Quantification for Sparse Deep Learning</title>
-      <link>https://yxwang99.github.io/publication/uq-dl/</link>
-      <pubDate>Sat, 29 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>https://yxwang99.github.io/publication/uq-dl/</guid>
+      <title>Publication 5 Title</title>
+      <link>https://sulmanolieko.github.io/publication/.../</link>
+      <pubDate>Sat, 07 Aug 2023 00:00:00 +0300</pubDate>
+      <guid>https://sulmanolieko.github.io/publication/.../</guid>
       <description>&lt;!-- raw HTML omitted --&gt;
 &lt;!-- raw HTML omitted --&gt;
 </description>
