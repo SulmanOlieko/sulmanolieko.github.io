@@ -190,13 +190,13 @@
   <div class="universal-wrapper">
 <h2>Introduction</h2>
 
-    <p>Data Envelopment Analysis (DEA) is a versatile mathematical technique used for performance evaluation and benchmarking in various fields. In this blog, we will explore advanced applications of DEA using the renowned dataset from Sarkis and Talluri (2004). I'll guide you through the process of obtaining the dataset from our GitHub repository, implementing DEA in R using the provided code, and comparing the results with those presented in the paper. Let's dive into the world of advanced DEA!</p>
+    <p>Data Envelopment Analysis (DEA) is a versatile mathematical technique (specifically, linear programming) used for relative performance evaluation and benchmarking in various fields. In this blog, we will explore advanced applications of DEA using the renowned dataset from Sarkis and Talluri (2004). I'll guide you through the process of obtaining the dataset from my GitHub repository, implementing DEA in R using my codes, and comparing the results with those presented in the paper. Let's dive into the world of advanced DEA!</p>
 
     <h2>Step 1: Accessing the Dataset</h2>
 
-    <p>To get started, you can access the dataset from our <a
-            href="link_to_your_GitHub_repo"> https://github.com/SulmanOlieko/</a>, and download the dataset file named "e-data.xlsx."</p>
-
+    <p>To get started, you can access the dataset from my <a href="https://github.com/SulmanOlieko/production_econ">Github repository</a>, and download the <a href="https://github.com/SulmanOlieko/production_econ/blob/main/e-data.xlsx">data</a>, file named "e-data.xlsx."</p>
+    <p>The original source of this environmental data for 48 electric utility plants in the U.S. was from the Energy Information Administration of the United States Department of Energy (EIA). It is a famous dataset that has been utilized severally, including by authors such as <a href="https://www.worldscientific.com/doi/abs/10.1142/S1464333204001602">Sarkis and Talluri (2004)</a>, <a href="http://doi.wiley.com/10.1162/jiec.1998.2.4.61">Tyteca (1998)</a>, and <a href="https://linkinghub.elsevier.com/retrieve/pii/0921800996000195">Fare et al. (1996)</a>.</p>
+    
     <h2>Step 2: Importing the Data</h2>
 
     <p>In R, you can use the <code>readxl</code> library to import Excel data. Here's how to import the dataset:</p>
@@ -206,7 +206,7 @@
 install.packages("readxl")
 library(readxl)
 
-# Import the data from the Excel file
+# Import the data from the Excel file and call it data
 data &lt;- read_excel("e-data.xlsx")
     </code></pre>
 
@@ -224,8 +224,9 @@ data &lt;- read_excel("e-data.xlsx")
     <p>Again, you can use <code>View(dea.data)</code> to inspect the imported DEA results and <code>names(dea.data)</code> to see the column names.</p>
 
     <h2>Step 4: Replicating BCC Results</h2>
-
-    <p>Now, let's replicate the BCC (Banker, Charnes, Cooper) model results from Sarkis and Talluri (2004). We'll use the <code>deaR</code> library for this purpose.</p>
+    <p>The <a href="https://www.jstor.org/stable/2631725">Banker, Charnes, and Cooper (1984)</a>model allows for estimating efficiency scores under Variable Returns to Scale (VRS). Essentially, VRS is a production concept where a firm's or organization's output doesn't increase proportionally to changes in its inputs. In this case, the production output $y =f(x)$ may increase at a decreasing rate, remain constant, or even decrease when inputs are increased.</p>
+    <p>Broadly put, changes in the scale of production impact productivity and efficiency. This means that firms operating under VRS may not be at an optimal scale, and they can improve efficiency by adjusting their input levels.</p>
+    <p>Now, let's replicate the BCC model results from Sarkis and Talluri (2004). We'll use the <code>deaR</code> library for this purpose.</p>
 
     <pre><code>
       # Load the deaR library
@@ -256,8 +257,9 @@ data &lt;- read_excel("e-data.xlsx")
     <p>This code replicates the BCC model as per Sarkis and Talluri (2004) and calculates efficiency scores.</p>
 
     <h2>Step 5: Replicating CCR Results</h2>
-
-    <p>Similarly, you can replicate the CCR (Charnes, Cooper, Rhodes) model results:</p>
+    <p>As opposed to the BCC model, the <a href="https://linkinghub.elsevier.com/retrieve/pii/0377221778901388">Charnes, Cooper, and Rhodes (1978)</a>(CCR) model assumes constant returns to scale. In essence, this means that when a firm's or organization's inputs increase, its output also increases proportionately. In other words, if you double the inputs (e.g., labor, capital), the output will also double, and vice versa.</p>
+    <p>The implication of this is that increasing the scale of production doesn't lead to changes in productivity or efficiency. Firms operating under constant returns to scale are typically considered to be at an optimal scale, meaning they are producing at maximum efficiency with their current resource levels.</p>
+    <p>Similarly, you can replicate the CCR model results:</p>
 
     <pre><code>
       # Create a DEA dataset (if not already created)
