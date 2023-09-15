@@ -188,10 +188,110 @@
     <img src="/img/DEA-1.png" alt="DEA plot">
   </div>
   <div class="universal-wrapper">
+<h2>Introduction</h2>
 
+    <p>Data Envelopment Analysis (DEA) is a versatile mathematical technique used for performance evaluation and benchmarking in various fields. In this blog, we will explore advanced applications of DEA using the renowned dataset from Sarkis and Talluri (2004). I'll guide you through the process of obtaining the dataset from our GitHub repository, implementing DEA in R using the provided code, and comparing the results with those presented in the paper. Let's dive into the world of advanced DEA!</p>
 
+    <h2>Step 1: Accessing the Dataset</h2>
 
-    
+    <p>To get started, you can access the dataset from our <a
+            href="link_to_your_GitHub_repo"> https://github.com/SulmanOlieko/</a>, and download the dataset file named "e-data.xlsx."</p>
+
+    <h2>Step 2: Importing the Data</h2>
+
+    <p>In R, you can use the <code>readxl</code> library to import Excel data. Here's how to import the dataset:</p>
+
+    <pre><code>
+# Install and load the necessary library
+install.packages("readxl")
+library(readxl)
+
+# Import the data from the Excel file
+data &lt;- read_excel("e-data.xlsx")
+    </code></pre>
+
+    <p>You can use <code>View(data)</code> to inspect the imported dataset and <code>names(data)</code> to see the column names.</p>
+
+    <h2>Step 3: Importing DEA Results</h2>
+
+    <p>Next, import the DEA results from the same Excel file, specifically the sheet named "DEA efficiencies":</p>
+
+    <pre><code>
+    # Import DEA results from the Excel file
+      dea.data &lt;- read_excel("e-data.xlsx", sheet = "DEA efficiencies")
+    </code></pre>
+
+    <p>Again, you can use <code>View(dea.data)</code> to inspect the imported DEA results and <code>names(dea.data)</code> to see the column names.</p>
+
+    <h2>Step 4: Replicating BCC Results</h2>
+
+    <p>Now, let's replicate the BCC (Banker, Charnes, Cooper) model results from Sarkis and Talluri (2004). We'll use the <code>deaR</code> library for this purpose.</p>
+
+    <pre><code>
+      # Load the deaR library
+      library(deaR)
+      
+      # Prepare the data for BCC model
+      data2 &lt;- data.frame(
+      ID = data$`Plant Number`,
+      SO2 = data$`SO2 (Tons/yr)`,
+      NOx = data$`Nox (Tons/yr)`,
+      CO2 = data$`CO2 (Tons/yr)`,
+      ENERGY = data$`Energy Input*`,
+      LABOUR = data$Labor,
+      OUTPUT = data$`Output (MkWh)`)
+      
+      # Create a DEA dataset
+      dea &lt;- make_deadata(datadea = data2, dmus = 1, ni = 5, no = 1)
+      # Create the BCC model
+      dea.bcc &lt;- model_basic(dea, dmu_eval = 1:48, dmu_ref = 1:48, orientation = "io", rts = "vrs")
+      # Summarize the BCC model
+      summary(dea.bcc)
+      
+      # Calculate BCC efficiencies
+      eff.bcc &lt;- efficiencies(dea.bcc)
+      eff.bcc
+    </code></pre>
+
+    <p>This code replicates the BCC model as per Sarkis and Talluri (2004) and calculates efficiency scores.</p>
+
+    <h2>Step 5: Replicating CCR Results</h2>
+
+    <p>Similarly, you can replicate the CCR (Charnes, Cooper, Rhodes) model results:</p>
+
+    <pre><code>
+      # Create a DEA dataset (if not already created)
+      dea &lt;- make_deadata(datadea = data2, dmus = 1, ni = 5, no = 1)
+      
+      # Create the CCR model
+      dea.ccr &lt;- model_basic(dea, dmu_eval = 1:48, dmu_ref = 1:48, orientation = "io", rts = "crs")
+      
+      # Summarize the CCR model
+      summary(dea.ccr)
+      
+      # Calculate CCR efficiencies
+      eff.ccr &lt;- efficiencies(dea.ccr)
+      eff.ccr
+    </code></pre>
+
+    <p>This code replicates the CCR model and calculates efficiency scores.</p>
+
+    <h2>Step 6: Comparing Results</h2>
+
+    <p>Finally, you can compare the results you obtained with the DEA results from Sarkis and Talluri (2004) using the following code:</p>
+
+    <pre><code>
+      # Compare BCC and CCR results with the DEA dataset
+      cbind(dea.data$BCC, eff.bcc)
+      cbind(dea.data$CCR, eff.ccr)
+    </code></pre>
+
+    <p>This code compares your DEA results (eff.bcc and eff.ccr) with the values provided in the "DEA efficiencies" sheet of the dataset.</p>
+
+    <h2>Conclusion</h2>
+
+    <p>In this blog, I've explored advanced applications of DEA using the Sarkis and Talluri (2004) dataset. I've shown you how to import the data, replicate BCC and CCR models using R and the <code>deaR</code> library, and compare the results with those presented in the paper. DEA is a powerful tool for efficiency analysis, and by following these steps, you can gain hands-on experience in applying DEA to real-world datasets. Happy analyzing!</p>
+
   </div>
       <hr>
         <div id="latest-posts" class="universal-wrapper">
