@@ -185,7 +185,7 @@
 </div>
 
   <div class="image-container1" >
-    <img src="/img/DEA-1.png" alt="DEA plot">
+    <img src="/img/DEA-1.png" style=" height:300px width:300px alt="DEA plot">
   </div>
   <div class="universal-wrapper">
 <h2>Introduction</h2>
@@ -194,7 +194,7 @@
 
     <h2>Step 1: Accessing the Dataset</h2>
 
-    <p>To get started, you can access the dataset from my <a href="https://github.com/SulmanOlieko/production_econ">Github repository</a>, and download the <a href="https://github.com/SulmanOlieko/production_econ/blob/main/e-data.xlsx">data</a>, file named "e-data.xlsx."</p>
+    <p>To get started, you can access the dataset from my <a href="https://github.com/SulmanOlieko">Github repository</a>, and download the <a href="https://github.com/SulmanOlieko/production_econ/blob/main/e-data.xlsx">data</a>, file named "e-data.xlsx."</p>
     <p>The original source of this environmental data for 48 electric utility plants in the U.S. was from the Energy Information Administration of the United States Department of Energy (EIA). It is a famous dataset that has been utilized severally, including by authors such as <a href="https://www.worldscientific.com/doi/abs/10.1142/S1464333204001602">Sarkis and Talluri (2004)</a>, <a href="http://doi.wiley.com/10.1162/jiec.1998.2.4.61">Tyteca (1998)</a>, and <a href="https://linkinghub.elsevier.com/retrieve/pii/0921800996000195">Fare et al. (1996)</a>.</p>
     
     <h2>Step 2: Importing the Data</h2>
@@ -288,8 +288,7 @@ data &lt;- read_excel("e-data.xlsx")
       cbind(dea.data$CCR, eff.ccr)
     </code></pre>
 
-    <p>This code compares your DEA results (eff.bcc and eff.ccr) with the values provided in the "DEA efficiencies" sheet of the dataset.</p>
-
+    <p>This code compares your DEA results (eff.bcc and eff.ccr) with the values provided in the "DEA efficiencies" sheet of the dataset. You can access</p>
     <h2>Conclusion</h2>
 
     <p>In this blog, I've explored advanced applications of DEA using the Sarkis and Talluri (2004) dataset. I've shown you how to import the data, replicate BCC and CCR models using R and the <code>deaR</code> library, and compare the results with those presented in the paper. DEA is a powerful tool for efficiency analysis, and by following these steps, you can gain hands-on experience in applying DEA to real-world datasets. Happy analyzing!</p>
