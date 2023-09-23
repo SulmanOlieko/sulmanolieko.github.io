@@ -192,101 +192,79 @@
             line-height: 1.6;
         }
 </style>
-  <!-- Sidebar -->
-  <div id="sidebar">
-    <label for="n_input">Number of people in the room:</label>
-    <input type="number" id="n_input" value="100"><br>
+  <label for="n_input">Number of people in the room:</label>
+  <input type="number" id="n_input" value="100"><br><br>
 
-    <label for="birthday_input">Number of people with the same birthday:</label>
-    <input type="number" id="birthday_input" value="2"><br>
+  <label for="birthday_input">Number of people with the same birthday:</label>
+  <input type="number" id="birthday_input" value="2"><br><br>
 
-    <label for="a_input">Number of replications from:</label>
-    <input type="number" id="a_input" value="1"><br>
+  <label for="a_input">Number of replications from:</label>
+  <input type="number" id="a_input" value="1"><br><br>
 
-    <label for="b_input">Number of replications to:</label>
-    <input type="number" id="b_input" value="1000"><br>
+  <label for="b_input">Number of replications to:</label>
+  <input type="number" id="b_input" value="1000"><br><br>
 
-    <p>Select plot color:</p>
-    <input type="radio" name="color_input" value="blue" checked> Blue
-    <input type="radio" name="color_input" value="red"> Red
-    <input type="radio" name="color_input" value="green"> Green
-    <input type="radio" name="color_input" value="yellow"> Yellow
-    <input type="radio" name="color_input" value="black"> Black
+  <label>Select plot color:</label>
+  <input type="radio" id="color_input" name="color" value="Blue" checked> Blue
+  <input type="radio" id="color_input" name="color" value="Red"> Red
+  <input type="radio" id="color_input" name="color" value="Green"> Green
+  <input type="radio" id="color_input" name="color" value="Yellow"> Yellow
+  <input type="radio" id="color_input" name="color" value="Black"> Black<br><br>
 
-    <p>Select plot type:</p>
-    <select id="plot_type_input">
-      <option value="line">Line</option>
-      <option value="bar">Bar</option>
-      <option value="point">Point</option>
-    </select>
+  <label for="plot_type_input">Select plot type:</label>
+  <select id="plot_type_input">
+    <option value="Line">Line</option>
+    <option value="Bar">Bar</option>
+    <option value="Point">Point</option>
+  </select><br><br>
 
-    <button id="updatePlotButton">Update Plot</button>
-  </div>
+  <div id="birthday_plot"></div>
 
-  <!-- Main content -->
-  <div id="main-content">
-    <div class="info-text">
-      In a room, there exists a group of individuals, denoted by <strong>n</strong>. 
-      We make the assumption that every person's birthday is equally likely to occur on any 
-      of the 365 days of the year, excluding February 29. Additionally, we consider the birthdays of 
-      people to be independent, implying that there are no twins present in the room. 
-      What is the probability that two or more people in the group have the same birthday?
-    </div>
-    <div id="birthday_plot"></div>
-  </div>
-
-  <!-- JavaScript to handle the functionality -->
   <script>
-    function renderPlotly(data, color, type) {
-      var xValues = data.map(function(entry) { return entry.persons; });
-      var yValues = data.map(function(entry) { return entry.probability; });
-
-      var trace = {
-        x: xValues,
-        y: yValues,
-        type: type,
-        marker: { color: color },
-      };
-
-      var layout = {
-        xaxis: { title: "Number of people in the room" },
-        yaxis: { title: "Probability n people have the same birthday" },
-        showlegend: false,
-        margin: { l: 50, r: 20, b: 50, t: 30 },
-        plot_bgcolor: "#f9f9f9",
-        paper_bgcolor: "#f9f9f9",
-      };
-
-      Plotly.newPlot('birthday_plot', [trace], layout);
-    }
-
     function updatePlot() {
       var n = parseInt(document.getElementById('n_input').value);
       var birthday = parseInt(document.getElementById('birthday_input').value);
       var a = parseInt(document.getElementById('a_input').value);
       var b = parseInt(document.getElementById('b_input').value);
-      var color = document.querySelector('input[name="color_input"]:checked').value;
-      var type = document.getElementById('plot_type_input').value;
+      var color = document.querySelector('input[name="color"]:checked').value;
+      var plotType = document.getElementById('plot_type_input').value;
 
-      var data = [];
-      for (var i = a; i <= b; i++) {
-        data.push({ persons: i, probability: calculateProbability(i, birthday) });
+      // JavaScript code for your plot goes here
+      // Example plot code:
+      var persons = Array.from({ length: n - birthday + 1 }, (_, i) => i + birthday);
+      var probability = Array(persons.length).fill(0);
+
+      // Replace with your actual probability calculation
+      for (var i = 0; i < persons.length; i++) {
+        probability[i] = i / n;
       }
 
-      renderPlotly(data, color, type);
+      var plotData = [{
+        x: persons,
+        y: probability,
+        type: plotType,
+        marker: { color: color }
+      }];
+
+      var layout = {
+        xaxis: { title: 'Number of people in the room' },
+        yaxis: { title: 'Probability n people have the same birthday' },
+        showlegend: false,
+        margin: { l: 50, r: 20, b: 50, t: 30 },
+        plot_bgcolor: '#f9f9f9',
+        paper_bgcolor: '#f9f9f9'
+      };
+
+      Plotly.newPlot('birthday_plot', plotData, layout);
     }
 
-    function calculateProbability(n, birthday) {
-      // Calculate the probability of sharing the same birthday here.
-      // Replace this with your calculation logic.
-      // For demonstration, we'll assume a constant probability.
-      return 0.1;
-    }
+    // Listen for input changes and update the plot
+    var inputs = document.querySelectorAll('input, select');
+    inputs.forEach(function (input) {
+      input.addEventListener('input', updatePlot);
+    });
 
-    // Attach event listener to the "Update Plot" button
-    document.getElementById('updatePlotButton').addEventListener('click', updatePlot);
-
-    // Initial plot
+    // Initial plot update
     updatePlot();
   </script>
   </div>
