@@ -192,7 +192,6 @@
             line-height: 1.6;
         }
 </style>
-
   <!-- Sidebar -->
   <div id="sidebar">
     <label for="n_input">Number of people in the room:</label>
@@ -208,17 +207,17 @@
     <input type="number" id="b_input" value="1000"><br>
 
     <p>Select plot color:</p>
-    <input type="radio" name="color_input" value="Blue" checked> Blue
-    <input type="radio" name="color_input" value="Red"> Red
-    <input type="radio" name="color_input" value="Green"> Green
-    <input type="radio" name="color_input" value="Yellow"> Yellow
-    <input type="radio" name="color_input" value="Black"> Black
+    <input type="radio" name="color_input" value="blue" checked> Blue
+    <input type="radio" name="color_input" value="red"> Red
+    <input type="radio" name="color_input" value="green"> Green
+    <input type="radio" name="color_input" value="yellow"> Yellow
+    <input type="radio" name="color_input" value="black"> Black
 
     <p>Select plot type:</p>
     <select id="plot_type_input">
-      <option value="Line">Line</option>
-      <option value="Bar">Bar</option>
-      <option value="Point">Point</option>
+      <option value="line">Line</option>
+      <option value="bar">Bar</option>
+      <option value="point">Point</option>
     </select>
 
     <button id="updatePlotButton">Update Plot</button>
@@ -239,30 +238,15 @@
   <!-- JavaScript to handle the functionality -->
   <script>
     function renderPlotly(data, color, type) {
-      if (type === "Line") {
-        var plot = {
-          x: data.persons,
-          y: data.probability,
-          type: 'scatter',
-          mode: 'lines',
-          line: { color: color, width: 2 }
-        };
-      } else if (type === "Bar") {
-        var plot = {
-          x: data.persons,
-          y: data.probability,
-          type: 'bar',
-          marker: { color: color }
-        };
-      } else if (type === "Point") {
-        var plot = {
-          x: data.persons,
-          y: data.probability,
-          type: 'scatter',
-          mode: "markers",
-          marker: { color: color, size: 10 }
-        };
-      }
+      var xValues = data.map(function(entry) { return entry.persons; });
+      var yValues = data.map(function(entry) { return entry.probability; });
+
+      var trace = {
+        x: xValues,
+        y: yValues,
+        type: type,
+        marker: { color: color },
+      };
 
       var layout = {
         xaxis: { title: "Number of people in the room" },
@@ -270,10 +254,10 @@
         showlegend: false,
         margin: { l: 50, r: 20, b: 50, t: 30 },
         plot_bgcolor: "#f9f9f9",
-        paper_bgcolor: "#f9f9f9"
+        paper_bgcolor: "#f9f9f9",
       };
 
-      Plotly.newPlot('birthday_plot', [plot], layout);
+      Plotly.newPlot('birthday_plot', [trace], layout);
     }
 
     function updatePlot() {
@@ -284,16 +268,19 @@
       var color = document.querySelector('input[name="color_input"]:checked').value;
       var type = document.getElementById('plot_type_input').value;
 
-      // Replace this with your data retrieval logic
-      // For demonstration purposes, use sample data
-      var sampleData = [];
-
+      var data = [];
       for (var i = a; i <= b; i++) {
-        var probability = 0.0;  // Calculate probability here
-        sampleData.push({ persons: i, probability: probability });
+        data.push({ persons: i, probability: calculateProbability(i, birthday) });
       }
 
-      renderPlotly(sampleData, color, type);
+      renderPlotly(data, color, type);
+    }
+
+    function calculateProbability(n, birthday) {
+      // Calculate the probability of sharing the same birthday here.
+      // Replace this with your calculation logic.
+      // For demonstration, we'll assume a constant probability.
+      return 0.1;
     }
 
     // Attach event listener to the "Update Plot" button
