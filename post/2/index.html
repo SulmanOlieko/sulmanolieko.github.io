@@ -197,24 +197,14 @@
         In a room, there exists a group of individuals, denoted by <strong>n</strong>. We make the assumption that every person's birthday is equally likely to occur on any of the 365 days of the year, excluding February 29. Additionally, we consider the birthdays of people to be independent, implying that there are no twins present in the room. What is the probability that two or more people in the group have the same birthday?
     </div>
     
-        <label for="n_input">Number of people in the room:</label>
+    <label for="n_input">Number of people in the room:</label>
     <input type="number" id="n_input" value="100"><br><br>
-    
-    <label for="birthday_input">Number of people with the same birthday:</label>
-    <input type="number" id="birthday_input" value="2"><br><br>
     
     <label for="a_input">Number of replications from:</label>
     <input type="number" id="a_input" value="1"><br><br>
     
     <label for="b_input">Number of replications to:</label>
     <input type="number" id="b_input" value="1000"><br><br>
-    
-    <label>Select plot color:</label>
-    <input type="radio" id="color_input" name="color" value="Blue" checked> Blue
-    <input type="radio" id="color_input" name="color" value="Red"> Red
-    <input type="radio" id="color_input" name="color" value="Green"> Green
-    <input type="radio" id="color_input" name="color" value="Yellow"> Yellow
-    <input type="radio" id="color_input" name="color" value="Black"> Black<br><br>
     
     <label for="plot_type_input">Select plot type:</label>
     <select id="plot_type_input">
@@ -229,37 +219,26 @@
     <script>
         function updatePlot() {
             var n = parseInt(document.getElementById('n_input').value);
-            var birthday = parseInt(document.getElementById('birthday_input').value);
             var a = parseInt(document.getElementById('a_input').value);
             var b = parseInt(document.getElementById('b_input').value);
-            var color = document.querySelector('input[name="color"]:checked').value;
             var plotType = document.getElementById('plot_type_input').value;
 
-            var persons = Array.from({ length: n - birthday + 1 }, (_, i) => i + birthday);
+            var persons = Array.from({ length: n }, (_, i) => i + 1);
             var probabilities = [];
 
             for (var i = a; i <= b; i++) {
-                var count = 0;
-                for (var j = 0; j < i; j++) {
-                    var birthdays = new Set();
-                    for (var k = 0; k < n; k++) {
-                        var day = Math.floor(Math.random() * 365);
-                        if (birthdays.has(day)) {
-                            count++;
-                            break;
-                        } else {
-                            birthdays.add(day);
-                        }
-                    }
+                var p = 1 - 365 / 365;
+                for (var j = 1; j <= n; j++) {
+                    p *= (365 - j) / 365;
                 }
-                probabilities.push(count / i);
+                probabilities.push(1 - p);
             }
 
             var plotData = [{
                 x: persons,
                 y: probabilities,
                 type: plotType,
-                marker: { color: color }
+                marker: { color: 'blue' }
             }];
 
             var layout = {
