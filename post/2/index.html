@@ -184,89 +184,100 @@
     </div>
 </div>
 
-<style>
-  .info-text {
-            font-size: 16px;
-            margin-bottom: 20px;
-            text-align: justify;
-            line-height: 1.6;
-        }
-</style>
-  <label for="n_input">Number of people in the room:</label>
-  <input type="number" id="n_input" value="100"><br><br>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/shiny@1.7.2/shiny.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            var shinyapp = new Shiny.ShinyApp(
+                document.getElementById('shinyapp'),
+                document.getElementById('shinyapp'),
+                {
+                    window: {
+                        initialize: false,
+                    },
+                    inputs: [
+                        {
+                            name: 'n_input',
+                            type: 'numeric',
+                            value: 100,
+                        },
+                        {
+                            name: 'birthday_input',
+                            type: 'numeric',
+                            value: 2,
+                        },
+                        {
+                            name: 'a_input',
+                            type: 'numeric',
+                            value: 1,
+                        },
+                        {
+                            name: 'b_input',
+                            type: 'numeric',
+                            value: 1000,
+                        },
+                        {
+                            name: 'color_input',
+                            type: 'radio',
+                            value: 'Blue',
+                        },
+                        {
+                            name: 'plot_type_input',
+                            type: 'select',
+                            value: 'Line',
+                        },
+                    ],
+                }
+            );
 
-  <label for="birthday_input">Number of people with the same birthday:</label>
-  <input type="number" id="birthday_input" value="2"><br><br>
+            var shinyinput = new Shiny.InputBinding();
+            shinyinput.find = function(scope) {
+                return $(scope).find('.shiny-bound-input');
+            };
 
-  <label for="a_input">Number of replications from:</label>
-  <input type="number" id="a_input" value="1"><br><br>
+            shinyinput.getId = function(el) {
+                return el.id;
+            };
 
-  <label for="b_input">Number of replications to:</label>
-  <input type="number" id="b_input" value="1000"><br><br>
+            shinyinput.initialize = function(el) {
+                // Add initialization code here
+            };
 
-  <label>Select plot color:</label>
-  <input type="radio" id="color_input" name="color" value="Blue" checked> Blue
-  <input type="radio" id="color_input" name="color" value="Red"> Red
-  <input type="radio" id="color_input" name="color" value="Green"> Green
-  <input type="radio" id="color_input" name="color" value="Yellow"> Yellow
-  <input type="radio" id="color_input" name="color" value="Black"> Black<br><br>
+            shinyinput.getValue = function(el) {
+                // Return the value of the input element
+                return el.value;
+            };
 
-  <label for="plot_type_input">Select plot type:</label>
-  <select id="plot_type_input">
-    <option value="Line">Line</option>
-    <option value="Bar">Bar</option>
-    <option value="Point">Point</option>
-  </select><br><br>
+            shinyinput.setValue = function(el, value) {
+                // Set the value of the input element
+                el.value = value;
+            };
 
-  <div id="birthday_plot"></div>
+            shinyinput.subscribe = function(el, callback) {
+                // Add code to listen for changes and invoke callback
+                $(el).on('change.shinyinput', function(event) {
+                    callback();
+                });
+            };
 
-  <script>
-    function updatePlot() {
-      var n = parseInt(document.getElementById('n_input').value);
-      var birthday = parseInt(document.getElementById('birthday_input').value);
-      var a = parseInt(document.getElementById('a_input').value);
-      var b = parseInt(document.getElementById('b_input').value);
-      var color = document.querySelector('input[name="color"]:checked').value;
-      var plotType = document.getElementById('plot_type_input').value;
+            shinyinput.unsubscribe = function(el) {
+                // Remove any event listeners
+                $(el).off('.shinyinput');
+            };
 
-      // JavaScript code for your plot goes here
-      // Example plot code:
-      var persons = Array.from({ length: n - birthday + 1 }, (_, i) => i + birthday);
-      var probability = Array(persons.length).fill(0);
+            Shiny.inputBindings.register(shinyinput);
+            Shiny.initializeInputs(shinyapp);
+        });
+    </script>
 
-      // Replace with your actual probability calculation
-      for (var i = 0; i < persons.length; i++) {
-        probability[i] = i / n;
-      }
+    <div id="shinyapp">
+        <!-- Your Shiny app will be embedded here -->
+    </div>
 
-      var plotData = [{
-        x: persons,
-        y: probability,
-        type: plotType,
-        marker: { color: color }
-      }];
-
-      var layout = {
-        xaxis: { title: 'Number of people in the room' },
-        yaxis: { title: 'Probability n people have the same birthday' },
-        showlegend: false,
-        margin: { l: 50, r: 20, b: 50, t: 30 },
-        plot_bgcolor: '#f9f9f9',
-        paper_bgcolor: '#f9f9f9'
-      };
-
-      Plotly.newPlot('birthday_plot', plotData, layout);
-    }
-
-    // Listen for input changes and update the plot
-    var inputs = document.querySelectorAll('input, select');
-    inputs.forEach(function (input) {
-      input.addEventListener('input', updatePlot);
-    });
-
-    // Initial plot update
-    updatePlot();
-  </script>
+    <script src="app.R"></script>
   </div>
       <hr>
         <div id="latest-posts" class="universal-wrapper">
