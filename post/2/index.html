@@ -197,7 +197,7 @@
         In a room, there exists a group of individuals, denoted by <strong>n</strong>. We make the assumption that every person's birthday is equally likely to occur on any of the 365 days of the year, excluding February 29. Additionally, we consider the birthdays of people to be independent, implying that there are no twins present in the room. What is the probability that two or more people in the group have the same birthday?
     </div>
     
-    <label for="n_input">Number of people in the room:</label>
+        <label for="n_input">Number of people in the room:</label>
     <input type="number" id="n_input" value="100"><br><br>
     
     <label for="birthday_input">Number of people with the same birthday:</label>
@@ -235,19 +235,29 @@
             var color = document.querySelector('input[name="color"]:checked').value;
             var plotType = document.getElementById('plot_type_input').value;
 
-            // JavaScript code for your plot goes here
-            // Example plot code:
             var persons = Array.from({ length: n - birthday + 1 }, (_, i) => i + birthday);
-            var probability = Array(persons.length).fill(0);
+            var probabilities = [];
 
-            // Replace with your actual probability calculation
-            for (var i = 0; i < persons.length; i++) {
-                probability[i] = i / n;
+            for (var i = a; i <= b; i++) {
+                var count = 0;
+                for (var j = 0; j < i; j++) {
+                    var birthdays = new Set();
+                    for (var k = 0; k < n; k++) {
+                        var day = Math.floor(Math.random() * 365);
+                        if (birthdays.has(day)) {
+                            count++;
+                            break;
+                        } else {
+                            birthdays.add(day);
+                        }
+                    }
+                }
+                probabilities.push(count / i);
             }
 
             var plotData = [{
                 x: persons,
-                y: probability,
+                y: probabilities,
                 type: plotType,
                 marker: { color: color }
             }];
@@ -273,7 +283,6 @@
         // Initial plot update
         updatePlot();
     </script>
-
   </div>
       <hr>
         <div id="latest-posts" class="universal-wrapper">
