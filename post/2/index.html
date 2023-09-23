@@ -165,15 +165,15 @@
 </div>
   
 <div class="universal-wrapper">
-   <h2>Data Envelopment Analysis with Practical Replication of Results Presented in Sarkis and Talluri (2004)</h2>
+   <h2>Probability of People Sharing the Same Birthday</h2>
   <div class="stream-meta article-metadata">
     <div class=article-metadata>
       <div>
         <span class=author-highlighted><a href="https://sulmanolieko.github.io/authors/admin/">Sulman Olieko</a></span>
       </div>
-      <span class=article-date>Last updated on Sept 15, 2023</span>
+      <span class=article-date>Last updated on Sept 23, 2023</span>
       <span class=middot-divider></span>
-      <span class=article-reading-time>7 min read</span>
+      <span class=article-reading-time>2 min read</span>
       <span class=middot-divider></span>
       <span class=article-categories>
         <i class="fas fa-folder mr-1"></i>
@@ -184,8 +184,86 @@
     </div>
 </div>
 
+
+
+
+    <title>Probability of People Sharing the Same Birthday</title>
+    <style>
+        .info-text {
+            font-size: 16px;
+            margin-bottom: 20px;
+            text-align: justify;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <h1>Probability of People Sharing the Same Birthday</h1>
+    <div class="info-text">
+        In a room, there exists a group of individuals, denoted by <strong>n</strong>. We make the assumption that every person's birthday is equally likely to occur on any of the 365 days of the year, excluding February 29. Additionally, we consider the birthdays of people to be independent, implying that there are no twins present in the room. What is the probability that two or more people in the group have the same birthday?
+    </div>
+    
+    <label for="n_input">Number of people in the room:</label>
+    <input type="number" id="n_input" value="100"><br><br>
+    
+    <label for="birthday_input">Number of people with the same birthday:</label>
+    <input type="number" id="birthday_input" value="2"><br><br>
+    
+    <label for="a_input">Number of replications from:</label>
+    <input type="number" id="a_input" value="1"><br><br>
+    
+    <label for="b_input">Number of replications to:</label>
+    <input type="number" id="b_input" value="1000"><br><br>
+    
+    <label>Select plot color:</label>
+    <input type="radio" id="color_input" name="color" value="Blue" checked> Blue
+    <input type="radio" id="color_input" name="color" value="Red"> Red
+    <input type="radio" id="color_input" name="color" value="Green"> Green
+    <input type="radio" id="color_input" name="color" value="Yellow"> Yellow
+    <input type="radio" id="color_input" name="color" value="Black"> Black<br><br>
+    
+    <label for="plot_type_input">Select plot type:</label>
+    <select id="plot_type_input">
+        <option value="Line">Line</option>
+        <option value="Bar">Bar</option>
+        <option value="Point">Point</option>
+    </select><br><br>
+    
+    <div id="birthday_plot"></div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        // JavaScript code for your plot goes here
+        // Example plot code:
+        var persons = [2, 3, 4, 5]; // Replace with your data
+        var probability = [0.02, 0.05, 0.1, 0.15]; // Replace with your data
+        
+        var plotData = [{
+            x: persons,
+            y: probability,
+            type: 'scatter',
+            mode: 'lines',
+            marker: { color: 'blue' }
+        }];
+        
+        var layout = {
+            xaxis: { title: 'Number of people in the room' },
+            yaxis: { title: 'Probability n people have the same birthday' },
+            showlegend: false,
+            margin: { l: 50, r: 20, b: 50, t: 30 },
+            plot_bgcolor: '#f9f9f9',
+            paper_bgcolor: '#f9f9f9'
+        };
+        
+        Plotly.newPlot('birthday_plot', plotData, layout);
+    </script>
+
+
+
+
+
   <div class="image-container1" >
-    <img src="/img/DEA-1.png" height="300" width="300" alt="DEA plot">
+    <img src="/img/DEA-1.png" alt="DEA plot">
   </div>
   <div class="universal-wrapper">
 <h2>Introduction</h2>
