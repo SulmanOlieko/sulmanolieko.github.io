@@ -184,9 +184,6 @@
     </div>
 </div>
 
-
-
-
 <style>
   .info-text {
             font-size: 16px;
@@ -195,8 +192,7 @@
             line-height: 1.6;
         }
 </style>
-        
-    <h1>Probability of People Sharing the Same Birthday</h1>
+
     <div class="info-text">
         In a room, there exists a group of individuals, denoted by <strong>n</strong>. We make the assumption that every person's birthday is equally likely to occur on any of the 365 days of the year, excluding February 29. Additionally, we consider the birthdays of people to be independent, implying that there are no twins present in the room. What is the probability that two or more people in the group have the same birthday?
     </div>
@@ -231,149 +227,53 @@
 
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script>
-        // JavaScript code for your plot goes here
-        // Example plot code:
-        var persons = [2, 3, 4, 5]; // Replace with your data
-        var probability = [0.02, 0.05, 0.1, 0.15]; // Replace with your data
-        
-        var plotData = [{
-            x: persons,
-            y: probability,
-            type: 'scatter',
-            mode: 'lines',
-            marker: { color: 'blue' }
-        }];
-        
-        var layout = {
-            xaxis: { title: 'Number of people in the room' },
-            yaxis: { title: 'Probability n people have the same birthday' },
-            showlegend: false,
-            margin: { l: 50, r: 20, b: 50, t: 30 },
-            plot_bgcolor: '#f9f9f9',
-            paper_bgcolor: '#f9f9f9'
-        };
-        
-        Plotly.newPlot('birthday_plot', plotData, layout);
+        function updatePlot() {
+            var n = parseInt(document.getElementById('n_input').value);
+            var birthday = parseInt(document.getElementById('birthday_input').value);
+            var a = parseInt(document.getElementById('a_input').value);
+            var b = parseInt(document.getElementById('b_input').value);
+            var color = document.querySelector('input[name="color"]:checked').value;
+            var plotType = document.getElementById('plot_type_input').value;
+
+            // JavaScript code for your plot goes here
+            // Example plot code:
+            var persons = Array.from({ length: n - birthday + 1 }, (_, i) => i + birthday);
+            var probability = Array(persons.length).fill(0);
+
+            // Replace with your actual probability calculation
+            for (var i = 0; i < persons.length; i++) {
+                probability[i] = i / n;
+            }
+
+            var plotData = [{
+                x: persons,
+                y: probability,
+                type: plotType,
+                marker: { color: color }
+            }];
+
+            var layout = {
+                xaxis: { title: 'Number of people in the room' },
+                yaxis: { title: 'Probability n people have the same birthday' },
+                showlegend: false,
+                margin: { l: 50, r: 20, b: 50, t: 30 },
+                plot_bgcolor: '#f9f9f9',
+                paper_bgcolor: '#f9f9f9'
+            };
+
+            Plotly.newPlot('birthday_plot', plotData, layout);
+        }
+
+        // Listen for input changes and update the plot
+        var inputs = document.querySelectorAll('input, select');
+        inputs.forEach(function(input) {
+            input.addEventListener('change', updatePlot);
+        });
+
+        // Initial plot update
+        updatePlot();
     </script>
 
-
-
-
-
-  <div class="image-container1" >
-    <img src="/img/DEA-1.png" alt="DEA plot">
-  </div>
-  <div class="universal-wrapper">
-<h2>Introduction</h2>
-
-    <p>Data Envelopment Analysis (DEA) is a versatile mathematical technique (specifically, linear programming) used for relative performance evaluation and benchmarking in various fields. In this blog, we will explore advanced applications of DEA using the renowned dataset from Sarkis and Talluri (2004). I'll guide you through the process of obtaining the dataset from my GitHub repository, implementing DEA in R using my codes, and comparing the results with those presented in the paper. Let's dive into the world of advanced DEA!</p>
-
-    <h2>Step 1: Accessing the Dataset</h2>
-
-    <p>To get started, you can access the dataset from my <a href="https://github.com/SulmanOlieko">Github repository</a>, and download the <a href="https://raw.githubusercontent.com/SulmanOlieko/production_econ/main/e-data.xlsx">data</a>, file named "e-data.xlsx."</p>
-    <p>The original source of this environmental data for 48 electric utility plants in the U.S. was from the Energy Information Administration of the United States Department of Energy (EIA). It is a famous dataset that has been utilized severally, including by authors such as <a href="https://www.worldscientific.com/doi/abs/10.1142/S1464333204001602">Sarkis and Talluri (2004)</a>, <a href="http://doi.wiley.com/10.1162/jiec.1998.2.4.61">Tyteca (1998)</a>, and <a href="https://linkinghub.elsevier.com/retrieve/pii/0921800996000195">Fare et al. (1996)</a>.</p>
-    
-    <h2>Step 2: Importing the Data</h2>
-
-    <p>In R, you can use the <code>readxl</code> library to import Excel data. Here's how to import the dataset:</p>
-
-    <pre><code>
-# Install and load the necessary library
-install.packages("readxl")
-library(readxl)
-
-# Import the data from the Excel file and call it data
-data &lt;- read_excel("e-data.xlsx")
-    </code></pre>
-
-    <p>You can use <code>View(data)</code> to inspect the imported dataset and <code>names(data)</code> to see the column names.</p>
-
-    <h2>Step 3: Importing DEA Results</h2>
-
-    <p>Next, import the DEA results from the same Excel file, specifically the sheet named "DEA efficiencies":</p>
-
-    <pre><code>
-    # Import DEA results from the Excel file
-      dea.data &lt;- read_excel("e-data.xlsx", sheet = "DEA efficiencies")
-    </code></pre>
-
-    <p>Again, you can use <code>View(dea.data)</code> to inspect the imported DEA results and <code>names(dea.data)</code> to see the column names.</p>
-
-    <h2>Step 4: Replicating BCC Results</h2>
-    <p>The <a href="https://www.jstor.org/stable/2631725">Banker, Charnes, and Cooper (1984)</a>model allows for estimating efficiency scores under Variable Returns to Scale (VRS). Essentially, VRS is a production concept where a firm's or organization's output doesn't increase proportionally to changes in its inputs. In this case, the production output $y =f(x)$ may increase at a decreasing rate, remain constant, or even decrease when inputs are increased.</p>
-    <p>Broadly put, changes in the scale of production impact productivity and efficiency. This means that firms operating under VRS may not be at an optimal scale, and they can improve efficiency by adjusting their input levels.</p>
-    <p>Now, let's replicate the BCC model results from Sarkis and Talluri (2004). We'll use the <code>deaR</code> library for this purpose.</p>
-
-    <pre><code>
-      # Load the deaR library
-      library(deaR)
-      
-      # Prepare the data for BCC model
-      data2 &lt;- data.frame(
-      ID = data$`Plant Number`,
-      SO2 = data$`SO2 (Tons/yr)`,
-      NOx = data$`Nox (Tons/yr)`,
-      CO2 = data$`CO2 (Tons/yr)`,
-      ENERGY = data$`Energy Input*`,
-      LABOUR = data$Labor,
-      OUTPUT = data$`Output (MkWh)`)
-      
-      # Create a DEA dataset
-      dea &lt;- make_deadata(datadea = data2, dmus = 1, ni = 5, no = 1)
-      # Create the BCC model
-      dea.bcc &lt;- model_basic(dea, dmu_eval = 1:48, dmu_ref = 1:48, orientation = "io", rts = "vrs")
-      # Summarize the BCC model
-      summary(dea.bcc)
-      
-      # Calculate BCC efficiencies
-      eff.bcc &lt;- efficiencies(dea.bcc)
-      eff.bcc
-    </code></pre>
-
-    <p>This code replicates the BCC model as per Sarkis and Talluri (2004) and calculates efficiency scores.</p>
-
-    <h2>Step 5: Replicating CCR Results</h2>
-    <p>As opposed to the BCC model, the <a href="https://linkinghub.elsevier.com/retrieve/pii/0377221778901388">Charnes, Cooper, and Rhodes (1978)</a>(CCR) model assumes constant returns to scale. In essence, this means that when a firm's or organization's inputs increase, its output also increases proportionately. In other words, if you double the inputs (e.g., labor, capital), the output will also double, and vice versa.</p>
-    <p>The implication of this is that increasing the scale of production doesn't lead to changes in productivity or efficiency. Firms operating under constant returns to scale are typically considered to be at an optimal scale, meaning they are producing at maximum efficiency with their current resource levels.</p>
-    <p>Similarly, you can replicate the CCR model results:</p>
-
-    <pre><code>
-      # Create a DEA dataset (if not already created)
-      dea &lt;- make_deadata(datadea = data2, dmus = 1, ni = 5, no = 1)
-      
-      # Create the CCR model
-      dea.ccr &lt;- model_basic(dea, dmu_eval = 1:48, dmu_ref = 1:48, orientation = "io", rts = "crs")
-      
-      # Summarize the CCR model
-      summary(dea.ccr)
-      
-      # Calculate CCR efficiencies
-      eff.ccr &lt;- efficiencies(dea.ccr)
-      eff.ccr
-    </code></pre>
-
-    <p>This code replicates the CCR model and calculates efficiency scores.</p>
-
-    <h2>Step 6: Comparing Results</h2>
-
-    <p>Finally, you can compare the results you obtained with the DEA results from Sarkis and Talluri (2004) using the following code:</p>
-
-    <pre><code>
-      # Compare BCC and CCR results with the DEA dataset
-      cbind(dea.data$BCC, eff.bcc)
-      cbind(dea.data$CCR, eff.ccr)
-    </code></pre>
-
-    <p>This code compares your DEA results (eff.bcc and eff.ccr) with the values provided in the "DEA efficiencies" sheet of the dataset. You can access</p>
-    <h2>Conclusion</h2>
-
-    <p>In this blog, I've explored advanced applications of DEA using the Sarkis and Talluri (2004) dataset. I've shown you how to import the data, replicate BCC and CCR models using R and the <code>deaR</code> library, and compare the results with those presented in the paper. DEA is a powerful tool for efficiency analysis, and by following these steps, you can gain hands-on experience in applying DEA to real-world datasets. Happy analyzing!</p>
-    <h3>References</h2>
-    <pre>
-        Färe, R., Grosskopf, S., & Tyteca, D. (1996). An activity analysis model of the environmental performance of firms—application to fossil-fuel-fired electric utilities. Ecological Economics, 18(2), 161–175. https://doi.org/10.1016/0921-8009(96)00019-5
-        SARKIS, J., & TALLURI, S. (2004). ECOEFFICIENCY MEASUREMENT USING DATA ENVELOPMENT ANALYSIS: RESEARCH AND PRACTITIONER ISSUES. Journal of Environmental Assessment Policy and Management, 06(01), 91–123. https://doi.org/10.1142/S1464333204001602
-        Tyteca, D. (1998). Sustainability Indicators at the Firm Level. Journal of Industrial Ecology, 2(4), 61–77. https://doi.org/10.1162/jiec.1998.2.4.61
-    </pre>
   </div>
       <hr>
         <div id="latest-posts" class="universal-wrapper">
