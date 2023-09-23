@@ -193,7 +193,7 @@
         }
 </style>
 
-       <!-- Sidebar -->
+  <!-- Sidebar -->
   <div id="sidebar">
     <label for="n_input">Number of people in the room:</label>
     <input type="number" id="n_input" value="100"><br>
@@ -204,7 +204,7 @@
     <label for="a_input">Number of replications from:</label>
     <input type="number" id="a_input" value="1"><br>
 
-    <label for "b_input">Number of replications to:</label>
+    <label for="b_input">Number of replications to:</label>
     <input type="number" id="b_input" value="1000"><br>
 
     <p>Select plot color:</p>
@@ -220,6 +220,8 @@
       <option value="Bar">Bar</option>
       <option value="Point">Point</option>
     </select>
+
+    <button id="updatePlotButton">Update Plot</button>
   </div>
 
   <!-- Main content -->
@@ -283,28 +285,22 @@
       var type = document.getElementById('plot_type_input').value;
 
       // Replace this with your data retrieval logic
-      var sampleData = [
-        { persons: 2, probability: 0.002 },
-        { persons: 3, probability: 0.008 },
-        // Add more data points
-      ];
+      // For demonstration purposes, use sample data
+      var sampleData = [];
+
+      for (var i = a; i <= b; i++) {
+        var probability = 0.0;  // Calculate probability here
+        sampleData.push({ persons: i, probability: probability });
+      }
 
       renderPlotly(sampleData, color, type);
     }
 
+    // Attach event listener to the "Update Plot" button
+    document.getElementById('updatePlotButton').addEventListener('click', updatePlot);
+
     // Initial plot
     updatePlot();
-
-    // Attach event listeners
-    document.getElementById('n_input').addEventListener('input', updatePlot);
-    document.getElementById('birthday_input').addEventListener('input', updatePlot);
-    document.getElementById('a_input').addEventListener('input', updatePlot);
-    document.getElementById('b_input').addEventListener('input', updatePlot);
-    var colorInputs = document.querySelectorAll('input[name="color_input"]');
-    colorInputs.forEach(function (input) {
-      input.addEventListener('change', updatePlot);
-    });
-    document.getElementById('plot_type_input').addEventListener('change', updatePlot);
   </script>
   </div>
       <hr>
