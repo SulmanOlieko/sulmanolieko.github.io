@@ -193,83 +193,121 @@
         }
 </style>
 
-    <div class="info-text">
-        In a room, there exists a group of individuals, denoted by <strong>n</strong>. We make the assumption that every person's birthday is equally likely to occur on any of the 365 days of the year, excluding February 29. Additionally, we consider the birthdays of people to be independent, implying that there are no twins present in the room. What is the probability that two or more people in the group have the same birthday?
-    </div>
-    
+      <div id="sidebar">
     <label for="n_input">Number of people in the room:</label>
-    <input type="number" id="n_input" value="100"><br><br>
-    
-    <label for="birthday_input">Number of people sharing a birthday:</label>
-    <input type="number" id="birthday_input" value="2"><br><br>
-    
+    <input type="number" id="n_input" value="100"><br>
+
+    <label for="birthday_input">Number of people with the same birthday:</label>
+    <input type="number" id="birthday_input" value="2"><br>
+
     <label for="a_input">Number of replications from:</label>
-    <input type="number" id="a_input" value="1"><br><br>
-    
+    <input type="number" id="a_input" value="1"><br>
+
     <label for="b_input">Number of replications to:</label>
-    <input type="number" id="b_input" value="1000"><br><br>
-    
-    <label for="plot_type_input">Select plot type:</label>
+    <input type="number" id="b_input" value="1000"><br>
+
+    <p>Select plot color:</p>
+    <input type="radio" name="color_input" value="Blue" checked> Blue
+    <input type="radio" name="color_input" value="Red"> Red
+    <input type="radio" name="color_input" value="Green"> Green
+    <input type="radio" name="color_input" value="Yellow"> Yellow
+    <input type="radio" name="color_input" value="Black"> Black
+
+    <p>Select plot type:</p>
     <select id="plot_type_input">
-        <option value="Line">Line</option>
-        <option value="Bar">Bar</option>
-        <option value="Point">Point</option>
-    </select><br><br>
-    
+      <option value="Line">Line</option>
+      <option value="Bar">Bar</option>
+      <option value="Point">Point</option>
+    </select>
+  </div>
+
+  <!-- Main content -->
+  <div id="main-content">
+    <div class="info-text">
+      In a room, there exists a group of individuals, denoted by <strong>n</strong>. 
+      We make the assumption that every person's birthday is equally likely to occur on any 
+      of the 365 days of the year, excluding February 29. Additionally, we consider the birthdays of 
+      people to be independent, implying that there are no twins present in the room. 
+      What is the probability that two or more people in the group have the same birthday?
+    </div>
     <div id="birthday_plot"></div>
+  </div>
 
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script>
-        function updatePlot() {
-            var n = parseInt(document.getElementById('n_input').value);
-            var birthday = parseInt(document.getElementById('birthday_input').value);
-            var a = parseInt(document.getElementById('a_input').value);
-            var b = parseInt(document.getElementById('b_input').value);
-            var plotType = document.getElementById('plot_type_input').value;
+  <!-- JavaScript to handle the functionality -->
+  <script>
+    function renderPlotly(data, color, type) {
+      if (type === "Line") {
+        var plot = {
+          x: data.persons,
+          y: data.probability,
+          type: 'scatter',
+          mode: 'lines',
+          line: { color: color, width: 2 }
+        };
+      } else if (type === "Bar") {
+        var plot = {
+          x: data.persons,
+          y: data.probability,
+          type: 'bar',
+          marker: { color: color }
+        };
+      } else if (type === "Point") {
+        var plot = {
+          x: data.persons,
+          y: data.probability,
+          type: 'scatter',
+          mode: "markers",
+          marker: { color: color, size: 10 }
+        };
+      }
 
-            var persons = Array.from({ length: n - birthday + 1 }, (_, i) => i + birthday);
-            var probabilities = [];
+      var layout = {
+        xaxis: { title: "Number of people in the room" },
+        yaxis: { title: "Probability n people have the same birthday" },
+        showlegend: false,
+        margin: { l: 50, r: 20, b: 50, t: 30 },
+        plot_bgcolor: "#f9f9f9",
+        paper_bgcolor: "#f9f9f9"
+      };
 
-            for (var i = a; i <= b; i++) {
-                var p = 1 - 365 / 365;
-                for (var j = 1; j <= n; j++) {
-                    p *= (365 - j) / 365;
-                }
-                probabilities.push(1 - p);
-            }
+      Plotly.newPlot('birthday_plot', [plot], layout);
+    }
 
-            var plotData = [{
-                x: persons,
-                y: probabilities,
-                type: plotType,
-                marker: { color: 'blue' }
-            }];
+    function updatePlot() {
+      var n = parseInt(document.getElementById('n_input').value);
+      var birthday = parseInt(document.getElementById('birthday_input').value);
+      var a = parseInt(document.getElementById('a_input').value);
+      var b = parseInt(document.getElementById('b_input').value);
+      var color = document.querySelector('input[name="color_input"]:checked').value;
+      var type = document.getElementById('plot_type_input').value;
 
-            var layout = {
-                xaxis: { title: 'Number of people in the room' },
-                yaxis: { title: 'Probability n people have the same birthday' },
-                showlegend: false,
-                margin: { l: 50, r: 20, b: 50, t: 30 },
-                plot_bgcolor: '#f9f9f9',
-                paper_bgcolor: '#f9f9f9'
-            };
+      // Implement the data retrieval logic here
+      // Example: Fetch data using AJAX and call renderPlotly with the data
 
-            Plotly.newPlot('birthday_plot', plotData, layout);
-        }
+      // Sample data for testing
+      var sampleData = [
+        { persons: 2, probability: 0.002 },
+        { persons: 3, probability: 0.008 },
+        // Add more data points
+      ];
 
-        // Listen for input changes and update the plot
-        var inputs = document.querySelectorAll('input, select');
-        inputs.forEach(function(input) {
-            input.addEventListener('change', updatePlot);
-        });
+      renderPlotly(sampleData, color, type);
+    }
 
-        // Automatically update the plot type when changed
-        var plotTypeSelect = document.getElementById('plot_type_input');
-        plotTypeSelect.addEventListener('change', updatePlot);
+    // Initial plot
+    updatePlot();
 
-        // Initial plot update
-        updatePlot();
-    </script>
+    // Attach event listeners
+    document.getElementById('n_input').addEventListener('input', updatePlot);
+    document.getElementById('birthday_input').addEventListener('input', updatePlot);
+    document.getElementById('a_input').addEventListener('input', updatePlot);
+    document.getElementById('b_input').addEventListener('input', updatePlot);
+    var colorInputs = document.querySelectorAll('input[name="color_input"]');
+    colorInputs.forEach(function (input) {
+      input.addEventListener('change', updatePlot);
+    });
+    document.getElementById('plot_type_input').addEventListener('change', updatePlot);
+  </script>
   </div>
       <hr>
         <div id="latest-posts" class="universal-wrapper">
