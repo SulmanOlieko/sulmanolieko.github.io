@@ -200,6 +200,9 @@
     <label for="n_input">Number of people in the room:</label>
     <input type="number" id="n_input" value="100"><br><br>
     
+    <label for="birthday_input">Number of people sharing a birthday:</label>
+    <input type="number" id="birthday_input" value="2"><br><br>
+    
     <label for="a_input">Number of replications from:</label>
     <input type="number" id="a_input" value="1"><br><br>
     
@@ -219,11 +222,12 @@
     <script>
         function updatePlot() {
             var n = parseInt(document.getElementById('n_input').value);
+            var birthday = parseInt(document.getElementById('birthday_input').value);
             var a = parseInt(document.getElementById('a_input').value);
             var b = parseInt(document.getElementById('b_input').value);
             var plotType = document.getElementById('plot_type_input').value;
 
-            var persons = Array.from({ length: n }, (_, i) => i + 1);
+            var persons = Array.from({ length: n - birthday + 1 }, (_, i) => i + birthday);
             var probabilities = [];
 
             for (var i = a; i <= b; i++) {
@@ -258,6 +262,10 @@
         inputs.forEach(function(input) {
             input.addEventListener('change', updatePlot);
         });
+
+        // Automatically update the plot type when changed
+        var plotTypeSelect = document.getElementById('plot_type_input');
+        plotTypeSelect.addEventListener('change', updatePlot);
 
         // Initial plot update
         updatePlot();
