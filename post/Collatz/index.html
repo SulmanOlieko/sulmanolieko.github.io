@@ -212,20 +212,13 @@
       <ol>
         <li>Ensure you are connected to the internet.</li>
         <li>Open your R software and open a new Rscript. Install <strong>devtools</strong> package into your library. This can be done by typing (or copy-pasting) this code into your R script and running it:
-          <pre>
-            <code>
+          <pre><code>
               install.packages("devtools")# you need devtools package for the installation of packages from Github
-              library(devtools)#load the devtools package ito your library
-            </code>
-          </pre>
+              library(devtools)#load the devtools package ito your library</code></pre>
         </li>
           <li>Use <strong>devtools</strong> to install the <strong>CollatzR</strong> package into R.
-          <pre>
-            <code>
-            install_github("SulmanOlieko/collatzR")#Install CollatzR
-            library(collatzR)#load the CollatzR package into R
-          </code>
-          </pre>
+          <pre><code>install_github("SulmanOlieko/collatzR")#Install CollatzR
+            library(collatzR)#load the CollatzR package into R</code></pre>
         </li>
       </ol>
       </div>
@@ -234,52 +227,28 @@
       <h3>Usage</h3>
       <h4>Generate hailstone sequences</h4>
     <p>You can now generate the hailstone sequences of any arbitrary integer between 1 - 2<sup>1000</sup>. To do this, simply type <code>collatz_sequence()</code> and input your integer inside the parentheses and run it. For instance, if I want to see the Collatz sequence for 123456789, i would: </p>
-   <pre>
-     <code>
-       collatz_sequence(123456789)
-     </code>
-   </pre>
+   <pre><code>collatz_sequence(123456789)</code></pre>
       <h4>Visualize the plot</h4>
       <p>To view the plot for this number:</p>
-      <pre>
-        <code>
-          visualize_collatz(123456789)
-        </code>
-      </pre>
+      <pre><code> visualize_collatz(123456789)</code></pre>
       <h4>How many steps or stopping times are there for this number before reaching 1?</h4>
-     <pre>
-       <code>
-         collatz(123456789)
+     <pre><code>collatz(123456789)
          #alternatively:
-         collatz_sequence(123456789)$step
-       </code>
-     </pre>
+         collatz_sequence(123456789)$step</code></pre>
       <h4>Identify the maximum value in the sequence:</h4>
-      <pre>
-        <code>
-          max_collatz(123456789)
+      <pre><code>max_collatz(123456789)
           #alternatively:
-          collatz_sequence(123456789)$max_value
-        </code>
-      </pre>
+          collatz_sequence(123456789)$max_value</code></pre>
       <h4>Other operations</h4>
       <p>The <strong>CollatzR</strong> package can also perform operations such as:</p>
       <ol>
         <li>
           Determining if a number is odd or even:
-       <pre>
-         <code>
-           is.even(123456789)
-         </code>
-       </pre> 
+       <pre><code>is.even(123456789)</code></pre> 
         </li>
         <li>
           Determining if a number is whole:
-       <pre>
-         <code>
-           is.wholenumber(123456789)
-         </code>
-       </pre> 
+       <pre><code>is.wholenumber(123456789)</code></pre> 
         </li>
       </ol>
       <p>Happy interacting with the tool!</p>
