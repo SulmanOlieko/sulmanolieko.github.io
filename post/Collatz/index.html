@@ -186,6 +186,9 @@
       </span>
     </div>
 </div>
+  <div class="image-container1" >
+    <img src="/img/collatzR.png" alt="CollatzR">
+  </div>
   <div class="universal-wrapper">
     <div class="article-tags badge-light">
       <p>As part of personal studies, I was leaning how to build R packages and deploy through Github. Essentially, as a practice exercise, I wanted to model the famous Collatz conjucture and visualize the plot for various random numbers.</p>
@@ -205,7 +208,7 @@
       <p>The conjecture states that this process will eventually reach the number 1, regardless of which arbitrary positive integer is chosen as the starting (initial) value <strong>n</strong>. Once the process reaches unity, a perpetual loop is reached: 4,3,2,1,4,3,2,1... Therefore, we stop the loop once we reach 1.</p>
       <p>Currently, the highest arbitrary integer that has been officially proven to concur with this behaviour is 2<sup>100,000</sup> - 1. Can this 3n + 1 hold for bigger integers beyond this?</p>
       </div>
-      <p><strong>Note: </strong>Currently, R does not consider values past 2<sup>1000</sup> as integers, hence the program cannot compute (or visualize) conjucture sequences for starting integers beyond this value.</p>
+      <p><strong>Note: </strong>Currently, R does not consider values past 2<sup>1024</sup> as integers, hence the program cannot compute (or visualize) conjucture sequences for starting integers beyond this value.</p>
     <div class="article-tags badge-light">
       <h3>Installing the CollatzR package into R</h3>
       <p>To install the <strong>CollatzR</strong> package into R, you can follow the following procedure:</p>
@@ -227,31 +230,31 @@
     <div class="article-tags badge-light">
       <h3>Usage</h3>
       <h4>Generate hailstone sequences</h4>
-    <p>You can now generate the hailstone sequences of any arbitrary integer between 1 - 2<sup>1000</sup>. To do this, simply type <code>collatz_sequence()</code> and input your integer inside the parentheses and run it. For instance, if I want to see the Collatz sequence for 123456789, i would: </p>
-   <pre><code>collatz_sequence(123456789)</code></pre>
+    <p>You can now generate the hailstone sequences of any arbitrary integer between 1 - 2<sup>1024</sup>. To do this, simply type <code>collatz_sequence()</code> and input your integer inside the parentheses and run it. For instance, if I want to see the Collatz sequence for 123456789, i would: </p>
+   <pre><code>collatz_sequence(3732423)</code></pre>
       <h4>Visualize the plot</h4>
       <p>To view the plot for this number:</p>
-      <pre><code> visualize_collatz(123456789)</code></pre>
+      <pre><code> visualize_collatz(3732423)</code></pre>
       <h4>How many steps or stopping times are there for this number before reaching 1?</h4>
      <pre><code>
-       collatz(123456789)
+       collatz(3732423)
        #alternatively:
-       collatz_sequence(123456789)$step</code></pre>
+       collatz_sequence(3732423)$step</code></pre>
       <h4>Identify the maximum value in the sequence:</h4>
       <pre><code>
-        max_collatz(123456789)
+        max_collatz(3732423)
         #alternatively:
-        collatz_sequence(123456789)$max_value</code></pre>
+        collatz_sequence(3732423)$max_value</code></pre>
       <h4>Other operations</h4>
       <p>The <strong>CollatzR</strong> package can also perform operations such as:</p>
       <ol>
         <li>
           Determining if a number is odd or even:
-       <pre><code>is.even(123456789)</code></pre> 
+       <pre><code>is.even(3732423)</code></pre> 
         </li>
         <li>
           Determining if a number is whole:
-       <pre><code>is.wholenumber(123456789)</code></pre> 
+       <pre><code>is.wholenumber(3732423)</code></pre> 
         </li>
       </ol>
       <p>Happy interacting with the tool!</p>
@@ -261,9 +264,15 @@
           <h2>Latest Posts</h2>
           <ul>
             <li>
+               <a href="/post/2/">Probability of people in a room sharing birthdays</a>
+            </li>
+            <li>
               <small>
                  <a href="/post/production_econ/DEA-1/">Data Envelopment Analysis with Practical Replication of Results Presented in Sarkis and Talluri (2004)</a>
               </small>
+            </li>
+            <li>
+              <a href="/post/1/">Sulman Wins CMAAE SFSE 2022 Best Student Award</a>
             </li>
           </ul>
       </div>
