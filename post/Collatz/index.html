@@ -213,11 +213,12 @@
         <li>Ensure you are connected to the internet.</li>
         <li>Open your R software and open a new Rscript. Install <strong>devtools</strong> package into your library. This can be done by typing (or copy-pasting) this code into your R script and running it:
           <pre><code>
-              install.packages("devtools")# you need devtools package for the installation of packages from Github
-              library(devtools)#load the devtools package ito your library</code></pre>
+            install.packages("devtools")# you need devtools package for the installation of packages from Github
+            library(devtools)#load the devtools package ito your library</code></pre>
         </li>
           <li>Use <strong>devtools</strong> to install the <strong>CollatzR</strong> package into R.
-          <pre><code>install_github("SulmanOlieko/collatzR")#Install CollatzR
+          <pre><code>
+            install_github("SulmanOlieko/collatzR")#Install CollatzR
             library(collatzR)#load the CollatzR package into R</code></pre>
         </li>
       </ol>
@@ -232,13 +233,15 @@
       <p>To view the plot for this number:</p>
       <pre><code> visualize_collatz(123456789)</code></pre>
       <h4>How many steps or stopping times are there for this number before reaching 1?</h4>
-     <pre><code>collatz(123456789)
-         #alternatively:
-         collatz_sequence(123456789)$step</code></pre>
+     <pre><code>
+       collatz(123456789)
+       #alternatively:
+       collatz_sequence(123456789)$step</code></pre>
       <h4>Identify the maximum value in the sequence:</h4>
-      <pre><code>max_collatz(123456789)
-          #alternatively:
-          collatz_sequence(123456789)$max_value</code></pre>
+      <pre><code>
+        max_collatz(123456789)
+        #alternatively:
+        collatz_sequence(123456789)$max_value</code></pre>
       <h4>Other operations</h4>
       <p>The <strong>CollatzR</strong> package can also perform operations such as:</p>
       <ol>
