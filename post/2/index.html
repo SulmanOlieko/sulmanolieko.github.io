@@ -183,10 +183,30 @@
       </span>
     </div>
 </div>
-
   <div class="universal-wrapper">
+    <div class="article-tags badge-light">
+      <p>Have you ever wondered about the likelihood of sharing a birthday with someone in a room? Is it just a random coincidence or something more common than we think? To answer these questions, I've created an interactive tool that you can use to estimate the probability of people sharing the same birthday. In this blog post, I'll introduce you to this interesting concept and show you how to use my Shiny app (embedded below and can also be accessed online <a href="https://sulmanowili.shinyapps.io/Birthday/">here</a>) to visualize the computed probabilities .</p>
+      <h3>The Birthday Paradox</h3>
+      <p>The Birthday Paradox is a well-known problem in probability theory that often surprises people with its counterintuitive results. It goes like this: </p>
+      <p>In a room, there exists a group of individuals, denoted by <strong>n</strong>. We make the assumption that every person's birthday is equally likely to occur on any of the 365 days of the year, excluding February 29. Additionally, we consider the birthdays of people to be independent, implying that there are no twins present in the room.</p>
+      <ul>
+        <li>How many people do you need to have in a room before there's a better than even chance that two people share the same birthday?</li>
+        <li>What is the probability that two or more people in the group have the same birthday?</li>
+      </ul>
+      <p>Seems like you'd need a large group of people for this to happen; however, the reality is quite different. Actually, results predict that there is almost always a 50% and 99.999% chance that atleast two people will share a birthday in a room with 23 and 68 people, respectively.</p>
+      <h3>How to Use the Birthday Shiny App</h3>
+      <p>My Birthday Shiny app allows you to explore and visualize this concept in detail. To begin, you need to input the following parameters:</p>
+      <ol>
+        <li><strong>Number of People in the Room:</strong> Start by entering the number of people ("in the room") that you want to consider in your analysis. You can experiment with different group sizes to see how the probability changes. The default number is 100. However, large values (>500) lead to high computational demands that may lead to disconnections from the server. If that happens, just click the <strong>Reload</strong> button that will be below the app. Alternatively, you can reload the page, and the defaults will automatically apply, allowing you to re-enter your parameters.</li>
+        <li><strong>Number of People with the Same Birthday:</strong>Input the number of people you want to have the same birthday. This is a crucial factor in calculating the probabilities. The default is 2. However, you can change this to any reasonable number (obviously not 0, 1, or more than the number of people in the room!)</li>
+        <li><strong>Number of Replications:</strong> To obtain more accurate results, you can set the number of replications you'd like the app to perform. More replications lead to more precise estimates (and smoother plots). However, higher replications beyond 10,000 are discouraged as their significant computational power demand could lead to disconnections. Replications below 1000 are also discouraged as they provide inconsistent estimates. The default is 1000.</li>
+        <li><strong>Color and Plot Type:</strong> Customize the look of your plot by selecting your preferred color and plot type.</li>
+      </ol>
+      <p>You can download, zoom, pan, autoscale, reset axes of your plot using <a href="https://plotly.com/">plotly</a> menu located above your plot. You can also view and compare points on your plot on hover. The default is view closest data on hover.</p>
+    </div>
+    <h3>The Birthday App</h3>
   <iframe src="https://sulmanowili.shinyapps.io/Birthday/" width="100%" height="600px"></iframe>
-      <hr>
+    <hr>
         <div id="latest-posts" class="universal-wrapper">
           <h2>Latest Posts</h2>
           <ul>
