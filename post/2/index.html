@@ -192,16 +192,18 @@
       <h3>The Birthday Paradox</h3>
       <p>The Birthday Paradox is a well-known problem in probability theory that often surprises people with its counterintuitive results. It goes like this: </p>
       <p>In a room, there exists a group of individuals, denoted by <strong>n</strong>. We make the assumption that every person's birthday is equally likely to occur on any of the 365 days of the year, excluding February 29. Additionally, we consider the birthdays of people to be independent, implying that there are no twins present in the room.</p>
-     <p>
-    <span class="math">\( Pr(k \geq 1) = 1 - Pr(k = 0) \)</span>
-    <span class="math">\( \text{where } Pr(X = 0) = \frac{P_k^{365}}{365^k} \)</span>
-    <span class="math">\( Pr(k \geq 1) = \prod_{i=0}^k \left(1 - \frac{i}{365}\right) \)</span>
-     </p>
       <ul>
         <li>How many people do you need to have in a room before there's a better than even chance that two people share the same birthday?</li>
         <li>What is the probability that two or more people in the group have the same birthday?</li>
       </ul>
-      <p>Seems like you'd need a large group of people for this to happen; however, the reality is quite different. Actually, results predict that there is almost always a 50% and 99.999% chance that atleast two people will share a birthday in a room with 23 and 68 people, respectively.</p>
+      <p>Seems like you'd need a large group of people for this to happen; however, the reality is quite different. </p>
+      <h3>The solution</h3>
+      <p>
+    <span class="math">\( Pr(n \geq 1) = 1 - Pr(n = 0) \)</span>
+    <span class="math">\( \text{ Where: } Pr(X = 0) = \frac{P_n^{365}}{365^n} \)</span>
+    <span class="math">\( Pr(n \geq 1) = \prod_{i=0}^n \left(1 - \frac{i}{365}\right) \)</span>
+     </p>
+      <p>Implementing the above routine predicts that there is almost always a 50% and 99.999% chance that atleast two people will share a birthday in a room with 23 and 68 people, respectively.</p>
       <h3>How to Use the Birthday Shiny App</h3>
       <p>My Birthday Shiny app allows you to explore and visualize this concept in detail. To begin, you need to input the following parameters:</p>
       <ol>
