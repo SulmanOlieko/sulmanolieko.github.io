@@ -1,0 +1,16 @@
+{
+  "name": "Sulman Olieko",
+  "short_name": "Sulman App",
+  "description": "A personal academic website for Sulman Olieko",
+  "start_url": "https://sulmanolieko.github.io/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#333333",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
