@@ -192,17 +192,19 @@
       <h3>The problem</h3>
       <p>Consider an arbitrary positive integer <strong>n</strong>:</p>
       <ul>
-        <li>If <strong>n</strong>is even, divide it by 2.</li>
-        <li>Else, if <strong>n</strong>is odd, multiply it by 3 and add 1 to the product.</li>
+        <li>If <strong>n</strong> is even, divide it by 2.</li>
+        <li>Else, if <strong>n</strong> is odd, multiply it by 3 and add 1 to the product.</li>
       </ul>
-     <p>Therefore, we can define a function <i>f(n)</i> such that: </p>
+     <p>Therefore, we can define a function f<sup>i</sup>(n) such that: </p>
        <p><span class="math"> \( f(n) = \begin{cases} n/2 & \text{if } n \equiv 0 \mod 2, \\ 3n+1 & \text{if } n \equiv 1 \mod 2. \end{cases} \)</span></p>
       <p>Subsequently, we need to loop the above equation sequencially by taking the result at the previous step as the starting value at the next such that:</p>
       <p><span class="math"> \( k_i = \begin{cases}
       n & \text{for } i = 0, \\
       f(k_{i-1}) & \text{for } i > 0
     \end{cases} \)</span></p>
-      
+      <p>The conjecture states that this process will eventually reach the number 1, regardless of which arbitrary positive integer is chosen as the starting (initial) value <strong>n</strong>. Once the process reaches unity, a perpetual loop is reached: 4,3,2,1,4,3,2,1... Therefore, we stop the loop once we reach 1.</p>
+      <p>Currently, the highest arbitrary integer that has been officially proven to concur with this behaviour is 2<sup>100,000</sup> - 1. Can this 3n + 1 hold for bigger integers beyond this?</p>
+      <p><strong>Note: </strong>Currently, R does not consider values past 2<sup>1000</sup> as integers, hence the program cannot compute (or visualize) conjucture sequences for starting integers beyond this value.</p>
     </div>
         <div id="latest-posts" class="universal-wrapper">
           <h2>Latest Posts</h2>
