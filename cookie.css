@@ -1,5 +1,5 @@
 /* Styles for the cookie banner */
-.cookie-banner10 {
+.cookie-banner {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -8,10 +8,11 @@
     color: #fff;
     padding: 10px;
     text-align: center;
+    z-index: 9999;
 }
 
 /* Button styles */
-button10 {
+button {
     background: #007bff;
     color: #fff;
     border: none;
