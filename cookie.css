@@ -21,6 +21,25 @@ button {
     cursor: pointer;
     border-radius: 10px; /* Add rounded corners */
 }
+#accept-cookies {
+    background: #007bff; /* Blue color for "Accept" */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 10px; /* Rounded corners */
+}
+/* Decline button style */
+#decline-cookies {
+    background: #ff0000; /* Red color for "Decline" */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 10px; /* Rounded corners */
+}
 
 /* Hover effect for buttons */
 button:hover {
