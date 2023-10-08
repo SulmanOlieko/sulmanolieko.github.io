@@ -8,7 +8,7 @@
     color: #fff;
     padding: 10px;
     text-align: center;
-    z-index: 99999999;
+    z-index: 99999999999 !important;
 }
 
 /* Button styles */
