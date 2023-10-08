@@ -31,8 +31,15 @@ document.addEventListener("DOMContentLoaded", function () {
         setCookie("cookieConsent", "declined", 60); // Cookie consent declined for 1 hour
     });
 
-    // Check if the user has previously accepted or declined cookies or if they have cleared their cookies
+    // Check if the user has previously accepted or declined cookies
     if (!checkCookie()) {
         showCookieBanner();
+    } else if (document.cookie.indexOf("cookieConsent=declined") !== -1) {
+        // If the user previously declined cookies, and it's been more than 1 hour, show the banner again.
+        const now = new Date().getTime();
+        const lastDeclineTime = new Date(document.cookie.replace(/(?:(?:^|.*;\s*)lastDeclineTime\s*\=\s*([^;]*).*$)|^.*$/, "$1")).getTime();
+        if (now - lastDeclineTime >= 60 * 60 * 1000) {
+            showCookieBanner();
+        }
     }
 });
