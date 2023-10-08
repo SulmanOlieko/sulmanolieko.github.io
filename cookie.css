@@ -1,17 +1,17 @@
 /* Styles for the cookie banner */
 .cookie-banner {
     position: fixed;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 100%;
     background: #333;
     color: #fff;
     padding: 10px;
     text-align: center;
-    z-index: 99999999999 !important;
+    z-index: 9999999 !important;
 }
 
-/* Button styles */
+/* Button styles with rounded corners */
 button {
     background: #007bff;
     color: #fff;
@@ -19,4 +19,10 @@ button {
     padding: 10px 20px;
     margin: 10px;
     cursor: pointer;
+    border-radius: 10px; /* Add rounded corners */
+}
+
+/* Hover effect for buttons */
+button:hover {
+    background: #0056b3; /* Change color on hover */
 }
