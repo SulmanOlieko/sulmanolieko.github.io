@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono&display=swap">
     <link rel="stylesheet" href="/css/academic.css">
-<script type="text/javascript" src="https://cloudpdf.io/viewer.min.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DPB4QD9DNP"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -51,11 +50,6 @@
 
   document.addEventListener('click', onClickCallback, false);
 
-<!-- embedding pdf viewer JS-->
-  const config = {"documentId":"0ebb8016-c2aa-4fc8-adce-a54c4aa53896","darkMode":true,"themeColor":"#795548","appBarColored":true,"disableToolbar":false,"disableElements":[]};
-  CloudPDF(config, document.getElementById('viewer')).then((instance) => {
-    
-  });
 </script> 
   <link rel="alternate" href="/authors/admin/index.xml" type="application/rss+xml" title="Sulman Olieko">
   <link rel="manifest" href="/index.webmanifest">
@@ -223,8 +217,17 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
 
   <div class="col-12 col-lg-8">
     <div class="article-tags badge-light">
-    <h1>My CV</h1>
+      <center>
+        <h2>My CV</h2>
+      </center>
       <div id="viewer" style="width: 100%; height: 500px;"></div>
+      <script type="text/javascript" src="https://cloudpdf.io/viewer.min.js"></script>
+<script>
+  const config = {"documentId":"0ebb8016-c2aa-4fc8-adce-a54c4aa53896","darkMode":true,"themeColor":"#795548","appBarColored":true,"disableToolbar":false,"disableElements":[]};
+  CloudPDF(config, document.getElementById('viewer')).then((instance) => {
+    
+  });
+</script>
     </div>
     
 <div class="row">
