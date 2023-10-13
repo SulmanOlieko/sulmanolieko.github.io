@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono&display=swap">
     <link rel="stylesheet" href="/css/academic.css">
-
+<script type="text/javascript" src="https://cloudpdf.io/viewer.min.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DPB4QD9DNP"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -50,6 +50,12 @@
   gtag('config', 'G-DPB4QD9DNP', {});
 
   document.addEventListener('click', onClickCallback, false);
+
+<!-- embedding pdf viewer JS-->
+  const config = {"documentId":"0ebb8016-c2aa-4fc8-adce-a54c4aa53896","darkMode":true,"themeColor":"#795548","appBarColored":true,"disableToolbar":false,"disableElements":[]};
+  CloudPDF(config, document.getElementById('viewer')).then((instance) => {
+    
+  });
 </script> 
   <link rel="alternate" href="/authors/admin/index.xml" type="application/rss+xml" title="Sulman Olieko">
   <link rel="manifest" href="/index.webmanifest">
@@ -218,14 +224,7 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
   <div class="col-12 col-lg-8">
     <div class="article-tags badge-light">
     <h1>My CV</h1>
-     <div id="viewer" style="width: 100%; height: 500px;"></div>
-<script type="text/javascript" src="https://cloudpdf.io/viewer.min.js"></script>
-<script>
-  const config = {"documentId":"0ebb8016-c2aa-4fc8-adce-a54c4aa53896","darkMode":true,"themeColor":"#795548","appBarColored":true,"disableToolbar":false,"disableElements":[]};
-  CloudPDF(config, document.getElementById('viewer')).then((instance) => {
-    
-  });
-</script>
+      <div id="viewer" style="width: 100%; height: 500px;"></div>
     </div>
     
 <div class="row">
@@ -322,7 +321,7 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
     <script src="/js/academic.min.bcfae8267aba63cc55af53a503896bd9.js"></script>
- 
+  <script type="text/javascript" src="https://cloudpdf.io/viewer.min.js"></script>
   <div class="container">
     <footer class="site-footer">
    <p class="powered-by">
