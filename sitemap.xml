@@ -3,22 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://sulmanolieko.github.io/publication_types/3/</loc>
-    <lastmod>2023-08-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://sulmanolieko.github.io/publication/journal-article/zero-obs/</loc>
-    <lastmod>2023-08-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sulmanolieko.github.io/authors/</loc>
-    <lastmod>2023-08-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sulmanolieko.github.io/publication_types/</loc>
     <lastmod>2023-08-23T00:00:00+00:00</lastmod>
   </url>
   
@@ -33,33 +18,38 @@
   </url>
   
   <url>
-    <loc>https://sulmanolieko.github.io/publication_types/2/</loc>
-    <lastmod>2023-08-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sulmanolieko.github.io/publication_types/1/</loc>
-    <lastmod>2023-08-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sulmanolieko.github.io/categories/</loc>
-  </url>
-  
-  <url>
     <loc>https://sulmanolieko.github.io/post/</loc>
+    <lastmod>2023-08-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sulmanolieko.github.io/post/1/</loc>
+    <lastmod>2023-08-23T00:00:00+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://sulmanolieko.github.io/post/2/</loc>
+    <lastmod>2023-08-23T00:00:00+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://sulmanolieko.github.io/post/Collatz/</loc>
+    <lastmod>2023-08-23T00:00:00+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://sulmanolieko.github.io/post/production_econ/DEA-1/</loc>
+    <lastmod>2023-08-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://sulmanolieko.github.io/talk/</loc>
+    <lastmod>2023-08-23T00:00:00+00:00</lastmod>
   </url>
-  
-  <url>
-    <loc>https://sulmanolieko.github.io/tags/</loc>
-  </url>
-  
+
   <url>
     <loc>https://sulmanolieko.github.io/authors/admin/</loc>
+    <lastmod>2023-08-23T00:00:00+00:00</lastmod>
   </url>
   
 </urlset>
