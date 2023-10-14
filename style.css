@@ -71,7 +71,7 @@ header h2 {
   transition: all 0.2s ease;
 }
 .buttons #acceptBtn:hover {
-  background-color: #034bf1;
+  background-color: #795548;
 }
 #declineBtn {
   border: 2px solid #795548;
