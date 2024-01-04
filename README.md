@@ -1,4 +1,5 @@
 # sulmanolieko.github.io
+<a href="https://www.codefactor.io/repository/github/sulmanolieko/sulmanolieko.github.io"><img src="https://www.codefactor.io/repository/github/sulmanolieko/sulmanolieko.github.io/badge" alt="CodeFactor" /></a>
 
 Welcome to my personal website! This repository contains the source code and content for my personal website, where you can learn more about me, my projects, and my interests.
 
