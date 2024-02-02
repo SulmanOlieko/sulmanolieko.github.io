@@ -227,7 +227,11 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
   <script>
     const config = { 
       documentId: 'dd30901a-7a72-47cc-bf26-ca74f0672115',
-      darkMode: true, 
+      darkMode: false, 
+      themeColor:#795548,
+      appBarColored:true,
+      disableToolbar:false,
+      disableElements:[],
       token: '' //add your server side generated security token or change your document permission to public
     };
     CloudPDF(config, document.getElementById('viewer')).then((instance) => {
