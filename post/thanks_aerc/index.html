@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono&display=swap">
     <link rel="stylesheet" href="/css/academic.css">
+  <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf_viewer.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-MDK8S5X2"></script>
@@ -192,60 +193,25 @@
     </div>
 </div>
   <div class="universal-wrapper">
-<!-- CSS for the viewer -->
-<style>
-    #pdf-viewer {
-        width: 100%;
-        max-width: 100%;
-        height: 500px; /* Default height for desktop */
-        overflow: auto;
-        border: 1px solid #ccc;
-    }
-
-    /* Adjust viewer height for mobile devices */
-    @media only screen and (max-width: 600px) {
-        #pdf-viewer {
-            height: 300px; /* Adjust height for mobile phones */
-        }
-    }
-
-    /* Change theme color */
-    .textLayer {
-        background-color: #795548 !important;
-    }
-</style>
-
-<!-- HTML for the viewer -->
-<div id="pdf-viewer"></div>
-
-<!-- JavaScript to render the PDF -->
-<script>
-    // URL of the PDF file
-    var pdfUrl = 'sulman_aerc_feature_2.pdf';
-
-    // Render PDF
-    pdfjsLib.getDocument(pdfUrl).promise.then(function(pdf) {
-        pdf.getPage(1).then(function(page) {
-            var scale = 1.5;
-            var viewport = page.getViewport({ scale: scale });
-
-            // Prepare canvas using PDF.js
-            var canvas = document.createElement('canvas');
-            var context = canvas.getContext('2d');
-            canvas.height = viewport.height;
-            canvas.width = viewport.width;
-
-            // Render PDF page into canvas context
-            var renderContext = {
-                canvasContext: context,
-                viewport: viewport
-            };
-            page.render(renderContext).promise.then(function() {
-                document.getElementById('pdf-viewer').appendChild(canvas);
+    <canvas id="pdfRenderer"></canvas>
+    <script>
+        var url = 'sulman_aerc_feature_2.pdf';
+        var pdfjsLib = window['pdfjs-dist/build/pdf'];
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
+        pdfjsLib.getDocument(url).promise.then(function(pdf) {
+            pdf.getPage(1).then(function(page) {
+                var canvas = document.getElementById('pdfRenderer');
+                var context = canvas.getContext('2d');
+                var viewport = page.getViewport({ scale: 1.5 });
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                page.render({
+                    canvasContext: context,
+                    viewport: viewport
+                });
             });
         });
-    });
-</script>
+    </script>
       </div>
     
       <div id="latest-posts" class="universal-wrapper">
