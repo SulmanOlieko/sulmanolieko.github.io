@@ -192,9 +192,52 @@
     </div>
 </div>
   <div class="universal-wrapper">
-<object data="sulman_aerc_feature_2.pdf" type="application/pdf" width="100%" height="500px">
-  <p>Sorry, your browser doesn't support embedded PDFs. You can <a href="sulman_aerc_feature_2.pdf">download the PDF</a> instead.</p>
-</object>
+<!-- HTML for the viewer (loading placeholder) -->
+<div id="pdf-viewer">Loading...</div>
+
+<!-- JavaScript to render the PDF -->
+<script>
+    // Function to load PDF viewer
+    function loadPdfViewer() {
+        // URL of the PDF file
+        var pdfUrl = 'sulman_aerc_feature_2.pdf';
+
+        // Render PDF
+        pdfjsLib.getDocument(pdfUrl).promise.then(function(pdf) {
+            pdf.getPage(1).then(function(page) {
+                // Calculate scale based on device width
+                var scale = 1;
+                if (window.innerWidth <= 600) {
+                    scale = 0.5; // Adjust scale for mobile phones
+                } else {
+                    scale = 1.5; // Default scale for desktop
+                }
+
+                var viewport = page.getViewport({ scale: scale });
+
+                // Prepare canvas using PDF.js
+                var canvas = document.createElement('canvas');
+                var context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                // Render PDF page into canvas context
+                var renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                page.render(renderContext).promise.then(function() {
+                    var viewer = document.getElementById('pdf-viewer');
+                    viewer.innerHTML = ''; // Clear loading placeholder
+                    viewer.appendChild(canvas);
+                });
+            });
+        });
+    }
+
+    // Load PDF viewer after the page has loaded
+    window.addEventListener('load', loadPdfViewer);
+</script>
   </div>
     
       <div id="latest-posts" class="universal-wrapper">
