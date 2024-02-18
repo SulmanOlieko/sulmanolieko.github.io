@@ -192,6 +192,29 @@
     </div>
 </div>
   <div class="universal-wrapper">
+<!-- CSS for the viewer -->
+<style>
+    #pdf-viewer {
+        width: 100%;
+        max-width: 100%;
+        height: 500px; /* Default height for desktop */
+        overflow: auto;
+        border: 1px solid #ccc;
+    }
+
+    /* Adjust viewer height for mobile devices */
+    @media only screen and (max-width: 600px) {
+        #pdf-viewer {
+            height: 300px; /* Adjust height for mobile phones */
+        }
+    }
+
+    /* Change theme color */
+    .textLayer {
+        background-color: #795548 !important;
+    }
+</style>
+
 <!-- HTML for the viewer -->
 <div id="pdf-viewer"></div>
 
@@ -202,42 +225,27 @@
 
     // Render PDF
     pdfjsLib.getDocument(pdfUrl).promise.then(function(pdf) {
-        // Set up the PDF viewer
-        var viewerContainer = document.getElementById('pdf-viewer');
-        var viewer = new pdfjsViewer.PDFViewer({
-            container: viewerContainer
+        pdf.getPage(1).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale });
+
+            // Prepare canvas using PDF.js
+            var canvas = document.createElement('canvas');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            // Render PDF page into canvas context
+            var renderContext = {
+                canvasContext: context,
+                viewport: viewport
+            };
+            page.render(renderContext).promise.then(function() {
+                document.getElementById('pdf-viewer').appendChild(canvas);
+            });
         });
-        viewer.setDocument(pdf);
-
-        // Add download button
-        var downloadManager = viewer.pdfViewer.downloadManager;
-        var downloadButton = document.createElement('button');
-        downloadButton.textContent = 'Download PDF';
-        downloadButton.onclick = function() {
-            downloadManager.download();
-        };
-        viewerContainer.appendChild(downloadButton);
-
-        // Add zoom controls
-        var zoomInButton = document.createElement('button');
-        zoomInButton.textContent = 'Zoom In';
-        zoomInButton.onclick = function() {
-            viewer.currentScale += 0.5;
-        };
-        viewerContainer.appendChild(zoomInButton);
-
-        var zoomOutButton = document.createElement('button');
-        zoomOutButton.textContent = 'Zoom Out';
-        zoomOutButton.onclick = function() {
-            viewer.currentScale -= 0.5;
-        };
-        viewerContainer.appendChild(zoomOutButton);
     });
 </script>
-
-<!-- Include PDF.js library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf_viewer.min.js"></script>
       </div>
     
       <div id="latest-posts" class="universal-wrapper">
