@@ -192,11 +192,58 @@
     </div>
 </div>
   <div class="universal-wrapper">
-<!-- HTML for the viewer (loading placeholder) -->
-<div id="pdf-viewer">Loading...</div>
+
+<!-- CSS for the viewer -->
+<style>
+    #pdf-viewer {
+        width: 100%;
+        max-width: 100%;
+        height: 500px; /* Default height for desktop */
+        overflow: auto;
+        border: 1px solid #ccc;
+        position: relative;
+    }
+
+    #pdf-viewer canvas {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .pdf-control {
+        position: absolute;
+        top: 10px;
+        background-color: rgba(255, 255, 255, 0.5);
+        padding: 5px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    .pdf-control-left {
+        left: 10px;
+    }
+
+    .pdf-control-right {
+        right: 10px;
+    }
+</style>
+
+<!-- HTML for the viewer -->
+<div id="pdf-viewer">
+    <div class="pdf-control pdf-control-left" onclick="prevPage()">&#10094; Prev</div>
+    <div class="pdf-control pdf-control-right" onclick="nextPage()">Next &#10095;</div>
+    <span class="pdf-control pdf-control-left" onclick="zoomOut()">Zoom Out</span>
+    <span class="pdf-control pdf-control-right" onclick="zoomIn()">Zoom In</span>
+    <span class="pdf-control" onclick="downloadPdf()">Download PDF</span>
+    <span id="page-num">Page 1</span>
+    <canvas id="pdf-canvas"></canvas>
+</div>
 
 <!-- JavaScript to render the PDF -->
 <script>
+    var currentPage = 1;
+    var totalPages = 0;
+    var scale = 1.5; // Initial scale
+
     // Function to load PDF viewer
     function loadPdfViewer() {
         // URL of the PDF file
@@ -204,40 +251,77 @@
 
         // Render PDF
         pdfjsLib.getDocument(pdfUrl).promise.then(function(pdf) {
-            pdf.getPage(1).then(function(page) {
-                // Calculate scale based on device width
-                var scale = 1;
-                if (window.innerWidth <= 600) {
-                    scale = 0.5; // Adjust scale for mobile phones
-                } else {
-                    scale = 1.5; // Default scale for desktop
-                }
+            totalPages = pdf.numPages;
+            renderPage(pdf, currentPage);
+        }).catch(function(error) {
+            console.error('Error loading PDF: ', error);
+            document.getElementById('pdf-viewer').innerHTML = 'Error loading PDF.';
+        });
+    }
 
-                var viewport = page.getViewport({ scale: scale });
+    // Function to render specific page of PDF
+    function renderPage(pdf, pageNumber) {
+        pdf.getPage(pageNumber).then(function(page) {
+            var viewport = page.getViewport({ scale: scale });
+            var canvas = document.getElementById('pdf-canvas');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
 
-                // Prepare canvas using PDF.js
-                var canvas = document.createElement('canvas');
-                var context = canvas.getContext('2d');
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
+            var renderContext = {
+                canvasContext: context,
+                viewport: viewport
+            };
 
-                // Render PDF page into canvas context
-                var renderContext = {
-                    canvasContext: context,
-                    viewport: viewport
-                };
-                page.render(renderContext).promise.then(function() {
-                    var viewer = document.getElementById('pdf-viewer');
-                    viewer.innerHTML = ''; // Clear loading placeholder
-                    viewer.appendChild(canvas);
-                });
+            page.render(renderContext).promise.then(function() {
+                document.getElementById('page-num').textContent = 'Page ' + pageNumber + ' of ' + totalPages;
             });
         });
+    }
+
+    // Function to go to previous page
+    function prevPage() {
+        if (currentPage > 1) {
+            currentPage--;
+            renderPage(pdfjsLib, currentPage);
+        }
+    }
+
+    // Function to go to next page
+    function nextPage() {
+        if (currentPage < totalPages) {
+            currentPage++;
+            renderPage(pdfjsLib, currentPage);
+        }
+    }
+
+    // Function to zoom in
+    function zoomIn() {
+        scale += 0.1;
+        renderPage(pdfjsLib, currentPage);
+    }
+
+    // Function to zoom out
+    function zoomOut() {
+        if (scale > 0.1) {
+            scale -= 0.1;
+            renderPage(pdfjsLib, currentPage);
+        }
+    }
+
+    // Function to download PDF
+    function downloadPdf() {
+        var pdfUrl = 'sulman_aerc_feature_2.pdf';
+        var link = document.createElement('a');
+        link.href = pdfUrl;
+        link.download = 'document.pdf';
+        link.click();
     }
 
     // Load PDF viewer after the page has loaded
     window.addEventListener('load', loadPdfViewer);
 </script>
+
   </div>
     
       <div id="latest-posts" class="universal-wrapper">
