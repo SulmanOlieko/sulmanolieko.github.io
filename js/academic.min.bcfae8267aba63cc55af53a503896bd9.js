@@ -55,6 +55,32 @@ return template;}
 if(typeof Fuse==='function'){$.getJSON(search_config.indexURI,function(search_index){let fuse=new Fuse(search_index,fuseOptions);if(query=getSearchQuery('q')){$("body").addClass('searching');$('.search-results').css({opacity:0,visibility:"visible"}).animate({opacity:1},200);$("#search-query").val(query);$("#search-query").focus();initSearch(true,fuse);}
 $('#search-query').keyup(function(e){clearTimeout($.data(this,'searchTimer'));if(e.keyCode==13){initSearch(true,fuse);}else{$(this).data('searchTimer',setTimeout(function(){initSearch(false,fuse);},250));}});});}
 
+/* cookie box */
+const cookieBox = document.querySelector(".wrapper"),
+  buttons = document.querySelectorAll(".button");
+
+const executeCodes = () => {
+  //if cookie contains codinglab it will be returned and below of this code will not run
+  if (document.cookie.includes("codinglab")) return;
+  cookieBox.classList.add("show");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      cookieBox.classList.remove("show");
+
+      //if button has acceptBtn id
+      if (button.id == "acceptBtn") {
+        //set cookies for 1 month. 60 = 1 min, 60 = 1 hours, 24 = 1 day, 30 = 30 days
+        document.cookie = "cookieBy= codinglab; max-age=" + 60 * 60 * 24 * 30;
+      }
+    });
+  });
+};
+
+//executeCodes function will be called on webpage load
+window.addEventListener("load", executeCodes);
+
+
 /* Adda a script that highlights the active webpage on the navigation bar */
 document.addEventListener("DOMContentLoaded", function() {
     var links = document.querySelectorAll("nav a");
