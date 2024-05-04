@@ -1,4 +1,69 @@
 {
+  "name": "Sulman Olieko Owili",
+  "bio": {
+    "description": "Sulman is an agricultural and environmental economist with a background in agricultural and applied economics. He holds a Bachelor of Science degree in Agricultural Education and Extension from the University of Nairobi. Currently, he is pursuing a Master of Science degree in Agricultural and Applied Economics, a joint program between the University of Nairobi and the University of Pretoria.",
+    "research_interests": [
+      "Production economics",
+      "Econometrics",
+      "Statistics",
+      "Quantitative modeling"
+    ]
+  },
+  "education": [
+    {
+      "degree": "MSc in Agricultural and Applied Economics",
+      "year": "2021 - present",
+      "institution": "University of Nairobi & University of Pretoria"
+    },
+    {
+      "degree": "BSc in Agricultural Education and Extension",
+      "year": "2016-2020",
+      "institution": "University of Nairobi"
+    }
+  ],
+  "featured_research": [
+    {
+      "type": "Technical report",
+      "authors": "Nyawira, S.; Bolo, P.; Ntinyari, W.; Orero, L.; ...",
+      "year": "2023",
+      "title": "Kenya Context Assessment Report: A desk-top review of the context of agroecological principles of Kiambu and Makueni counties",
+      "link": "http://dx.doi.org/10.13140/RG.2.2.36127.53928"
+    },
+    {
+      "type": "Working Paper",
+      "author": "Owili Sulman",
+      "year": "2023",
+      "title": "Imposing Strict Positivity in Productivity Analysis: A Critical Review with Application to Stochastic Frontier Ecoefficiency Methodology",
+      "link": "publication/journal-article/zero-obs/strict_positivity-1.pdf"
+    }
+  ],
+  "recent_news_and_blogs": [
+    {
+      "title": "My new R package for Collatz conjecture/ 3n + 1 problem/ hailstone sequence",
+      "summary": "As part of personal studies, I was leaning how to build R packages and deploy through Github...",
+      "author": "Sulman Olieko",
+      "date": "Oct 6, 2023",
+      "reading_time": "7 min read",
+      "categories": ["Archive", "Blog"],
+      "image": "/img/collatzR.png",
+      "link": "/post/Collatz/"
+    },
+    // Additional recent news and blogs entries...
+  ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+{
   "metadata": {
     "title": "Sulman Olieko",
     "description": "Sulman Olieko Owili is an agricultural and environmental economist with a strong commitment to applying research techniques to shape sustainable policies for the agri-food sector...",
