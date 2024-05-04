@@ -1,5 +1,5 @@
 [
-  {"authors":["Nyawira Sylvia","Bolo Peter","Ntinyari Winnie","Orero Levi","Onyango Kevin","Manjella Aurillia","Sakha Michael","Owili Sulman Olieko","Gumo Pius","Mbelwa Machio","Korir Hezekiah","Fuchs Lisa Elena"]",
+  {"authors":["Nyawira Sylvia","Bolo Peter","Ntinyari Winnie","Orero Levi","Onyango Kevin","Manjella Aurillia","Sakha Michael","Owili Sulman Olieko","Gumo Pius","Mbelwa Machio","Korir Hezekiah","Fuchs Lisa Elena"],
   "categories":null,
   "content":"",
   "date":1666483200,
@@ -15,5 +15,23 @@
   "summary":"The main objective of this context assessment is to provide a comprehensive geographicaldescription of the Agroecological Living Landscapes (ALLs) in Makueni and Kiambu counties inKenya. The report covers the economic, environmental, social, and political aspects of the two ALLsand assesses the extent to which agroecological principles have been implemented or practicedwithin these areas. The study broadly focuses on the two selected ALLs, but also incorporates somespecific information from the two ALL host centers: the Drylands Natural Resources Center (DNRC)in Makueni County and the Community Sustainable Agriculture and Healthy Environment Program(CSHEP) in Kiambu County. The information in the document is primarily sourced from secondaryliterature and outputs generated from various Work Packages aimed at characterizing, identifying,and assessing the existing practices and experiences within the two ALLs.",
   "tags":null,
   "title":"Kenya Context Assessment Report: A desk-top review of the context of agroecological principles of Kiambu and Makueni counties",
-  "type":"publication"}
+  "type":"publication"},
+  
+  {"authors":["Owili Sulman Olieko"],
+  "categories":null,
+  "content":"",
+  "date":1666483200,
+  "expirydate":-62135596800,
+  "kind":"page",
+  "lang":"en",
+  "lastmod":1666483200,
+  "objectID":"000a0000b000c0002",
+  "permalink":"https://sulmanolieko.github.io/publication/journal-article/zero-obs/",
+  "publishdate":"2023-08-10T03:00:00Z",
+  "relpermalink":"/publication/journal-article/zero-obs/",
+  "section":"publication",
+  "summary":"Productivity analysis plays a pivotal role in evaluating the performance of various economic entities,especially in the context of sustainable development. Since productivity measures are based on the notion of output-input ratios, non-positive values of inputs and outputs are not permissible. Overtime, various approaches to the imposition of the strict positivity assumption have emerged. However, there are no clear guidelines on the choice of different methods of handling this econometric problem under various circumstances. This paper provides an empirical review of the strict positivity assumption as it applies to productivity analysis, specifically focusing on its application to stochastic frontier framework. We examine the existing lines of approaches to handling zero values of inputs and outputs. Additionally, we empirically present a comprehensive case study using a real-world dataset together with Monte Carlo simulations to demonstrate the implications of various approaches in eco-efficiency stochastic frontier models. Finally, on the basis of our findings, we provide recommendations for future research and practical applications.",
+  "tags":null,
+  "title":"Imposing Strict Positivity in Productivity Analysis: A Critical Review with Application to Stochastic Frontier Ecoefficiency Methodology",
+  "type":"publication"},
 ]
