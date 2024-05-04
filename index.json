@@ -1,5 +1,5 @@
 [
-  {"authors":"Sulman Olieko Owili",
+  {"authors":["Nyawira Sylvia","Bolo Peter","Ntinyari Winnie","Orero Levi","Onyango Kevin","Manjella Aurillia","Sakha Michael","Owili Sulman Olieko","Gumo Pius","Mbelwa Machio","Korir Hezekiah", "Fuchs Lisa Elena"]",
   "categories":null,
   "content":"",
   "date":1666483200,
@@ -7,13 +7,13 @@
   "kind":"page",
   "lang":"en",
   "lastmod":1666483200,
-  "objectID":"9bf5354808246d72aa2157654bc1739b",
-  "permalink":"https://yxwang99.github.io/publication/abc-gan/",
-  "publishdate":"2017-01-01T00:00:00Z",
-  "relpermalink":"/publication/abc-gan/",
+  "objectID":"000a0000b000c0001",
+  "permalink":"https://sulmanolieko.github.io/publication/report/report1/",
+  "publishdate":"2023-12-31T03:00:00Z",
+  "relpermalink":"/publication/report/report1/",
   "section":"publication",
-  "summary":"Approximate Bayesian Computation (ABC) enables statistical inference in simulator-based models whose likelihoods are difficult to calculate but easy to simulate from. ABC constructs a kernel-type approximation to the posterior distribution through an accept/reject mechanism which compares summary statistics of real and simulated data. To obviate the need for summary statistics, we directly compare empirical distributions with a Kullback-Leibler (KL) divergence estimator obtained via contrastive learning. In particular, we blend flexible machine learning classifiers within ABC to automate fake/real data comparisons. We consider the traditional accept/reject kernel as well as an exponential weighting scheme which does not require the ABC acceptance threshold. Our theoretical results show that the rate at which our ABC posterior distributions concentrate around the true parameter depends on the estimation error of the classifier. We derive limiting posterior shape results and find that, with a properly scaled exponential kernel, asymptotic normality holds. We demonstrate the usefulness of our approach on simulated examples as well as real data in the context of stock volatility estimation.",
+  "summary":"The main objective of this context assessment is to provide a comprehensive geographicaldescription of the Agroecological Living Landscapes (ALLs) in Makueni and Kiambu counties inKenya. The report covers the economic, environmental, social, and political aspects of the two ALLsand assesses the extent to which agroecological principles have been implemented or practicedwithin these areas. The study broadly focuses on the two selected ALLs, but also incorporates somespecific information from the two ALL host centers: the Drylands Natural Resources Center (DNRC)in Makueni County and the Community Sustainable Agriculture and Healthy Environment Program(CSHEP) in Kiambu County. The information in the document is primarily sourced from secondaryliterature and outputs generated from various Work Packages aimed at characterizing, identifying,and assessing the existing practices and experiences within the two ALLs.",
   "tags":null,
-  "title":"Approximate Bayesian Computation via Classification",
+  "title":"Kenya Context Assessment Report: A desk-top review of the context of agroecological principles of Kiambu and Makueni counties",
   "type":"publication"}
 ]
