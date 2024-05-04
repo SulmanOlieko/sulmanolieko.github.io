@@ -54,3 +54,15 @@ function render(template,data){let key,find,re;for(key in data){find='\\{\\{\\s*
 return template;}
 if(typeof Fuse==='function'){$.getJSON(search_config.indexURI,function(search_index){let fuse=new Fuse(search_index,fuseOptions);if(query=getSearchQuery('q')){$("body").addClass('searching');$('.search-results').css({opacity:0,visibility:"visible"}).animate({opacity:1},200);$("#search-query").val(query);$("#search-query").focus();initSearch(true,fuse);}
 $('#search-query').keyup(function(e){clearTimeout($.data(this,'searchTimer'));if(e.keyCode==13){initSearch(true,fuse);}else{$(this).data('searchTimer',setTimeout(function(){initSearch(false,fuse);},250));}});});}
+
+/* Adda a script that highlights the active webpage on the navigation bar */
+document.addEventListener("DOMContentLoaded", function() {
+    var links = document.querySelectorAll("nav a");
+    var currentUrl = window.location.href;
+
+    for (var i = 0; i < links.length; i++) {
+        if (links[i].href === currentUrl) {
+            links[i].classList.add("active");
+        }
+    }
+});
