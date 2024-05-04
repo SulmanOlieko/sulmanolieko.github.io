@@ -1,55 +1,71 @@
 {
-  "name": "Sulman Olieko Owili",
-  "bio": {
-    "description": "Sulman is an agricultural and environmental economist with a background in agricultural and applied economics. He holds a Bachelor of Science degree in Agricultural Education and Extension from the University of Nairobi. Currently, he is pursuing a Master of Science degree in Agricultural and Applied Economics, a joint program between the University of Nairobi and the University of Pretoria.",
-    "research_interests": [
-      "Production economics",
-      "Econometrics",
-      "Statistics",
-      "Quantitative modeling"
-    ]
+  "pageTitle": "Sulman Olieko",
+  "metaDescription": "Sulman Olieko Owili is an agricultural and environmental economist...",
+  "author": {
+    "name": "Sulman Olieko Owili",
+    "title": "MSc Agricultural and Applied Economics",
+    "institution": "University of Nairobi"
   },
+  "bio": "Sulman is an agricultural and environmental economist with a strong commitment...",
+  "interests": [
+    "Micro-econometrics",
+    "Stochastic Frontier Analysis",
+    "Time Series Analysis",
+    "Conformal Prediction",
+    "Bayesian Statistics",
+    "Quantitative Modelling"
+  ],
   "education": [
     {
       "degree": "MSc in Agricultural and Applied Economics",
-      "year": "2021 - present",
+      "duration": "2021 - present",
       "institution": "University of Nairobi & University of Pretoria"
     },
     {
       "degree": "BSc in Agricultural Education and Extension",
-      "year": "2016-2020",
+      "duration": "2016-2020",
       "institution": "University of Nairobi"
     }
   ],
-  "featured_research": [
+  "publications": [
     {
-      "type": "Technical report",
-      "authors": "Nyawira, S.; Bolo, P.; Ntinyari, W.; Orero, L.; ...",
-      "year": "2023",
-      "title": "Kenya Context Assessment Report: A desk-top review of the context of agroecological principles of Kiambu and Makueni counties",
+      "title": "Kenya Context Assessment Report: A desk-top review...",
+      "authors": ["Nyawira, S.", "Bolo, P.", "Ntinyari, W.", "Owili, S.O.", "..."],
+      "year": 2023,
       "link": "http://dx.doi.org/10.13140/RG.2.2.36127.53928"
     },
     {
-      "type": "Working Paper",
+      "title": "Imposing Strict Positivity in Productivity Analysis: A Critical Review...",
       "author": "Owili Sulman",
-      "year": "2023",
-      "title": "Imposing Strict Positivity in Productivity Analysis: A Critical Review with Application to Stochastic Frontier Ecoefficiency Methodology",
-      "link": "publication/journal-article/zero-obs/strict_positivity-1.pdf"
+      "year": 2023,
+      "link": "/publication/journal-article/zero-obs/strict_positivity-1.pdf"
     }
   ],
-  "recent_news_and_blogs": [
+  "recentNewsAndBlogs": [
     {
-      "title": "My new R package for Collatz conjecture/ 3n + 1 problem/ hailstone sequence",
-      "summary": "As part of personal studies, I was leaning how to build R packages and deploy through Github...",
+      "title": "My new R package for Collatz conjecture...",
       "author": "Sulman Olieko",
       "date": "Oct 6, 2023",
-      "reading_time": "7 min read",
+      "readingTime": "7 min read",
       "categories": ["Archive", "Blog"],
-      "image": "/img/collatzR.png",
       "link": "/post/Collatz/"
     },
-    // Additional recent news and blogs entries...
+    {
+      "title": "Data Envelopment Analysis with Practical Replication...",
+      "author": "Sulman Olieko",
+      "date": "Sep 15, 2023",
+      "readingTime": "7 min read",
+      "categories": ["Archive", "Blog"],
+      "link": "/post/production_econ/DEA-1/"
+    },
+    {
+      "title": "Sulman Wins CMAAE SFSE 2022 Best Student Award",
+      "author": "Sulman Olieko",
+      "date": "Aug 9, 2023",
+      "readingTime": "1 min read",
+      "categories": ["Archive", "Blog"],
+      "link": "/post/1/"
+    }
   ]
 }
-
 
