@@ -173,7 +173,19 @@
   <meta property="og:locale" content="en-us">
   <meta property="og:updated_time" content="2022-10-23T00:00:00&#43;00:00">
 <meta name="google-site-verification" content="Baw9PBTcmijlA9KAWXWpf1E9bbdf9oYXLmr-fiX9jFc" />
-
+      <!-- JSON-LD for Search -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://sulmanolieko.github.io/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          },
+          "url": "https://sulmanolieko.github.io/"
+        }
+    </script>
   <title>Sulman Olieko</title>
 </head>
 
@@ -193,7 +205,7 @@
                 </div>
                 <div id="search-box">
                     <input name="q" id="search-query" placeholder="Enter Search term(s)" autocapitalize="off"
-                    autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+                    autocomplete="on" autocorrect="on" spellcheck="true" type="search">
                 </div>
             </section>
             <section class="section-search-results">
@@ -253,19 +265,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 </script>
-      <!-- JSON-LD for Search -->
-    <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://sulmanolieko.github.io/?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-          },
-          "url": "https://sulmanolieko.github.io/"
-        }
-    </script>
 
 <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
   <div class="container">
