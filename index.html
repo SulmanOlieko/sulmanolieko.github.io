@@ -214,58 +214,6 @@
         </div>
     </aside>
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const searchForm = document.getElementById("search-box");
-    const searchInput = document.getElementById("search-query");
-    const searchHits = document.getElementById("search-hits");
-    const searchSection = document.getElementById("search");
-    const closeSearchBtn = document.querySelector(".js-search");
-
-    // Function to perform search
-    function performSearch(query) {
-        // Here you can implement your search logic, like fetching search results from the server
-        // For demonstration, let's simulate fetching results
-        const results = [
-            { title: "Search Result 1", url: "result1.html" },
-            { title: "Search Result 2", url: "result2.html" },
-            { title: "Search Result 3", url: "result3.html" }
-        ];
-
-        displaySearchResults(results);
-    }
-
-    // Function to display search results
-    function displaySearchResults(results) {
-        searchHits.innerHTML = "";
-        if (results.length === 0) {
-            searchHits.innerHTML = "<p>No results found.</p>";
-        } else {
-            results.forEach(function(result) {
-                const resultItem = document.createElement("div");
-                resultItem.innerHTML = `<a href="${result.url}">${result.title}</a>`;
-                searchHits.appendChild(resultItem);
-            });
-        }
-    }
-
-    // Event listener for search form submission
-    searchForm.addEventListener("submit", function(event) {
-        event.preventDefault();
-        const query = searchInput.value.trim();
-        if (query !== "") {
-            performSearch(query);
-        }
-    });
-
-    // Event listener to close search section
-    closeSearchBtn.addEventListener("click", function(event) {
-        event.preventDefault();
-        searchSection.classList.remove("open");
-    });
-});
-</script>
-
 <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
   <div class="container">
       <a class="navbar-brand" href="/">Sulman Olieko</a>
