@@ -1,17 +1,74 @@
-[
-    {
-        "title": "Search Result 1",
-        "url": "result1.html",
-        "description": "This is the description for Search Result 1."
-    },
-    {
-        "title": "Search Result 2",
-        "url": "result2.html",
-        "description": "This is the description for Search Result 2."
-    },
-    {
-        "title": "Search Result 3",
-        "url": "result3.html",
-        "description": "This is the description for Search Result 3."
-    }
-]
+{
+  "metadata": {
+    "title": "Sulman Olieko",
+    "description": "Sulman Olieko Owili is an agricultural and environmental economist with a strong commitment to applying research techniques to shape sustainable policies for the agri-food sector...",
+    "author": "Sulman Olieko Owili",
+    "last_updated": "2022-10-23T00:00:00+00:00"
+  },
+  "sections": {
+    "bio": "Sulman is an agricultural and environmental economist with a strong commitment to applying research techniques to shape sustainable policies for the agri-food sector. In 2023...",
+    "education": [
+      {
+        "course": "MSc in Agricultural and Applied Economics, 2021 - present",
+        "institution": "University of Nairobi & University of Pretoria"
+      },
+      {
+        "course": "BSc in Agricultural Education and Extension, 2016-2020",
+        "institution": "University of Nairobi"
+      }
+    ],
+    "interests": [
+      "Micro-econometrics",
+      "Stochastic Frontier Analysis",
+      "Time Series Analysis",
+      "Conformal Prediction",
+      "Bayesian Statistics",
+      "Quantitative Modelling"
+    ],
+    "featured_research": [
+      {
+        "type": "Technical report",
+        "authors": "Nyawira, S.; Bolo, P.; Ntinyari, W.; Orero, L.; Onyango, K.; Manjella, A.; Sakha, M.; Owili, S.O.; Gumo, P.; Mbelwa, M.; Korir, H.; Fuchs, L.E.",
+        "year": 2023,
+        "title": "Kenya Context Assessment Report: A desk-top review of the context of agroecological principles of Kiambu and Makueni counties",
+        "link": "http://dx.doi.org/10.13140/RG.2.2.36127.53928"
+      },
+      {
+        "type": "Working Paper",
+        "author": "Owili Sulman",
+        "year": 2023,
+        "title": "Imposing Strict Positivity in Productivity Analysis: A Critical Review with Application to Stochastic Frontier Ecoefficiency Methodology",
+        "link": "publication/journal-article/zero-obs/strict_positivity-1.pdf"
+      }
+    ],
+    "recent_news_and_blogs": [
+      {
+        "title": "My new R package for Collatz conjecture/ 3n + 1 problem/ hailstone sequence",
+        "summary": "As part of personal studies, I was leaning how to build R packages and deploy through Github. Essentially, as a practice exercise, I wanted to model the famous Collatz conjucture and visualize the plot for...",
+        "author": "Sulman Olieko",
+        "last_updated": "Oct 6, 2023",
+        "reading_time": "7 min read",
+        "categories": ["Archive", "Blog"],
+        "link": "/post/Collatz/"
+      },
+      {
+        "title": "Data Envelopment Analysis with Practical Replication of Results Presented in Sarkis and Talluri (2004)",
+        "summary": "Data Envelopment Analysis (DEA) is a versatile mathematical technique (specifically, linear programming) used for relative performance evaluation and benchmarking in various fields...",
+        "author": "Sulman Olieko",
+        "last_updated": "Sep 15, 2023",
+        "reading_time": "7 min read",
+        "categories": ["Archive", "Blog"],
+        "link": "/post/production_econ/DEA-1/"
+      },
+      {
+        "title": "Sulman Wins CMAAE SFSE 2022 Best Student Award",
+        "summary": "Sulman Olieko Owili, a Collaborative Masters in Agricultural and Applied Economics (CMAAE) student at the Department of Agricultural Economics of the University of Nairobi is the recipient of the prestigious...",
+        "author": "Sulman Olieko",
+        "last_updated": "Aug 9, 2023",
+        "reading_time": "1 min read",
+        "categories": ["Archive", "Blog"],
+        "link": "/post/1/"
+      }
+    ]
+  }
+}
