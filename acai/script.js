@@ -136,6 +136,7 @@ async function setPassword() {
     localStorage.setItem(`user-${userId}-passwordHash`, newPasswordHash);
     alert('Password set successfully.');
     document.getElementById('set-password-section').style.display = 'none';
+    document.getElementById('login-section').style.display = 'block';
 }
 
 async function resetPasswordHandler() {
@@ -145,4 +146,16 @@ async function resetPasswordHandler() {
     localStorage.setItem(`user-${userId}-passwordHash`, newPasswordHash);
     alert('Password reset successfully.');
     document.getElementById('reset-password-section').style.display = 'none';
+    document.getElementById('login-section').style.display = 'block';
+}
+
+// Show and hide sections for setting and resetting passwords
+function showSetPasswordSection() {
+    document.getElementById('login-section').style.display = 'none';
+    document.getElementById('set-password-section').style.display = 'block';
+}
+
+function showResetPasswordSection() {
+    document.getElementById('login-section').style.display = 'none';
+    document.getElementById('reset-password-section').style.display = 'block';
 }
