@@ -9,6 +9,26 @@ const LOGIN_TIMEOUT = 3600000; // 1 hour in milliseconds
 
 document.addEventListener('DOMContentLoaded', () => {
     checkLoginStatus();
+
+    // Add event listeners to prevent copy-paste in password fields
+    const passwordFields = document.querySelectorAll('input[type="password"]');
+    passwordFields.forEach(field => {
+        field.onpaste = e => e.preventDefault();
+        field.oncopy = e => e.preventDefault();
+    });
+
+    // Check if passwords match
+    const newPasswordField = document.getElementById('new-password');
+    const confirmPasswordField = document.getElementById('confirm-password');
+    const passwordMatchMessage = document.getElementById('password-match-message');
+
+    confirmPasswordField.addEventListener('input', () => {
+        if (newPasswordField.value !== confirmPasswordField.value) {
+            passwordMatchMessage.textContent = 'Passwords do not match.';
+        } else {
+            passwordMatchMessage.textContent = '';
+        }
+    });
 });
 
 async function login() {
@@ -121,9 +141,16 @@ function logout() {
     document.getElementById('login-section').style.display = 'block';
 }
 
-async function setPassword() {
-    const newPassword = document.getElementById('new-password').value;
-    const username = document.getElementById('username').value;
+async function createAccount() {
+    const username = document.getElementById('new-username').value;
+    const password = document.getElementById('new-password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+
+    if (password !== confirmPassword) {
+        alert('Passwords do not match!');
+        return;
+    }
+
     const existingUser = users.find(u => u.username === username);
     if (existingUser) {
         alert('Username already exists. Please choose a different username.');
@@ -132,7 +159,7 @@ async function setPassword() {
 
     const newUserId = users.length + 1;
     const newUserName = username; // Assume username is also the user's name for simplicity
-    const newPasswordHash = await hashPassword(newPassword);
+    const newPasswordHash = await hashPassword(password);
     const newUser = {
         id: newUserId,
         username: username,
@@ -143,7 +170,7 @@ async function setPassword() {
     users.push(newUser);
     localStorage.setItem('users', JSON.stringify(users));
     alert('Account created successfully. You can now log in with your new account.');
-    document.getElementById('set-password-section').style.display = 'none';
+    document.getElementById('create-account-section').style.display = 'none';
     document.getElementById('login-section').style.display = 'block';
 }
 
@@ -164,9 +191,9 @@ async function resetPasswordHandler() {
     document.getElementById('login-section').style.display = 'block';
 }
 
-function showSetPasswordSection() {
+function showCreateAccountSection() {
     document.getElementById('login-section').style.display = 'none';
-    document.getElementById('set-password-section').style.display = 'block';
+    document.getElementById('create-account-section').style.display = 'block';
 }
 
 function showResetPasswordSection() {
