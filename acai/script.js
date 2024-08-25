@@ -200,3 +200,8 @@ function showResetPasswordSection() {
     document.getElementById('login-section').style.display = 'none';
     document.getElementById('reset-password-section').style.display = 'block';
 }
+
+// Function to hide the construction popup
+function hidePopup() {
+    document.getElementById('construction-popup').style.display = 'none';
+}
