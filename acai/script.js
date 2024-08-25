@@ -8,7 +8,7 @@ let jobs = [
 const LOGIN_TIMEOUT = 3600000; // 1 hour in milliseconds
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('users.json')
+    fetch('/acai/users.json')
         .then(response => response.json())
         .then(data => {
             users = data;
