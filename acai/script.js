@@ -1,6 +1,6 @@
-let users = [];
+let users = JSON.parse(localStorage.getItem('users')) || []; // Retrieve users from localStorage or initialize empty array
 let jobs = [
-    { id: 1, title: "Consultation for Project A", assignedTo: 1, status: "In Progress" },
+    { id: 1, title: "Consultation for Project A", assignedTo: null, status: "Open" },
     { id: 2, title: "Consultation for Project B", assignedTo: null, status: "Open" },
     { id: 3, title: "Market Analysis for Project C", assignedTo: null, status: "Open" }
 ];
@@ -8,13 +8,7 @@ let jobs = [
 const LOGIN_TIMEOUT = 3600000; // 1 hour in milliseconds
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('users.json')
-        .then(response => response.json())
-        .then(data => {
-            users = data;
-            checkLoginStatus();
-        })
-        .catch(error => console.error('Error fetching users:', error));
+    checkLoginStatus();
 });
 
 async function login() {
@@ -22,7 +16,7 @@ async function login() {
     const password = document.getElementById('password').value;
     const passwordHash = await hashPassword(password); // Hash the password
 
-    const user = users.find(u => u.username === username && getStoredPasswordHash(u.id) === passwordHash);
+    const user = users.find(u => u.username === username && u.passwordHash === passwordHash);
     if (user) {
         setLoginStatus(user);
         showDashboard(user);
@@ -112,10 +106,12 @@ function loadAvailableJobs() {
 
 function applyJob(jobId) {
     const job = jobs.find(j => j.id === jobId);
-    if (confirm(`Are you sure you want to apply for the job: ${job.title}?`)) {
+    const loginData = JSON.parse(localStorage.getItem('loginData'));
+    if (loginData && confirm(`Are you sure you want to apply for the job: ${job.title}?`)) {
         job.status = 'Pending Approval';
-        job.assignedTo = null; // or set this to the user's ID if they immediately get assigned
+        job.assignedTo = loginData.userId; // Assign job to the current user
         loadAvailableJobs();
+        loadUserJobs(loginData.userId);
     }
 }
 
@@ -125,31 +121,49 @@ function logout() {
     document.getElementById('login-section').style.display = 'block';
 }
 
-function getStoredPasswordHash(userId) {
-    return localStorage.getItem(`user-${userId}-passwordHash`);
-}
-
 async function setPassword() {
     const newPassword = document.getElementById('new-password').value;
-    const userId = JSON.parse(localStorage.getItem('loginData')).userId;
+    const username = document.getElementById('username').value;
+    const existingUser = users.find(u => u.username === username);
+    if (existingUser) {
+        alert('Username already exists. Please choose a different username.');
+        return;
+    }
+
+    const newUserId = users.length + 1;
+    const newUserName = username; // Assume username is also the user's name for simplicity
     const newPasswordHash = await hashPassword(newPassword);
-    localStorage.setItem(`user-${userId}-passwordHash`, newPasswordHash);
-    alert('Password set successfully.');
+    const newUser = {
+        id: newUserId,
+        username: username,
+        passwordHash: newPasswordHash,
+        name: newUserName
+    };
+
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+    alert('Account created successfully. You can now log in with your new account.');
     document.getElementById('set-password-section').style.display = 'none';
     document.getElementById('login-section').style.display = 'block';
 }
 
 async function resetPasswordHandler() {
     const newPassword = document.getElementById('reset-password').value;
-    const userId = JSON.parse(localStorage.getItem('loginData')).userId;
+    const username = document.getElementById('username').value;
+    const user = users.find(u => u.username === username);
+    if (!user) {
+        alert('Username does not exist. Please create an account first.');
+        return;
+    }
+
     const newPasswordHash = await hashPassword(newPassword);
-    localStorage.setItem(`user-${userId}-passwordHash`, newPasswordHash);
-    alert('Password reset successfully.');
+    user.passwordHash = newPasswordHash;
+    localStorage.setItem('users', JSON.stringify(users));
+    alert('Password reset successfully. You can now log in with your new password.');
     document.getElementById('reset-password-section').style.display = 'none';
     document.getElementById('login-section').style.display = 'block';
 }
 
-// Show and hide sections for setting and resetting passwords
 function showSetPasswordSection() {
     document.getElementById('login-section').style.display = 'none';
     document.getElementById('set-password-section').style.display = 'block';
