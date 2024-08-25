@@ -8,7 +8,7 @@ let jobs = [
 const LOGIN_TIMEOUT = 3600000; // 1 hour in milliseconds
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('/acai/users.json')
+    fetch('users.json')
         .then(response => response.json())
         .then(data => {
             users = data;
@@ -125,17 +125,10 @@ function logout() {
     document.getElementById('login-section').style.display = 'block';
 }
 
-// Utility functions
 function getStoredPasswordHash(userId) {
     return localStorage.getItem(`user-${userId}-passwordHash`);
 }
 
-async function resetPassword(userId, newPassword) {
-    const newPasswordHash = await hashPassword(newPassword);
-    localStorage.setItem(`user-${userId}-passwordHash`, newPasswordHash);
-    alert('Password reset successfully.');
-}
-// Set Password
 async function setPassword() {
     const newPassword = document.getElementById('new-password').value;
     const userId = JSON.parse(localStorage.getItem('loginData')).userId;
@@ -145,7 +138,6 @@ async function setPassword() {
     document.getElementById('set-password-section').style.display = 'none';
 }
 
-// Reset Password
 async function resetPasswordHandler() {
     const newPassword = document.getElementById('reset-password').value;
     const userId = JSON.parse(localStorage.getItem('loginData')).userId;
