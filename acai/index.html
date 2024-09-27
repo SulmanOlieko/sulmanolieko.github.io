@@ -8,7 +8,7 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="description" content="">
 
-   <link rel="alternate" hreflang="en-us" href="https://sulmanolieko.github.io/acai/">
+   <link rel="alternate" hreflang="en-us" href="https://app.clickup.com/9012308134/home">
 
    <meta name="theme-color" content="#795548">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
@@ -56,11 +56,11 @@
    <link rel="icon" type="image/png" href="/img/icon-32.png">
    <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-   <link rel="canonical" href="https://sulmanolieko.github.io/acai/">
+   <link rel="canonical" href="https://app.clickup.com/9012308134/home">
 
    <meta property="twitter:card" content="summary">
    <meta property="og:site_name" content="Sulman Olieko">
-   <meta property="og:url" content="https://sulmanolieko.github.io/acai/">
+   <meta property="og:url" content="https://app.clickup.com/9012308134/home">
    <meta property="og:title" content="Acai | Sulman Olieko">
    <meta property="og:description" content="">
    <meta property="og:image" content="https://sulmanolieko.github.io/img/icon-192.png">
@@ -143,7 +143,7 @@
            <a class="nav-link " href="/resources/index.html" data-target="/resources/index.html"><span>Resources</span></a>
          </li>
          <li class="nav-item">
-           <a class="nav-link " href="/acai/index.html" data-target="/acai/index.html"</span>Hi, <span id="user-name"></span></a>
+           <a class="nav-link " href="https://app.clickup.com/9012308134/home" data-target="https://app.clickup.com/9012308134/home"</span>Welcome back!</span></a>
          </li>
        </ul>
      </div>
@@ -164,14 +164,8 @@
  </nav>
    <section id="post">
      <div class="universal-wrapper pt-3">
-   <h1>Login to Acai</h1>
+   <h1>Login to Acai Workspace</h1>
  </div>
-                             
-    <!-- Under Construction Popup -->
-    <div id="construction-popup" class="construction-popup">
-        <p>This page is under construction.</p>
-        <button onclick="hidePopup()">Close</button>
-    </div>
     
      <div class=universal-wrapper>
          <div class=row>
@@ -183,81 +177,7 @@
                      <div class=col-lg-10>
                         <div class="card-simple view-card">
                          
-         <!-- Login Section -->
-        <section id="login-section" class="login-form">
-            <form id="login-form" onsubmit="login(); return false;">
-                <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
-                </div>
-                <div class="form-group">
-                    <button type="submit">Login</button>
-                </div>
-                <div class="form-group">
-                    <button type="button" onclick="showCreateAccountSection()">Create an Account</button>
-                </div>
-                <div class="form-group">
-                    <button type="button" onclick="showResetPasswordSection()">Reset Password</button>
-                </div>
-            </form>
-        </section>
 
-        <!-- Dashboard Section -->
-        <section id="dashboard" class="dashboard" style="display:none;">
-            <h2>Welcome, <span id="user-name"></span></h2>
-            <div id="job-section" class="job-list">
-                <h3>Assigned Jobs</h3>
-                <ul id="assigned-jobs"></ul>
-            </div>
-            <div id="available-jobs-section" class="job-list">
-                <h3>Available Jobs</h3>
-                <ul id="available-jobs"></ul>
-            </div>
-            <div class="logout">
-                <button onclick="logout()">Logout</button>
-            </div>
-        </section>
-
-        <!-- Create Account Section -->
-        <section id="create-account-section" class="create-account-form" style="display:none;">
-            <h3>Create an Account</h3>
-            <form id="create-account-form" onsubmit="createAccount(); return false;">
-                <div class="form-group">
-                    <label for="new-username">Username:</label>
-                    <input type="text" id="new-username" name="new-username" placeholder="Enter your username" required>
-                </div>
-                <div class="form-group">
-                    <label for="new-password">Password:</label>
-                    <input type="password" id="new-password" name="new-password" placeholder="Enter new password" required>
-                </div>
-                <div class="form-group">
-                    <label for="confirm-password">Confirm Password:</label>
-                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
-                    <small id="password-match-message" style="color: red;"></small>
-                </div>
-                <div class="form-group">
-                    <button type="submit">Create Account</button>
-                </div>
-            </form>
-        </section>
-
-        <!-- Reset Password Section -->
-        <section id="reset-password-section" class="reset-password-form" style="display:none;">
-            <h3>Reset Your Password</h3>
-            <form id="reset-password-form" onsubmit="resetPasswordHandler(); return false;">
-                <div class="form-group">
-                    <label for="reset-password">New Password:</label>
-                    <input type="password" id="reset-password" name="reset-password" placeholder="Enter new password" required>
-                </div>
-                <div class="form-group">
-                    <button type="submit">Reset Password</button>
-                </div>
-            </form>
-        </section>
 
                         </div>
                      </div>
