@@ -1,5 +1,0 @@
-[
-    { "id": 1, "title": "Consultation for Project A", "assignedTo": 1, "status": "In Progress" },
-    { "id": 2, "title": "Consultation for Project B", "assignedTo": null, "status": "Open" },
-    { "id": 3, "title": "Market Analysis for Project C", "assignedTo": null, "status": "Open" }
-]
