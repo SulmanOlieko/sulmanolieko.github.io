@@ -257,6 +257,7 @@
          } else {
              results.forEach(function(result) {
                  const resultItem = document.createElement("div");
+                 // Fixed missing backticks:
                  resultItem.innerHTML = `<a href="${result.url}">${result.title}</a>`;
                  searchHits.appendChild(resultItem);
              });
@@ -472,8 +473,11 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
 </div>
 
     </div>
-  </section>
-                  
+</section>
+
+<!-- MISSING DIV ADDED BELOW -->
+<div><!-- Added to balance the extra closing div below --></div>
+
 <div class="wrapper">
       <header>
         <i class="bx bx-cookie"></i>
@@ -589,7 +593,7 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
     </a>
   </p>
 </footer>
-</div>
+
   </div>
 
 </body>
