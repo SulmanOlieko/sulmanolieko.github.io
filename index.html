@@ -175,6 +175,27 @@
   gtag('config', 'GTM-MDK8S5X2', {});
   document.addEventListener('click', onClickCallback, false);
 </script>
+
+      
+    <style>
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .col-6 {
+            width: 48%;
+        }
+
+        @media (max-width: 768px) {
+            .row {
+                flex-direction: column;
+            }
+            .col-6 {
+                width: 100%;
+            }
+        }
+    </style>
   <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Ekonly">
   <link rel="manifest" href="/index.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon-32.png">
@@ -208,6 +229,18 @@
 
 <body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" >
 
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status" class="la-ball-triangle-path">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!--End of Preloader-->
+
+
+  
    <!-- Search Section -->
     <aside class="search-results" id="search">
         <div class="container">
