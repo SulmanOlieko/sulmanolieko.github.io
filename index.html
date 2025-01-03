@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
+
+<html lang="en-us">
+    <head>
     <meta charset="UTF-8">
 
     <!--Page Title-->
@@ -10,7 +11,35 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.6.2">
+  <meta name="description" content="Ekonly is a leading consultancy that provides innovative research services tailored to international organisations, businesses, and individuals. We help our clients navigate complex challenges through data-driven insights and actionable recommendations.">
+  <link rel="alternate" hreflang="en-us" href="https://www.ekonly.org/">
+  <meta name="theme-color" content="#795548">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
 
+    
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Ekonly">
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+  <link rel="canonical" href="https://www.ekonly.org/">
+  <meta property="twitter:card" content="summary">
+  <meta property="og:site_name" content="Ekonly">
+  <meta property="og:url" content="https://www.ekonly.org/">
+  <meta property="og:title" content="Ekonly">
+  <meta property="og:description" content="">
+  <meta property="og:image" content="https://www.ekonly.org/img/icon-192.png">
+  <meta property="twitter:image" content="https://www.ekonly.org/img/icon-192.png">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:updated_time" content="2022-10-23T00:00:00+00:00">
+  <meta name="google-site-verification" content="Baw9PBTcmijlA9KAWXWpf1E9bbdf9oYXLmr-fiX9jFc">
+        
     <!--Favicon-->
     <link rel="shortcut icon" href="images/favicon.ico" title="Favicon"/>
 
@@ -29,45 +58,181 @@
     <!--Google Webfonts-->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-<!-- Link to the web app manifest -->
-<link rel="manifest" href="/manifest.json">
+  <!-- Link to the web app manifest -->
+  <link rel="manifest" href="/manifest.json">
 
-<!-- Add theme color for mobile browsers -->
-<meta name="theme-color" content="#4CAF50">
+  <!-- Add theme color for mobile browsers -->
+  <meta name="theme-color" content="#4CAF50">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
 
-<!-- Register Service Worker -->
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-      navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
-        console.log('Service Worker registered with scope:', registration.scope);
-      }, function(error) {
-        console.log('Service Worker registration failed:', error);
+  <!-- Add your PWA's manifest file -->
+  <link rel="index.webmanifest" href="/index.webmanifest">
+
+  <!-- Add your PWA's service worker script -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(registration => {
+            console.log('Service Worker registered!');
+          })
+          .catch(error => {
+            console.error('Service Worker registration failed:', error);
+          });
       });
+    }
+  </script>
+        
+  <style>
+    /* Styling for the install popup */
+    #installPopup {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      padding: 20px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      z-index: 999;
+    }
+    #installPopup.show {
+      display: block;
+    }
+    #installButton {
+      background-color: #4caf50;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    #installButton:hover {
+      background-color: #45a049;
+    }
+    .xicon {
+      width: 22px;
+      height: 22px;
+      transition: transform 0.3s ease;
+    }
+    /* Light mode styles */
+    .xicon {
+      color: black; /* Default color in light mode */
+    }
+    /* Dark mode styles */
+    @media (prefers-color-scheme: dark) {
+      .xicon {
+        color: white; /* Change to white in dark mode */
+      }
+    }
+    .xicon:hover {
+      transform: scale(1.2);
+    }
+  </style>
+
+  <!-- Your website content goes here -->
+
+  <!-- Install PWA popup -->
+  <div id="installPopup">
+    <p>Install our app for a better experience!</p>
+    <button id="installButton">Install</button>
+  </div>
+
+  <script>
+    window.addEventListener('beforeinstallprompt', (event) => {
+      // Prevent Chrome 67 and earlier from automatically showing the prompt
+      event.preventDefault();
+      // Stash the event so it can be triggered later
+      window.deferredPrompt = event;
+      // Show the install popup
+      document.getElementById('installPopup').classList.add('show');
     });
-  }
-</script>
+    // Handle the install button click
+    document.getElementById('installButton').addEventListener('click', () => {
+      const deferredPrompt = window.deferredPrompt;
+      if (deferredPrompt) {
+        // Show the install prompt
+        deferredPrompt.prompt();
+        // Wait for the user to respond to the prompt
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the install prompt');
+            // Reset the deferred prompt variable
+            window.deferredPrompt = null;
+            // Hide the install popup
+            document.getElementById('installPopup').classList.remove('show');
+          } else {
+            console.log('User dismissed the install prompt');
+          }
+        });
+      }
+    });
+  </script>
 
-    
-    <style>
-        .row {
-            display: flex;
-            justify-content: space-between;
-        }
+  <!-- Boxicons CSS -->
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+  <script src="script.js" defer></script>
 
-        .col-6 {
-            width: 48%;
-        }
+  <!-- PushAlert -->
+  <script type="text/javascript">
+    (function(d, t) {
+      var g = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+      g.src = "https://cdn.pushalert.co/integrate_90d37d1c064f80a89c562983e6ab05eb.js";
+      s.parentNode.insertBefore(g, s);
+    }(document, "script"));
+  </script>
+  <!-- End PushAlert -->
 
-        @media (max-width: 768px) {
-            .row {
-                flex-direction: column;
-            }
-            .col-6 {
-                width: 100%;
-            }
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-MDK8S5X2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    function trackOutboundLink(url) {
+      gtag('event', 'click', {
+        'event_category': 'outbound',
+        'event_label': url,
+        'transport_type': 'beacon',
+        'event_callback': function () {
+          document.location = url;
         }
-    </style>
+      });
+      console.debug("Outbound link clicked: " + url);
+    }
+    function onClickCallback(event) {
+      if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+        return;
+      }
+      trackOutboundLink(event.target);  
+    }
+    gtag('js', new Date());
+    gtag('config', 'GTM-MDK8S5X2', {});
+    document.addEventListener('click', onClickCallback, false);
+  </script>
+
+  <style>
+    .row {
+      display: flex;
+      justify-content: space-between;
+    }
+    .col-6 {
+      width: 48%;
+    }
+    @media (max-width: 768px) {
+      .row {
+        flex-direction: column;
+      }
+      .col-6 {
+        width: 100%;
+      }
+    }
+  </style>
 
 </head>
 <body>
@@ -302,13 +467,72 @@
         </section>
         <!--End of Introduction-->
 
-        <section id="working-paper" class="home-section wg-featured">
+        <!--Team Section-->
+        <aside id="team" class="scrollto text-center" data-enllax-ratio=".2">
+            <div class="row clearfix">
+                <div class="section-heading">
+                    <h3>TEAM</h3>
+                    <h2 class="section-title">Meet Our Team</h2>
+                </div>
+
+                <!--Team Member-->
+                <blockquote class="col-3 testimonial classic" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; margin: 0 auto;">
+                    <img src="images/user-images/sulman.png" alt="Founder and CEO"/>
+                    <q>Sulman Olieko Owili is the lead researcher with over 5 years of experience in qualitative and quantitative modelling, data analysis, market research, and consulting for international organisations and businesses.</q>
+                    <footer>
+                        <a href="https://sulmanolieko.github.io/" target="_blank">Sulman Olieko Owili - Founder and CEO</a>
+                    </footer>
+                </blockquote>
+                <!-- End of Team Member-->
+
+            </div>
+        </aside>
+        <!--End of Team Section-->
+
+        <!--Clients Section-->
+        <section id="clients" class="scrollto clearfix">
+            <div class="row clearfix">
+                <div class="col-3">
+                    <div class="section-heading">
+                        <h3>TRUST</h3>
+                        <h2 class="section-title">Our Valued Clients</h2>
+                        <p class="section-subtitle">We are proud to work with some of the most innovative and trusted companies in the industry, helping them achieve their goals through reliable and data-driven research solutions.</p>
+                    </div>
+                </div>
+
+                <div class="col-2-3">
+                    <!--Client Logo 1-->
+                    <a href="https://alliancebioversityciat.org" class="col-3">
+                        <img src="images/company-images/Alliance Logo Refresh-color.jpg" alt="CIAT"/>
+                        <div class="client-overlay"><span>Alliance of Bioversity and CIAT</span></div>
+                    </a>
+                    <!--Client Logo 2-->
+                    <a href="https://www.iita.org" class="col-3">
+                        <img src="images/company-images/IITA-2.png" alt="IITA"/>
+                        <div class="client-overlay"><span>International Institute of Tropical Agriculture</span></div>
+                    </a>
+                    <!--Client Logo 3-->
+                    <a href="https://www.cifor-icraf.org" class="col-3">
+                        <img src="images/company-images/images-2.png" alt="CIFOR-ICRAF"/>
+                        <div class="client-overlay"><span>The Center for International Forestry Research and World Agroforestry</span></div>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+        <!--End of Clients Section-->
+
+
+
+
+<section id="working-paper" class="home-section wg-featured">
   <div class="container">
     <div class="row">
-      <div class="col-3 section-heading">
+      <div class="col-12 col-lg-4 section-heading">
         <h2>Featured Research</h2>
         <h3>Preprint</h3>
-          <div class="col-3 icon-block icon-top wow fadeInUp" data-wow-delay="0.5s">
+      </div>
+      <div class="col-12 col-lg-8">
         <div class="pub-list-item" style="margin-bottom: 1rem">
           <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
           <span class="article-metadata li-cite-author">
@@ -322,8 +546,6 @@
           </p>
         </div>
       </div>
-      </div>
-      
     </div>
 
     <div class="row">
@@ -404,6 +626,8 @@
     </div>
   </div>
 </section>
+
+<hr>
 
 <section id="section-collection" class="home-section wg-collection">
   <div class="home-section-bg"></div>
@@ -640,67 +864,26 @@
   </div>
 </section>
 
-    
-        <!--Team Section-->
-        <aside id="team" class="scrollto text-center" data-enllax-ratio=".2">
-            <div class="row clearfix">
-                <div class="section-heading">
-                    <h3>TEAM</h3>
-                    <h2 class="section-title">Meet Our Team</h2>
-                </div>
-
-                <!--Team Member-->
-                <blockquote class="col-3 testimonial classic" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; margin: 0 auto;">
-                    <img src="images/user-images/sulman.png" alt="Founder and CEO"/>
-                    <q>Sulman Olieko Owili is the lead researcher with over 5 years of experience in qualitative and quantitative modelling, data analysis, market research, and consulting for international organisations and businesses.</q>
-                    <footer>
-                        <a href="https://www.ekonly.org/sulman-index.html" target="_blank">Sulman Olieko Owili - Founder and CEO</a>
-                    </footer>
-                </blockquote>
-                <!-- End of Team Member-->
-
-            </div>
-        </aside>
-        <!--End of Team Section-->
-
-        <!--Clients Section-->
-        <section id="clients" class="scrollto clearfix">
-            <div class="row clearfix">
-                <div class="col-3">
-                    <div class="section-heading">
-                        <h3>TRUST</h3>
-                        <h2 class="section-title">Our Valued Clients</h2>
-                        <p class="section-subtitle">We are proud to work with some of the most innovative and trusted companies in the industry, helping them achieve their goals through reliable and data-driven research solutions.</p>
-                    </div>
-                </div>
-
-                <div class="col-2-3">
-                    <!--Client Logo 1-->
-                    <a href="https://alliancebioversityciat.org" class="col-3">
-                        <img src="images/company-images/Alliance Logo Refresh-color.jpg" alt="CIAT"/>
-                        <div class="client-overlay"><span>Alliance of Bioversity and CIAT</span></div>
-                    </a>
-                    <!--Client Logo 2-->
-                    <a href="https://www.iita.org" class="col-3">
-                        <img src="images/company-images/IITA-2.png" alt="IITA"/>
-                        <div class="client-overlay"><span>International Institute of Tropical Agriculture</span></div>
-                    </a>
-                    <!--Client Logo 3-->
-                    <a href="https://www.cifor-icraf.org" class="col-3">
-                        <img src="images/company-images/images-2.png" alt="CIFOR-ICRAF"/>
-                        <div class="client-overlay"><span>The Center for International Forestry Research and World Agroforestry</span></div>
-                    </a>
-                </div>
-
-            </div>
-        </section>
-        <!--End of Clients Section-->
-
     </main>
     <!--End Main Content Area-->
     
-
 </div>
+    <!-- Include JavaScript resources -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+<script src="js/jquery.1.8.3.min.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/featherlight.min.js"></script>
+<script src="js/featherlight.gallery.min.js"></script>
+<script src="js/jquery.enllax.min.js"></script>
+<script src="js/jquery.scrollUp.min.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/jquery.stickyNavbar.min.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/images-loaded.min.js"></script>
+<script src="js/lightbox.min.js"></script>
+<script src="js/site.js"></script>
     <!--Footer-->
     <footer id="landing-footer" class="clearfix">
         <div class="row clearfix"> 
@@ -737,23 +920,6 @@
         </div>
     </footer>
     <!--End of Footer-->
-
-<!-- Include JavaScript resources -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-<script src="js/jquery.1.8.3.min.js"></script>
-<script src="js/wow.min.js"></script>
-<script src="js/featherlight.min.js"></script>
-<script src="js/featherlight.gallery.min.js"></script>
-<script src="js/jquery.enllax.min.js"></script>
-<script src="js/jquery.scrollUp.min.js"></script>
-<script src="js/jquery.easing.min.js"></script>
-<script src="js/jquery.stickyNavbar.min.js"></script>
-<script src="js/jquery.waypoints.min.js"></script>
-<script src="js/images-loaded.min.js"></script>
-<script src="js/lightbox.min.js"></script>
-<script src="js/site.js"></script>
 
 </body>
 </html>
