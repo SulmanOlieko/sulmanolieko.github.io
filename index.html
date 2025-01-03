@@ -266,6 +266,127 @@
     <div class="bottom-border wow fadeInUp animated"></div>
     <div class="left-border wow fadeInLeft animated"></div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   <!-- Search Section -->
+    <aside class="search-results" id="search">
+        <div class="container">
+            <section class="search-header">
+                <div class="row no-gutters justify-content-between mb-3">
+                    <div class="col-6">
+                        <h1>Search</h1>
+                    </div>
+                    <div class="col-6 col-search-close">
+                        <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div id="search-box">
+                    <input name="q" id="search-query" placeholder="Enter Search term(s)" autocapitalize="off"
+                    autocomplete="on" autocorrect="on" spellcheck="true" type="search">
+                </div>
+            </section>
+            <section class="section-search-results">
+                <div id="search-hits"></div>
+            </section>
+        </div>
+    </aside>
+<script>
+ document.addEventListener("DOMContentLoaded", function() {
+     const searchForm = document.getElementById("search-box");
+     const searchInput = document.getElementById("search-query");
+     const searchHits = document.getElementById("search-hits");
+     const searchSection = document.getElementById("search");
+     const closeSearchBtn = document.querySelector(".js-search");
+
+     // Function to perform search
+     function performSearch(query) {
+         const results = [
+             { title: "Search Result 1", url: "result1.html" },
+             { title: "Search Result 2", url: "result2.html" },
+             { title: "Search Result 3", url: "result3.html" }
+         ];
+
+         displaySearchResults(results);
+     }
+
+     // Function to display search results
+     function displaySearchResults(results) {
+         searchHits.innerHTML = "";
+         if (results.length === 0) {
+             searchHits.innerHTML = "<p>No results found.</p>";
+         } else {
+             results.forEach(function(result) {
+                 const resultItem = document.createElement("div");
+                 resultItem.innerHTML = `<a href="${result.url}">${result.title}</a>`;
+                 searchHits.appendChild(resultItem);
+             });
+         }
+     }
+
+     // Event listener for search form submission
+     searchForm.addEventListener("submit", function(event) {
+         event.preventDefault();
+         const query = searchInput.value.trim();
+         if (query !== "") {
+             performSearch(query);
+         }
+     });
+
+     // Event listener to close search section
+     closeSearchBtn.addEventListener("click", function(event) {
+         event.preventDefault();
+         searchSection.classList.remove("open");
+     });
+ });
+ </script>
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+      <a class="navbar-brand" href="/"> Ekonly. </a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+      <ul class="navbar-nav d-md-inline-flex">
+        <li class="nav-item">
+          <a class="nav-link " href="/index.html" data-target="/sulman-index.html"><span>Homepage</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/post/index.html" data-target="/post/index.html"><span>Blog</span></a>
+        </li> 
+         <li class="nav-item">
+          <a class="nav-link " href="/sulman-index.html" data-target="/index.html"><span>Sulman Olieko</span></a>
+        </li>
+      </ul>
+    </div>
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<span class="js-widget-page d-none"></span>
+
   
 <div id="wrapper">
     <header id="banner" class="scrollto clearfix" data-enllax-ratio=".5">
@@ -415,109 +536,21 @@
     </header> <!-- End header -->
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
-   <!-- Search Section -->
-    <aside class="search-results" id="search">
-        <div class="container">
-            <section class="search-header">
-                <div class="row no-gutters justify-content-between mb-3">
-                    <div class="col-6">
-                        <h1>Search</h1>
-                    </div>
-                    <div class="col-6 col-search-close">
-                        <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-                <div id="search-box">
-                    <input name="q" id="search-query" placeholder="Enter Search term(s)" autocapitalize="off"
-                    autocomplete="on" autocorrect="on" spellcheck="true" type="search">
-                </div>
-            </section>
-            <section class="section-search-results">
-                <div id="search-hits"></div>
-            </section>
-        </div>
-    </aside>
-<script>
- document.addEventListener("DOMContentLoaded", function() {
-     const searchForm = document.getElementById("search-box");
-     const searchInput = document.getElementById("search-query");
-     const searchHits = document.getElementById("search-hits");
-     const searchSection = document.getElementById("search");
-     const closeSearchBtn = document.querySelector(".js-search");
-
-     // Function to perform search
-     function performSearch(query) {
-         const results = [
-             { title: "Search Result 1", url: "result1.html" },
-             { title: "Search Result 2", url: "result2.html" },
-             { title: "Search Result 3", url: "result3.html" }
-         ];
-
-         displaySearchResults(results);
-     }
-
-     // Function to display search results
-     function displaySearchResults(results) {
-         searchHits.innerHTML = "";
-         if (results.length === 0) {
-             searchHits.innerHTML = "<p>No results found.</p>";
-         } else {
-             results.forEach(function(result) {
-                 const resultItem = document.createElement("div");
-                 resultItem.innerHTML = `<a href="${result.url}">${result.title}</a>`;
-                 searchHits.appendChild(resultItem);
-             });
-         }
-     }
-
-     // Event listener for search form submission
-     searchForm.addEventListener("submit", function(event) {
-         event.preventDefault();
-         const query = searchInput.value.trim();
-         if (query !== "") {
-             performSearch(query);
-         }
-     });
-
-     // Event listener to close search section
-     closeSearchBtn.addEventListener("click", function(event) {
-         event.preventDefault();
-         searchSection.classList.remove("open");
-     });
- });
- </script>
-<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
-  <div class="container">
-      <a class="navbar-brand" href="/"> Ekonly. </a>
-    <button type="button" class="navbar-toggler" data-toggle="collapse"
-            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-    <span><i class="fas fa-bars"></i></span>
-    </button>
-    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
-      <ul class="navbar-nav d-md-inline-flex">
-        <li class="nav-item">
-          <a class="nav-link " href="/index.html" data-target="/sulman-index.html"><span>Homepage</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="/post/index.html" data-target="/post/index.html"><span>Blog</span></a>
-        </li> 
-         <li class="nav-item">
-          <a class="nav-link " href="/sulman-index.html" data-target="/index.html"><span>Sulman Olieko</span></a>
-        </li>
-      </ul>
-    </div>
-    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
-      <li class="nav-item">
-        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
-      </li>
-    </ul>
-  </div>
-</nav>
-<span class="js-widget-page d-none"></span>
 
   <section id="working-paper" class="home-section wg-featured"  >
     <div class="container">
