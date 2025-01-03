@@ -1,35 +1,18 @@
 <!DOCTYPE html>
-
 <html lang="en-us">
-    <head>
-    <meta charset="UTF-8">
-
-    <!--Page Title-->
-    <title>Ekonly | Home </title>
-
-    <!--Meta Keywords and Description-->
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
-  
+<head>
+  <meta charset="UTF-8">
+  <title>Ekonly | Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Source Themes Academic 4.6.2">
+
+  <!-- Primary Meta Tags -->
   <meta name="description" content="Ekonly is a leading consultancy that provides innovative research services tailored to international organisations, businesses, and individuals. We help our clients navigate complex challenges through data-driven insights and actionable recommendations.">
   <link rel="alternate" hreflang="en-us" href="https://www.ekonly.org/">
   <meta name="theme-color" content="#795548">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
-
-    
-  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Ekonly">
-  <link rel="manifest" href="/index.webmanifest">
-  <link rel="icon" type="image/png" href="/img/icon-32.png">
-  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
   <link rel="canonical" href="https://www.ekonly.org/">
-  <meta property="twitter:card" content="summary">
+  
+  <!-- Open Graph / Twitter -->
   <meta property="og:site_name" content="Ekonly">
   <meta property="og:url" content="https://www.ekonly.org/">
   <meta property="og:title" content="Ekonly">
@@ -39,36 +22,41 @@
   <meta property="og:locale" content="en-us">
   <meta property="og:updated_time" content="2022-10-23T00:00:00+00:00">
   <meta name="google-site-verification" content="Baw9PBTcmijlA9KAWXWpf1E9bbdf9oYXLmr-fiX9jFc">
-        
-    <!--Favicon-->
-    <link rel="shortcut icon" href="images/favicon.ico" title="Favicon"/>
 
-    <!-- Main CSS Files -->
-    <link rel="stylesheet" href="css/style.css">
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="images/favicon.ico" title="Favicon"/>
+  
+  <!-- CSS: Main + Color + Animations + Fonts -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/ekonly-color.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-    <!-- Color CSS -->
-    <link rel="stylesheet" href="css/ekonly-color.css">
+  <!-- Font Awesome & Boxicons via CDN -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+        integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ="
+        crossorigin="anonymous">
+  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+        rel="stylesheet" />
 
-    <!--Icon Fonts - Font Awesome Icons-->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+  <!-- Additional Vendor CSS -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
+        integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA="
+        crossorigin="anonymous">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css"
+        crossorigin="anonymous"
+        title="hl-light">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css"
+        crossorigin="anonymous"
+        title="hl-dark"
+        disabled>
 
-    <!-- Animate CSS-->
-    <link href="css/animate.css" rel="stylesheet" type="text/css">
-
-    <!--Google Webfonts-->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-
-  <!-- Link to the web app manifest -->
+  <!-- PWA Manifest + Service Worker -->
   <link rel="manifest" href="/manifest.json">
-
-  <!-- Add theme color for mobile browsers -->
-  <meta name="theme-color" content="#4CAF50">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
-
-  <!-- Add your PWA's manifest file -->
-  <link rel="index.webmanifest" href="/index.webmanifest">
-
-  <!-- Add your PWA's service worker script -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -82,9 +70,78 @@
       });
     }
   </script>
-        
+
+  <!-- PDF.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+
+  <!-- PushAlert -->
+  <script type="text/javascript">
+    (function(d, t) {
+      var g = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+      g.src = "https://cdn.pushalert.co/integrate_90d37d1c064f80a89c562983e6ab05eb.js";
+      s.parentNode.insertBefore(g, s);
+    }(document, "script"));
+  </script>
+  <!-- End PushAlert -->
+
+  <!-- Google Tag Manager/Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-MDK8S5X2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    function trackOutboundLink(url) {
+      gtag('event', 'click', {
+        'event_category': 'outbound',
+        'event_label': url,
+        'transport_type': 'beacon',
+        'event_callback': function () { document.location = url; }
+      });
+      console.debug("Outbound link clicked: " + url);
+    }
+    function onClickCallback(event) {
+      if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+        return;
+      }
+      trackOutboundLink(event.target);
+    }
+    gtag('js', new Date());
+    gtag('config', 'GTM-MDK8S5X2', {});
+    document.addEventListener('click', onClickCallback, false);
+  </script>
+
+  <!-- Basic Flexbox Helpers for "row"/"col" Classes -->
   <style>
-    /* Styling for the install popup */
+    /* Basic container/row/column approach without full Bootstrap */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -15px;
+    }
+    [class*="col-"] {
+      padding: 0 15px;
+      box-sizing: border-box;
+    }
+    .col-6 { width: 50%; }
+    .col-12 { width: 100%; }
+
+    /* "lg" variants for wider screens */
+    @media (min-width: 992px) {
+      .col-lg-4 { width: 33.3333%; }
+      .col-lg-8 { width: 66.6666%; }
+      .col-lg-12 { width: 100%; }
+    }
+
+    /* Center text in some sections, if needed */
+    .text-center { text-align: center; }
+
+    /* Basic styling for the PWA install popup */
     #installPopup {
       display: none;
       position: fixed;
@@ -98,9 +155,7 @@
       border-radius: 5px;
       z-index: 999;
     }
-    #installPopup.show {
-      display: block;
-    }
+    #installPopup.show { display: block; }
     #installButton {
       background-color: #4caf50;
       color: #ffffff;
@@ -113,814 +168,555 @@
     #installButton:hover {
       background-color: #45a049;
     }
+
+    /* Icon styling */
     .xicon {
       width: 22px;
       height: 22px;
       transition: transform 0.3s ease;
     }
-    /* Light mode styles */
-    .xicon {
-      color: black; /* Default color in light mode */
-    }
-    /* Dark mode styles */
-    @media (prefers-color-scheme: dark) {
-      .xicon {
-        color: white; /* Change to white in dark mode */
-      }
-    }
     .xicon:hover {
       transform: scale(1.2);
     }
-  </style>
-
-  <!-- Your website content goes here -->
-
-  <!-- Install PWA popup -->
-  <div id="installPopup">
-    <p>Install our app for a better experience!</p>
-    <button id="installButton">Install</button>
-  </div>
-
-  <script>
-    window.addEventListener('beforeinstallprompt', (event) => {
-      // Prevent Chrome 67 and earlier from automatically showing the prompt
-      event.preventDefault();
-      // Stash the event so it can be triggered later
-      window.deferredPrompt = event;
-      // Show the install popup
-      document.getElementById('installPopup').classList.add('show');
-    });
-    // Handle the install button click
-    document.getElementById('installButton').addEventListener('click', () => {
-      const deferredPrompt = window.deferredPrompt;
-      if (deferredPrompt) {
-        // Show the install prompt
-        deferredPrompt.prompt();
-        // Wait for the user to respond to the prompt
-        deferredPrompt.userChoice.then((choiceResult) => {
-          if (choiceResult.outcome === 'accepted') {
-            console.log('User accepted the install prompt');
-            // Reset the deferred prompt variable
-            window.deferredPrompt = null;
-            // Hide the install popup
-            document.getElementById('installPopup').classList.remove('show');
-          } else {
-            console.log('User dismissed the install prompt');
-          }
-        });
-      }
-    });
-  </script>
-
-  <!-- Boxicons CSS -->
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
-  <script src="script.js" defer></script>
-
-  <!-- PushAlert -->
-  <script type="text/javascript">
-    (function(d, t) {
-      var g = d.createElement(t),
-      s = d.getElementsByTagName(t)[0];
-      g.src = "https://cdn.pushalert.co/integrate_90d37d1c064f80a89c562983e6ab05eb.js";
-      s.parentNode.insertBefore(g, s);
-    }(document, "script"));
-  </script>
-  <!-- End PushAlert -->
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-MDK8S5X2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
+    /* Light mode */
+    .xicon { color: black; }
+    /* Dark mode */
+    @media (prefers-color-scheme: dark) {
+      .xicon { color: white; }
     }
-    function trackOutboundLink(url) {
-      gtag('event', 'click', {
-        'event_category': 'outbound',
-        'event_label': url,
-        'transport_type': 'beacon',
-        'event_callback': function () {
-          document.location = url;
-        }
-      });
-      console.debug("Outbound link clicked: " + url);
-    }
-    function onClickCallback(event) {
-      if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
-        return;
-      }
-      trackOutboundLink(event.target);  
-    }
-    gtag('js', new Date());
-    gtag('config', 'GTM-MDK8S5X2', {});
-    document.addEventListener('click', onClickCallback, false);
-  </script>
 
-  <style>
-    .row {
-      display: flex;
-      justify-content: space-between;
+    /* Some spacing for the featured research items */
+    .pub-list-item {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 0.75rem;
     }
-    .col-6 {
-      width: 48%;
-    }
-    @media (max-width: 768px) {
-      .row {
-        flex-direction: column;
-      }
-      .col-6 {
-        width: 100%;
-      }
+    .section-heading h2, .section-heading h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
     }
   </style>
-
 </head>
 <body>
 
 <!-- Preloader -->
 <div id="preloader">
-    <div id="status" class="la-ball-triangle-path">
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
+  <div id="status" class="la-ball-triangle-path">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 </div>
 <!--End of Preloader-->
 
+<!-- PWA Install Popup -->
+<div id="installPopup">
+  <p>Install our app for a better experience!</p>
+  <button id="installButton">Install</button>
+</div>
+<script>
+  window.addEventListener('beforeinstallprompt', (event) => {
+    event.preventDefault();
+    window.deferredPrompt = event;
+    document.getElementById('installPopup').classList.add('show');
+  });
+  document.getElementById('installButton').addEventListener('click', () => {
+    const deferredPrompt = window.deferredPrompt;
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+          window.deferredPrompt = null;
+          document.getElementById('installPopup').classList.remove('show');
+        } else {
+          console.log('User dismissed the install prompt');
+        }
+      });
+    }
+  });
+</script>
+
+<!-- Page Borders -->
 <div class="page-border" data-wow-duration="0.7s" data-wow-delay="0.2s">
-    <div class="top-border wow fadeInDown animated"></div>
-    <div class="right-border wow fadeInRight animated"></div>
-    <div class="bottom-border wow fadeInUp animated"></div>
-    <div class="left-border wow fadeInLeft animated"></div>
+  <div class="top-border wow fadeInDown animated"></div>
+  <div class="right-border wow fadeInRight animated"></div>
+  <div class="bottom-border wow fadeInUp animated"></div>
+  <div class="left-border wow fadeInLeft animated"></div>
 </div>
 
 <div id="wrapper">
-
-    <header id="banner" class="scrollto clearfix" data-enllax-ratio=".5">
-        <div id="header" class="nav-collapse">
-            <div class="row clearfix">
-                <div class="col-1">
-
-<!--Logo-->
-<div id="logo">
-    <!--Link the logo to the homepage-->
-    <a href="index.html">
-        <!--Logo that is shown on the banner-->
-        <img src="images/ekonly_logo.png" id="banner-logo" alt="Logo" style="width: auto; height: auto;"/>
-        <!--End of Banner Logo-->
-
-        <!--The Logo that is shown on the sticky Navigation Bar-->
-        <img src="images/ekonly_log0-2.png" id="navigation-logo" alt="Logo" style="width: auto; height: auto;"/>
-        <!--End of Navigation Logo-->
-    </a>
-</div>
-                    <aside>
-
-                        <!--Social Icons in Header-->
-                        <ul class="social-icons">
-                            <li>
-                                <a target="_blank" title="Facebook" href="https://www.facebook.com/ekonly">
-                                    <i class="fa fa-facebook fa-1x"></i><span>Facebook</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a target="_blank" title="Google+" href="http://google.com/+ekonly">
-                                    <i class="fa fa-google-plus fa-1x"></i><span>Google+</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a target="_blank" title="Twitter" href="http://www.twitter.com/ekonly">
-                                    <i class="fa fa-twitter fa-1x"></i><span>Twitter</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a target="_blank" title="Instagram" href="http://www.instagram.com/ekonly">
-                                    <i class="fa fa-instagram fa-1x"></i><span>Instagram</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a target="_blank" title="LinkedIn" href="http://www.linkedin.com/company/ekonly">
-                                    <i class="fa fa-linkedin fa-1x"></i><span>LinkedIn</span>
-                                </a>
-                            </li>
-                        </ul>
-                        <!--End of Social Icons in Header-->
-
-                    </aside>
-
-                    <!--Main Navigation-->
-                    <nav id="nav-main">
-                        <ul>
-                            <li>
-                                <a href="#banner">Home</a>
-                            </li>
-                            <li>
-                                <a href="#about">Services</a>
-                            </li>
-                            <li>
-                                <a href="#team">Team</a>
-                            </li>
-                            <li>
-                                <a href="#clients">Clients</a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <!--End of Main Navigation-->
-
-                    <div id="nav-trigger"><span></span></div>
-                    <nav id="nav-mobile"></nav>
-
-                </div>
-            </div>
-        </div><!--End of Header-->
-
-        <!--Banner Content-->
-        <div id="banner-content" class="row clearfix">
-
-            <div class="col-6">
-
-                <div>
-                    <h2 class="button"> Empowering decision-making through expert research solutions</h2>
-                    <h2>Ekonly is a leading consultancy that provides innovative research services tailored to international organisations, businesses, and individuals. We help our clients navigate complex challenges through data-driven insights and actionable recommendations.</h2>
-                </div>
-
-                <!--Call to Action-->
-                <h2>Let’s work together to turn your ideas into impactful strategies.</h2>
-                <a href="https://sharing.clickup.com/9012308134/l/h/8cjtu56-32/b98a7fbfbe2a6d6" class="button">JOIN OUR WORKSPACE</a>
-                <a href="https://chatgpt.com/g/g-2psxTWAtd-acai" class="button">TRY OUR GPT</a>
-                <!--End Call to Action-->
-            </div> <!-- End col-38 -->
-            
-    <!-- OUR FOCUS Section -->
-    <aside id="services" class="scrollto clearfix">
-
-        <div class="row no-padding-bottom clearfix">
-
-            <!--Content Left Side-->
-            <div class="col-6">
-                <!--User Testimonial-->
-                <blockquote class="testimonial text-right bigtest">
-                    <q>Ekonly has revolutionised and modernised research and analytics, delivering insights that drive results and innovation.</q>
-                    <footer></footer>
-                </blockquote>
-                <!-- End of Testimonial-->
-            </div>
-            <!--End Content Left Side-->
-
-            <!--Content Right Side-->
-            <div class="col-6">
-                <div class="section-heading">
-                    <h3>OUR FOCUS</h3>
-                    <h2 class="section-title">Focusing On What Matters Most</h2>
-                    <p class="section-subtitle">At Ekonly, we prioritise delivering actionable research and insights that align with your goals and drive progress.</p>
-                </div>
-                <p>We are committed to providing cutting-edge solutions through tailored research, ensuring that every decision you make is supported by comprehensive data and insights.</p>
-                <p>Our team of experts excels in transforming complex challenges into opportunities, making us the ideal partner for navigating the ever-changing landscape of global industries.</p>
-
-                
-                <script>
-                    $(document).ready(function() {
-                        $('.popup-youtube').magnificPopup({
-                            type: 'iframe'
-                        });
-                    });
-                </script>
-                <a href="https://www.youtube-nocookie.com/embed/qv848j0f-M0" class="button popup-youtube"> INTRODUCING EKONLY
-                    <i class="fa fa-play" aria-hidden="true"></i>
-                </a>
-
-
-            </div>
-            <!--End Content Right Side-->
-
+  <header id="banner" class="scrollto clearfix" data-enllax-ratio=".5">
+    <div id="header" class="nav-collapse">
+      <div class="row" style="justify-content: space-between; margin: 0;">
+        <div class="col-6">
+          <!-- Logo -->
+          <div id="logo">
+            <a href="index.html">
+              <img src="images/ekonly_logo.png" id="banner-logo" alt="Logo" style="width: auto; height: auto;"/>
+              <img src="images/ekonly_log0-2.png" id="navigation-logo" alt="Logo" style="width: auto; height: auto;"/>
+            </a>
+          </div>
         </div>
+        <div class="col-6" style="text-align: right;">
+          <!-- Social Icons -->
+          <ul class="social-icons" style="list-style: none; margin: 0; padding: 0;">
+            <li style="display: inline-block; margin-left: 10px;">
+              <a target="_blank" title="Facebook" href="https://www.facebook.com/ekonly">
+                <i class="fa fa-facebook fa-1x"></i>
+              </a>
+            </li>
+            <li style="display: inline-block; margin-left: 10px;">
+              <a target="_blank" title="Twitter" href="http://www.twitter.com/ekonly">
+                <i class="fa fa-twitter fa-1x"></i>
+              </a>
+            </li>
+            <li style="display: inline-block; margin-left: 10px;">
+              <a target="_blank" title="LinkedIn" href="http://www.linkedin.com/company/ekonly">
+                <i class="fa fa-linkedin fa-1x"></i>
+              </a>
+            </li>
+            <!-- Add more icons if desired -->
+          </ul>
+        </div>
+      </div>
+      <nav id="nav-main" style="text-align: center; margin-top: 1rem;">
+        <ul style="list-style: none; padding: 0;">
+          <li style="display: inline-block; margin: 0 15px;"><a href="#banner">Home</a></li>
+          <li style="display: inline-block; margin: 0 15px;"><a href="#about">Services</a></li>
+          <li style="display: inline-block; margin: 0 15px;"><a href="#team">Team</a></li>
+          <li style="display: inline-block; margin: 0 15px;"><a href="#clients">Clients</a></li>
+        </ul>
+      </nav>
+    </div><!--End of Header-->
 
-    </aside>
-    <!-- End of OUR FOCUS Section -->
-
-            
-        </div> <!-- End of banner-content -->
-
-    </header> <!-- End header -->
-
-
-
-    <!--Main Content Area-->
-    <main id="content">
-
-        <!--Introduction-->
-        <section id="about" class="introduction scrollto">
-            <div class="row clearfix">
-                <div class="col-3">
-                    <div class="section-heading">
-                        <h3>WHERE WE COME IN</h3>
-                        <h2 class="section-title">How We Help You Achieve Your Goals</h2>
-                        <p class="section-subtitle">At Ekonly, we are dedicated to providing actionable insights and comprehensive research services that empower our clients to make informed decisions and achieve their objectives.</p>
-                    </div>
-                </div>
-
-                <div class="col-2-3">
-                    <!--Icon Block-->
-                    <div class="col-2 icon-block icon-top wow fadeInUp" data-wow-delay="0.1s">
-                        <!--Icon-->
-                        <div class="icon">
-                            <i class="fa fa-flask fa-2x"></i>
-                        </div>
-                        <!--Icon Block Description-->
-                        <div class="icon-block-description">
-                            <h4>Research for International Organisations</h4>
-                            <p>We offer in-depth research and analysis, supporting international organisations with policy development, program evaluation, and impact assessments to guide decision-making.</p>
-                        </div>
-                    </div>
-                    <!--End of Icon Block-->
-
-                    <!--Icon Block-->
-                    <div class="col-2 icon-block icon-top wow fadeInUp" data-wow-delay="0.3s">
-                        <!--Icon-->
-                        <div class="icon">
-                            <i class="fa fa-rocket fa-2x"></i>
-                        </div>
-                        <!--Icon Block Description-->
-                        <div class="icon-block-description">
-                            <h4>Business Consulting and Market Research</h4>
-                            <p>Our tailored business research services equip companies with the data-driven strategies they need to succeed, from market entry analysis to performance and innovation management.</p>
-                        </div>
-                    </div>
-                    <!--End of Icon Block-->
-
-                    <!--Icon Block-->
-                    <div class="col-2 icon-block icon-top wow fadeInUp" data-wow-delay="0.5s">
-                        <!--Icon-->
-                        <div class="icon">
-                            <i class="fa fa-bolt fa-2x"></i>
-                        </div>
-                        <!--Icon Block Description-->
-                        <div class="icon-block-description">
-                            <h4>Individual Research Services</h4>
-                            <p>Ekonly provides personalised research solutions for individuals, offering expert guidance and reliable data to help navigate complex decisions with confidence.</p>
-                        </div>
-                    </div>
-                    <!--End of Icon Block-->
-
-                </div>
+    <!--Banner Content-->
+    <div id="banner-content" class="row" style="margin: 0; justify-content: space-between; align-items: center;">
+      <div class="col-6">
+        <h2 class="button"> Empowering decision-making through expert research solutions</h2>
+        <h2>
+          Ekonly is a leading consultancy that provides innovative research services tailored to international organisations, businesses, and individuals.
+        </h2>
+        <h2>Let’s work together to turn your ideas into impactful strategies.</h2>
+        <a href="https://sharing.clickup.com/9012308134/l/h/8cjtu56-32/b98a7fbfbe2a6d6" class="button">JOIN OUR WORKSPACE</a>
+        <a href="https://chatgpt.com/g/g-2psxTWAtd-acai" class="button">TRY OUR GPT</a>
+      </div>
+      <div class="col-6">
+        <!-- Our Focus Section -->
+        <aside id="services" class="scrollto clearfix">
+          <div class="row" style="justify-content: space-between; margin: 0;">
+            <!-- Left -->
+            <div class="col-6">
+              <blockquote class="testimonial text-right bigtest">
+                <q>Ekonly has revolutionised and modernised research and analytics, delivering insights that drive results and innovation.</q>
+              </blockquote>
             </div>
-        </section>
-        <!--End of Introduction-->
-
-        <!--Team Section-->
-        <aside id="team" class="scrollto text-center" data-enllax-ratio=".2">
-            <div class="row clearfix">
-                <div class="section-heading">
-                    <h3>TEAM</h3>
-                    <h2 class="section-title">Meet Our Team</h2>
-                </div>
-
-                <!--Team Member-->
-                <blockquote class="col-3 testimonial classic" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; margin: 0 auto;">
-                    <img src="images/user-images/sulman.png" alt="Founder and CEO"/>
-                    <q>Sulman Olieko Owili is the lead researcher with over 5 years of experience in qualitative and quantitative modelling, data analysis, market research, and consulting for international organisations and businesses.</q>
-                    <footer>
-                        <a href="https://sulmanolieko.github.io/" target="_blank">Sulman Olieko Owili - Founder and CEO</a>
-                    </footer>
-                </blockquote>
-                <!-- End of Team Member-->
-
+            <!-- Right -->
+            <div class="col-6">
+              <div class="section-heading">
+                <h3>OUR FOCUS</h3>
+                <h2 class="section-title">Focusing On What Matters Most</h2>
+                <p class="section-subtitle">
+                  At Ekonly, we prioritise delivering actionable research and insights that align with your goals and drive progress.
+                </p>
+              </div>
+              <p>We are committed to providing cutting-edge solutions through tailored research, ensuring that every decision you make is supported by comprehensive data and insights.</p>
+              <p>Our team of experts excels in transforming complex challenges into opportunities, making us the ideal partner for navigating the ever-changing landscape of global industries.</p>
+              <a href="https://www.youtube-nocookie.com/embed/qv848j0f-M0" class="button popup-youtube">
+                INTRODUCING EKONLY <i class="fa fa-play" aria-hidden="true"></i>
+              </a>
             </div>
+          </div>
         </aside>
-        <!--End of Team Section-->
-
-        <!--Clients Section-->
-        <section id="clients" class="scrollto clearfix">
-            <div class="row clearfix">
-                <div class="col-3">
-                    <div class="section-heading">
-                        <h3>TRUST</h3>
-                        <h2 class="section-title">Our Valued Clients</h2>
-                        <p class="section-subtitle">We are proud to work with some of the most innovative and trusted companies in the industry, helping them achieve their goals through reliable and data-driven research solutions.</p>
-                    </div>
-                </div>
-
-                <div class="col-2-3">
-                    <!--Client Logo 1-->
-                    <a href="https://alliancebioversityciat.org" class="col-3">
-                        <img src="images/company-images/Alliance Logo Refresh-color.jpg" alt="CIAT"/>
-                        <div class="client-overlay"><span>Alliance of Bioversity and CIAT</span></div>
-                    </a>
-                    <!--Client Logo 2-->
-                    <a href="https://www.iita.org" class="col-3">
-                        <img src="images/company-images/IITA-2.png" alt="IITA"/>
-                        <div class="client-overlay"><span>International Institute of Tropical Agriculture</span></div>
-                    </a>
-                    <!--Client Logo 3-->
-                    <a href="https://www.cifor-icraf.org" class="col-3">
-                        <img src="images/company-images/images-2.png" alt="CIFOR-ICRAF"/>
-                        <div class="client-overlay"><span>The Center for International Forestry Research and World Agroforestry</span></div>
-                    </a>
-                </div>
-
-            </div>
-        </section>
-        <!--End of Clients Section-->
-
-
-
-
-<section id="working-paper" class="home-section wg-featured">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-lg-4 section-heading">
-        <h2>Featured Research</h2>
-        <h3>Preprint</h3>
       </div>
-      <div class="col-12 col-lg-8">
-        <div class="pub-list-item" style="margin-bottom: 1rem">
-          <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
-          <span class="article-metadata li-cite-author">
-            <span> <i>Owili, S.O.</i>; Otieno, D. J.; Chimoita, E. L.; Baijukya, F. P </span>
-          </span>
-          (2024).
-          <a href="#">Heterogeneous efficiency effects of agro-ecological fruit fly management transition and intensification among smallholder mango farmers: A latent class stochastic metafrontier approach</a>.
-          <p><i>In press</i>.</p>
-          <p>
-            <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="#" target="_blank" rel="noopener">PDF</a>
-          </p>
-        </div>
-      </div>
-    </div>
+    </div><!-- End of banner-content -->
+  </header> <!-- End header -->
 
-    <div class="row">
-      <div class="col-12 col-lg-4 section-heading">
-        <h3>Journal article</h3>
-      </div>
-      <div class="col-12 col-lg-8">
-        <div class="pub-list-item" style="margin-bottom: 1rem">
-          <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
-          <span class="article-metadata li-cite-author">
-            <span> <i>Owili, S.O.</i>; Otieno, D. J.; Chimoita, E. L.; Baijukya, F. P </span>
-          </span>
-          (2024).
-          <a href="http://dx.doi.org/10.1080/09670874.2024.2413592">Factors influencing adoption of agro-ecological pest management options for mango fruit fly under information constraints: A two-part fractional regression approach</a>.
-          <p>
-            <i>International Journal of Pest Management</i>.
-            <a href="http://dx.doi.org/10.1080/09670874.2024.2413592">
-              http://dx.doi.org/10.1080/09670874.2024.2413592
-            </a>
-          </p>
-          <p>
-            <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="http://dx.doi.org/10.1080/09670874.2024.2413592" target="_blank" rel="noopener">PDF</a>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12 col-lg-4 section-heading">
-        <h3>Journal article</h3>
-      </div>
-      <div class="col-12 col-lg-8">
-        <div class="pub-list-item" style="margin-bottom: 1rem">
-          <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
-          <span class="article-metadata li-cite-author">
-            <span> Fuchs, L.E.; Orero, L; Kipkorir, L.; Apondi, V; <i>Owili, S.O</i> </span>
-          </span>
-          (2024).
-          <a href="http://dx.doi.org/10.3389/fsufs.2024.1449615">
-            Scaling Models for Regreening Africa: Enhancing Agroecological Integration through Smallholders' Assets and Agency in Kenya
-          </a>.
-          <p>
-            <i>Frontiers in Sustainable Food Systems</i>.
-            <a href="http://dx.doi.org/10.3389/fsufs.2024.1449615">
-              http://dx.doi.org/10.3389/fsufs.2024.1449615
-            </a>
-          </p>
-          <p>
-            <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="http://dx.doi.org/10.3389/fsufs.2024.1449615" target="_blank" rel="noopener">PDF</a>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12 col-lg-4 section-heading">
-        <h3>Technical report</h3>
-      </div>
-      <div class="col-12 col-lg-8">
-        <div class="pub-list-item" style="margin-bottom: 1rem">
-          <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
-          <span class="article-metadata li-cite-author">
-            <span>Nyawira, S.; Bolo, P.; Ntinyari, W.; Orero, L.; Onyango, K.; Manjella, A.; Sakha, M.; <i>Owili, S.O.</i>; Gumo, P.; Mbelwa, M.; Korir, H.; Fuchs, L.E.</span>
-          </span>
-          (2023).
-          <a href="http://dx.doi.org/10.13140/RG.2.2.36127.53928">
-            Kenya Context Assessment Report: A desk-top review of the context of agroecological principles of Kiambu and Makueni counties
-          </a>.
-          <p>
-            <i>CGSpace</i>.
-            <a href="http://dx.doi.org/10.13140/RG.2.2.36127.53928">http://dx.doi.org/10.13140/RG.2.2.36127.53928</a>
-          </p>
-          <p>
-            <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="http://dx.doi.org/10.13140/RG.2.2.36127.53928" target="_blank" rel="noopener">PDF</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr>
-
-<section id="section-collection" class="home-section wg-collection">
-  <div class="home-section-bg"></div>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="section-heading col-12 mb-3 text-center">
-        <h2 class="mb-0">Recent News and Blogs</h2>
-      </div>
-      <div class="col-12">
-        <div class="media stream-item view-compact">
-          <div class="media-body">
-            <div class="section-subheading article-title mb-0 mt-0">
-              <a href="https://cgspace.cgiar.org/items/cb0b349a-1a7d-49f7-ab38-c38a9af8b4d3">Exploring Realist Contribution Analysis: A Dive into Data Use and Modelling</a>
-            </div>
-            <a href="https://cgspace.cgiar.org/items/cb0b349a-1a7d-49f7-ab38-c38a9af8b4d3" class="summary-link">
-              <div class="article-style">
-                How can communities, scientists, development practitioners and policymakers better understand the impact of their interventions? On September 24, 2024, the Qualitative Studies Group explored this crucial question in a session led by Lisa Elena Fuchs and Sulman Olieko Owili, moderated by Fanny Howland. Lisa is a social and agroecological systems scientist, and expert in sustainable landscape transitions at the Alliance of Bioversity International and CIAT. Sulman is an agricultural economist consulting for IITA, CIFOR-ICRAF, and the Alliance....
-              </div>
-            </a>
-            <div class="stream-meta article-metadata">
-              <div class="article-metadata">
-                <div>
-                  <span class="author-highlighted">Lisa E. Fuchs, Ilaria Urbani &amp; Fanny Howland</span>
-                </div>
-                <span class="article-date">Oct 22, 2024</span>
-                <span class="middot-divider"></span>
-                <span class="article-reading-time">10 min read</span>
-                <span class="middot-divider"></span>
-                <span class="article-categories">
-                  <i class="fas fa-folder mr-1"></i>
-                  <a href="/post/">Archive</a>, <a href="/post/">Blog</a>
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class="ml-3">
-            <a href="https://cgspace.cgiar.org/items/cb0b349a-1a7d-49f7-ab38-c38a9af8b4d3">
-              <img src="/img/content.jpeg" height="84" width="150" alt="CollatzR image" loading="lazy">
-            </a>
+  <!-- Main Content -->
+  <main id="content">
+    <!-- Introduction -->
+    <section id="about" class="introduction scrollto">
+      <div class="row" style="margin: 0;">
+        <div class="col-6">
+          <div class="section-heading">
+            <h3>WHERE WE COME IN</h3>
+            <h2 class="section-title">How We Help You Achieve Your Goals</h2>
+            <p class="section-subtitle">
+              Providing actionable insights and comprehensive research services that empower our clients to make informed decisions.
+            </p>
           </div>
         </div>
-
-        <div class="media stream-item view-compact">
-          <div class="media-body">
-            <div class="section-subheading article-title mb-0 mt-0">
-              <a href="/post/Collatz/">My new R package for Collatz conjecture/ 3n + 1 problem/ hailstone sequence</a>
+        <div class="col-6" style="display: flex; flex-wrap: wrap;">
+          <!-- Icon Block -->
+          <div class="col-12 icon-block icon-top wow fadeInUp" data-wow-delay="0.1s" style="display:flex;">
+            <div class="icon" style="margin-right:10px;">
+              <i class="fa fa-flask fa-2x"></i>
             </div>
-            <a href="/post/Collatz/" class="summary-link">
-              <div class="article-style">
-                As part of personal studies, I was leaning how to build R packages and deploy through Github. Essentially, as a practice exercise, I wanted to model the famous Collatz conjucture and visualize the plot for...
-              </div>
-            </a>
-            <div class="stream-meta article-metadata">
-              <div class="article-metadata">
-                <div>
-                  <span class="author-highlighted">Sulman Olieko</span>
-                </div>
-                <span class="article-date">Last updated on Oct 6, 2023</span>
-                <span class="middot-divider"></span>
-                <span class="article-reading-time">7 min read</span>
-                <span class="middot-divider"></span>
-                <span class="article-categories">
-                  <i class="fas fa-folder mr-1"></i>
-                  <a href="/post/">Archive</a>, <a href="/post/">Blog</a>
-                </span>
-              </div>
+            <div>
+              <h4>Research for International Organisations</h4>
+              <p>We offer in-depth research and analysis, supporting international organisations with policy development, program evaluation, and impact assessments.</p>
             </div>
           </div>
-          <div class="ml-3">
-            <a href="/post/Collatz/">
-              <img src="/img/collatzR.png" height="84" width="150" alt="CollatzR image" loading="lazy">
-            </a>
-          </div>
-        </div>
-
-        <div class="media stream-item view-compact">
-          <div class="media-body">
-            <div class="section-subheading article-title mb-0 mt-0">
-              <a href="/post/production_econ/DEA-1/">Data Envelopment Analysis with Practical Replication of Results Presented in Sarkis and Talluri (2004)</a>
+          <div class="col-12 icon-block icon-top wow fadeInUp" data-wow-delay="0.3s" style="display:flex;">
+            <div class="icon" style="margin-right:10px;">
+              <i class="fa fa-rocket fa-2x"></i>
             </div>
-            <a href="/post/production_econ/DEA-1/" class="summary-link">
-              <div class="article-style">
-                Data Envelopment Analysis (DEA) is a versatile mathematical technique (specifically, linear programming) used for relative performance evaluation and benchmarking in various fields...
-              </div>
-            </a>
-            <div class="stream-meta article-metadata">
-              <div class="article-metadata">
-                <div>
-                  <span class="author-highlighted">Sulman Olieko</span>
-                </div>
-                <span class="article-date">Last updated on Sep 15, 2023</span>
-                <span class="middot-divider"></span>
-                <span class="article-reading-time">7 min read</span>
-                <span class="middot-divider"></span>
-                <span class="article-categories">
-                  <i class="fas fa-folder mr-1"></i>
-                  <a href="/post/">Archive</a>, <a href="/post/">Blog</a>
-                </span>
-              </div>
+            <div>
+              <h4>Business Consulting and Market Research</h4>
+              <p>Our tailored business research services equip companies with the data-driven strategies they need to succeed.</p>
             </div>
           </div>
-          <div class="ml-3">
-            <a href="/post/production_econ/DEA-1/">
-              <img src="/img/DEA-1.png" height="84" width="150" alt="Sulman Receives Best Student Award" loading="lazy">
-            </a>
-          </div>
-        </div>
-
-        <div class="media stream-item view-compact">
-          <div class="media-body">
-            <div class="section-subheading article-title mb-0 mt-0">
-              <a href="/post/1/">Sulman Wins CMAAE SFSE 2022 Best Student Award</a>
+          <div class="col-12 icon-block icon-top wow fadeInUp" data-wow-delay="0.5s" style="display:flex;">
+            <div class="icon" style="margin-right:10px;">
+              <i class="fa fa-bolt fa-2x"></i>
             </div>
-            <a href="/post/1/" class="summary-link">
-              <div class="article-style">
-                Sulman Olieko Owili, a Collaborative Masters in Agricultural and Applied Economics (CMAAE) student at the Department of Agricultural Economics of the University of Nairobi is the recipient of the prestigious...
-              </div>
-            </a>
-            <div class="stream-meta article-metadata">
-              <div class="article-metadata">
-                <div>
-                  <span class="author-highlighted">Sulman Olieko</span>
-                </div>
-                <span class="article-date">Last updated on Aug 9, 2023</span>
-                <span class="middot-divider"></span>
-                <span class="article-reading-time">1 min read</span>
-                <span class="middot-divider"></span>
-                <span class="article-categories">
-                  <i class="fas fa-folder mr-1"></i>
-                  <a href="/post/">Archive</a>, <a href="/post/">Blog</a>
-                </span>
-              </div>
+            <div>
+              <h4>Individual Research Services</h4>
+              <p>Ekonly provides personalised research solutions for individuals, offering expert guidance and reliable data to help navigate complex decisions.</p>
             </div>
-          </div>
-          <div class="ml-3">
-            <a href="/post/1/">
-              <img src="/img/2.png" height="84" width="150" alt="Sulman Receives Best Student Award" loading="lazy">
-            </a>
-          </div>
-        </div>
-
-        <section id="contact" class="home-section wg-contact">
-          <div class="container">
-            <div class="row contact-widget">
-              <div class="col-12 col-lg-4 section-heading">
-                <h2>Contact us: </h2>
-              </div>
-              <div class="col-12 col-lg-8">
-                <ul class="fa-ul">
-                  <li>
-                    <i class="fa-li fas fa-envelope fa-2x" aria-hidden="true"></i>
-                    <span id="person-email"><a href="mailto:admin@ekonly.org">admin@ekonly.org</a></span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <div class="wrapper">
-          <header>
-            <i class="bx bx-cookie"></i>
-            <h2>Cookies Consent</h2>
-          </header>
-          <div class="data">
-            <p>This website uses cookies to help you have a superior and more relevant browsing experience on the website. <a href="/privacy/"> Read more...</a></p>
-          </div>
-          <div class="buttons">
-            <button class="button" id="acceptBtn">I'm happy</button>
-            <button class="button" id="declineBtn">Not now</button>
           </div>
         </div>
       </div>
-    </div>
+    </section>
+    <!-- End Introduction -->
+
+    <!-- Team Section -->
+    <aside id="team" class="scrollto text-center" data-enllax-ratio=".2">
+      <div class="row" style="margin: 0; justify-content: center;">
+        <div class="section-heading col-12 mb-3">
+          <h3>TEAM</h3>
+          <h2 class="section-title">Meet Our Team</h2>
+        </div>
+        <!-- Team Member -->
+        <blockquote class="col-12 testimonial classic" 
+                    style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <img src="images/user-images/sulman.png" alt="Founder and CEO" style="max-width:150px;"/>
+          <q>
+            Sulman Olieko Owili is the lead researcher with over 5 years of experience in qualitative and quantitative modelling, data analysis, market research, and consulting.
+          </q>
+          <footer>
+            <a href="https://sulmanolieko.github.io/" target="_blank">Sulman Olieko Owili - Founder and CEO</a>
+          </footer>
+        </blockquote>
+      </div>
+    </aside>
+    <!-- End Team Section -->
+
+    <!-- Clients Section -->
+    <section id="clients" class="scrollto clearfix">
+      <div class="row" style="margin: 0;">
+        <div class="col-6">
+          <div class="section-heading">
+            <h3>TRUST</h3>
+            <h2 class="section-title">Our Valued Clients</h2>
+            <p class="section-subtitle">
+              We are proud to work with some of the most innovative and trusted companies in the industry.
+            </p>
+          </div>
+        </div>
+        <div class="col-6" style="display: flex; flex-wrap: wrap;">
+          <a href="https://alliancebioversityciat.org" class="col-4" style="margin-bottom:20px;">
+            <img src="images/company-images/Alliance Logo Refresh-color.jpg" alt="CIAT" style="max-width:100%;">
+            <div class="client-overlay"><span>Alliance of Bioversity and CIAT</span></div>
+          </a>
+          <a href="https://www.iita.org" class="col-4" style="margin-bottom:20px;">
+            <img src="images/company-images/IITA-2.png" alt="IITA" style="max-width:100%;">
+            <div class="client-overlay"><span>International Institute of Tropical Agriculture</span></div>
+          </a>
+          <a href="https://www.cifor-icraf.org" class="col-4" style="margin-bottom:20px;">
+            <img src="images/company-images/images-2.png" alt="CIFOR-ICRAF" style="max-width:100%;">
+            <div class="client-overlay"><span>CIFOR &amp; ICRAF</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- End Clients Section -->
+
+    <!-- Featured Research Section -->
+    <section id="working-paper" class="home-section wg-featured">
+      <div class="container">
+        <!-- 1st Row: Preprint -->
+        <div class="row">
+          <div class="col-12 col-lg-4 section-heading">
+            <h2>Featured Research</h2>
+            <h3>Preprint</h3>
+          </div>
+          <div class="col-12 col-lg-8">
+            <div class="pub-list-item">
+              <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
+              <span class="article-metadata li-cite-author">
+                <span><i>Owili, S.O.</i>; Otieno, D. J.; Chimoita, E. L.; Baijukya, F. P</span>
+              </span>
+              (2024).
+              <a href="#">Heterogeneous efficiency effects of agro-ecological fruit fly management...</a>.
+              <p><i>In press</i>.</p>
+              <p>
+                <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="#" target="_blank" rel="noopener">PDF</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- 2nd Row: Journal Article -->
+        <div class="row">
+          <div class="col-12 col-lg-4 section-heading">
+            <h3>Journal article</h3>
+          </div>
+          <div class="col-12 col-lg-8">
+            <div class="pub-list-item">
+              <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
+              <span class="article-metadata li-cite-author">
+                <span><i>Owili, S.O.</i>; Otieno, D. J.; Chimoita, E. L.; Baijukya, F. P</span>
+              </span>
+              (2024).
+              <a href="http://dx.doi.org/10.1080/09670874.2024.2413592">
+                Factors influencing adoption of agro-ecological pest management options...
+              </a>.
+              <p>
+                <i>International Journal of Pest Management</i>. 
+                <a href="http://dx.doi.org/10.1080/09670874.2024.2413592">
+                  http://dx.doi.org/10.1080/09670874.2024.2413592
+                </a>
+              </p>
+              <p>
+                <a class="btn btn-outline-primary my-1 mr-1 btn-sm" 
+                   href="http://dx.doi.org/10.1080/09670874.2024.2413592" 
+                   target="_blank" 
+                   rel="noopener">PDF</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- 3rd Row: Journal Article -->
+        <div class="row">
+          <div class="col-12 col-lg-4 section-heading">
+            <h3>Journal article</h3>
+          </div>
+          <div class="col-12 col-lg-8">
+            <div class="pub-list-item">
+              <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
+              <span class="article-metadata li-cite-author">
+                <span> Fuchs, L.E.; Orero, L; Kipkorir, L.; Apondi, V; <i>Owili, S.O</i> </span>
+              </span>
+              (2024).
+              <a href="http://dx.doi.org/10.3389/fsufs.2024.1449615">
+                Scaling Models for Regreening Africa...
+              </a>.
+              <p>
+                <i>Frontiers in Sustainable Food Systems</i>.
+                <a href="http://dx.doi.org/10.3389/fsufs.2024.1449615">
+                  http://dx.doi.org/10.3389/fsufs.2024.1449615
+                </a>
+              </p>
+              <p>
+                <a class="btn btn-outline-primary my-1 mr-1 btn-sm" 
+                   href="http://dx.doi.org/10.3389/fsufs.2024.1449615" 
+                   target="_blank" 
+                   rel="noopener">PDF</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- 4th Row: Technical Report -->
+        <div class="row">
+          <div class="col-12 col-lg-4 section-heading">
+            <h3>Technical report</h3>
+          </div>
+          <div class="col-12 col-lg-8">
+            <div class="pub-list-item">
+              <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
+              <span class="article-metadata li-cite-author">
+                <span>Nyawira, S.; Bolo, P.; ...; <i>Owili, S.O.</i>; ...; Fuchs, L.E.</span>
+              </span>
+              (2023).
+              <a href="http://dx.doi.org/10.13140/RG.2.2.36127.53928">
+                Kenya Context Assessment Report: A desk-top review...
+              </a>.
+              <p>
+                <i>CGSpace</i>.
+                <a href="http://dx.doi.org/10.13140/RG.2.2.36127.53928">
+                  http://dx.doi.org/10.13140/RG.2.2.36127.53928
+                </a>
+              </p>
+              <p>
+                <a class="btn btn-outline-primary my-1 mr-1 btn-sm" 
+                   href="http://dx.doi.org/10.13140/RG.2.2.36127.53928" 
+                   target="_blank" 
+                   rel="noopener">PDF</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <hr>
-    <script src="cookie.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
-            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js"
-            integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"
-            integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"
-            integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"
-            integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
 
-    <!-- PushAlert Onsite Messaging -->
-    <script type="text/javascript">
-      (function(d, t) {
-        var g = d.createElement(t),
-        s = d.getElementsByTagName(t)[0];
-        g.src = "https://cdn.inwebr.com/inwebr_4e09c28f3d9ed7fa534acba6f1a3d366.js";
-        s.parentNode.insertBefore(g, s);
-      }(document, "script"));
-    </script>
-    <!-- End PushAlert Onsite Messaging -->
+    <!-- Recent News & Blogs -->
+    <section id="section-collection" class="home-section wg-collection">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="section-heading col-12 mb-3 text-center">
+            <h2 class="mb-0">Recent News and Blogs</h2>
+          </div>
+          <div class="col-12">
+            <!-- Example blog item -->
+            <div class="media stream-item view-compact" style="display:flex; margin-bottom:20px;">
+              <div class="media-body" style="flex:1;">
+                <div class="section-subheading article-title mb-0 mt-0">
+                  <a href="https://cgspace.cgiar.org/items/cb0b349a-1a7d-49f7-ab38-c38a9af8b4d3">
+                    Exploring Realist Contribution Analysis: A Dive into Data Use and Modelling
+                  </a>
+                </div>
+                <a href="https://cgspace.cgiar.org/items/cb0b349a-1a7d-49f7-ab38-c38a9af8b4d3" class="summary-link">
+                  <div class="article-style">
+                    How can communities, scientists, development practitioners...
+                  </div>
+                </a>
+                <div class="stream-meta article-metadata">
+                  <div class="article-metadata">
+                    <span class="author-highlighted">Lisa E. Fuchs, Ilaria Urbani &amp; Fanny Howland</span>
+                    <span class="article-date">Oct 22, 2024</span>
+                  </div>
+                </div>
+              </div>
+              <div style="margin-left: 10px;">
+                <a href="https://cgspace.cgiar.org/items/cb0b349a-1a7d-49f7-ab38-c38a9af8b4d3">
+                  <img src="/img/content.jpeg" height="84" width="150" alt="CollatzR image" loading="lazy">
+                </a>
+              </div>
+            </div>
+            <!-- Add more news items if needed... -->
 
-    <script>const code_highlighting = true;</script>
-    <script>
-      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
-      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
-      const content_type = {
-        'post': "Posts",
-        'project': "Projects",
-        'publication' : "Publications",
-        'talk' : "Talks"
-      };
-    </script>
-    <script id="search-hit-fuse-template" type="text/x-template">
-      <div class="search-hit" id="summary-{{key}}">
-        <div class="search-hit-content">
-          <div class="search-hit-name">
-            <a href="{{relpermalink}}">{{title}}</a>
-            <div class="article-metadata search-hit-type">{{type}}</div>
-            <p class="search-hit-description">{{snippet}}</p>
+            <!-- Contact Section -->
+            <section id="contact" class="home-section wg-contact">
+              <div class="container">
+                <div class="row contact-widget">
+                  <div class="col-12 col-lg-4 section-heading">
+                    <h2>Contact us:</h2>
+                  </div>
+                  <div class="col-12 col-lg-8">
+                    <ul class="fa-ul">
+                      <li>
+                        <i class="fa-li fas fa-envelope fa-2x" aria-hidden="true"></i>
+                        <span id="person-email">
+                          <a href="mailto:admin@ekonly.org">admin@ekonly.org</a>
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- Cookies Consent -->
+            <div class="wrapper">
+              <header>
+                <i class="bx bx-cookie"></i>
+                <h2>Cookies Consent</h2>
+              </header>
+              <div class="data">
+                <p>
+                  This website uses cookies to help you have a superior and more relevant browsing experience.
+                  <a href="/privacy/"> Read more...</a>
+                </p>
+              </div>
+              <div class="buttons">
+                <button class="button" id="acceptBtn">I'm happy</button>
+                <button class="button" id="declineBtn">Not now</button>
+              </div>
+            </div>
           </div>
         </div>
+        <hr>
       </div>
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js"
-            integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js"
-            integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous">
-    </script>
-    <script src="/js/academic.min.bcfae8267aba63cc55af53a503896bd9.js"></script>
-  </div>
-</section>
+    </section>
+  </main>
+  <!--End Main Content-->
 
-    </main>
-    <!--End Main Content Area-->
-    
-</div>
-    <!-- Include JavaScript resources -->
+  <!-- Footer -->
+  <footer id="landing-footer" class="clearfix">
+    <div class="row" style="margin: 0;">
+      <div class="col-12" style="text-align:center; padding:1rem 0;">
+        &copy; 2024 Ekonly. All rights reserved.
+      </div>
+      <ul class="col-12 social-icons" style="list-style: none; text-align:center; margin:0; padding:0;">
+        <li style="display: inline-block; margin:0 10px;">
+          <a target="_blank" title="Facebook" href="https://www.facebook.com/ekonly">
+            <i class="fa fa-facebook fa-1x"></i>
+          </a>
+        </li>
+        <li style="display: inline-block; margin:0 10px;">
+          <a target="_blank" title="Twitter" href="http://www.twitter.com/ekonly">
+            <i class="fa fa-twitter fa-1x"></i>
+          </a>
+        </li>
+        <li style="display: inline-block; margin:0 10px;">
+          <a target="_blank" title="LinkedIn" href="http://www.linkedin.com/company/ekonly">
+            <i class="fa fa-linkedin fa-1x"></i>
+          </a>
+        </li>
+        <!-- Add more icons if desired -->
+      </ul>
+    </div>
+  </footer>
+  <!--End of Footer-->
+</div><!-- End Wrapper -->
+
+<!-- JS -->
+<!-- Keep the modern jQuery. Remove older jQuery versions. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha256-/xUj+3OJ+4WDk/Uqq3SR4NsExF7C2z2Y3IJ5TQ5ZBYE="
+        crossorigin="anonymous">
+</script>
+
+<!-- Magnific Popup -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-<script src="js/jquery.1.8.3.min.js"></script>
+
+<!-- WOW + Additional Scripts (if you still need them) -->
 <script src="js/wow.min.js"></script>
-<script src="js/featherlight.min.js"></script>
-<script src="js/featherlight.gallery.min.js"></script>
-<script src="js/jquery.enllax.min.js"></script>
-<script src="js/jquery.scrollUp.min.js"></script>
-<script src="js/jquery.easing.min.js"></script>
-<script src="js/jquery.stickyNavbar.min.js"></script>
-<script src="js/jquery.waypoints.min.js"></script>
-<script src="js/images-loaded.min.js"></script>
-<script src="js/lightbox.min.js"></script>
 <script src="js/site.js"></script>
-    <!--Footer-->
-    <footer id="landing-footer" class="clearfix">
-        <div class="row clearfix"> 
-            &copy; 2024 Ekonly. All rights reserved.
-            <!--Social Icons in Footer-->
-            <ul class="col-2-3 social-icons">
-                <li>
-                    <a target="_blank" title="Facebook" href="https://www.facebook.com/ekonly">
-                        <i class="fa fa-facebook fa-1x"></i><span>Facebook</span>
-                    </a>
-                </li>
-                <li>
-                    <a target="_blank" title="Google+" href="http://google.com/+ekonly">
-                        <i class="fa fa-google-plus fa-1x"></i><span>Google+</span>
-                    </a>
-                </li>
-                <li>
-                    <a target="_blank" title="Twitter" href="http://www.twitter.com/ekonly">
-                        <i class="fa fa-twitter fa-1x"></i><span>Twitter</span>
-                    </a>
-                </li>
-                <li>
-                    <a target="_blank" title="Instagram" href="http://www.instagram.com/ekonly">
-                        <i class="fa fa-instagram fa-1x"></i><span>Instagram</span>
-                    </a>
-                </li>
-                <li>
-                    <a target="_blank" title="LinkedIn" href="http://www.linkedin.com/company/ekonly">
-                        <i class="fa fa-linkedin fa-1x"></i><span>LinkedIn</span>
-                    </a>
-                </li>
-            </ul>
-            <!--End of Social Icons in Footer-->
-        </div>
-    </footer>
-    <!--End of Footer-->
+<script src="cookie.js"></script>
+
+<!-- Fancybox, highlight, etc. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+
+<!-- Example inline script to initialize video popup -->
+<script>
+  $(document).ready(function() {
+    $('.popup-youtube').magnificPopup({
+      type: 'iframe'
+    });
+  });
+</script>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
