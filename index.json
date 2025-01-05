@@ -74,7 +74,7 @@
     "Urbani Ilaria",
     "Howland Fanny"
   ],
-  "categories": "note",
+  "categories": "learning note",
   "content": "",
   "date": 1695513600,
   "expirydate": -62135596800,
@@ -90,8 +90,32 @@
   "tags": null,
   "title": "Exploring Realist Contribution Analysis: A Dive into Data Use and Modelling",
   "type": "publication"
-}
-
+},
   
+{
+  "authors": [
+    "Owili Sulman Olieko",
+    "Otieno David Jakinda",
+    "Chimoita Evans Ligare",
+    "Baijukya Frederick Philbert"
+  ],
+  "categories": "poster",
+  "content": "",
+  "date": 1727827200,
+  "expirydate": -62135596800,
+  "kind": "page",
+  "lang": "en",
+  "lastmod": 1727827200,
+  "objectID": "000a0000b000c0008",
+  "permalink": "https://www.ekonly.org/publication/publication/poster/Agroecology_conference_poster-3.pdf",
+  "publishdate": "2024-10-02T00:00:00Z",
+  "relpermalink": "https://www.ekonly.org/publication/publication/poster/Agroecology_conference_poster-3.pdf",
+  "section": "publication",
+  "summary": "Since its detection in 2003 in Kenya, the invasive fruit fly Bactrocera dorsalis has become a significant threat to mango production and marketing. To combat its impact, many mango producers in Kenya and other Sub-Saharan African countries have relied on synthetic insecticides. However, these insecticides are costly for smallholder farmers and pose environmental impacts and health risks to orchard managers, workers, and consumers. This has prompted the need for more sustainable pest management practices, aligning with global efforts like the United Nations’ ”Decade on Ecosystem Restoration” (2021–2030), which emphasises ecological balance and sustainable agricultural practices. This study investigates the efficiency effects of adopting and intensifying 18 [1] agro-ecological pest management (APM) practices among smallholder mango farmers in Kenya.",
+  "tags": null,
+  "title": "Heterogeneous efficiency effects of agro-ecological fruit fly management transition and intensification among smallholder mango farmers: a latent class stochastic metafrontier approach",
+  "type": "publication"
+},
+
 ]
 
