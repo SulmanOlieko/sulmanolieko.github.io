@@ -1,6 +1,6 @@
 [
   {"authors":["Nyawira Sylvia","Bolo Peter","Ntinyari Winnie","Orero Levi","Onyango Kevin","Manjella Aurillia","Sakha Michael","Owili Sulman Olieko","Gumo Pius","Mbelwa Machio","Korir Hezekiah","Fuchs Lisa Elena"],
-  "categories":null,
+  "categories":"report",
   "content":"",
   "date":1666483200,
   "expirydate":-62135596800,
@@ -8,7 +8,7 @@
   "lang":"en",
   "lastmod":1666483200,
   "objectID":"000a0000b000c0001",
-  "permalink":"https://sulmanolieko.github.io/publication/report/report1/",
+  "permalink":"https://hdl.handle.net/10568/137468",
   "publishdate":"2023-12-31T03:00:00Z",
   "relpermalink":"/publication/report/report1/",
   "section":"publication",
@@ -16,23 +16,33 @@
   "tags":null,
   "title":"Kenya Context Assessment Report: A desk-top review of the context of agroecological principles of Kiambu and Makueni counties",
   "type":"publication"},
+
+  {
+  "authors": [
+    "Fuchs Lisa Elena",
+    "Orero Levi",
+    "Kipkorir Lang'at",
+    "Apondi Victoria",
+    "Owili Sulman Olieko"
+  ],
+  "categories": "journal article",
+  "content": "",
+  "date": 1731369600,
+  "expirydate": -62135596800,
+  "kind": "page",
+  "lang": "en",
+  "lastmod": 1731369600,
+  "objectID": "000a0000b000c0005",
+  "permalink": "https://doi.org/10.3389/fsufs.2024.1449615",
+  "publishdate": "2024-11-11T00:00:00Z",
+  "relpermalink": "/publication/journal-article/abcd/",
+  "section": "publication",
+  "summary": "Urgent action is needed to address climate change, land degradation, and biodiversity loss. The Regreening Africa project (2017–2023), recently recognized as a UN World Restoration Flagship, aimed to reverse land degradation over large areas of land for the triple benefit of people, biodiversity, and climate in eight African countries. Based on projections and early lessons learned, the project sought to identify sustainable scaling models to achieve its ambitious targets. The so-called “Asset-Based Community-driven Development (ABCD) in Regreening” project aimed to demonstrate the positive contribution of deliberate community engagement and co-design. The project introduced ABCD sessions to 30 purposively selected community groups in the Regreening intensification sites in western Kenya. ABCD combines a unique set of framings, methods, and processes that focus on people’s assets and agency, and emphasizes the importance of their attitudes toward self and others for sustainable behavior change. To evidence that ABCD intrinsically contributes to sustainable adoption and scaling of Regreening practices, the project developed the F-ACT+ tool to assess the alignment between ABCD and agroecological practices, and collected baseline and endline data from 300 project and 300 non-project participants. Results showed accelerated agroecological integration among ABCD project participants. ABCD participants showed significant improvements in nine agroecological principles and eight system components, particularly in the economic diversification, social values and diets, and knowledge cocreation principles, as well as in the pest and disease, household, and value chain system components. Summary ATT between ABCD and non-ABCD respondents was positive and significant in 10 principles and eight system components. The results support the synergistic contribution of ABCD to projects targeting sustainable behavior change at the individual and collective levels. Due to its focus on outcomes, this study provided limited insight into the specific mechanisms of ABCD, which are the subject of a separate publication on parallel theory-based contribution analysis work.",
+  "tags": null,
+  "title": "Scaling models for Regreening Africa: enhancing agroecological integration through smallholders’ assets and agency in Kenya",
+  "type": "publication"
+}
+
   
-  {"authors":"Owili Sulman Olieko",
-  "categories":null,
-  "content":"",
-  "date":1666483200,
-  "expirydate":-62135596800,
-  "kind":"page",
-  "lang":"en",
-  "lastmod":1666483200,
-  "objectID":"000a0000b000c0002",
-  "permalink":"https://sulmanolieko.github.io/publication/journal-article/zero-obs/",
-  "publishdate":"2023-08-10T03:00:00Z",
-  "relpermalink":"/publication/journal-article/zero-obs/",
-  "section":"publication",
-  "summary":"Productivity analysis plays a pivotal role in evaluating the performance of various economic entities,especially in the context of sustainable development. Since productivity measures are based on the notion of output-input ratios, non-positive values of inputs and outputs are not permissible. Overtime, various approaches to the imposition of the strict positivity assumption have emerged. However, there are no clear guidelines on the choice of different methods of handling this econometric problem under various circumstances. This paper provides an empirical review of the strict positivity assumption as it applies to productivity analysis, specifically focusing on its application to stochastic frontier framework. We examine the existing lines of approaches to handling zero values of inputs and outputs. Additionally, we empirically present a comprehensive case study using a real-world dataset together with Monte Carlo simulations to demonstrate the implications of various approaches in eco-efficiency stochastic frontier models. Finally, on the basis of our findings, we provide recommendations for future research and practical applications.",
-  "tags":null,
-  "title":"Imposing Strict Positivity in Productivity Analysis: A Critical Review with Application to Stochastic Frontier Ecoefficiency Methodology",
-  "type":"publication"}
 ]
 
