@@ -41,7 +41,7 @@
   "tags": null,
   "title": "Scaling models for Regreening Africa: enhancing agroecological integration through smallholders’ assets and agency in Kenya",
   "type": "publication"
-}
+},
 
 {
   "authors": [
@@ -66,8 +66,31 @@
   "tags": null,
   "title": "Factors influencing adoption of agro-ecological pest management options for mango fruit fly under information constraints: a two-part fractional regression approach",
   "type": "publication"
-}
+},
 
+{
+  "authors": [
+    "Fuchs Lisa Elena",
+    "Urbani Ilaria",
+    "Howland Fanny"
+  ],
+  "categories": "note",
+  "content": "",
+  "date": 1695513600,
+  "expirydate": -62135596800,
+  "kind": "page",
+  "lang": "en",
+  "lastmod": 1695513600,
+  "objectID": "000a0000b000c0007",
+  "permalink": "https://hdl.handle.net/10568/155371",
+  "publishdate": "2024-09-24T00:00:00Z",
+  "relpermalink": "https://hdl.handle.net/10568/155371",
+  "section": "publication",
+  "summary": "How can communities, scientists, development practitioners and policymakers better understand the impact of their interventions? On September 24, 2024, the Qualitative Studies Group explored this crucial question in a session led by Lisa Elena Fuchs and Sulman Olieko Owili, moderated by Fanny Howland. Lisa is a social and agroecological systems scientist, and expert in sustainable landscape transitions at the Alliance of Bioversity International and CIAT. Sulman is an agricultural economist consulting for IITA, CIFOR-ICRAF, and the Alliance. The session focused on how to leverage data from realist contribution analysis—a method that reveals not just the results of an intervention, but also how it works, which aspects are effective, to what extent, for whom and in what contexts. This approach sheds light on how individual actors within complex systems drive change, offering valuable insights for those working in agroecology, community development, and related fields.",
+  "tags": null,
+  "title": "Exploring Realist Contribution Analysis: A Dive into Data Use and Modelling",
+  "type": "publication"
+}
 
   
 ]
