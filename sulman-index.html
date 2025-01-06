@@ -310,7 +310,39 @@
   </div>
 </nav>
 <span class="js-widget-page d-none"></span>
-  
+  <style>
+    .breadcrumb {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.breadcrumb-item {
+    margin-right: 5px;
+}
+
+.breadcrumb-item a {
+    text-decoration: none;
+    color: blue;
+}
+
+.breadcrumb-item.active {
+    color: gray;
+    pointer-events: none;
+}
+
+.breadcrumb-item::after {
+    content: ">";
+    margin-left: 5px;
+    color: gray;
+}
+
+.breadcrumb-item:last-child::after {
+    content: ""; /* Removes the arrow from the last item */
+}
+
+  </style>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/index.html"><span>Ekonly</span></a></li>
