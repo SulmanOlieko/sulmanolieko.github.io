@@ -373,7 +373,24 @@
   </div>
 </nav>
 <span class="js-widget-page d-none"></span>
-  
+  <style>
+    .breadcrumb {
+    display: flex;
+    list-style: none;
+    padding: 10px;
+    margin: 10px;
+}
+
+.breadcrumb-item:last-child::after {
+    content: ""; /* Removes the arrow from the last item */
+}
+
+  </style>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active"><a href="/index.html"><span>&lt;/e&gt;ekonly</span></a></li>
+    </ol>
+</nav> 
 <section id="about" class="home-section wg-about">
 <div class="container">
 <div class="row">
