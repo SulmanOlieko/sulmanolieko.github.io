@@ -133,6 +133,25 @@
 
   </div>
 </nav>
+    <style>
+    .breadcrumb {
+    display: flex;
+    list-style: none;
+    padding: 10px;
+    margin: 10px;
+}
+
+.breadcrumb-item:last-child::after {
+    content: ""; /* Removes the arrow from the last item */
+}
+
+  </style>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item button" style="padding: 3px"><a href="/index.html"><span>&lt;/e&gt;ekonly</span></a></li>
+        <li class="breadcrumb-item active" aria-current="page"><span>404, page not found</span></li>
+    </ol>
+</nav>
   <div class="universal-wrapper pt-3">
   <h1>Page not found</h1>
   <form class="d-flex align-items-center mb-3">
