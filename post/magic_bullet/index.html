@@ -215,6 +215,7 @@
             <!-- Article Content -->
             <div class="article-content">
                 <section class="mb-5">
+                  <strong>Introduction</strong><br>
                     <p>
                       Observational data often tempts researchers to jump straight into a single statistical method—like propensity scores or difference-in-differences (DiD)—in hopes of gleaning causal insights. However, there is no easy path: <em>no statistical tool alone</em> can replace deep subject-matter knowledge, rigorous design, and scientific judgment.
                     </p>
@@ -225,6 +226,16 @@
                       Tools like E-values quantify how large an unmeasured confounder must be to explain away an effect, but they do not confirm the (non)existence of such confounders. Similarly, machine learning can refine predictions but cannot automatically solve fundamental design issues such as non-parallel trends or spillovers.
                     </p>
 
+
+                      <p>
+                        Causal inference has always been the holy grail of empirical research. We often want to answer questions like: “Does a new policy increase productivity?” or “Does a public health intervention reduce morbidity?” or “Do smaller class sizes cause better educational outcomes?” However, as Andrew Vickers recently reminded us, there is no simple statistical solution that can magically reveal the truth behind such causal questions when our data is observational. Instead, rigorous causal inference demands sound scientific and statistical judgment, deep subject-matter knowledge, and careful study design.
+                      </p>
+                      <p>
+                        In this blog post, we will unpack the main points raised by Vickers’s statement, delve into the limitations of common “shortcuts” such as propensity scores or E-values, and then walk through one popular quasi-experimental method—difference-in-differences (DiD)—to illustrate how even these approaches require nuanced understanding and cannot replace domain expertise. We will also provide detailed Stata code to show how an applied researcher might implement a DiD design in practice.
+                      </p>
+                  
+
+                  
                     <p>
                       <strong>The Essence of Difference-in-Differences</strong><br>
                       DiD compares changes over time between treated and untreated groups, aiming to isolate the treatment effect by attributing differential changes to the intervention. The all-important assumption is parallel trends: in the absence of treatment, both groups would have followed the same trajectory.
