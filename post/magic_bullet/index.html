@@ -197,126 +197,55 @@
           
                 <!-- Action Buttons -->
                 <div class="d-flex">
-                  <button class="btn btn-outline-primary btn-sm me-2">Code</button>
+                  <button class="btn btn-outline-primary btn-sm me-2">Data analysis</button>
                   <span class="middot-divider mx-2">•</span>
-                  <button class="btn btn-outline-primary btn-sm">Package</button>
+                  <button class="btn btn-outline-primary btn-sm">Opinion</button>
+                  <span class="middot-divider mx-2">•</span>
+                  <button class="btn btn-outline-primary btn-sm">Research</button>
                 </div>
               </div>
             </div>
           </header>
             <!-- Featured Image -->
             <figure class="figure mb-5">
-                <img src="/img/collatzR.png" class="figure-img img-fluid rounded" alt="Placeholder Visualization">
-                <figcaption class="figure-caption text-center mt-2">Fig 1: Representative figure (placeholder) for illustrating difference-in-differences concepts</figcaption>
+                <img src="/img/magic_bullet.web" class="figure-img img-fluid rounded" alt="AI image">
+                <figcaption class="figure-caption text-center mt-2">Fig 1: AI-geerated image on causal inferencing</figcaption>
             </figure>
 
             <!-- Article Content -->
             <div class="article-content">
                 <!-- First half of the 10-page argument -->
                 <section class="mb-5">
-                    <h3 class="h3 mb-3">A 10-Page Exploration of Observational Data and DiD (Pages 1–5)</h3>
                     <p>
                       <strong>Page 1: Introduction</strong><br>
-                      Observational data often tempts researchers to jump straight into a single statistical method—like propensity scores or difference-in-differences (DiD)—in hopes of gleaning causal insights. However, as Andrew Vickers emphasizes, there is no easy path: <em>no statistical tool alone</em> can replace deep subject-matter knowledge, rigorous design, and scientific judgment.
+                      Observational data often tempts researchers to jump straight into a single statistical method—like propensity scores or difference-in-differences (DiD)—in hopes of gleaning causal insights. However, there is no easy path: <em>no statistical tool alone</em> can replace deep subject-matter knowledge, rigorous design, and scientific judgment.
                     </p>
-                    <div class="row g-4 mb-4">
-                        <div class="col-md-6">
-                            <div class="card h-100 border-0 shadow-md">
-                                <div class="card-body">
-                                    <h3 class="h5 card-title">Page 2: The Complexity of Observational Data</h3>
-                                    <p class="card-text">
-                                      Observational studies face selection bias, confounding, and potential reverse causality. Purely statistical fixes like propensity score matching balance only <em>observed</em> covariates, leaving unmeasured confounders unaddressed. This is why domain expertise and careful hypothesis building are paramount.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div class="col-md-6">
-                            <div class="card h-100 border-0 shadow-md">
-                                <div class="card-body">
-                                    <h3 class="h5 card-title">Page 3: Why “Shortcuts” Aren’t Panaceas</h3>
-                                    <p class="card-text">
-                                      Tools like E-values quantify how large an unmeasured confounder must be to explain away an effect, but they do not confirm the (non)existence of such confounders. Similarly, machine learning can refine predictions but cannot automatically solve fundamental design issues such as non-parallel trends or spillovers.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <p class="card-text">
+                      Observational studies face selection bias, confounding, and potential reverse causality. Purely statistical fixes like propensity score matching balance only <em>observed</em> covariates, leaving unmeasured confounders unaddressed. This is why domain expertise and careful hypothesis building are paramount.
+                    </p>
+                    <p class="card-text">
+                      Tools like E-values quantify how large an unmeasured confounder must be to explain away an effect, but they do not confirm the (non)existence of such confounders. Similarly, machine learning can refine predictions but cannot automatically solve fundamental design issues such as non-parallel trends or spillovers.
+                    </p>
 
                     <p>
-                      <strong>Page 4: The Essence of Difference-in-Differences</strong><br>
+                      <strong>The Essence of Difference-in-Differences</strong><br>
                       DiD compares changes over time between treated and untreated groups, aiming to isolate the treatment effect by attributing differential changes to the intervention. The all-important assumption is parallel trends: in the absence of treatment, both groups would have followed the same trajectory.
                     </p>
 
                     <p>
-                      <strong>Page 5: The Hard Thinking Required</strong><br>
+                      <strong>The Hard Thinking <em>is</em> a Requirement</strong><br>
                       Even with DiD, we must confirm that no other major events coincide with the intervention, that participants do not anticipate the policy, and that spillover effects or interference are unlikely. DiD is powerful—but only under the right conditions, carefully verified with domain knowledge and pre-trend checks.
                     </p>
-                </section>
-
-                <!-- Second half of the 10-page argument and the Stata illustration -->
-                <section class="mb-5">
-                    <h3 class="h3 mb-3">Applying DiD in Stata (Pages 6–10)</h3>
-
-                    <p><strong>Page 6: Setting Up the Data</strong></p>
-                    <p>
-                      Suppose we have panel data across multiple years, where <code>region_id</code> identifies the unit (region or state), <code>year</code> specifies time, and <code>employment_rate</code> is our outcome. One region enacts a policy in 2020, while another does not. We create a <code>post</code> indicator for years ≥ 2020, and a <code>treated</code> indicator for the region receiving the policy.
-                    </p>
-
-                    <div class="col-lg-10">
-                      <div class="card h-100 border-0 shadow-md">
-                          <div class="card-body">
-                              <h4 class="h6 card-title">DiD Regression Code (Page 7)</h4>
-                              <pre><code class="language-r">
-* Load data
-use "mydata.dta", clear
-
-* Create post indicator (1 if year >= 2020)
-generate post = 0
-replace post = 1 if year >= 2020
-
-* Create treated indicator (1 if region is the treated region)
-generate treated = (region_id == 1)
-
-* Interaction term
-generate post_treated = post * treated
-
-* Basic DiD regression
-reg employment_rate post_treated treated post, r
-                              </code></pre>
-                          </div>
-                      </div>
-                    </div>
-                    
-                    <p><strong>Page 8: Fixed Effects and Clustering</strong></p>
-                    <p>
-                      In a panel context, fixed effects for each unit help control for time-invariant differences, while year fixed effects capture common shocks:
-                    </p>
-
-                    <div class="col-lg-10">
-                      <div class="card h-100 border-0 shadow-md">
-                          <div class="card-body">
-                              <h4 class="h6 card-title">Fixed Effects Model</h4>
-                              <pre><code class="language-r">
-xtset region_id year
-xtreg employment_rate post_treated, fe vce(cluster region_id)
-
-* Adding time fixed effects:
-xtreg employment_rate post_treated i.year, fe vce(cluster region_id)
-                              </code></pre>
-                          </div>
-                      </div>
-                    </div>
-
-                    <p>
-                      <strong>Page 9: Practical Nuances</strong><br>
+                  <p>
+                      <strong>Practical Nuances</strong><br>
                       Researchers must assess parallel trends using pre-treatment data, remain wary of external shocks, and check for possible spillovers. Statistical significance alone does not guarantee a meaningful or truly causal effect.
                     </p>
                     <p>
-                      <strong>Page 10: Conclusion</strong><br>
-                      No matter how sophisticated your analysis, observational causal inference hinges on strong assumptions and context-specific knowledge. As Andrew Vickers rightly emphasizes, there is no “magic bullet”—sound study design, domain expertise, and rigorous checks must accompany any method, including DiD.
+                      <strong>Concluding thoughts</strong><br>
+                      No matter how sophisticated your analysis, observational causal inference hinges on strong assumptions and context-specific knowledge. There is no “magic bullet”—sound study design, domain expertise, and rigorous checks must accompany any method, including DiD.
                     </p>
                 </section>
+
             </div>
         </article>
     </main>
