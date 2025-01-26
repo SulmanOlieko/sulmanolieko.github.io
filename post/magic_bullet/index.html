@@ -216,13 +216,12 @@
             <div class="article-content">
                 <section class="mb-5">
                     <p>
-                      <strong>Introduction</strong><br>
                       Observational data often tempts researchers to jump straight into a single statistical method—like propensity scores or difference-in-differences (DiD)—in hopes of gleaning causal insights. However, there is no easy path: <em>no statistical tool alone</em> can replace deep subject-matter knowledge, rigorous design, and scientific judgment.
                     </p>
-                    <p class="card-text">
+                    <p>
                       Observational studies face selection bias, confounding, and potential reverse causality. Purely statistical fixes like propensity score matching balance only <em>observed</em> covariates, leaving unmeasured confounders unaddressed. This is why domain expertise and careful hypothesis building are paramount.
                     </p>
-                    <p class="card-text">
+                    <p>
                       Tools like E-values quantify how large an unmeasured confounder must be to explain away an effect, but they do not confirm the (non)existence of such confounders. Similarly, machine learning can refine predictions but cannot automatically solve fundamental design issues such as non-parallel trends or spillovers.
                     </p>
 
@@ -236,7 +235,6 @@
                       Even with DiD, we must confirm that no other major events coincide with the intervention, that participants do not anticipate the policy, and that spillover effects or interference are unlikely. DiD is powerful—but only under the right conditions, carefully verified with domain knowledge and pre-trend checks.
                     </p>
                   <p>
-                      <strong>Practical Nuances</strong><br>
                       Researchers must assess parallel trends using pre-treatment data, remain wary of external shocks, and check for possible spillovers. Statistical significance alone does not guarantee a meaningful or truly causal effect.
                     </p>
                     <p>
