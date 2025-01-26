@@ -1,63 +1,169 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="auto">
+<html lang="en-us">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Exploring the Collatz Conjecture with CollatzR | Sulman Olieko</title>
-    <meta name="description" content="A deep dive into the Collatz conjecture and its implementation in R with the CollatzR package">
-    
-    <!-- Open Graph / Facebook -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.6.2">
+  <meta name="description" content="">
+  <link rel="alternate" hreflang="en-us" href="https://sulmanolieko.github.io/post/Collatz">
+  <meta name="theme-color" content="#795548"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+    <link href="css/pattern.min.css" rel="stylesheet">
+      <!--Google Webfonts-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="/css/academic.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=GTM-MDK8S5X2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           document.location = url;
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target);  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'GTM-MDK8S5X2', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+  <link rel="alternate" href="/post/index.xml" type="application/rss+xml" title="Sulman Olieko">
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+  <link rel="canonical" href="https://sulmanolieko.github.io/post/Collatz">
+
+<!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Sulman Olieko">
     <meta property="og:url" content="https://sulmanolieko.github.io/post/Collatz">
-    <meta property="og:title" content="Exploring the Collatz Conjecture with CollatzR">
+    <meta property="og:title" content="Collatz | Sulman Olieko">
     <meta property="og:description" content="A deep dive into the Collatz conjecture and its implementation in R with the CollatzR package">
-    <meta property="og:image" content="https://sulmanolieko.github.io/img/collatz-social.png">
+    <meta property="og:image" content="https://sulmanolieko.github.io/img/icon-192.png">
+    <meta property="og:locale" content="en-us">
+    <meta property="og:updated_time" content="2022-10-23T00:00:00&#43;00:00">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:card" content="summary">
     <meta property="twitter:url" content="https://sulmanolieko.github.io/post/Collatz">
     <meta property="twitter:title" content="Exploring the Collatz Conjecture with CollatzR">
     <meta property="twitter:description" content="A deep dive into the Collatz conjecture and its implementation in R with the CollatzR package">
-    <meta property="twitter:image" content="https://sulmanolieko.github.io/img/collatz-social.png">
+    <meta property="twitter:image" content="https://sulmanolieko.github.io/img/icon-192.png">
+<!-- MathJax -->
+ <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+ <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Prism Syntax Highlighting -->
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- Custom CSS -->
-    <link href="/css/main.css" rel="stylesheet">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- MathJax -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+ <title>CollatzR | Sulman Olieko</title>
 
-    <!-- Prism Syntax Highlighting -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-light">
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="/">
-                <img src="/img/logo-light.svg" alt="Logo" height="40">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/publications">Publications</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/blog">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
 
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="on" autocorrect="on" spellcheck="true" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+  
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+       <a class="navbar-brand" href="/index">
+    <img src="/img/ekonly-logo.svg" alt="Ekonly Logo" style="height: 40px;">
+    </a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+  
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      <ul class="navbar-nav d-md-inline-flex">
+        <li class="nav-item">
+          <a class="nav-link " href="/index.html" data-target="/index.html"><span>Homepage</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/publication/index.html" data-target="/publication/index.html"><span>Publications</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/post/index.html" data-target="/post/index.html"><span>Blogs</span></a>
+        </li>
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      <li class="nav-item">
+          <a class="nav-link" href="mailto:oliekosulman@gmail.com"><i class="fas fa-envelope fa-1x" aria-hidden="true"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+  
+      <li class="nav-item">
+        <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+      </li>
+      
+    </ul>
+
+  </div>
+</nav>
+
+    
     <!-- Main Content -->
     <main class="container mt-5 pt-5">
         <article class="bg-white rounded-3 shadow-lg p-4 p-md-5">
@@ -153,37 +259,94 @@ devtools::install_github("SulmanOlieko/collatzR")</code></pre>
             </div>
         </article>
     </main>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white mt-5">
-        <div class="container py-5">
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <h5>About</h5>
-                    <p class="text-muted">Exploring mathematics and computational science through open source tools and research.</p>
-                </div>
-                <div class="col-md-4">
-                    <h5>Connect</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="https://github.com/SulmanOlieko" class="text-white">GitHub</a></li>
-                        <li><a href="https://twitter.com/SulmanOlieko" class="text-white">Twitter</a></li>
-                        <li><a href="mailto:oliekosulman@gmail.com" class="text-white">Email</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5>Resources</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="/privacy" class="text-white">Privacy Policy</a></li>
-                        <li><a href="/terms" class="text-white">Terms of Use</a></li>
-                    </ul>
-                </div>
-            </div>
-            <hr class="my-4">
-            <div class="text-center text-muted">
-                <small>© 2023 Sulman Olieko. Content licensed under CC BY-NC-SA 4.0.</small>
-            </div>
+    <script>const code_highlighting = true;</script>
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
         </div>
-    </footer>
+      </div>
+      </div>
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    <script src="/js/academic.min.bcfae8267aba63cc55af53a503896bd9.js"></script>
+    <!-- Footer -->
+      <div class="container">
+    <footer class="site-footer">
+    <p class="powered-by">
+      <a href="https://www.ekonly.org/privacy/">Privacy Policy</a>
+       &middot; 
+      <a href="https://www.ekonly.org/terms/">Terms</a>
+  </p>
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+        <a href="https://www.linkedin.com/company/ekonly/" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+      <li>
+        <a href="https://twitter.com/ekonly" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    <li>
+        <a href="https://web.whatsapp.com/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+      <li>
+        <a href="mailto:admin@ekonly.org" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      <li>
+        <a href="https://service.weibo.com/" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+  </ul>
+      </div>
+<p class="powered-by copyright-license-text">
+    This work is licensed under 
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">
+      CC BY NC ND 4.0
+    </a>
+  </p>
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+    </a>
+  </p>
+</footer>
+
+  </div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -191,3 +354,13 @@ devtools::install_github("SulmanOlieko/collatzR")</code></pre>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-r.min.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
