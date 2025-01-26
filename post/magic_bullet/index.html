@@ -271,13 +271,25 @@
                     <p>
                       One commonly used approach to causal inference in observational settings is difference-in-differences (DiD). At its core, DiD compares changes in outcomes over time between a “treatment” group that experienced some policy or intervention and a “control” group that did not.
                     </p>
-                  
-Key assumptions:
-
-Parallel Trends: In the absence of the treatment, the average outcome in both groups would have followed a parallel path over time. If this assumption holds, any post-treatment divergence can more plausibly be attributed to the effect of the intervention.
-No Anticipation Effect: The treatment group should not change behavior before the actual intervention, expecting the treatment.
-Stable Treatment Assignment: No interference between units (the treatment given to one group should not directly affect the outcomes for the control group).
-When done well, DiD can help mitigate certain confounding biases that plague simpler before–after or treatment–control comparisons. However, as with any method, DiD relies on strong assumptions that cannot always be tested directly. Even the best DiD design can fail if, for example, the parallel trends assumption is violated (e.g., if the treatment group was already on a different trajectory).
+                  <p>
+                    Key assumptions for DiD results to be believable:
+                  </p>
+                  <p>
+                    <ul>
+                      <li>
+                        Parallel Trends: In the absence of the treatment, the average outcome in both groups would have followed a parallel path over time. If this assumption holds, any post-treatment divergence can more plausibly be attributed to the effect of the intervention.
+                      </li>
+                      <li>
+                        No Anticipation Effect: The treatment group should not change behavior before the actual intervention, expecting the treatment.
+                      </li>
+                    <li>
+                      Stable Treatment Assignment (SUTVA): No interference between units (the treatment given to one group should not directly affect the outcomes for the control group).
+                    </li>
+                    </ul>
+                  </p>
+                    <p>
+                      When designed well, DiD can help mitigate certain confounding biases that plague simpler before–after or treatment–control comparisons. However, as with any method, DiD relies on strong assumptions that cannot always be tested directly. Even the best DiD design can fail if, for example, the parallel trends assumption is violated (e.g., if the treatment group was already on a different trajectory).
+                    </p>
                     <p>
                       <strong>The Essence of Difference-in-Differences</strong><br>
                       DiD compares changes over time between treated and untreated groups, aiming to isolate the treatment effect by attributing differential changes to the intervention. The all-important assumption is parallel trends: in the absence of treatment, both groups would have followed the same trajectory.
