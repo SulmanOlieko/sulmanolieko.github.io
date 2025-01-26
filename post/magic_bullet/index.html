@@ -252,13 +252,15 @@
                   </p>
                   <p>
                     <ul>
+                      <li>
                       Propensity Scores: While matching or weighting on propensity scores can balance observed variables across treatment groups, it cannot address unobserved confounders. If critical variables remain unmeasured, biases remain.
-                    </ul>
-                  <ul>
+                    </li>
+                  <li>
                     E-values: The E-value is a sensitivity analysis tool that indicates how strong an unmeasured confounder would have to be (relative to measured variables) to eliminate an observed effect. It does not provide an “answer” to whether an unmeasured confounder actually exists or how likely that confounding is.
-                  </ul>
-                  <ul>
+                  </li>
+                  <li>
                     Machine Learning & Automated Algorithms: These can help with model selection or generating more flexible functional forms, but they still do not fix inherent observational design problems, nor do they automatically parse out confounders.
+                  </li>
                   </ul>
                   </p>
 
@@ -304,9 +306,6 @@
                     </p>
                     <p>
                       <strong>Concluding thoughts</strong><br>
-                      No matter how sophisticated your analysis, observational causal inference hinges on strong assumptions and context-specific knowledge. There is no “magic bullet”—sound study design, domain expertise, and rigorous checks must accompany any method, including DiD.
-                    </p>
-                  <p>
                       Observational data often tempts researchers to jump straight into a single statistical method—like propensity scores or difference-in-differences (DiD)—in hopes of gleaning causal insights. However, there is no easy path: <em>no statistical tool alone</em> can replace deep subject-matter knowledge, rigorous design, and scientific judgment.
                     </p>
                     <p>
@@ -315,6 +314,10 @@
                     <p>
                       Tools like E-values quantify how large an unmeasured confounder must be to explain away an effect, but they do not confirm the (non)existence of such confounders. Similarly, machine learning can refine predictions but cannot automatically solve fundamental design issues such as non-parallel trends or spillovers.
                     </p>
+                  <p>
+                  No matter how sophisticated your analysis, observational causal inference hinges on strong assumptions and context-specific knowledge. There is no “magic bullet”—sound study design, domain expertise, and rigorous checks must accompany any method, including DiD.
+                    </p>
+                  
                 </section>
 
             </div>
