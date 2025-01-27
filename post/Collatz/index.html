@@ -161,10 +161,69 @@
   </div>
 </nav>
 
-
   <div style="display: flex; flex-wrap: wrap;">
   <!-- Sidebar -->
-  <nav id="sidebar" style="flex: 0 0 250px; padding: 20px; background-color: #f8f9fa; border-right: 1px solid #ddd; min-height: 100vh;">
+    <style>
+      /* Sidebar base styles */
+      #sidebar {
+        transition: transform 0.3s ease;
+      }
+      
+      /* Sidebar hidden for small screens */
+      #sidebar.hide {
+        transform: translateX(-250px);
+      }
+      
+      /* Sidebar toggle button visible only on small screens */
+      #sidebar-toggle {
+        display: none;
+      }
+      
+      /* Responsive layout for smaller screens */
+      @media (max-width: 768px) {
+        #sidebar {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 250px;
+          z-index: 10;
+          min-height: 100vh;
+          transform: translateX(-250px);
+        }
+      
+        #sidebar.show {
+          transform: translateX(0);
+        }
+      
+        #content {
+          padding-top: 60px; /* Leave space for the toggle button */
+        }
+      
+        #sidebar-toggle {
+          display: block;
+        }
+      }
+
+    </style>
+    <script>
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+  
+    // Add event listener to toggle button
+    sidebarToggle.addEventListener('click', function () {
+      if (sidebar.classList.contains('hide')) {
+        sidebar.classList.remove('hide');
+        sidebar.classList.add('show');
+        sidebarToggle.textContent = 'Close';
+      } else {
+        sidebar.classList.remove('show');
+        sidebar.classList.add('hide');
+        sidebarToggle.textContent = 'Menu';
+      }
+    });
+  </script>
+
+  <nav id="sidebar" style="flex: 0 0 250px; padding: 20px; border-right: 1px solid #ddd; min-height: 100vh;">
     <h5 style="margin-bottom: 20px; font-weight: bold;">Quick Navigation</h5>
     <ul style="list-style: none; padding: 0; line-height: 1.8;">
       <li><a href="#section-1">The Collatz Conjecture</a></li>
