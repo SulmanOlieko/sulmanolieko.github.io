@@ -645,7 +645,30 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
         <button class="button" id="declineBtn">Not now</button>
       </div>
     </div>
-    
+    <style>
+        .floating{
+      	position:fixed;
+      	width:60px;
+      	height:60px;
+      	bottom:40px;
+      	right:40px;
+      	background-color:#25d366;
+      	color:#FFF;
+      	border-radius:50px;
+      	text-align:center;
+             font-size:30px;
+      	box-shadow: 2px 2px 3px #999;
+        z-index:100;
+      }
+      
+      .float-button{
+      	margin-top:16px;
+      }
+    </style>
+    <a href="https://api.whatsapp.com/send?phone=+254710209720&text=Hello%21%20." class="floating" target="_blank">
+    <i class="fa fa-whatsapp float-button"></i>
+    </a>
+      
       <script src="cookie.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
