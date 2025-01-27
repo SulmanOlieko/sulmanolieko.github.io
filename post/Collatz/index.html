@@ -81,7 +81,9 @@
 
 <!-- Prism Syntax Highlighting -->
  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
-    
+
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/> 
+  
  <title>CollatzR | Sulman Olieko</title>
 
 </head>
@@ -161,178 +163,313 @@
   </div>
 </nav>
     
-    <!-- Main Content -->
-<main class="container mt-5 pt-5">
-<article class="rounded-3 p-4 p-md-5 shadow-sm h-100 card media-body card-body">
-  <!-- Breadcrumb -->
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/index.html">Homepage</a></li>
-      <li class="breadcrumb-item"><a href="/post/">Blogs</a></li>
-      <li class="breadcrumb-item active" aria-current="page">CollatzR</li>
-    </ol>
-  </nav>
-
-  <header class="mb-5">
-    <h2 class="h3 mb-3">Exploring the Collatz Conjecture with CollatzR</h2>
-
-    <div class="d-flex align-items-center text-muted">
-      <!-- Author Image -->
-      <img src="/authors/admin/home_avatar.png" alt="Sulman Olieko" class="rounded-circle me-2" width="40" height="40">
-
-      <!-- Author Details and Metadata -->
-      <div class="d-flex flex-column ms-2">
-        <!-- Author Name and Date -->
-        <div class="d-flex align-items-center mb-2">
-          <span class="me-2">Sulman Olieko</span>
-          <span class="middot-divider mx-2">•</span>
-          <time datetime="2023-10-06" class="text-small">October 6, 2023</time>
-        </div>
-
-        <!-- Action Buttons -->
-        <div class="d-flex">
-          <button class="btn btn-outline-primary btn-sm me-2">Code</button>
-          <span class="middot-divider mx-2">•</span>
-          <button class="btn btn-outline-primary btn-sm">Package</button>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- Featured Image -->
-  <figure class="figure mb-5">
-    <img src="/img/collatzR.png" class="figure-img img-fluid rounded" alt="Collatz Sequence Visualization">
-    <figcaption class="figure-caption text-center mt-2">Fig 1: Visualization of Collatz sequences for various starting numbers</figcaption>
-  </figure>
-
-  <!-- Article Content -->
-  <div class="article-content">
-    <section class="mb-5">
-      <h3 class="h3 mb-3">The Collatz Conjecture</h3>
-      <p>
-        The Collatz conjecture is one of mathematics' most enduring and fascinating problems. First proposed by Lothar Collatz in 1937, the conjecture explores how a simple iterative process applied to any positive integer \( n \) always converges to the number 1. Despite its apparent simplicity, the conjecture remains unproven for all integers, making it a captivating topic for mathematicians and computer scientists.
-      </p>
-      <p>Here is how the process works:</p>
-      <div class="row g-4 mb-4">
-        <div class="col-md-6">
-          <div class="card h-100 border-0 shadow-md">
-            <div class="card-body">
-              <h3 class="h5 card-title">Even Numbers</h3>
-              <p class="card-text">If \( n \) is even:
-                \[ f(n) = \frac{n}{2} \]
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="card h-100 border-0 shadow-md">
-            <div class="card-body">
-              <h3 class="h5 card-title">Odd Numbers</h3>
-              <p class="card-text">If \( n \) is odd:
-                \[ f(n) = 3n + 1 \]
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <p>
-        The conjecture asserts that repeatedly applying these rules will eventually lead to 1, regardless of the starting value of \( n \). For example:
-      </p>
-      <p>
-      Starting with \( n = 6 \): \( 6 \to 3 \to 10 \to 5 \to 16 \to 8 \to 4 \to 2 \to 1 \). Starting with \( n = 27 \): the sequence becomes significantly longer but still ends at 1.
-      </p>
-      <p>
-        While mathematicians have verified the conjecture for an enormous range of values, a general proof remains elusive. Its unpredictable behavior has implications for number theory, computation, and chaos theory.
-      </p>
-    </section>
-
-    <section class="mb-5">
-      <h3 class="h3 mb-3">Getting Started with CollatzR</h3>
-      <p>
-        The CollatzR package is a lightweight tool designed for anyone interested in exploring the properties of Collatz sequences. Whether you are a student, researcher, or just a curious enthusiast, the package provides easy-to-use functions for generating and visualizing sequences.
-      </p>
-            <h4 class="h6 card-title">Installation</h4>
-            <pre><code class="language-r"># Install from GitHub using devtools
-if (!require("devtools")) install.packages("devtools")
-devtools::install_github("SulmanOlieko/collatzR")</code></pre>
-      <h3 class="h4 mt-4 mb-3">Basic Usage</h3>
-      <div class="row g-4">
-        <div class="col-lg-6">
-          <div class="card h-100 border-0 shadow-md">
-            <div class="card-body">
-              <h4 class="h6 card-title">Generate Sequence</h4>
-              <pre><code class="language-r">collatz_sequence(27)</code></pre>
-              <p>
-                This function takes an integer input and returns the Collatz sequence. For example, calling <code>collatz_sequence(27)</code> will generate a sequence that converges to 1 after numerous iterations.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="card h-100 border-0 shadow-md">
-            <div class="card-body">
-              <h4 class="h6 card-title">Visualize Sequence</h4>
-              <pre><code class="language-r">visualize_collatz(27)</code></pre>
-              <p>
-                This function creates a visualization of the sequence. The x-axis represents the iteration steps, while the y-axis shows the values of the sequence. Patterns in the sequence can often provide insights into its structure.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="mb-5">
-      <h3 class="h3 mb-3">Applications and Insights</h3>
-      <p>
-        The Collatz conjecture isn’t just a recreational problem; it has broader implications:
-      </p>
-      <ul>
-        <li><strong>Algorithmic Efficiency:</strong> Understanding the behavior of the sequence can help improve iterative algorithms and understand computational limits.</li>
-        <li><strong>Mathematical Patterns:</strong> The conjecture highlights unexpected patterns and regularities in seemingly random systems.</li>
-        <li><strong>Educational Tool:</strong> The conjecture is often used to introduce students to concepts in recursion, iteration, and dynamic systems.</li>
-      </ul>
-    </section>
-
-    <section class="mb-5">
-      <h3 class="h3 mb-3">Conclusion</h3>
-      <p>
-        The Collatz conjecture exemplifies how simple rules can lead to complex, unpredictable behavior. Tools like CollatzR make it easier to experiment with and analyze this fascinating problem. While the conjecture remains unsolved, exploring it can deepen our understanding of mathematics and computational processes.
-      </p>
-    </section>
+    <!-- Toggle Button (only visible on small screens) -->
+<nav class="navbar navbar-light bg-light d-md-none">
+  <div class="container-fluid">
+    <button
+      class="btn btn-primary"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#sidebarMenu"
+      aria-controls="sidebarMenu"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      Toggle Sidebar
+    </button>
   </div>
-</article>
+</nav>
 
-        <!-- Archive -->
-            <hr>
+<!-- Main Container for Sidebar + Content -->
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar (collapsible on small screens) -->
+    <nav
+      id="sidebarMenu"
+      class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
+    >
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+          <!-- Match these links to the sections in your article -->
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#the-collatz-conjecture">
+              The Collatz Conjecture
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#getting-started-with-collatzr">
+              Getting Started
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#applications-and-insights">
+              Applications &amp; Insights
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#conclusion">
+              Conclusion
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-5 pt-5">
+      <article class="rounded-3 p-4 p-md-5 shadow-sm h-100 card media-body card-body">
+
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="/index.html">Homepage</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="/post/">Blogs</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">CollatzR</li>
+          </ol>
+        </nav>
+
+        <header class="mb-5">
+          <h2 class="h3 mb-3">Exploring the Collatz Conjecture with CollatzR</h2>
+
+          <div class="d-flex align-items-center text-muted">
+            <!-- Author Image -->
+            <img
+              src="/authors/admin/home_avatar.png"
+              alt="Sulman Olieko"
+              class="rounded-circle me-2"
+              width="40"
+              height="40"
+            />
+
+            <!-- Author Details and Metadata -->
+            <div class="d-flex flex-column ms-2">
+              <!-- Author Name and Date -->
+              <div class="d-flex align-items-center mb-2">
+                <span class="me-2">Sulman Olieko</span>
+                <span class="middot-divider mx-2">•</span>
+                <time datetime="2023-10-06" class="text-small">October 6, 2023</time>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="d-flex">
+                <button class="btn btn-outline-primary btn-sm me-2">Code</button>
+                <span class="middot-divider mx-2">•</span>
+                <button class="btn btn-outline-primary btn-sm">Package</button>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Featured Image -->
+        <figure class="figure mb-5">
+          <img
+            src="/img/collatzR.png"
+            class="figure-img img-fluid rounded"
+            alt="Collatz Sequence Visualization"
+          />
+          <figcaption class="figure-caption text-center mt-2">
+            Fig 1: Visualization of Collatz sequences for various starting numbers
+          </figcaption>
+        </figure>
+
+        <!-- Article Content -->
+        <div class="article-content">
+
+          <!-- Section 1 -->
+          <section class="mb-5" id="the-collatz-conjecture">
+            <h3 class="h3 mb-3">The Collatz Conjecture</h3>
+            <p>
+              The Collatz conjecture is one of mathematics' most enduring and fascinating
+              problems. First proposed by Lothar Collatz in 1937, the conjecture explores
+              how a simple iterative process applied to any positive integer \( n \) always
+              converges to the number 1. Despite its apparent simplicity, the conjecture
+              remains unproven for all integers, making it a captivating topic for
+              mathematicians and computer scientists.
+            </p>
+            <p>Here is how the process works:</p>
+
             <div class="row g-4 mb-4">
               <div class="col-md-6">
                 <div class="card h-100 border-0 shadow-md">
-                  <div class="card-body d-flex align-items-center">
-                    <!-- Text Content -->
-                    <div class="flex-grow-1">
-                      <h5 class="h5 card-title">Next Post</h5>
-                      <p class="card-text">
-                        <a href="/post/magic_bullet/" style="font-weight: bold;">
-                          Why There is No “Magic Bullet” for Causal Inference using Observational Data
-                        </a>
-                      </p>
-                    </div>
-                    <!-- Linked Image -->
-                    <div class="ms-4">
-                      <a href="/post/magic_bullet/">
-                        <img src="/img/magic_bullet.webp" alt="AI image" style="width: 200px; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                      </a>
-                    </div>
+                  <div class="card-body">
+                    <h3 class="h5 card-title">Even Numbers</h3>
+                    <p class="card-text">
+                      If \( n \) is even:
+                      \[
+                        f(n) = \frac{n}{2}
+                      \]
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="card h-100 border-0 shadow-md">
+                  <div class="card-body">
+                    <h3 class="h5 card-title">Odd Numbers</h3>
+                    <p class="card-text">
+                      If \( n \) is odd:
+                      \[
+                        f(n) = 3n + 1
+                      \]
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
-            <hr>
 
+            <p>
+              The conjecture asserts that repeatedly applying these rules will eventually
+              lead to 1, regardless of the starting value of \( n \). For example:
+            </p>
+            <p>
+              Starting with \( n = 6 \): \( 6 \to 3 \to 10 \to 5 \to 16 \to 8 \to 4 \to 2 \to 1 \).
+              Starting with \( n = 27 \): the sequence becomes significantly longer but still
+              ends at 1.
+            </p>
+            <p>
+              While mathematicians have verified the conjecture for an enormous range of values,
+              a general proof remains elusive. Its unpredictable behavior has implications for
+              number theory, computation, and chaos theory.
+            </p>
+          </section>
+
+          <!-- Section 2 -->
+          <section class="mb-5" id="getting-started-with-collatzr">
+            <h3 class="h3 mb-3">Getting Started with CollatzR</h3>
+            <p>
+              The CollatzR package is a lightweight tool designed for anyone interested in
+              exploring the properties of Collatz sequences. Whether you are a student,
+              researcher, or just a curious enthusiast, the package provides easy-to-use
+              functions for generating and visualizing sequences.
+            </p>
+            <h4 class="h6 card-title">Installation</h4>
+            <pre><code class="language-r">
+# Install from GitHub using devtools
+if (!require("devtools")) install.packages("devtools")
+devtools::install_github("SulmanOlieko/collatzR")
+</code></pre>
+
+            <h3 class="h4 mt-4 mb-3">Basic Usage</h3>
+            <div class="row g-4">
+              <div class="col-lg-6">
+                <div class="card h-100 border-0 shadow-md">
+                  <div class="card-body">
+                    <h4 class="h6 card-title">Generate Sequence</h4>
+                    <pre><code class="language-r">collatz_sequence(27)</code></pre>
+                    <p>
+                      This function takes an integer input and returns the Collatz sequence.
+                      For example, calling <code>collatz_sequence(27)</code> will generate a
+                      sequence that converges to 1 after numerous iterations.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6">
+                <div class="card h-100 border-0 shadow-md">
+                  <div class="card-body">
+                    <h4 class="h6 card-title">Visualize Sequence</h4>
+                    <pre><code class="language-r">visualize_collatz(27)</code></pre>
+                    <p>
+                      This function creates a visualization of the sequence. The x-axis
+                      represents the iteration steps, while the y-axis shows the values
+                      of the sequence. Patterns in the sequence can often provide
+                      insights into its structure.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 3 -->
+          <section class="mb-5" id="applications-and-insights">
+            <h3 class="h3 mb-3">Applications and Insights</h3>
+            <p>
+              The Collatz conjecture isn’t just a recreational problem; it has broader implications:
+            </p>
+            <ul>
+              <li>
+                <strong>Algorithmic Efficiency:</strong> Understanding the behavior of
+                the sequence can help improve iterative algorithms and understand
+                computational limits.
+              </li>
+              <li>
+                <strong>Mathematical Patterns:</strong> The conjecture highlights
+                unexpected patterns and regularities in seemingly random systems.
+              </li>
+              <li>
+                <strong>Educational Tool:</strong> The conjecture is often used
+                to introduce students to concepts in recursion, iteration,
+                and dynamic systems.
+              </li>
+            </ul>
+          </section>
+
+          <!-- Section 4 -->
+          <section class="mb-5" id="conclusion">
+            <h3 class="h3 mb-3">Conclusion</h3>
+            <p>
+              The Collatz conjecture exemplifies how simple rules can lead to complex,
+              unpredictable behavior. Tools like CollatzR make it easier to experiment
+              with and analyze this fascinating problem. While the conjecture remains
+              unsolved, exploring it can deepen our understanding of mathematics and
+              computational processes.
+            </p>
+          </section>
+        </div>
+      </article>
+
+      <!-- Archive / Next Post -->
+      <hr />
+      <div class="row g-4 mb-4">
+        <div class="col-md-6">
+          <div class="card h-100 border-0 shadow-md">
+            <div class="card-body d-flex align-items-center">
+              <!-- Text Content -->
+              <div class="flex-grow-1">
+                <h5 class="h5 card-title">Next Post</h5>
+                <p class="card-text">
+                  <a
+                    href="/post/magic_bullet/"
+                    style="font-weight: bold;"
+                  >
+                    Why There is No “Magic Bullet” for Causal Inference using
+                    Observational Data
+                  </a>
+                </p>
+              </div>
+              <!-- Linked Image -->
+              <div class="ms-4">
+                <a href="/post/magic_bullet/">
+                  <img
+                    src="/img/magic_bullet.webp"
+                    alt="AI image"
+                    style="
+                      width: 200px;
+                      height: auto;
+                      border-radius: 8px;
+                      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    "
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
     </main>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
