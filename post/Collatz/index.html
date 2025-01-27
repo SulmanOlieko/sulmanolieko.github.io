@@ -205,23 +205,7 @@
       }
 
     </style>
-    <script>
-    const sidebar = document.getElementById('sidebar');
-    const sidebarToggle = document.getElementById('sidebar-toggle');
-  
-    // Add event listener to toggle button
-    sidebarToggle.addEventListener('click', function () {
-      if (sidebar.classList.contains('hide')) {
-        sidebar.classList.remove('hide');
-        sidebar.classList.add('show');
-        sidebarToggle.textContent = 'Close';
-      } else {
-        sidebar.classList.remove('show');
-        sidebar.classList.add('hide');
-        sidebarToggle.textContent = 'Menu';
-      }
-    });
-  </script>
+    
 
   <nav id="sidebar" style="flex: 0 0 250px; padding: 20px; border-right: 1px solid #ddd; min-height: 100vh;">
     <h5 style="margin-bottom: 20px; font-weight: bold;">Quick Navigation</h5>
@@ -414,6 +398,24 @@ devtools::install_github("SulmanOlieko/collatzR")</code></pre>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
 
+      <script>
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+  
+    // Add event listener to toggle button
+    sidebarToggle.addEventListener('click', function () {
+      if (sidebar.classList.contains('hide')) {
+        sidebar.classList.remove('hide');
+        sidebar.classList.add('show');
+        sidebarToggle.textContent = 'Close';
+      } else {
+        sidebar.classList.remove('show');
+        sidebar.classList.add('hide');
+        sidebarToggle.textContent = 'Menu';
+      }
+    });
+  </script>
+  
     <script>const code_highlighting = true;</script>
     <script>
       const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
