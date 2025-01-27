@@ -160,71 +160,6 @@
 
   </div>
 </nav>
-
-
-  <!-- Sidebar -->
-    <style>
-      /* Base Sidebar Styles */
-#sidebar {
-  width: 250px;
-}
-
-/* When the sidebar is visible */
-#sidebar.show {
-  transform: translateX(0);
-}
-
-/* Content adjusts when the sidebar is open */
-#content.open {
-  margin-left: 250px;
-}
-
-/* Responsive Design for Smaller Screens */
-@media (max-width: 768px) {
-  #sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    z-index: 10;
-    transform: translateX(-250px);
-    transition: transform 0.3s ease-in-out;
-  }
-
-  #content {
-    margin-left: 0;
-  }
-
-  #sidebar.show {
-    transform: translateX(0);
-  }
-
-  #content.open {
-    margin-left: 0;
-  }
-
-  #open-sidebar {
-    display: block;
-  }
-
-  #close-sidebar {
-    display: block;
-  }
-}
-
-    </style>
-    
-  <div style="display: flex; flex-wrap: wrap;">
-  <nav id="sidebar" style="flex: 0 0 250px; background-color: #f8f9fa; border-right: 1px solid #ddd; min-height: 100vh; padding: 20px; position: fixed; top: 0; left: 0; transform: translateX(-250px); transition: transform 0.3s ease; z-index: 1000;">
-    <h5 style="margin-bottom: 20px; font-weight: bold;">Quick Navigation</h5>
-    <ul style="list-style: none; padding: 0; line-height: 1.8;">
-      <li><a href="#section-1" style="text-decoration: none; color: #007bff;">The Collatz Conjecture</a></li>
-      <li><a href="#section-2" style="text-decoration: none; color: #007bff;">Getting Started with CollatzR</a></li>
-      <li><a href="#section-3" style="text-decoration: none; color: #007bff;">Applications and Insights</a></li>
-      <li><a href="#section-4" style="text-decoration: none; color: #007bff;">Conclusion</a></li>
-    </ul>
-    <button id="close-sidebar" style="background-color: #007bff; color: white; border: none; padding: 10px; margin-top: 20px; cursor: pointer; width: 100%;">Close</button>
-  </nav>
     
     <!-- Main Content -->
 <main class="container mt-5 pt-5">
@@ -398,7 +333,6 @@ devtools::install_github("SulmanOlieko/collatzR")</code></pre>
             <hr>
 
     </main>
-  </div>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
@@ -406,26 +340,6 @@ devtools::install_github("SulmanOlieko/collatzR")</code></pre>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
 
-      <script>
-  const sidebar = document.getElementById('sidebar');
-  const openSidebar = document.getElementById('open-sidebar');
-  const closeSidebar = document.getElementById('close-sidebar');
-  const content = document.getElementById('content');
-
-  // Open sidebar
-  openSidebar.addEventListener('click', () => {
-    sidebar.classList.add('show');
-    content.classList.add('open');
-  });
-
-  // Close sidebar
-  closeSidebar.addEventListener('click', () => {
-    sidebar.classList.remove('show');
-    content.classList.remove('open');
-  });
-</script>
-
-  
     <script>const code_highlighting = true;</script>
     <script>
       const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
