@@ -64,18 +64,3 @@
   &.pull-left { margin-right: .3em; }
   &.pull-right { margin-left: .3em; }
 }
-
-
-
-
-.note-box {
-      background-color: #fff; /* White background */
-      border-left: 5px solid orange; /* Orange border on the left */
-      padding: 15px; /* Spacing inside the box */
-      margin: 20px; /* Space outside the box */
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-      border-radius: 5px; /* Rounded corners */
-      font-family: Arial, sans-serif; /* Default font */
-      line-height: 1.5; /* Line spacing */
-      color: #333; /* Text color */
-    }
