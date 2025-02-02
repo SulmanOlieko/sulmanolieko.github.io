@@ -424,10 +424,10 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
   </div>
 <style>
   .note-box {
-    position: relative;
     background-color: #fff;
+    padding: 15px 15px 15px 40px;
     margin: 20px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.01);
     border-radius: 5px;
     font-family: Arial, sans-serif;
     line-height: 1.5;
@@ -435,6 +435,14 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
     border-left: 5px solid orange;
     overflow: visible;
   }
+  /* Dark mode styles */
+  @media (prefers-color-scheme: dark) {
+    .note-box {
+      background-color: #2d2d2d;
+      color: #e0e0e0;
+      box-shadow: 0 2px 4px rgba(255, 255, 255, 0.01);
+      border-left-color: #ff9933;
+    }
   /* Individual type styles */
   .note-box-pub {
     border-left-color: #795548;
