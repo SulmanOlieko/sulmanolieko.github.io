@@ -424,18 +424,35 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
     
   </div>
   <style>
-    .note-box {
-      background-color: #fff; /* White background */
-      border-left: 5px solid orange; /* Orange border on the left */
-      padding: 15px; /* Spacing inside the box */
-      margin: 20px; /* Space outside the box */
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-      border-radius: 5px; /* Rounded corners */
-      font-family: Arial, sans-serif; /* Default font */
-      line-height: 1.5; /* Line spacing */
-      color: #333; /* Text color */
-    }
-  </style>
+<style>
+  .note-box {
+    background-color: #fff;
+    padding: 15px;
+    margin: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    color: #333;
+    border-left: 5px solid orange; /* Default orange border */
+  }
+
+  .note-box-article {
+    border-left-color: darkgreen; /* Blue border override */
+  }
+
+  .note-box-report {
+    border-left-color: blue; /* Darkgreen border override */  
+  }
+
+    .note-box-preprint {
+    border-left-color: forestgreen; /* Purple border override */
+  }
+
+    .note-box-conference {
+    border-left-color: purple; /* Purple border override */
+  }
+</style>
   <div class="col-12 col-lg-8">
     <div class="note-box article-tags badge-light">
         <h2>Bio</h2>
@@ -527,7 +544,7 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
   </div>
   <div class="col-12 col-lg-8">  
     
-  <div class="note-box pub-list-item" style="margin-bottom: 1rem">
+  <div class="note-box note-box-preprint pub-list-item" style="margin-bottom: 1rem">
   <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
   <span class="article-metadata li-cite-author">
   <span> <i>Owili, S.O.</i>; Otieno, D. J.; Chimoita, E. L.; Baijukya, F. P </span>
@@ -554,7 +571,7 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
     <h3>Technical report</h3>
   </div>
   <div class="col-12 col-lg-8">  
-        <div class="pub-list-item" style="margin-bottom: 1rem">
+  <div class="note-box note-box-report pub-list-item" style="margin-bottom: 1rem">
   <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
   <span class="article-metadata li-cite-author">
   <span>Nyawira, S.S.; Korir, H.; Bolo, P..; Omondi, K..; <i>Owili, S.O.</i>; Letty, B.; Wamaitha, C..; Njogu, M..; Anyango, E.; Baijukya, F.</span>
@@ -579,7 +596,7 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
     <h3>Journal article</h3>
   </div>
   <div class="col-12 col-lg-8">  
-  <div class="pub-list-item" style="margin-bottom: 1rem">
+  <div class="note-box note-box-article pub-list-item" style="margin-bottom: 1rem">
   <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
   <span class="article-metadata li-cite-author">
   <span> <i>Owili, S.O.</i>; Otieno, D. J.; Chimoita, E. L.; Baijukya, F. P </span>
@@ -604,7 +621,7 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
     <h3>Journal article</h3>
   </div>
   <div class="col-12 col-lg-8">  
-  <div class="pub-list-item" style="margin-bottom: 1rem">
+  <div class="note-box note-box-article pub-list-item" style="margin-bottom: 1rem">
   <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
   <span class="article-metadata li-cite-author">
   <span> Fuchs, L.E.; Orero, L; Kipkorir, L.; Apondi, V; <i>Owili, S.O</i> </span>
@@ -629,7 +646,7 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
     <h3>Technical report</h3>
   </div>
   <div class="col-12 col-lg-8">  
-        <div class="pub-list-item" style="margin-bottom: 1rem">
+  <div class="note-box note-box-report pub-list-item" style="margin-bottom: 1rem">
   <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
   <span class="article-metadata li-cite-author">
   <span>Nyawira, S.; Bolo, P.; Ntinyari, W.; Orero, L.; Onyango, K.; Manjella, A.; Sakha, M.; <i>Owili, S.O.</i>; Gumo, P.; Mbelwa, M.; Korir, H.; Fuchs, L.E.</span>
