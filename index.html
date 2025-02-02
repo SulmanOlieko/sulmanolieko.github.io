@@ -414,7 +414,7 @@
        
     </div>
     <i class="fa fa-quote-left fa-3x fa-pull-left fa-border" aria-hidden="true"></i>
-    <div class="note-box article-tags badge-light">
+    <div class="article-tags badge-light">
 Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
       <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
       <img src="/images/open-doodles/svg/PlantDoodle.svg" alt="plant doodle" style="width: 300px; height: auto;">
@@ -424,31 +424,70 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
   </div>
 <style>
   .note-box {
-    background-color: #fff; /* White background */
-    border-left: 5px solid orange; /* Orange border on the left */
-    padding: 15px; /* Spacing inside the box */
-    margin: 20px; /* Space outside the box */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    border-radius: 5px; /* Rounded corners */
-    font-family: Arial, sans-serif; /* Default font */
-    line-height: 1.5; /* Line spacing */
-    color: #333; /* Text color */
+    position: relative;
+    background-color: #fff;
+    padding: 15px 15px 15px 40px; /* Increased left padding */
+    margin: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    color: #333;
+    border-left: 5px solid orange;
+    overflow: visible;
   }
 
+  /* Base type indicator style */
+  .note-box-type::before {
+    content: '';
+    position: absolute;
+    left: -35px;
+    bottom: 15px;
+    transform: rotate(-90deg);
+    transform-origin: left bottom;
+    white-space: nowrap;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+
+  /* Individual type styles */
   .note-box-article {
-    border-left-color: darkgreen; /* Blue border override */
+    border-left-color: blue;
+  }
+  .note-box-article::before {
+    content: 'article';
+    color: blue;
+    left: -38px;
   }
 
   .note-box-report {
-    border-left-color: blue; /* Darkgreen border override */  
+    border-left-color: darkgreen;
+  }
+  .note-box-report::before {
+    content: 'report';
+    color: darkgreen;
+    left: -37px;
   }
 
-    .note-box-preprint {
-    border-left-color: forestgreen; /* Purple border override */
+  .note-box-conference {
+    border-left-color: purple;
+  }
+  .note-box-conference::before {
+    content: 'conference';
+    color: purple;
+    left: -45px;
   }
 
-    .note-box-conference {
-    border-left-color: purple; /* Purple border override */
+  .note-box-preprint {
+    border-left-color: #cc6600;
+  }
+  .note-box-preprint::before {
+    content: 'preprint';
+    color: #cc6600;
+    left: -40px;
   }
 </style>
   <div class="col-12 col-lg-8">
