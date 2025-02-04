@@ -160,6 +160,11 @@
 
   </div>
 </nav>
+
+<!-- Floating button -->
+<button class="scroll-button" id="scrollButton">
+    <span class="scroll-icon">⌄</span>
+</button>
   
  <!-- Main Content -->
 <main class="container mt-5 pt-5">
@@ -327,28 +332,22 @@ devtools::install_github("SulmanOlieko/collatzR")</code></pre>
     </main>
 <style>
   .floating{
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 40px;
+    position:fixed;
+    width:60px;
+    height:60px;
+    bottom:40px;
+    right:40px;
     background-color:#795548;
-    color: #FFF;
-    border-radius: 50%;
-    text-align: center;
-    font-size: 24px;
-    z-index: 100;
-    cursor: pointer;
-    transition: transform 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    outline: none;;
+    color:#FFF;
+    border-radius:50px;
+    text-align:center;
+    font-size:30px;
+    box-shadow: 2px 2px 2px #999;
+    z-index:100;
   }
   
 .float-button{
     margin-top:16px;
-    left: 40px;
   }
 </style>
   
@@ -360,7 +359,7 @@ devtools::install_github("SulmanOlieko/collatzR")</code></pre>
     
  <style>
    .scroll-button{
-     left: 60px;
+     left: 100px;
    }
     .scroll-button:hover {
         transform: scale(1.1);
@@ -372,11 +371,6 @@ devtools::install_github("SulmanOlieko/collatzR")</code></pre>
         display: block;
     }
 </style>
-
-<!-- Floating button -->
-<button class="floating scroll-button" id="scrollButton">
-    <span class="scroll-icon">⌄</span>
-</button>
 
 <script>
     const scrollButton = document.getElementById('scrollButton');
