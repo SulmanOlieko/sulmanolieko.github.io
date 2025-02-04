@@ -35,7 +35,60 @@
       });
     }
   </script>
-  
+  <style>
+    /* Styling for the install popup */
+    #installPopup {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      padding: 20px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      z-index: 999;
+    }
+
+    #installPopup.show {
+      display: block;
+    }
+
+    #installButton {
+      background-color: #4caf50;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+  #installButton:hover {
+      background-color: #45a049;
+    }
+.xicon {
+    width: 22px;
+    height: 22px;
+    transition: transform 0.3s ease;
+}
+
+/* Light mode styles */
+.xicon {
+    color: black; /* Default color in light mode */
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+    .xicon {
+        color: white; /* Change to white in dark mode */
+    }
+}
+.xicon:hover {
+      transform: scale(1.2);
+}
+  </style>
 </head>
 <body>
   <!-- Your website content goes here -->
