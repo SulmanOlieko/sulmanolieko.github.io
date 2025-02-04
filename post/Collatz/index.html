@@ -215,14 +215,14 @@
       <p>Here is how the process works:</p>
       <div class="container col-12">
       <div class="row g-4 mb-4">
-        <div class="note-box-pub badge-light col-6">
+        <div class="note-box badge-light col-md-5">
               <h3 class="h5 card-title">Even Numbers</h3>
               <p class="card-text">If \( n \) is even:
                 \[ f(n) = \frac{n}{2} \]
               </p>
         </div>
 
-        <div class="note-box-pub badge-light col-6">
+        <div class="note-box badge-light col-md-5">
               <h3 class="h5 card-title">Odd Numbers</h3>
               <p class="card-text">If \( n \) is odd:
                 \[ f(n) = 3n + 1 \]
@@ -351,6 +351,23 @@ devtools::install_github("SulmanOlieko/collatzR")</code></pre>
    <i class="fab fa-whatsapp float-button"></i>
     </a>
 
+    
+  <button onclick="scrollToBottom()">Scroll to Bottom</button>
+
+  <script>
+    function scrollToBottom() {
+
+  window.scrollTo({
+
+    top: document.body.scrollHeight,
+
+    behavior: 'smooth' // Optional: Add smooth scrolling effect
+
+  });
+
+}
+  </script>
+  
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
