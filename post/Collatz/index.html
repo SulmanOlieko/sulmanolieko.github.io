@@ -160,11 +160,6 @@
 
   </div>
 </nav>
-
-<!-- Floating button -->
-<button class="scroll-button" id="scrollButton">
-    <span class="scroll-icon">⌄</span>
-</button>
   
  <!-- Main Content -->
 <main class="container mt-5 pt-5">
@@ -282,7 +277,12 @@ devtools::install_github("SulmanOlieko/collatzR")</code></pre>
         </div>
       </div>
     </section>
-
+    
+<!-- Floating button -->
+<button class="scroll-button" id="scrollButton">
+    <span class="scroll-icon">⌄</span>
+</button>
+    
     <section class="mb-5">
       <h3 class="h3 mb-3">Applications and Insights</h3>
       <p>
@@ -328,7 +328,6 @@ devtools::install_github("SulmanOlieko/collatzR")</code></pre>
                 </div>
               </div>
             </div>
-
     </main>
 <style>
   .floating{
@@ -359,9 +358,10 @@ devtools::install_github("SulmanOlieko/collatzR")</code></pre>
     
  <style>
    .scroll-button{
-     left: 100px;
+     left: 1px;
      position:fixed;
      z-index:100;
+    background-color:#795548;
    }
     .scroll-button:hover {
         transform: scale(1.1);
