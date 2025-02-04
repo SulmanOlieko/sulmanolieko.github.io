@@ -51,26 +51,6 @@
 
   document.addEventListener('click', onClickCallback, false);
 </script>
-
-<style>
-  .note-box {
-    background-color: #fff;
-    padding: 15px 15px 15px 15px;
-    margin: 7px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.01);
-    border-radius: 5px;
-    font-family: Arial, sans-serif;
-    line-height: 1.5;
-    border-left: 5px solid orange;
-    overflow: visible;
-  }
-  
-  /* Individual type styles */
-  .note-box-pub {
-    border-left-color: #795548;
-    background-color: #f7e6e1;
-  }
-</style>
   
   <link rel="alternate" href="/post/index.xml" type="application/rss+xml" title="Sulman Olieko">
   <link rel="manifest" href="/index.webmanifest">
@@ -185,7 +165,7 @@
 <main class="container mt-5 pt-5">
 <article class="p-4 p-md-5 h-100 card-transparent media-body card-body">
   <!-- Breadcrumb -->
-  <nav aria-label="breadcrumb">
+  <nav aria-label="breadcrumb card-transparent">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/index.html" aria-label="Home"><i class="fa fa-home" aria-hidden="true"></i></a></li>
       <li class="breadcrumb-item"><a href="/post/">Blogs</a></li>
@@ -323,7 +303,7 @@ devtools::install_github("SulmanOlieko/collatzR")</code></pre>
             <hr>
             <div class="row">
               <div class="col-md-6">
-                <div class="note-box note-box-pub badge-light">
+                <div class="note-box badge-light">
                   <div class="d-flex align-items-center">
                     <!-- Text Content -->
                     <div class="flex-grow-1">
