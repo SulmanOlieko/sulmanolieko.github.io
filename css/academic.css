@@ -90,7 +90,7 @@
 .card-transparent {
     border: 1px solid #795548;  /* Grayish border */
     border-radius: 8px;      /* Rounded corners */
-    padding: 1px;            /* Internal spacing */
-    margin: 1px; /* External spacing */
+    padding: 0.5px;            /* Internal spacing */
+    margin: 0.5px; /* External spacing */
 }
     
