@@ -61,7 +61,8 @@
   &.pull-left { margin-right: .3em; }
   &.pull-right { margin-left: .3em; }
 }
-  .note-box {
+  
+.note-box {
     background-color: #fff;
     padding: 15px 15px 15px 15px;
     margin: 7px;
@@ -72,9 +73,17 @@
     border-left: 5px solid orange;
     overflow: visible;
   }
-  
-  /* Individual type styles */
   .note-box-pub {
     border-left-color: #795548;
     background-color: #f7e6e1;
   }
+  .breadcrumb {
+    display: flex;
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+}
+
+.breadcrumb-item:last-child::after {
+    content: "";
+}
