@@ -352,21 +352,73 @@ devtools::install_github("SulmanOlieko/collatzR")</code></pre>
     </a>
 
     
-  <button onclick="scrollToBottom()">Scroll to Bottom</button>
+ <style>
+        .scroll-button {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #795548;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 2px #999;
+            z-index: 100;
+            cursor: pointer;
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-  <script>
-    function scrollToBottom() {
+        .scroll-button:hover {
+            transform: scale(1.1);
+            box-shadow: 3px 3px 5px #999;
+        }
 
-  window.scrollTo({
+        .scroll-butt {
+            transition: transform 0.3s;
+        }
+    </style>
+      <!-- Single floating button -->
+    <div class="floating" id="scrollButton">
+        <div class="float-button">↓</div>
+    </div>
 
-    top: document.body.scrollHeight,
+    <script>
+        const scrollButton = document.getElementById('scrollButton');
+        let isBottom = false;
 
-    behavior: 'smooth' // Optional: Add smooth scrolling effect
+        function toggleScroll() {
+            if (window.scrollY < document.documentElement.scrollHeight - window.innerHeight - 100) {
+                // Scroll to bottom
+                window.scrollTo({
+                    top: document.documentElement.scrollHeight,
+                    behavior: 'smooth'
+                });
+                scrollButton.querySelector('.scroll-butt').textContent = '↑';
+                isBottom = true;
+            } else {
+                // Scroll to top
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                scrollButton.querySelector('.scroll-butt').textContent = '↓';
+                isBottom = false;
+            }
+        }
 
-  });
+        // Update button icon on scroll
+        window.addEventListener('scroll', () => {
+            const scrolledToBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100;
+            scrollButton.querySelector('.scroll-butt').textContent = scrolledToBottom ? '↓' : '↑';
+        });
 
-}
-  </script>
+        scrollButton.addEventListener('click', toggleScroll);
+    </script>
   
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
