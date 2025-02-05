@@ -153,7 +153,19 @@
         <li class="breadcrumb-item active" aria-current="page"><span>Page not found</span></li>
     </ol>
 </nav>
-
+<style>
+  .error-code {
+    font-size: clamp(8rem, 20vw, 15rem);
+    color: rgba(0, 0, 0, 0.3);
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    user-select: none;
+    display: flex;
+    justify-content: center; /* Horizontal center */
+    align-items: center; /* Vertical center */
+    margin-top: 20px;
+}
+</style>
   <div class="error-code">404</div>
 <h3 style="color: rgba(0, 0, 0, 0.3); font-family: Arial, sans-serif; font-weight: bold; display: flex; justify-content: center; align-items: center; margin-top: 20px;">Page Not Found</h3>
 
@@ -169,6 +181,30 @@
     <button class="scroll-button" id="scrollButton">
         <span class="scroll-icon">⌄</span>
     </button>
+  <script>
+    /* Add a script that controls the scroll button */
+
+    const scrollButton = document.getElementById('scrollButton');
+    
+    function toggleScroll() {
+        const scrolledToBottom = window.innerHeight + window.scrollY >= 
+            document.documentElement.scrollHeight - 50;
+        
+        window.scrollTo({
+            top: scrolledToBottom ? 0 : document.documentElement.scrollHeight,
+            behavior: 'smooth'
+        });
+    }
+
+    window.addEventListener('scroll', () => {
+        const scrolledToBottom = window.innerHeight + window.scrollY >= 
+            document.documentElement.scrollHeight - 50;
+        scrollButton.querySelector('.scroll-icon').textContent = 
+            scrolledToBottom ? '⌃' : '⌄';
+    });
+
+    scrollButton.addEventListener('click', toggleScroll);
+  </script>
 
       <script src="cookie.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
