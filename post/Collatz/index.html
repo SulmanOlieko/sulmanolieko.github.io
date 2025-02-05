@@ -349,26 +349,44 @@ devtools::install_github("SulmanOlieko/collatzR")</code></pre>
    <i class="fab fa-whatsapp float-button"></i>
     </a>
 
-<!-- Floating button -->
-<button class="scroll-button card" id="scrollButton">
-    <span class="scroll-icon">⌄</span>
-</button>
-  
- <style>
-   .scroll-button{
-      position:fixed;
-      bottom:0px;
-      right:50px;
-      color:#795548;;
-      text-align:center;
-      font-size:30px;
-      z-index:999;
-   }
-    .scroll-icon {
+<style>
+    .scroll-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #795548;
+        color: white;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        min-height: 40px;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2em;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        z-index: 999;
         transition: transform 0.3s;
-        display: block;
+    }
+
+    .scroll-button:hover {
+        transform: scale(1.1);
+    }
+
+    .scroll-icon {
+        line-height: 1;
+        margin-top: -2px; /* Optical alignment adjustment */
     }
 </style>
+
+<button class="scroll-button" id="scrollButton">
+    <span class="scroll-icon">⌄</span>
+</button>
 
 <script>
     const scrollButton = document.getElementById('scrollButton');
@@ -377,17 +395,10 @@ devtools::install_github("SulmanOlieko/collatzR")</code></pre>
         const scrolledToBottom = window.innerHeight + window.scrollY >= 
             document.documentElement.scrollHeight - 50;
         
-        if (!scrolledToBottom) {
-            window.scrollTo({
-                top: document.documentElement.scrollHeight,
-                behavior: 'smooth'
-            });
-        } else {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
+        window.scrollTo({
+            top: scrolledToBottom ? 0 : document.documentElement.scrollHeight,
+            behavior: 'smooth'
+        });
     }
 
     window.addEventListener('scroll', () => {
