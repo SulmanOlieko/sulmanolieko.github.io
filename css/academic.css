@@ -143,14 +143,3 @@
     line-height: 1;
     margin-top: -2px; /* Optical alignment adjustment */
 }
-.error-code {
-    font-size: clamp(8rem, 20vw, 15rem);
-    color: rgba(0, 0, 0, 0.3);
-    font-family: Arial, sans-serif;
-    font-weight: bold;
-    user-select: none;
-    display: flex;
-    justify-content: center; /* Horizontal center */
-    align-items: center; /* Vertical center */
-    margin-top: 20px;
-}
