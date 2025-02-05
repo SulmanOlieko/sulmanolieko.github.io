@@ -93,25 +93,4 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-/* Adda a script that controls the scroll button */
 
-    const scrollButton = document.getElementById('scrollButton');
-    
-    function toggleScroll() {
-        const scrolledToBottom = window.innerHeight + window.scrollY >= 
-            document.documentElement.scrollHeight - 50;
-        
-        window.scrollTo({
-            top: scrolledToBottom ? 0 : document.documentElement.scrollHeight,
-            behavior: 'smooth'
-        });
-    }
-
-    window.addEventListener('scroll', () => {
-        const scrolledToBottom = window.innerHeight + window.scrollY >= 
-            document.documentElement.scrollHeight - 50;
-        scrollButton.querySelector('.scroll-icon').textContent = 
-            scrolledToBottom ? '⌃' : '⌄';
-    });
-
-    scrollButton.addEventListener('click', toggleScroll);
