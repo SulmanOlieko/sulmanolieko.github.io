@@ -93,4 +93,53 @@
     padding: 0.5px;            /* Internal spacing */
     margin: 0.5px; /* External spacing */
 }
-    
+
+  .floating{
+    position:fixed;
+    width:60px;
+    height:60px;
+    bottom: 40px;
+    right:40px;
+    background-color:#795548;
+    color:#FFF;
+    border-radius:50px;
+    text-align:center;
+    font-size:30px;
+    z-index:100;
+  }
+  
+.float-button{
+    margin-top:16px;
+  }
+.scroll-button {
+    position: fixed;
+    bottom: 50px;
+    right: 15px;
+    background: #795548;
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    z-index: 999;
+    transition: transform 0.3s;
+}
+
+    .scroll-button:hover {
+        transform: scale(1.1);
+    }
+
+    .scroll-icon {
+        line-height: 1;
+        margin-top: -2px; /* Optical alignment adjustment */
+    }
