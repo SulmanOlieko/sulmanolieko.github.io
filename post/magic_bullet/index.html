@@ -8,463 +8,447 @@
   <meta name="description" content="">
   <link rel="alternate" hreflang="en-us" href="https://sulmanolieko.github.io/post/magic_bullet">
   <meta name="theme-color" content="#795548"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
-    <link href="css/pattern.min.css" rel="stylesheet">
-      <!--Google Webfonts-->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+  <link href="css/pattern.min.css" rel="stylesheet">
+  <!--Google Webfonts-->
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-    <link rel="stylesheet" href="/css/academic.css">
-<script async src="https://www.googletagmanager.com/gtag/js?id=GTM-MDK8S5X2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
+  <link rel="stylesheet" href="/css/academic.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-MDK8S5X2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-  function gtag() {
+    function gtag() {
       dataLayer.push(arguments);
-  }
-
-  function trackOutboundLink(url) {
-    gtag('event', 'click', {
-         'event_category': 'outbound',
-         'event_label': url,
-         'transport_type': 'beacon',
-         'event_callback': function () {
-           document.location = url;
-         }
-    });
-    console.debug("Outbound link clicked: " + url);
-  }
-
-  function onClickCallback(event) {
-    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
-      return;
     }
-    trackOutboundLink(event.target);  
-  }
 
-  gtag('js', new Date());
-  gtag('config', 'GTM-MDK8S5X2', {});
+    function trackOutboundLink(url) {
+      gtag('event', 'click', {
+        'event_category': 'outbound',
+        'event_label': url,
+        'transport_type': 'beacon',
+        'event_callback': function () {
+          document.location = url;
+        }
+      });
+      console.debug("Outbound link clicked: " + url);
+    }
 
-  document.addEventListener('click', onClickCallback, false);
-</script>
+    function onClickCallback(event) {
+      if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+        return;
+      }
+      trackOutboundLink(event.target);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'GTM-MDK8S5X2', {});
+
+    document.addEventListener('click', onClickCallback, false);
+  </script>
   <link rel="alternate" href="/post/index.xml" type="application/rss+xml" title="Sulman Olieko">
   <link rel="manifest" href="/index.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon-32.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
   <link rel="canonical" href="https://sulmanolieko.github.io/post/magic_bullet">
 
-<!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Sulman Olieko">
-    <meta property="og:url" content="https://sulmanolieko.github.io/post/magic_bullet ">
-    <meta property="og:title" content="Collatz | Sulman Olieko">
-    <meta property="og:description" content="Why There Is No “Magic Bullet” for Causal Inference">
-    <meta property="og:image" content="https://sulmanolieko.github.io/img/icon-192.png">
-    <meta property="og:locale" content="en-us">
-    <meta property="og:updated_time" content="2022-10-23T00:00:00&#43;00:00">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sulman Olieko">
+  <meta property="og:url" content="https://sulmanolieko.github.io/post/magic_bullet">
+  <meta property="og:title" content="Collatz | Sulman Olieko">
+  <meta property="og:description" content="Why There Is No “Magic Bullet” for Causal Inference">
+  <meta property="og:image" content="https://sulmanolieko.github.io/img/icon-192.png">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:updated_time" content="2022-10-23T00:00:00&#43;00:00">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary">
-    <meta property="twitter:url" content="https://sulmanolieko.github.io/post/magic_bullet">
-    <meta property="twitter:title" content="Why There Is No “Magic Bullet” for Causal Inference">
-    <meta property="twitter:description" content="Why There Is No “Magic Bullet” for Causal Inference">
-    <meta property="twitter:image" content="https://sulmanolieko.github.io/img/icon-192.png">
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary">
+  <meta property="twitter:url" content="https://sulmanolieko.github.io/post/magic_bullet">
+  <meta property="twitter:title" content="Why There Is No “Magic Bullet” for Causal Inference">
+  <meta property="twitter:description" content="Why There Is No “Magic Bullet” for Causal Inference">
+  <meta property="twitter:image" content="https://sulmanolieko.github.io/img/icon-192.png">
   
-<!-- MathJax -->
- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
- <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <!-- MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-<!-- Prism Syntax Highlighting -->
- <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+  <!-- Prism Syntax Highlighting -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
     
- <title>No magic bullet in causal inferencing | Sulman Olieko</title>
+  <title>No magic bullet in causal inferencing | Sulman Olieko</title>
 
+  <style>
+    /* Mimic the default <small> styling */
+    .small-text {
+      font-size: 80%;
+    }
+  </style>
 </head>
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents">
 
   <aside class="search-results" id="search">
-  <div class="container">
-    <section class="search-header">
+    <div class="container">
+      <section class="search-header">
 
-      <div class="row no-gutters justify-content-between mb-3">
-        <div class="col-6">
-          <h1>Search</h1>
+        <div class="row no-gutters justify-content-between mb-3">
+          <div class="col-6">
+            <h1>Search</h1>
+          </div>
+          <div class="col-6 col-search-close">
+            <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+          </div>
         </div>
-        <div class="col-6 col-search-close">
-          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+
+        <div id="search-box">
+          <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+            autocomplete="on" autocorrect="on" spellcheck="true" type="search">
         </div>
-      </div>
 
-      <div id="search-box">
-        
-        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
-        autocomplete="on" autocorrect="on" spellcheck="true" type="search">
-        
-      </div>
-
-    </section>
-    <section class="section-search-results">
-
-      <div id="search-hits">
-        
-      </div>
-
-    </section>
-  </div>
-</aside>
+      </section>
+      <section class="section-search-results">
+        <div id="search-hits"></div>
+      </section>
+    </div>
+  </aside>
   
-<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
-  <div class="container">
-       <a class="navbar-brand" href="/index">
-    <img src="/img/ekonly-logo.svg" alt="Ekonly Logo" style="height: 40px;">
-    </a>
-    <button type="button" class="navbar-toggler" data-toggle="collapse"
-            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-    <span><i class="fas fa-bars"></i></span>
-    </button>
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container">
+      <a class="navbar-brand" href="/index">
+        <img src="/img/ekonly-logo.svg" alt="Ekonly Logo" style="height: 40px;">
+      </a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+        data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
   
-    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
-
-      <ul class="navbar-nav d-md-inline-flex">
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+        <ul class="navbar-nav d-md-inline-flex">
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html" data-target="/index.html"><span>Homepage</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/publication/index.html" data-target="/publication/index.html"><span>Publications</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/post/index.html" data-target="/post/index.html"><span>Blogs</span></a>
+          </li>
+        </ul>
+      </div>
+  
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
         <li class="nav-item">
-          <a class="nav-link " href="/index.html" data-target="/index.html"><span>Homepage</span></a>
+          <a class="nav-link" href="mailto:oliekosulman@gmail.com"><i class="fas fa-envelope fa-1x" aria-hidden="true"></i></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="/publication/index.html" data-target="/publication/index.html"><span>Publications</span></a>
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="/post/index.html" data-target="/post/index.html"><span>Blogs</span></a>
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
         </li>
       </ul>
+  
     </div>
-
-    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
-      <li class="nav-item">
-          <a class="nav-link" href="mailto:oliekosulman@gmail.com"><i class="fas fa-envelope fa-1x" aria-hidden="true"></i></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
-      </li>
+  </nav>
   
-      <li class="nav-item">
-        <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
-      </li>
-      
-    </ul>
-
-  </div>
-</nav>
-<style>
-  .note-box {
-    background-color: #fff;
-    padding: 15px 15px 15px 15px;
-    margin: 7px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.01);
-    border-radius: 5px;
-    font-family: Arial, sans-serif;
-    line-height: 1.5;
-    border-left: 5px solid orange;
-    overflow: visible;
-  }
-  
-  /* Individual type styles */
-  .note-box-pub {
-    border-left-color: #795548;
-    background-color: #f7e6e1;
-  }
-</style>
+  <style>
+    .note-box {
+      background-color: #fff;
+      padding: 15px;
+      margin: 7px;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.01);
+      border-radius: 5px;
+      font-family: Arial, sans-serif;
+      line-height: 1.5;
+      border-left: 5px solid orange;
+      overflow: visible;
+    }
     
-    <!-- Main Content -->
-    <main class="container mt-5 pt-5">
-        <article class="p-4 p-md-5 h-100 card-transparent media-body card-body">
-            <!-- Breadcrumb -->
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/index.html" aria-label="Home"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-                    <li class="breadcrumb-item"><a href="/post/">Blogs</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">No Magic bullet</li>
-                </ol>
-            </nav>
-
-            <header class="mb-5">
-              <h2 class="h3 mb-3">Why There is No “Magic Bullet” for Causal Inference using Observational Data</h2>
-              <div class="d-flex align-items-center text-muted">
-               <!-- Tags -->
-                <div class="d-flex">
-                  <button class="btn btn-outline-primary btn-sm me-2">Data analysis</button>
-                  <span class="middot-divider mx-2">•</span>
-                  <button class="btn btn-outline-primary btn-sm">Opinion</button>
-                  <span class="middot-divider mx-2">•</span>
-                  <button class="btn btn-outline-primary btn-sm">Research</button>
-                </div>
-                </div>
-          </header>
-            <!-- Featured Image -->
-            <figure class="figure mb-5">
-                <img src="/img/magic_bullet.webp" class="figure-img img-fluid rounded" alt="AI image">
-                <figcaption class="figure-caption text-center mt-2"><small>Fig 1: AI-generated image on causal inferencing</small></figcaption>
-            </figure>
-
-            <!-- Article Content -->
-            <div class="article-content">
-                <section class="mb-5">
-                  <small>
-                  <strong>Introduction</strong><hr>
-                  
-                      <p>
-                        Causal inference has always been the holy grail of empirical research. We often want to answer questions like: “Does a new policy increase productivity?” or “Does a public health intervention reduce morbidity?” or “Do smaller class sizes cause better educational outcomes?” However, there is no simple statistical solution that can magically reveal the truth behind such causal questions when our data is observational. Instead, rigorous causal inference demands sound scientific and statistical judgment, deep subject-matter knowledge, and careful study design.
-                      </p>
-                      <p>
-                        In this blog post, I will  delve into the limitations of common “shortcuts” such as propensity scores or E-values, and then walk through one popular quasi-experimental method—difference-in-differences (DiD)—to illustrate how even these approaches require nuanced understanding and cannot replace domain expertise. 
-                      </p>
-
-                  <strong>The Complexity of Observational Data</strong><hr>
-                      <p>
-                        Observational data, by definition, emerge from real-life contexts in which researchers typically do not control the assignment of treatments or interventions. When a researcher tries to derive a causal conclusion—say, “X causes Y”—from such data, they almost always face threats to internal validity:
-                      </p>
-                  <p>
-                    <ol>
-                          <li>
-                            Selection Bias: Individuals or units (schools, states, hospitals) that receive a treatment may differ systematically from those that do not receive it.
-                          </li>
-                          <li>
-                            Confounding Variables: Other unobserved (or unmeasured) factors might explain both the treatment assignment and the outcome of interest.
-                          </li>
-                          <li>
-                            Reverse Causality: Instead of “X causing Y,” sometimes Y could influence X in subtle ways.
-                          </li>
-                        </ol>
-                  </p>
-                      <p>
-                        <blockquote>
-                          No purely statistical tool—whether it’s regression adjustment, propensity score matching (PSM), instrumental variables (IV), or difference-in-differences—guarantees that these threats have been eliminated. All methods rest on assumptions that are often untestable within the data alone. Hence, the emphasis on “scientific & statistical judgment” and “knowledge of the literature” is warranted.
-                        </blockquote>
-                          </p>
-                  
-                  <strong>Why Shortcuts like Propensity Scores or E-values are not Panaceas</strong><hr>
-                  <p>
-                    Researchers sometimes hope that if they just implement the right procedure—e.g., matching on propensity scores, calculating an E-value, or using a fancy machine learning algorithm—the method itself will deliver a causal answer. In reality:
-                  </p>
-                  <p>
-                    <ul>
-                      <li>
-                      Propensity Scores: While matching or weighting on propensity scores can balance observed variables across treatment groups, it cannot address unobserved confounders. If critical variables remain unmeasured, biases remain.
-                    </li>
-                  <li>
-                    E-values: The E-value is a sensitivity analysis tool that indicates how strong an unmeasured confounder would have to be (relative to measured variables) to eliminate an observed effect. It does not provide an “answer” to whether an unmeasured confounder actually exists or how likely that confounding is.
-                  </li>
-                  <li>
-                    Machine Learning & Automated Algorithms: These can help with model selection or generating more flexible functional forms, but they still do not fix inherent observational design problems, nor do they automatically parse out confounders.
-                  </li>
-                  </ul>
-                  </p>
-
-                  <p>
-                    <blockquote>
-                     Thus, no matter the sophistication of your toolkit, the “hard thinking”—about whether a credible comparison group exists, whether the timing of events is consistent with causality, whether fundamental assumptions are met, and whether domain experts confirm plausibility—cannot be replaced by formulaic or purely mechanical processes.
-                    </blockquote>
-                    </p>
-                  
-                    <p>
-
-                      <strong>Difference-in-Differences (DiD) as a Quasi-experimental Tool</strong><hr>
-                      One commonly used approach to causal inference in observational settings is difference-in-differences (DiD). At its core, DiD compares changes in outcomes over time between a “treatment” group that experienced some policy or intervention and a “control” group that did not.
-                    </p>
-                  <p>
-                    Key assumptions for DiD results to be believable:
-                  </p>
-                  <p>
-                    <ul>
-                      <li>
-                        Parallel Trends: In the absence of the treatment, the average outcome in both groups would have followed a parallel path over time. If this assumption holds, any post-treatment divergence can more plausibly be attributed to the effect of the intervention.
-                      </li>
-                      <li>
-                        No Anticipation Effect: The treatment group should not change behavior before the actual intervention, expecting the treatment.
-                      </li>
-                    <li>
-                      Stable Treatment Assignment (SUTVA): No interference between units (the treatment given to one group should not directly affect the outcomes for the control group).
-                    </li>
-                    </ul>
-                  </p>
-                    <p>
-                      When designed well, DiD can help mitigate certain confounding biases that plague simpler before–after or treatment–control comparisons. However, as with any method, DiD relies on strong assumptions that cannot always be tested directly. Even the best DiD design can fail if, for example, the parallel trends assumption is violated (e.g., if the treatment group was already on a different trajectory).
-                    </p>
-                    <p>
-                      DiD compares changes over time between treated and untreated groups, aiming to isolate the treatment effect by attributing differential changes to the intervention. The all-important assumption is parallel trends: in the absence of treatment, both groups would have followed the same trajectory.
-                    </p>
-
-                      <section>
-                      <strong>The Real-World Caveats</strong><hr>
-                      <p>
-                        Even with DiD, and even with the best possible dataset, you cannot blindly assume your results prove causality. Key points to consider:
-                      </p>
-                      <ul>
-                        <li><strong>Parallel Trends Assumption:</strong> Researchers often check for pre-trends by plotting the outcome over time for both groups. If the trends diverge noticeably before the intervention, it raises doubts about the validity of the DiD estimate.</li>
-                        <li><strong>External Shocks:</strong> Sometimes external events (e.g., an economic recession, a pandemic) happen around the same time as the policy, affecting treatment and control groups differently. Such shocks complicate the interpretation.</li>
-                        <li><strong>Spillover Effects:</strong> If individuals in the control group are influenced by the treatment (e.g., employees cross borders to work in Region A with a higher minimum wage), the stable unit treatment value assumption (SUTVA) might be violated.</li>
-                        <li><strong>Mechanical vs. Substantive Significance:</strong> Even if the coefficient on the interaction is statistically significant, it remains essential to verify the magnitude of the effect and whether it makes sense substantively within the economic or scientific context.</li>
-                        <li><strong>Robustness Checks:</strong> Additional approaches (e.g., event-study specifications, placebo tests, alternative definitions of the treatment group, etc.) are essential for building confidence in the DiD findings.</li>
-                      </ul>
-                      <p>
-                        No single method can circumvent the need for “hard thinking” and domain expertise. Causal inference is an iterative process of combining data-driven analysis with theoretical, historical, and contextual knowledge.
-                      </p>
-                    </section>
-
-                    <p>
-                      <strong>The Hard Thinking <em>is</em> a Requirement</strong><hr>
-                     Difference-in-Differences can be extremely valuable: when its assumptions are reasonable, it exploits variation in timing and exposure to tease out plausible causal estimates. Nevertheless, it is not a panacea. If the parallel trends assumption fails or if certain confounders selectively affect your treatment group, your DiD estimates may be biased. Even with DiD, we must confirm that no other major events coincide with the intervention, that participants do not anticipate the policy, and that spillover effects or interference are unlikely. DiD is powerful—but only under the right conditions, carefully verified with domain knowledge and pre-trend checks.
-                    </p>
-                  <p>
-                      Researchers must assess parallel trends using pre-treatment data, remain wary of external shocks, and check for possible spillovers. Statistical significance alone does not guarantee a meaningful or truly causal effect.
-                    </p>
-                    <p>
-                      <strong>Concluding thoughts</strong><hr>
-                      Observational data often tempts researchers to jump straight into a single statistical method—like propensity scores or difference-in-differences (DiD)—in hopes of gleaning causal insights. However, there is no easy path: <em>no statistical tool alone</em> can replace deep subject-matter knowledge, rigorous design, and scientific judgment.
-                    </p>
-                    <p>
-                      Observational studies face selection bias, confounding, and potential reverse causality. Purely statistical fixes like propensity score matching balance only <em>observed</em> covariates, leaving unmeasured confounders unaddressed. This is why domain expertise and careful hypothesis building are paramount.
-                    </p>
-                    <p>
-                      Tools like E-values quantify how large an unmeasured confounder must be to explain away an effect, but they do not confirm the (non)existence of such confounders. Similarly, machine learning can refine predictions but cannot automatically solve fundamental design issues such as non-parallel trends or spillovers.
-                    </p>
-                  <p>
-                  No matter how sophisticated your analysis, observational causal inference hinges on strong assumptions and context-specific knowledge. There is no “magic bullet”—sound study design, domain expertise, and rigorous checks must accompany any method, including DiD.
-                    </p>
-                  </small>
-                </section>
+    /* Individual type styles */
+    .note-box-pub {
+      border-left-color: #795548;
+      background-color: #f7e6e1;
+    }
+  </style>
+    
+  <!-- Main Content -->
+  <main class="container mt-5 pt-5">
+    <article class="p-4 p-md-5 h-100 card-transparent media-body card-body">
+      <!-- Breadcrumb -->
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/index.html" aria-label="Home"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+          <li class="breadcrumb-item"><a href="/post/">Blogs</a></li>
+          <li class="breadcrumb-item active" aria-current="page">No Magic bullet</li>
+        </ol>
+      </nav>
+  
+      <header class="mb-5">
+        <h2 class="h3 mb-3">Why There is No “Magic Bullet” for Causal Inference using Observational Data</h2>
+        <div class="d-flex align-items-center text-muted">
+          <!-- Tags -->
+          <div class="d-flex">
+            <button class="btn btn-outline-primary btn-sm me-2">Data analysis</button>
+            <span class="middot-divider mx-2">•</span>
+            <button class="btn btn-outline-primary btn-sm">Opinion</button>
+            <span class="middot-divider mx-2">•</span>
+            <button class="btn btn-outline-primary btn-sm">Research</button>
+          </div>
+        </div>
+      </header>
+  
+      <!-- Featured Image -->
+      <figure class="figure mb-5">
+        <img src="/img/magic_bullet.webp" class="figure-img img-fluid rounded" alt="AI image">
+        <figcaption class="figure-caption text-center mt-2">
+          <span class="small-text">Fig 1: AI-generated image on causal inferencing</span>
+        </figcaption>
+      </figure>
+  
+      <!-- Article Content -->
+      <div class="article-content">
+        <section class="mb-5">
+          <div class="small-text">
+            <strong>Introduction</strong>
+            <hr>
+            <p>
+              Causal inference has always been the holy grail of empirical research. We often want to answer questions like: “Does a new policy increase productivity?” or “Does a public health intervention reduce morbidity?” or “Do smaller class sizes cause better educational outcomes?” However, there is no simple statistical solution that can magically reveal the truth behind such causal questions when our data is observational. Instead, rigorous causal inference demands sound scientific and statistical judgment, deep subject-matter knowledge, and careful study design.
+            </p>
+            <p>
+              In this blog post, I will delve into the limitations of common “shortcuts” such as propensity scores or E-values, and then walk through one popular quasi-experimental method—difference-in-differences (DiD)—to illustrate how even these approaches require nuanced understanding and cannot replace domain expertise.
+            </p>
+  
+            <strong>The Complexity of Observational Data</strong>
+            <hr>
+            <p>
+              Observational data, by definition, emerge from real-life contexts in which researchers typically do not control the assignment of treatments or interventions. When a researcher tries to derive a causal conclusion—say, “X causes Y”—from such data, they almost always face threats to internal validity:
+            </p>
+            <p>
+              <ol>
+                <li>Selection Bias: Individuals or units (schools, states, hospitals) that receive a treatment may differ systematically from those that do not receive it.</li>
+                <li>Confounding Variables: Other unobserved (or unmeasured) factors might explain both the treatment assignment and the outcome of interest.</li>
+                <li>Reverse Causality: Instead of “X causing Y,” sometimes Y could influence X in subtle ways.</li>
+              </ol>
+            </p>
+            <p>
+              <blockquote>
+                No purely statistical tool—whether it’s regression adjustment, propensity score matching (PSM), instrumental variables (IV), or difference-in-differences—guarantees that these threats have been eliminated. All methods rest on assumptions that are often untestable within the data alone. Hence, the emphasis on “scientific &amp; statistical judgment” and “knowledge of the literature” is warranted.
+              </blockquote>
+            </p>
+  
+            <strong>Why Shortcuts like Propensity Scores or E-values are not Panaceas</strong>
+            <hr>
+            <p>
+              Researchers sometimes hope that if they just implement the right procedure—e.g., matching on propensity scores, calculating an E-value, or using a fancy machine learning algorithm—the method itself will deliver a causal answer. In reality:
+            </p>
+            <p>
+              <ul>
+                <li>Propensity Scores: While matching or weighting on propensity scores can balance observed variables across treatment groups, it cannot address unobserved confounders. If critical variables remain unmeasured, biases remain.</li>
+                <li>E-values: The E-value is a sensitivity analysis tool that indicates how strong an unmeasured confounder would have to be (relative to measured variables) to eliminate an observed effect. It does not provide an “answer” to whether an unmeasured confounder actually exists or how likely that confounding is.</li>
+                <li>Machine Learning &amp; Automated Algorithms: These can help with model selection or generating more flexible functional forms, but they still do not fix inherent observational design problems, nor do they automatically parse out confounders.</li>
+              </ul>
+            </p>
+            <p>
+              <blockquote>
+                Thus, no matter the sophistication of your toolkit, the “hard thinking”—about whether a credible comparison group exists, whether the timing of events is consistent with causality, whether fundamental assumptions are met, and whether domain experts confirm plausibility—cannot be replaced by formulaic or purely mechanical processes.
+              </blockquote>
+            </p>
+  
+            <p>
+              <strong>Difference-in-Differences (DiD) as a Quasi-experimental Tool</strong>
+              <hr>
+              One commonly used approach to causal inference in observational settings is difference-in-differences (DiD). At its core, DiD compares changes in outcomes over time between a “treatment” group that experienced some policy or intervention and a “control” group that did not.
+            </p>
+            <p>
+              Key assumptions for DiD results to be believable:
+            </p>
+            <p>
+              <ul>
+                <li>Parallel Trends: In the absence of the treatment, the average outcome in both groups would have followed a parallel path over time. If this assumption holds, any post-treatment divergence can more plausibly be attributed to the effect of the intervention.</li>
+                <li>No Anticipation Effect: The treatment group should not change behavior before the actual intervention, expecting the treatment.</li>
+                <li>Stable Treatment Assignment (SUTVA): No interference between units (the treatment given to one group should not directly affect the outcomes for the control group).</li>
+              </ul>
+            </p>
+            <p>
+              When designed well, DiD can help mitigate certain confounding biases that plague simpler before–after or treatment–control comparisons. However, as with any method, DiD relies on strong assumptions that cannot always be tested directly. Even the best DiD design can fail if, for example, the parallel trends assumption is violated (e.g., if the treatment group was already on a different trajectory).
+            </p>
+            <p>
+              DiD compares changes over time between treated and untreated groups, aiming to isolate the treatment effect by attributing differential changes to the intervention. The all-important assumption is parallel trends: in the absence of treatment, both groups would have followed the same trajectory.
+            </p>
+  
+            <section>
+              <strong>The Real-World Caveats</strong>
+              <hr>
+              <p>
+                Even with DiD, and even with the best possible dataset, you cannot blindly assume your results prove causality. Key points to consider:
+              </p>
+              <ul>
+                <li><strong>Parallel Trends Assumption:</strong> Researchers often check for pre-trends by plotting the outcome over time for both groups. If the trends diverge noticeably before the intervention, it raises doubts about the validity of the DiD estimate.</li>
+                <li><strong>External Shocks:</strong> Sometimes external events (e.g., an economic recession, a pandemic) happen around the same time as the policy, affecting treatment and control groups differently. Such shocks complicate the interpretation.</li>
+                <li><strong>Spillover Effects:</strong> If individuals in the control group are influenced by the treatment (e.g., employees cross borders to work in Region A with a higher minimum wage), the stable unit treatment value assumption (SUTVA) might be violated.</li>
+                <li><strong>Mechanical vs. Substantive Significance:</strong> Even if the coefficient on the interaction is statistically significant, it remains essential to verify the magnitude of the effect and whether it makes sense substantively within the economic or scientific context.</li>
+                <li><strong>Robustness Checks:</strong> Additional approaches (e.g., event-study specifications, placebo tests, alternative definitions of the treatment group, etc.) are essential for building confidence in the DiD findings.</li>
+              </ul>
+              <p>
+                No single method can circumvent the need for “hard thinking” and domain expertise. Causal inference is an iterative process of combining data-driven analysis with theoretical, historical, and contextual knowledge.
+              </p>
+            </section>
+  
+            <p>
+              <strong>The Hard Thinking <em>is</em> a Requirement</strong>
+              <hr>
+              Difference-in-Differences can be extremely valuable: when its assumptions are reasonable, it exploits variation in timing and exposure to tease out plausible causal estimates. Nevertheless, it is not a panacea. If the parallel trends assumption fails or if certain confounders selectively affect your treatment group, your DiD estimates may be biased. Even with DiD, we must confirm that no other major events coincide with the intervention, that participants do not anticipate the policy, and that spillover effects or interference are unlikely. DiD is powerful—but only under the right conditions, carefully verified with domain knowledge and pre-trend checks.
+            </p>
+            <p>
+              Researchers must assess parallel trends using pre-treatment data, remain wary of external shocks, and check for possible spillovers. Statistical significance alone does not guarantee a meaningful or truly causal effect.
+            </p>
+            <p>
+              <strong>Concluding thoughts</strong>
+              <hr>
+              Observational data often tempts researchers to jump straight into a single statistical method—like propensity scores or difference-in-differences (DiD)—in hopes of gleaning causal insights. However, there is no easy path: <em>no statistical tool alone</em> can replace deep subject-matter knowledge, rigorous design, and scientific judgment.
+            </p>
+            <p>
+              Observational studies face selection bias, confounding, and potential reverse causality. Purely statistical fixes like propensity score matching balance only <em>observed</em> covariates, leaving unmeasured confounders unaddressed. This is why domain expertise and careful hypothesis building are paramount.
+            </p>
+            <p>
+              Tools like E-values quantify how large an unmeasured confounder must be to explain away an effect, but they do not confirm the (non)existence of such confounders. Similarly, machine learning can refine predictions but cannot automatically solve fundamental design issues such as non-parallel trends or spillovers.
+            </p>
+            <p>
+              No matter how sophisticated your analysis, observational causal inference hinges on strong assumptions and context-specific knowledge. There is no “magic bullet”—sound study design, domain expertise, and rigorous checks must accompany any method, including DiD.
+            </p>
+          </div>
+        </section>
                     
-                    <section>
-                      <small>
-                      <strong>Further Reading</strong><hr>
-                      <ul>
-                        <li>Angrist, J. D., &amp; Pischke, J.-S. (2009). <em>Mostly Harmless Econometrics: An Empiricist’s Companion.</em></li>
-                        <li>Imbens, G. W., &amp; Rubin, D. B. (2015). <em>Causal Inference for Statistics, Social, and Biomedical Sciences.</em></li>
-                        <li>Callaway, B., &amp; Sant’Anna, P. H. (2021). “Difference-in-Differences with Multiple Time Periods and an Application on the Minimum Wage.” <em>Journal of Econometrics.</em></li>
-                      </ul>
-                      </small>
-                    </section>
+        <section>
+          <div class="small-text">
+            <strong>Further Reading</strong>
+            <hr>
+            <ul>
+              <li>Angrist, J. D., &amp; Pischke, J.-S. (2009). <em>Mostly Harmless Econometrics: An Empiricist’s Companion.</em></li>
+              <li>Imbens, G. W., &amp; Rubin, D. B. (2015). <em>Causal Inference for Statistics, Social, and Biomedical Sciences.</em></li>
+              <li>Callaway, B., &amp; Sant’Anna, P. H. (2021). “Difference-in-Differences with Multiple Time Periods and an Application on the Minimum Wage.” <em>Journal of Econometrics.</em></li>
+            </ul>
+          </div>
+        </section>
                     
-                    <section>
-                      <small>
-                      <h4>Author’s Note</h4><hr>
-                      <p>
-                        <em>
-                          If you are implementing DiD (or any other observational method), keep your eyes open to the broader context of your research question. Chat with domain specialists, run placebo tests, check for pre-treatment trends, and ensure that your audience understands why your assumptions are credible. Methods alone do not guarantee valid causal inferences—your scientific reasoning, knowledge of the literature, and careful interpretation play a paramount role.
-                        </em>
-                         </p>
-                      </small>
-                    </section>
-              <section>
-              <div class="d-flex align-items-center text-muted">
-              <!-- Author Image -->
-              <img 
-                src="/authors/admin/home_avatar.png" 
-                alt="Sulman Olieko" 
-                class="rounded-circle me-2" 
-                width="40" 
-                height="40">
-          
-              <!-- Author Details and Metadata -->
-              <div class="d-flex flex-column ms-2">
-                <!-- Author Name and Date -->
-                <div class="d-flex align-items-center mb-2">
-                  <span class="me-2"><small>Sulman Olieko</small></span>
-                  <span class="middot-divider mx-2">•</span>
-                  <time datetime="2023-10-06" class="text-small"><small>January 26, 2025</small></time>
-                </div>
-          
+        <section>
+          <div class="small-text">
+            <h4>Author’s Note</h4>
+            <hr>
+            <p>
+              <em>
+                If you are implementing DiD (or any other observational method), keep your eyes open to the broader context of your research question. Chat with domain specialists, run placebo tests, check for pre-treatment trends, and ensure that your audience understands why your assumptions are credible. Methods alone do not guarantee valid causal inferences—your scientific reasoning, knowledge of the literature, and careful interpretation play a paramount role.
+              </em>
+            </p>
+          </div>
+        </section>
+  
+        <section>
+          <div class="d-flex align-items-center text-muted">
+            <!-- Author Image -->
+            <img src="/authors/admin/home_avatar.png" alt="Sulman Olieko" class="rounded-circle me-2" width="40" height="40">
+            <!-- Author Details and Metadata -->
+            <div class="d-flex flex-column ms-2">
+              <!-- Author Name and Date -->
+              <div class="d-flex align-items-center mb-2">
+                <span class="me-2"><span class="small-text">Sulman Olieko</span></span>
+                <span class="middot-divider mx-2">•</span>
+                <time datetime="2023-10-06" class="text-small"><span class="small-text">January 26, 2025</span></time>
               </div>
             </div>
-              </section>
-            </div>
-        </article>
+          </div>
+        </section>
+  
+      </div>
+    </article>
              
-      <!-- Archive -->
-            <div class="row">
-              <div class="col-md-6">
-                <div class="note-box badge-light">
-                  <div class="d-flex align-items-center">
-                    <!-- Text Content -->
-                    <div class="flex-grow-1">
-                      <h5 class="h5 card-title">Previous Post</h5>
-                      <p class="card-text">
-                        <small>
-                        <a href="/post/Collatz/" style="font-weight: bold;">
-                          Exploring the Collatz Conjecture with CollatzR
-                        </a>
-                        </small>
-                      </p>
-                    </div>
-                    <!-- Linked Image -->
-                    <div class="ms-4">
-                      <a href="/post/Collatz/">
-                        <img src="/img/collatzR.png" alt="AI image" style="width: 200px; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+    <!-- Archive -->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="note-box badge-light">
+          <div class="d-flex align-items-center">
+            <!-- Text Content -->
+            <div class="flex-grow-1">
+              <h5 class="h5 card-title">Previous Post</h5>
+              <p class="card-text">
+                <span class="small-text">
+                  <a href="/post/Collatz/" style="font-weight: bold;">
+                    Exploring the Collatz Conjecture with CollatzR
+                  </a>
+                </span>
+              </p>
             </div>
-    </main>
-
-    <a href="https://api.whatsapp.com/send?phone=+254710209720&text=Hello!%20I%20came%20across%20your%20website%20and%20would%20like%20to%20learn%20more%20about%20your%20services.%20Can%20you%20please%20assist%20me%3F" 
-   class="floating" target="_blank">
-   <i class="fab fa-whatsapp float-button"></i>
-    </a>
-
-    <button class="scroll-button" id="scrollButton">
-        <span class="scroll-icon">⌄</span>
-    </button>
+            <!-- Linked Image -->
+            <div class="ms-4">
+              <a href="/post/Collatz/">
+                <img src="/img/collatzR.png" alt="AI image" style="width: 200px; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <a href="https://api.whatsapp.com/send?phone=+254710209720&text=Hello!%20I%20came%20across%20your%20website%20and%20would%20like%20to%20learn%20more%20about%20your%20services.%20Can%20you%20please%20assist%20me%3F" 
+    class="floating" target="_blank">
+    <i class="fab fa-whatsapp float-button"></i>
+  </a>
+  
+  <button class="scroll-button" id="scrollButton">
+    <span class="scroll-icon">⌄</span>
+  </button>
+  
   <script>
     /* Add a script that controls the scroll button */
-
     const scrollButton = document.getElementById('scrollButton');
     
     function toggleScroll() {
-        const scrolledToBottom = window.innerHeight + window.scrollY >= 
-            document.documentElement.scrollHeight - 50;
-        
-        window.scrollTo({
-            top: scrolledToBottom ? 0 : document.documentElement.scrollHeight,
-            behavior: 'smooth'
-        });
+      const scrolledToBottom = window.innerHeight + window.scrollY >= 
+          document.documentElement.scrollHeight - 50;
+      
+      window.scrollTo({
+        top: scrolledToBottom ? 0 : document.documentElement.scrollHeight,
+        behavior: 'smooth'
+      });
     }
-
+  
     window.addEventListener('scroll', () => {
-        const scrolledToBottom = window.innerHeight + window.scrollY >= 
-            document.documentElement.scrollHeight - 50;
-        scrollButton.querySelector('.scroll-icon').textContent = 
-            scrolledToBottom ? '⌃' : '⌄';
+      const scrolledToBottom = window.innerHeight + window.scrollY >= 
+          document.documentElement.scrollHeight - 50;
+      scrollButton.querySelector('.scroll-icon').textContent = 
+          scrolledToBottom ? '⌃' : '⌄';
     });
-
+  
     scrollButton.addEventListener('click', toggleScroll);
   </script>
   
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
-
-    <script>const code_highlighting = true;</script>
-    <script>
-      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
-      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
-      const content_type = {
-        'post': "Posts",
-        'project': "Projects",
-        'publication' : "Publications",
-        'talk' : "Talks"
-        };
-    </script>
-    <script id="search-hit-fuse-template" type="text/x-template">
-      <div class="search-hit" id="summary-{{key}}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+  
+  <script>const code_highlighting = true;</script>
+  <script>
+    const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+    const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+    const content_type = {
+      'post': "Posts",
+      'project': "Projects",
+      'publication' : "Publications",
+      'talk' : "Talks"
+    };
+  </script>
+  <script id="search-hit-fuse-template" type="text/x-template">
+    <div class="search-hit" id="summary-{{key}}">
       <div class="search-hit-content">
         <div class="search-hit-name">
           <a href="{{relpermalink}}">{{title}}</a>
@@ -472,66 +456,65 @@
           <p class="search-hit-description">{{snippet}}</p>
         </div>
       </div>
-      </div>
-    </script>
+    </div>
+  </script>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
-    <script src="/js/academic.min.bcfae8267aba63cc55af53a503896bd9.js"></script>
-    <!-- Footer -->
-      <div class="container">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+  <script src="/js/academic.min.bcfae8267aba63cc55af53a503896bd9.js"></script>
+  
+  <!-- Footer -->
+  <div class="container">
     <footer class="site-footer">
-    <p class="powered-by">
-      <a href="https://sulmanolieko.github.io/privacy/">Privacy Policy</a>
-       &middot; 
-      <a href="https://sulmanolieko.github.io/terms/">Terms</a>
-  </p>
-<div class="share-box" aria-hidden="true">
-  <ul class="share">
-    <li>
-        <a href="https://www.linkedin.com/in/olieko-sulman" target="_blank" rel="noopener" class="share-btn-linkedin">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-      </li>
-      <li>
-        <a href="https://twitter.com/olieko-sulman" target="_blank" rel="noopener" class="share-btn-twitter">
-          <i class="fab fa-twitter"></i>
-        </a>
-      </li>
-    <li>
-        <a href="https://api.whatsapp.com/send?phone=+254710209720&text=Hello!%20I%20came%20across%20your%20website%20and%20would%20like%20to%20learn%20more%20about%20your%20services.%20Can%20you%20please%20assist%20me%3F" target="_blank" rel="noopener" class="share-btn-whatsapp">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-      </li>
-      <li>
-        <a href="mailto:oliekosulman@gmail.com" target="_blank" rel="noopener" class="share-btn-email">
-          <i class="fas fa-envelope"></i>
-        </a>
-      </li>
-    
-      <li>
-        <a href="https://service.weibo.com/olieko_sulman" target="_blank" rel="noopener" class="share-btn-weibo">
-          <i class="fab fa-weibo"></i>
-        </a>
-      </li>
-  </ul>
+      <p class="powered-by">
+        <a href="https://sulmanolieko.github.io/privacy/">Privacy Policy</a>
+        &middot; 
+        <a href="https://sulmanolieko.github.io/terms/">Terms</a>
+      </p>
+      <div class="share-box" aria-hidden="true">
+        <ul class="share">
+          <li>
+            <a href="https://www.linkedin.com/in/olieko-sulman" target="_blank" rel="noopener" class="share-btn-linkedin">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/olieko-sulman" target="_blank" rel="noopener" class="share-btn-twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://api.whatsapp.com/send?phone=+254710209720&text=Hello!%20I%20came%20across%20your%20website%20and%20would%20like%20to%20learn%20more%20about%20your%20services.%20Can%20you%20please%20assist%20me%3F" target="_blank" rel="noopener" class="share-btn-whatsapp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:oliekosulman@gmail.com" target="_blank" rel="noopener" class="share-btn-email">
+              <i class="fas fa-envelope"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://service.weibo.com/olieko_sulman" target="_blank" rel="noopener" class="share-btn-weibo">
+              <i class="fab fa-weibo"></i>
+            </a>
+          </li>
+        </ul>
       </div>
-<p class="powered-by copyright-license-text">
-    This work is licensed under 
-    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">
-      CC BY NC ND 4.0
-    </a>
-  </p>
-  <p class="powered-by footer-license-icons">
-    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
-      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
-      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
-      <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
-      <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
-    </a>
-  </p>
-</footer>
-
+      <p class="powered-by copyright-license-text">
+        This work is licensed under 
+        <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">
+          CC BY NC ND 4.0
+        </a>
+      </p>
+      <p class="powered-by footer-license-icons">
+        <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+          <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+          <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+          <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+          <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+        </a>
+      </p>
+    </footer>
   </div>
 </body>
 </html>
