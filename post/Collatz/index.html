@@ -424,55 +424,52 @@ devtools::install_github("SulmanOlieko/collatzR")</code></pre>
     font-family: 'Fira Code', monospace;
     overflow-x: auto;
   }
-
   pre:has(code) {
-  position: relative;
-  margin: 5px 0 ;
-  padding: 1.75rem 0 1.75rem 1rem;
-
-  /* more stuff */
-}
-
-pre:has(code) button{
-  position: absolute;
-  top: 5px;
-  right: 5px;
-
-  /* more stuff */
-}
-  
+    position: relative;
+    margin: 5px 0;
+    padding: 1.75rem 0 1.75rem 1rem;
+  }
+  pre:has(code) button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+  /* The copy-button is now small and shows an icon */
   .copy-button {
     position: absolute;
-    top: 2px;
+    top: 4px;
     right: 4px;
-    padding: 6px 8px;
+    width: 24px;
+    height: 24px;
     background: #3a3a3a;
     border: none;
     border-radius: 4px;
-    color: #fff;
     cursor: pointer;
-    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: background 0.2s ease;
+    padding: 0;
   }
-
+  .copy-button svg {
+    width: 16px;
+    height: 16px;
+    fill: #fff;
+  }
   .copy-button:hover {
     background: #4a4a4a;
   }
-
   .copy-button:active {
     background: #2a2a2a;
   }
-
   .copy-button--success {
     background: #4CAF50 !important;
   }
-
   code[class*="language-"] {
     white-space: pre-wrap;
     overflow-wrap: break-word;
     display: block;
   }
-
   .sr-only {
     position: absolute;
     width: 1px;
@@ -490,10 +487,6 @@ pre:has(code) button{
 (function() {
   'use strict';
 
-  const copyButtonLabel = {
-    initial: 'Copy',
-    success: 'Copied!'
-  };
   const copyButtonTimeout = 2000;
 
   document.querySelectorAll('pre:has(code)').forEach(codeBlock => {
@@ -507,9 +500,12 @@ pre:has(code) button{
     const button = document.createElement('button');
     button.className = 'copy-button';
     button.type = 'button';
+    // Use an inline SVG for the copy icon and include a screen-reader only label.
     button.innerHTML = `
-      <span class="copy-text">${copyButtonLabel.initial}</span>
-      <span class="sr-only" aria-live="polite"></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M19,21H8C6.9,21,6,20.1,6,19V7H8V19H19V21ZM16,3H5C3.9,3,3,3.9,3,5V17H5V5H16V3Z"/>
+      </svg>
+      <span class="sr-only">Copy code to clipboard</span>
     `;
     
     button.addEventListener('click', async () => {
@@ -518,17 +514,16 @@ pre:has(code) button{
         await navigator.clipboard.writeText(code);
         
         button.classList.add('copy-button--success');
-        button.querySelector('.copy-text').textContent = copyButtonLabel.success;
-        button.querySelector('[aria-live]').textContent = 'Copied!';
+        // Optionally update the sr-only text for confirmation.
+        button.querySelector('.sr-only').textContent = 'Copied!';
         
         setTimeout(() => {
           button.classList.remove('copy-button--success');
-          button.querySelector('.copy-text').textContent = copyButtonLabel.initial;
-          button.querySelector('[aria-live]').textContent = '';
+          button.querySelector('.sr-only').textContent = 'Copy code to clipboard';
         }, copyButtonTimeout);
       } catch (err) {
-        button.textContent = 'Error';
-        console.error('Failed!', err);
+        button.querySelector('.sr-only').textContent = 'Error copying';
+        console.error('Failed to copy!', err);
       }
     });
 
@@ -537,6 +532,7 @@ pre:has(code) button{
   });
 })();
 </script>
+
 
   
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
