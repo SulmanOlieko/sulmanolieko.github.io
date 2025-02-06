@@ -207,9 +207,9 @@
               <div class="d-flex flex-column ms-2">
                 <!-- Author Name and Date -->
                 <div class="d-flex align-items-center mb-2">
-                  <span class="me-2">Sulman Olieko</span>
+                  <span class="me-2"><small>Sulman Olieko</small></span>
                   <span class="middot-divider mx-2">•</span>
-                  <time datetime="2023-10-06" class="text-small">January 26, 2025</time>
+                  <time datetime="2023-10-06" class="text-small"><small>January 26, 2025</small></time>
                 </div>
           
                 <!-- Action Buttons -->
@@ -226,7 +226,7 @@
             <!-- Featured Image -->
             <figure class="figure mb-5">
                 <img src="/img/magic_bullet.webp" class="figure-img img-fluid rounded" alt="AI image">
-                <figcaption class="figure-caption text-center mt-2">Fig 1: AI-generated image on causal inferencing</figcaption>
+                <figcaption class="figure-caption text-center mt-2"><small>Fig 1: AI-generated image on causal inferencing</small></figcaption>
             </figure>
 
             <!-- Article Content -->
@@ -242,7 +242,7 @@
                         In this blog post, I will  delve into the limitations of common “shortcuts” such as propensity scores or E-values, and then walk through one popular quasi-experimental method—difference-in-differences (DiD)—to illustrate how even these approaches require nuanced understanding and cannot replace domain expertise. 
                       </p>
 
-                  <strong>The Complexity of Observational Data</strong><br>
+                  <strong>The Complexity of Observational Data</strong><hr>
                       <p>
                         Observational data, by definition, emerge from real-life contexts in which researchers typically do not control the assignment of treatments or interventions. When a researcher tries to derive a causal conclusion—say, “X causes Y”—from such data, they almost always face threats to internal validity:
                       </p>
@@ -265,7 +265,7 @@
                         </blockquote>
                           </p>
                   
-                  <strong>Why Shortcuts like Propensity Scores or E-values are not Panaceas</strong><br>
+                  <strong>Why Shortcuts like Propensity Scores or E-values are not Panaceas</strong><hr>
                   <p>
                     Researchers sometimes hope that if they just implement the right procedure—e.g., matching on propensity scores, calculating an E-value, or using a fancy machine learning algorithm—the method itself will deliver a causal answer. In reality:
                   </p>
@@ -292,7 +292,7 @@
                     <p>
 
                       
-                      <strong>Difference-in-Differences (DiD) as a Quasi-experimental Tool</strong><br>
+                      <strong>Difference-in-Differences (DiD) as a Quasi-experimental Tool</strong><hr>
                       One commonly used approach to causal inference in observational settings is difference-in-differences (DiD). At its core, DiD compares changes in outcomes over time between a “treatment” group that experienced some policy or intervention and a “control” group that did not.
                     </p>
                   <p>
@@ -319,7 +319,7 @@
                     </p>
 
                       <section>
-                      <h2>The Real-World Caveats</h2>
+                      <strong>The Real-World Caveats</strong><hr>
                       <p>
                         Even with DiD, and even with the best possible dataset, you cannot blindly assume your results prove causality. Key points to consider:
                       </p>
@@ -336,14 +336,14 @@
                     </section>
 
                     <p>
-                      <strong>The Hard Thinking <em>is</em> a Requirement</strong><br>
+                      <strong>The Hard Thinking <em>is</em> a Requirement</strong><hr>
                      Difference-in-Differences can be extremely valuable: when its assumptions are reasonable, it exploits variation in timing and exposure to tease out plausible causal estimates. Nevertheless, it is not a panacea. If the parallel trends assumption fails or if certain confounders selectively affect your treatment group, your DiD estimates may be biased. Even with DiD, we must confirm that no other major events coincide with the intervention, that participants do not anticipate the policy, and that spillover effects or interference are unlikely. DiD is powerful—but only under the right conditions, carefully verified with domain knowledge and pre-trend checks.
                     </p>
                   <p>
                       Researchers must assess parallel trends using pre-treatment data, remain wary of external shocks, and check for possible spillovers. Statistical significance alone does not guarantee a meaningful or truly causal effect.
                     </p>
                     <p>
-                      <strong>Concluding thoughts</strong><br>
+                      <strong>Concluding thoughts</strong><hr>
                       Observational data often tempts researchers to jump straight into a single statistical method—like propensity scores or difference-in-differences (DiD)—in hopes of gleaning causal insights. However, there is no easy path: <em>no statistical tool alone</em> can replace deep subject-matter knowledge, rigorous design, and scientific judgment.
                     </p>
                     <p>
@@ -371,7 +371,7 @@
                     
                     <section>
                       <small>
-                      <h3>Author’s Note</h3>
+                      <h3>Author’s Note</h3><hr>
                       <p>
                         <em>
                           If you are implementing DiD (or any other observational method), keep your eyes open to the broader context of your research question. Chat with domain specialists, run placebo tests, check for pre-treatment trends, and ensure that your audience understands why your assumptions are credible. Methods alone do not guarantee valid causal inferences—your scientific reasoning, knowledge of the literature, and careful interpretation play a paramount role.
