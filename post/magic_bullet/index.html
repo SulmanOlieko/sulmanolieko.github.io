@@ -96,7 +96,6 @@
   <aside class="search-results" id="search">
     <div class="container">
       <section class="search-header">
-
         <div class="row no-gutters justify-content-between mb-3">
           <div class="col-6">
             <h1>Search</h1>
@@ -105,12 +104,10 @@
             <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
           </div>
         </div>
-
         <div id="search-box">
           <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
             autocomplete="on" autocorrect="on" spellcheck="true" type="search">
         </div>
-
       </section>
       <section class="section-search-results">
         <div id="search-hits"></div>
@@ -207,7 +204,7 @@
       <figure class="figure mb-5">
         <img src="/img/magic_bullet.webp" class="figure-img img-fluid rounded" alt="AI image">
         <figcaption class="figure-caption text-center mt-2">
-          <span class="small-text">Fig 1: AI-generated image on causal inferencing</span>
+          <span class="small-text">Fig 1: AI-generated image illustrating the challenges in causal inferencing</span>
         </figcaption>
       </figure>
   
@@ -218,109 +215,84 @@
             <strong>Introduction</strong>
             <hr>
             <p>
-              Causal inference has always been the holy grail of empirical research. We often want to answer questions like: “Does a new policy increase productivity?” or “Does a public health intervention reduce morbidity?” or “Do smaller class sizes cause better educational outcomes?” However, there is no simple statistical solution that can magically reveal the truth behind such causal questions when our data is observational. Instead, rigorous causal inference demands sound scientific and statistical judgment, deep subject-matter knowledge, and careful study design.
+              Causal inference represents one of the most challenging pursuits in empirical research—a true intellectual frontier where statistical methods and substantive domain knowledge converge. Questions such as “Does a novel policy enhance productivity?” or “Can public health interventions measurably reduce morbidity?” require not only robust data but also rigorous, context-aware analytical frameworks.
             </p>
             <p>
-              In this blog post, I will delve into the limitations of common “shortcuts” such as propensity scores or E-values, and then walk through one popular quasi-experimental method—difference-in-differences (DiD)—to illustrate how even these approaches require nuanced understanding and cannot replace domain expertise.
+              This post examines the inherent limitations of what some consider “shortcut” methodologies—like propensity score matching or sensitivity analyses (E-values)—and explains why no single method can provide an infallible answer. Instead, it argues for a comprehensive, thoughtful approach to causal inference that synthesizes diverse techniques and deep subject-matter expertise.
             </p>
   
             <strong>The Complexity of Observational Data</strong>
             <hr>
             <p>
-              Observational data, by definition, emerge from real-life contexts in which researchers typically do not control the assignment of treatments or interventions. When a researcher tries to derive a causal conclusion—say, “X causes Y”—from such data, they almost always face threats to internal validity:
+              Unlike controlled experiments, observational data are by nature messy and imbued with real-world complexities. Researchers seldom have the luxury of random assignment, and as a result, the data are vulnerable to several validity threats:
             </p>
+            <ol>
+              <li><strong>Selection Bias:</strong> The characteristics of individuals or units that receive a treatment may systematically differ from those that do not, thereby skewing the observed effect.</li>
+              <li><strong>Confounding Factors:</strong> Unmeasured variables may simultaneously influence both the treatment and the outcome, obscuring the true causal relationship.</li>
+              <li><strong>Reverse Causality:</strong> The possibility that the outcome may, in turn, affect the treatment cannot be ruled out in observational settings.</li>
+            </ol>
             <p>
-              <ol>
-                <li>Selection Bias: Individuals or units (schools, states, hospitals) that receive a treatment may differ systematically from those that do not receive it.</li>
-                <li>Confounding Variables: Other unobserved (or unmeasured) factors might explain both the treatment assignment and the outcome of interest.</li>
-                <li>Reverse Causality: Instead of “X causing Y,” sometimes Y could influence X in subtle ways.</li>
-              </ol>
-            </p>
-            <p>
-              <blockquote>
-                No purely statistical tool—whether it’s regression adjustment, propensity score matching (PSM), instrumental variables (IV), or difference-in-differences—guarantees that these threats have been eliminated. All methods rest on assumptions that are often untestable within the data alone. Hence, the emphasis on “scientific &amp; statistical judgment” and “knowledge of the literature” is warranted.
-              </blockquote>
+              As a consequence, no statistical adjustment—be it regression analysis or propensity score matching—can completely neutralize these inherent biases without careful consideration of underlying assumptions and external evidence.
             </p>
   
-            <strong>Why Shortcuts like Propensity Scores or E-values are not Panaceas</strong>
+            <strong>Limitations of Shortcut Methods</strong>
             <hr>
             <p>
-              Researchers sometimes hope that if they just implement the right procedure—e.g., matching on propensity scores, calculating an E-value, or using a fancy machine learning algorithm—the method itself will deliver a causal answer. In reality:
+              It is a common misconception that complex statistical procedures alone can resolve the challenges of observational research. For example:
             </p>
+            <ul>
+              <li><strong>Propensity Score Matching:</strong> Although it balances observed covariates across groups, it does not remedy bias stemming from unobserved confounders.</li>
+              <li><strong>Sensitivity Analysis (E-values):</strong> This tool quantifies how robust an effect might be to hidden bias, yet it does not confirm the absence or magnitude of such confounding influences.</li>
+              <li><strong>Automated Machine Learning Algorithms:</strong> While these methods enhance model selection and prediction, they remain agnostic to the nuanced causal mechanisms at work and cannot substitute for domain expertise.</li>
+            </ul>
             <p>
-              <ul>
-                <li>Propensity Scores: While matching or weighting on propensity scores can balance observed variables across treatment groups, it cannot address unobserved confounders. If critical variables remain unmeasured, biases remain.</li>
-                <li>E-values: The E-value is a sensitivity analysis tool that indicates how strong an unmeasured confounder would have to be (relative to measured variables) to eliminate an observed effect. It does not provide an “answer” to whether an unmeasured confounder actually exists or how likely that confounding is.</li>
-                <li>Machine Learning &amp; Automated Algorithms: These can help with model selection or generating more flexible functional forms, but they still do not fix inherent observational design problems, nor do they automatically parse out confounders.</li>
-              </ul>
-            </p>
-            <p>
-              <blockquote>
-                Thus, no matter the sophistication of your toolkit, the “hard thinking”—about whether a credible comparison group exists, whether the timing of events is consistent with causality, whether fundamental assumptions are met, and whether domain experts confirm plausibility—cannot be replaced by formulaic or purely mechanical processes.
-              </blockquote>
+              In essence, reliance on any one of these approaches without a thorough theoretical and contextual examination is akin to expecting a “magic bullet” to deliver definitive causal insights.
             </p>
   
+            <strong>Difference-in-Differences (DiD) as an Analytical Framework</strong>
+            <hr>
             <p>
-              <strong>Difference-in-Differences (DiD) as a Quasi-experimental Tool</strong>
-              <hr>
-              One commonly used approach to causal inference in observational settings is difference-in-differences (DiD). At its core, DiD compares changes in outcomes over time between a “treatment” group that experienced some policy or intervention and a “control” group that did not.
+              The Difference-in-Differences (DiD) methodology is one of the most widely used quasi-experimental approaches in observational studies. DiD capitalizes on temporal variations by comparing outcome changes in a treatment group to those in a control group over time. The underlying assumption is that, in the absence of the intervention, both groups would have evolved in parallel.
             </p>
             <p>
-              Key assumptions for DiD results to be believable:
+              However, the credibility of DiD estimates rests on several critical assumptions:
             </p>
+            <ul>
+              <li><strong>Parallel Trends:</strong> Absent the intervention, the evolution of outcomes in both groups would be similar. Divergence in pre-treatment trends can invalidate this assumption.</li>
+              <li><strong>No Anticipation:</strong> Subjects must not alter their behavior in expectation of the treatment, as pre-treatment adjustments can contaminate the estimated effect.</li>
+              <li><strong>Stable Unit Treatment Value Assumption (SUTVA):</strong> The treatment applied to one unit should not affect the outcomes of another, ensuring that the observed changes can be solely attributed to the intervention.</li>
+            </ul>
             <p>
-              <ul>
-                <li>Parallel Trends: In the absence of the treatment, the average outcome in both groups would have followed a parallel path over time. If this assumption holds, any post-treatment divergence can more plausibly be attributed to the effect of the intervention.</li>
-                <li>No Anticipation Effect: The treatment group should not change behavior before the actual intervention, expecting the treatment.</li>
-                <li>Stable Treatment Assignment (SUTVA): No interference between units (the treatment given to one group should not directly affect the outcomes for the control group).</li>
-              </ul>
-            </p>
-            <p>
-              When designed well, DiD can help mitigate certain confounding biases that plague simpler before–after or treatment–control comparisons. However, as with any method, DiD relies on strong assumptions that cannot always be tested directly. Even the best DiD design can fail if, for example, the parallel trends assumption is violated (e.g., if the treatment group was already on a different trajectory).
-            </p>
-            <p>
-              DiD compares changes over time between treated and untreated groups, aiming to isolate the treatment effect by attributing differential changes to the intervention. The all-important assumption is parallel trends: in the absence of treatment, both groups would have followed the same trajectory.
+              When these assumptions hold, DiD can provide compelling evidence regarding causal effects. Nonetheless, its application demands rigorous verification through pre-trend analyses, robustness checks, and careful contextual interpretation.
             </p>
   
             <section>
-              <strong>The Real-World Caveats</strong>
+              <strong>Real-World Considerations and Caveats</strong>
               <hr>
               <p>
-                Even with DiD, and even with the best possible dataset, you cannot blindly assume your results prove causality. Key points to consider:
+                Even with an ostensibly robust DiD design, researchers must remain vigilant about several practical challenges:
               </p>
               <ul>
-                <li><strong>Parallel Trends Assumption:</strong> Researchers often check for pre-trends by plotting the outcome over time for both groups. If the trends diverge noticeably before the intervention, it raises doubts about the validity of the DiD estimate.</li>
-                <li><strong>External Shocks:</strong> Sometimes external events (e.g., an economic recession, a pandemic) happen around the same time as the policy, affecting treatment and control groups differently. Such shocks complicate the interpretation.</li>
-                <li><strong>Spillover Effects:</strong> If individuals in the control group are influenced by the treatment (e.g., employees cross borders to work in Region A with a higher minimum wage), the stable unit treatment value assumption (SUTVA) might be violated.</li>
-                <li><strong>Mechanical vs. Substantive Significance:</strong> Even if the coefficient on the interaction is statistically significant, it remains essential to verify the magnitude of the effect and whether it makes sense substantively within the economic or scientific context.</li>
-                <li><strong>Robustness Checks:</strong> Additional approaches (e.g., event-study specifications, placebo tests, alternative definitions of the treatment group, etc.) are essential for building confidence in the DiD findings.</li>
+                <li><strong>Verification of Parallel Trends:</strong> Pre-treatment data should be scrutinized to ensure that both groups follow similar trajectories before the intervention.</li>
+                <li><strong>Impact of External Shocks:</strong> Unrelated events, such as economic downturns or public health crises, can differentially affect treatment and control groups, thereby confounding causal interpretations.</li>
+                <li><strong>Potential Spillover Effects:</strong> When the intervention indirectly influences control units (for example, through regional economic linkages), the estimated effect may be diluted or biased.</li>
+                <li><strong>Substantive vs. Statistical Significance:</strong> Even statistically significant results must be interpreted in light of their practical implications, ensuring that the magnitude of the effect is both meaningful and plausible.</li>
+                <li><strong>Robustness and Sensitivity:</strong> Complementary analyses—such as event studies, placebo tests, and alternative model specifications—are essential to build confidence in the causal claims.</li>
               </ul>
               <p>
-                No single method can circumvent the need for “hard thinking” and domain expertise. Causal inference is an iterative process of combining data-driven analysis with theoretical, historical, and contextual knowledge.
+                In the realm of observational studies, no single method or shortcut can substitute for a meticulous, context-driven analysis. The process of causal inference remains an iterative dialogue between data, theory, and substantive expertise.
               </p>
             </section>
   
             <p>
-              <strong>The Hard Thinking <em>is</em> a Requirement</strong>
+              <strong>The Imperative of Rigorous Scientific Judgment</strong>
               <hr>
-              Difference-in-Differences can be extremely valuable: when its assumptions are reasonable, it exploits variation in timing and exposure to tease out plausible causal estimates. Nevertheless, it is not a panacea. If the parallel trends assumption fails or if certain confounders selectively affect your treatment group, your DiD estimates may be biased. Even with DiD, we must confirm that no other major events coincide with the intervention, that participants do not anticipate the policy, and that spillover effects or interference are unlikely. DiD is powerful—but only under the right conditions, carefully verified with domain knowledge and pre-trend checks.
-            </p>
-            <p>
-              Researchers must assess parallel trends using pre-treatment data, remain wary of external shocks, and check for possible spillovers. Statistical significance alone does not guarantee a meaningful or truly causal effect.
-            </p>
-            <p>
-              <strong>Concluding thoughts</strong>
-              <hr>
-              Observational data often tempts researchers to jump straight into a single statistical method—like propensity scores or difference-in-differences (DiD)—in hopes of gleaning causal insights. However, there is no easy path: <em>no statistical tool alone</em> can replace deep subject-matter knowledge, rigorous design, and scientific judgment.
-            </p>
-            <p>
-              Observational studies face selection bias, confounding, and potential reverse causality. Purely statistical fixes like propensity score matching balance only <em>observed</em> covariates, leaving unmeasured confounders unaddressed. This is why domain expertise and careful hypothesis building are paramount.
-            </p>
-            <p>
-              Tools like E-values quantify how large an unmeasured confounder must be to explain away an effect, but they do not confirm the (non)existence of such confounders. Similarly, machine learning can refine predictions but cannot automatically solve fundamental design issues such as non-parallel trends or spillovers.
-            </p>
-            <p>
-              No matter how sophisticated your analysis, observational causal inference hinges on strong assumptions and context-specific knowledge. There is no “magic bullet”—sound study design, domain expertise, and rigorous checks must accompany any method, including DiD.
+              <p>
+                In conclusion, while advanced statistical methods like DiD and propensity score matching offer valuable tools for causal analysis, they are not panaceas. Rather, they must be embedded within a broader framework of critical inquiry—one that rigorously interrogates assumptions, integrates domain knowledge, and continuously refines its theoretical underpinnings.
+              </p>
+              <p>
+                As scholars and practitioners, we must acknowledge that causal inference in observational research is as much an art as it is a science. There is no “magic bullet” that can supplant the need for thoughtful, context-aware analysis. Instead, a multi-faceted approach—grounded in robust methodology and enriched by substantive expertise—remains the most reliable path to uncovering causal truths.
+              </p>
             </p>
           </div>
         </section>
@@ -333,6 +305,7 @@
               <li>Angrist, J. D., &amp; Pischke, J.-S. (2009). <em>Mostly Harmless Econometrics: An Empiricist’s Companion.</em></li>
               <li>Imbens, G. W., &amp; Rubin, D. B. (2015). <em>Causal Inference for Statistics, Social, and Biomedical Sciences.</em></li>
               <li>Callaway, B., &amp; Sant’Anna, P. H. (2021). “Difference-in-Differences with Multiple Time Periods and an Application on the Minimum Wage.” <em>Journal of Econometrics.</em></li>
+              <li>Cole, S. R., &amp; Hernán, M. A. (2002). “Constructing Inverse Probability Weights for Marginal Structural Models.” <em>American Journal of Epidemiology.</em></li>
             </ul>
           </div>
         </section>
@@ -343,7 +316,7 @@
             <hr>
             <p>
               <em>
-                If you are implementing DiD (or any other observational method), keep your eyes open to the broader context of your research question. Chat with domain specialists, run placebo tests, check for pre-treatment trends, and ensure that your audience understands why your assumptions are credible. Methods alone do not guarantee valid causal inferences—your scientific reasoning, knowledge of the literature, and careful interpretation play a paramount role.
+                When implementing quasi-experimental methods like DiD, it is imperative to contextualize your findings within the broader framework of your research. Engage with domain experts, perform rigorous robustness checks, and never lose sight of the underlying assumptions. Remember: methodologies are tools to aid scientific inquiry—not substitutes for careful reasoning and critical analysis.
               </em>
             </p>
           </div>
