@@ -503,7 +503,7 @@ devtools::install_github("SulmanOlieko/collatzR")</code></pre>
         
         button.classList.add('copy-button--success');
         button.querySelector('.copy-text').textContent = copyButtonLabel.success;
-        button.querySelector('[aria-live]').textContent = 'Code copied to clipboard';
+        button.querySelector('[aria-live]').textContent = 'Copied!';
         
         setTimeout(() => {
           button.classList.remove('copy-button--success');
@@ -512,7 +512,7 @@ devtools::install_github("SulmanOlieko/collatzR")</code></pre>
         }, copyButtonTimeout);
       } catch (err) {
         button.textContent = 'Error';
-        console.error('Failed to copy code:', err);
+        console.error('Failed!', err);
       }
     });
 
