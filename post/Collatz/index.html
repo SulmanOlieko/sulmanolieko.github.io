@@ -411,6 +411,51 @@ devtools::install_github("SulmanOlieko/collatzR")</code></pre>
 
     scrollButton.addEventListener('click', toggleScroll);
 </script>
+
+
+<style>
+  pre:has(code) {
+  position: relative;
+  margin: 5px 0 ;
+  padding: 1.75rem 0 1.75rem 1rem;
+
+  /* more stuff */
+}
+
+pre:has(code) button{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+
+  /* more stuff */
+}
+</style>
+<script>
+  let blocks = document.querySelectorAll("pre:has(code)");
+let copyButtonLabel = "Copy Code";
+
+blocks.forEach((block) => {
+  // only add button if browser supports Clipboard API
+  if (navigator.clipboard) {
+    let button = document.createElement("button");
+
+    button.innerText = copyButtonLabel;
+    block.appendChild(button);
+
+    button.addEventListener("click", async () => {
+      await copyCode(block);
+    });
+  }
+});
+
+async function copyCode(block) {
+  let code = block.querySelector("code");
+  let text = code.innerText;
+
+  await navigator.clipboard.writeText(text);
+}
+</script>
+
   
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
