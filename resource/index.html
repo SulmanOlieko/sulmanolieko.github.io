@@ -48,13 +48,33 @@
   </div>
 
   <script>
-    // Replace with your actual FAOSTAT API endpoint URL.
-    const API_URL = 'https://api.example.com/faostat-data';
+    /********************************************************************
+     * Configuration:
+     * - API_URL: The endpoint provided by the FAOSTAT Data API via RapidAPI.
+     * - API_KEY: Your RapidAPI key (replace 'YOUR_RAPIDAPI_KEY' with your actual key).
+     *
+     * The API expects query parameters (like dataset, element, item, area, and years)
+     * to filter and return the desired FAOSTAT data in JSON format.
+     ********************************************************************/
+    const API_URL = 'https://faostat-data.p.rapidapi.com/getData'; // Example endpoint; check your API docs
+    const API_KEY = 'YOUR_RAPIDAPI_KEY'; // Replace with your actual RapidAPI key
 
-    // Asynchronously fetch FAOSTAT data from the API.
-    async function fetchFAOSTATData() {
+    /********************************************************************
+     * fetchFAOSTATData:
+     * This async function builds a query string from the passed parameters,
+     * then fetches data from the FAOSTAT API using proper authentication headers.
+     ********************************************************************/
+    async function fetchFAOSTATData(params) {
       try {
-        const response = await fetch(API_URL);
+        // Build query string from parameters (e.g., dataset, element, item, area, years)
+        const queryString = new URLSearchParams(params).toString();
+        const response = await fetch(`${API_URL}?${queryString}`, {
+          method: 'GET',
+          headers: {
+            'X-RapidAPI-Key': API_KEY,
+            'X-RapidAPI-Host': 'faostat-data.p.rapidapi.com'
+          }
+        });
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -66,21 +86,28 @@
       }
     }
 
-    // Process the raw data for Chart.js.
-    // Adjust this function based on the actual structure of your FAOSTAT data.
+    /********************************************************************
+     * processData:
+     * This function converts the raw API response into a format suitable for Chart.js.
+     * It assumes the returned JSON has a "data" array with objects containing "year" and "value".
+     * Adjust this function based on your API’s actual response structure.
+     ********************************************************************/
     function processData(rawData) {
-      // Example: Assuming rawData is an array of objects like:
-      // [{ year: '2018', value: 123 }, { year: '2019', value: 456 }, ...]
-      const labels = rawData.map(item => item.year);
-      const values = rawData.map(item => item.value);
+      // Example: rawData.data = [{ year: "2010", value: "123" }, { year: "2011", value: "145" }, ...]
+      const labels = rawData.data.map(point => point.year);
+      const values = rawData.data.map(point => parseFloat(point.value));
       return { labels, values };
     }
 
-    // Create a Chart.js chart on the specified canvas element.
+    /********************************************************************
+     * createChart:
+     * Initializes a Chart.js chart on the specified canvas element.
+     * You can change the chart type (line, bar, etc.) and customize options as needed.
+     ********************************************************************/
     function createChart(canvasId, chartData, chartTitle = '') {
       const ctx = document.getElementById(canvasId).getContext('2d');
       new Chart(ctx, {
-        type: 'line', // Change to 'bar', 'pie', etc., if needed.
+        type: 'line', // Change this to 'bar', 'pie', etc., if needed.
         data: {
           labels: chartData.labels,
           datasets: [{
@@ -122,42 +149,60 @@
       });
     }
 
-    // Main function to initialize and update the dashboard.
+    /********************************************************************
+     * initDashboard:
+     * Main function that:
+     * - Defines query parameters for two example charts.
+     * - Calls fetchFAOSTATData for each set of parameters.
+     * - Processes and renders the charts using Chart.js.
+     * - Sets up periodic updates (every 5 minutes) to refresh the data.
+     *
+     * Adjust the query parameter objects (params1, params2) based on the dataset and indicators
+     * you want to display. For full parameter options, see the FAOSTAT API documentation.
+     ********************************************************************/
     async function initDashboard() {
-      const faostatData = await fetchFAOSTATData();
-      if (!faostatData) {
-        // Handle error: show a message if data cannot be fetched.
-        document.body.insertAdjacentHTML('beforeend',
-          '<p style="text-align: center; color: red;">Error fetching FAOSTAT data. Please try again later.</p>');
-        return;
-      }
+      // Example parameters for the first chart:
+      const params1 = {
+        dataset: 'QCL',       // FAOSTAT dataset code (e.g., Crops and Livestock Products)
+        element: '5312',      // Element code (e.g., Area harvested)
+        item: '221',          // Item code (e.g., Almonds, with shell)
+        area: '5815',         // Area code (e.g., Low Income Food Deficit Countries)
+        years: '2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020'
+      };
 
-      // Example: Suppose your API returns an object with different indicators.
-      // Adjust based on your actual API response.
-      if (faostatData.indicator1) {
-        const chartData1 = processData(faostatData.indicator1);
+      const data1 = await fetchFAOSTATData(params1);
+      if (data1 && data1.data && data1.data.length > 0) {
+        const chartData1 = processData(data1);
         createChart('chart1', chartData1, 'Indicator 1 Trend');
-      }
-      if (faostatData.indicator2) {
-        const chartData2 = processData(faostatData.indicator2);
-        createChart('chart2', chartData2, 'Indicator 2 Trend');
+      } else {
+        document.getElementById('chart1').parentNode.innerHTML =
+          '<p style="color: red; text-align: center;">Error fetching data for Indicator 1.</p>';
       }
 
-      // If you want real-time updates, set an interval to re-fetch data.
-      // For example, update every 5 minutes (300000 ms):
-      setInterval(async () => {
-        const newData = await fetchFAOSTATData();
-        if (newData && newData.indicator1 && newData.indicator2) {
-          // Update chart data here. You might need to maintain references to your Chart instances.
-          // This example reloads the page data. For production, consider updating the datasets dynamically.
-          location.reload();
-        }
-      }, 300000);
+      // Example parameters for the second chart (change element/item codes as needed):
+      const params2 = {
+        dataset: 'QCL',       // Can be the same or a different dataset
+        element: '5313',      // A different element code
+        item: '222',          // A different item code
+        area: '5815',
+        years: '2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020'
+      };
+
+      const data2 = await fetchFAOSTATData(params2);
+      if (data2 && data2.data && data2.data.length > 0) {
+        const chartData2 = processData(data2);
+        createChart('chart2', chartData2, 'Indicator 2 Trend');
+      } else {
+        document.getElementById('chart2').parentNode.innerHTML =
+          '<p style="color: red; text-align: center;">Error fetching data for Indicator 2.</p>';
+      }
+
+      // Optional: Set an interval (e.g., every 5 minutes = 300000 ms) to update the dashboard in real time.
+      setTimeout(initDashboard, 300000);
     }
 
-    // Initialize the dashboard once the DOM content is loaded.
-    window.addEventListener('DOMContentLoaded', initDashboard);
+    // Initialize the dashboard when the DOM content is fully loaded.
+    document.addEventListener('DOMContentLoaded', initDashboard);
   </script>
 </body>
 </html>
-
