@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <link rel="alternate" hreflang="en-us" href="https://sulmanolieko.github.io/post/reflection">
+  <meta name="theme-color" content="#795548">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+  <link href="css/pattern.min.css" rel="stylesheet">
+  <!--Google Webfonts-->
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="/css/academic.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-MDK8S5X2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    function trackOutboundLink(url) {
+      gtag('event', 'click', {
+        'event_category': 'outbound',
+        'event_label': url,
+        'transport_type': 'beacon',
+        'event_callback': function () {
+          document.location = url;
+        }
+      });
+      console.debug("Outbound link clicked: " + url);
+    }
+
+    function onClickCallback(event) {
+      if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+        return;
+      }
+      trackOutboundLink(event.target);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'GTM-MDK8S5X2', {});
+
+    document.addEventListener('click', onClickCallback, false);
+  </script>
+
+  <link rel="alternate" href="/post/index.xml" type="application/rss+xml" title="Sulman Olieko">
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+  <link rel="canonical" href="https://sulmanolieko.github.io/post/reflection">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sulman Olieko">
+  <meta property="og:url" content="https://sulmanolieko.github.io/post/ReflectionProblem">
+  <meta property="og:title" content="Reflection problem in Econometrics | Sulman Olieko">
+  <meta property="og:description" content="An exposition and exploration of the reflection problem in econometrics and its implications for identifying peer effects.">
+  <meta property="og:image" content="https://sulmanolieko.github.io/img/icon-192.png">
+  <meta property="og:locale" content="en-uk">
+  <meta property="og:updated_time" content="2025-10-06T00:00:00&#43;00:00">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary">
+  <meta property="twitter:url" content="https://sulmanolieko.github.io/post/reflection">
+  <meta property="twitter:title" content="Reflection problem in Econometrics | Sulman Olieko">
+  <meta property="twitter:description" content="An exposition and exploration of the reflection problem in econometrics and its implications for identifying peer effects.">
+  <meta property="twitter:image" content="https://sulmanolieko.github.io/img/icon-192.png">
+
+  <!-- MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Prism Syntax Highlighting -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+
+  <title>Reflection Problem in Econometrics | Sulman Olieko</title>
+
+  <style>
+    /* Mimic the default <small> style */
+    .small-text {
+      font-size: 80%;
+    }
+  </style>
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents">
+
+  <aside class="search-results" id="search">
+    <div class="container">
+      <section class="search-header">
+
+        <div class="row no-gutters justify-content-between mb-3">
+          <div class="col-6">
+            <h1>Search</h1>
+          </div>
+          <div class="col-6 col-search-close">
+            <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <div id="search-box">
+
+          <input name="q" id="search-query" placeholder="Search..." autocapitalize="off" autocomplete="on" autocorrect="on" spellcheck="true" type="search">
+
+        </div>
+
+      </section>
+      <section class="section-search-results">
+
+        <div id="search-hits">
+        </div>
+
+      </section>
+    </div>
+  </aside>
+
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container">
+      <a class="navbar-brand" href="/index">
+        <img src="/img/ekonly-logo.svg" alt="Ekonly Logo" style="height: 40px;">
+      </a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        <ul class="navbar-nav d-md-inline-flex">
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html" data-target="/index.html"><span>Homepage</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/publication/index.html" data-target="/publication/index.html"><span>Publications</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/post/index.html" data-target="/post/index.html"><span>Blogs</span></a>
+          </li>
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+        <li class="nav-item">
+          <a class="nav-link" href="/cv/#viewer"><strong>CV</strong><i aria-hidden="true"></i></a>
+      </li>
+        <li class="nav-item">
+          <a class="nav-link" href="mailto:oliekosulman@gmail.com"><i class="fas fa-envelope fa-1x" aria-hidden="true"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+
+      </ul>
+
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container mt-5 pt-5">
+    <article class="p-4 p-md-5 h-100 card-transparent media-body card-body">
+      <!-- Breadcrumb -->
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/index.html" aria-label="Home"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+          <li class="breadcrumb-item"><a href="/post/">Blogs</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Reflection problem</li>
+        </ol>
+      </nav>
+
+      <header class="mb-5">
+        <h2 class="h3 mb-3">The Reflection Problem in Econometrics</h2>
+        <div class="d-flex align-items-center text-muted">
+          <!-- Tags -->
+          <div class="d-flex">
+            <button class="btn btn-outline-primary btn-sm me-2">Econometrics</button>
+            <span class="middot-divider mx-2">•</span>
+            <button class="btn btn-outline-primary btn-sm">Social Interactions</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Article Content -->
+      <div class="article-content">
+        <section class="mb-5">
+          <div class="small-text">
+            <strong>Introduction</strong>
+            <hr>
+            <p>
+              In many social and economic settings, an individual's outcome is influenced not only by their own characteristics but also by the behaviors and attributes of their peers. This phenomenon, known as peer effects or endogenous social effects, gives rise to what is commonly called the <em>Reflection Problem</em>. In this post, we explore the reflection problem, its implications for econometric modeling, and strategies to overcome its identification challenges.
+            </p>
+          </div>
+        </section>
+
+        <section class="mb-5">
+          <div class="small-text">
+            <strong>Model Setup</strong>
+            <hr>
+            <p>
+              Consider a linear model where the outcome for individual \( i \) is determined by:
+            </p>
+            <ul>
+              <li>The average outcome of their group, \( \bar{y}_g \)</li>
+              <li>Their own characteristics, \( z_i \)</li>
+              <li>The average characteristics of their group, \( \bar{z}_g \)</li>
+            </ul>
+            <p>
+              The model is specified as:
+            </p>
+            <pre><code class="language-math">
+\( y_i = \alpha + \beta \bar{y}_g + \gamma \bar{z}_g + \delta z_i + \epsilon_i, \quad \epsilon_i \sim \text{iid}(0, \sigma^2) \)
+            </code></pre>
+            <p>
+              where:
+            </p>
+            <ul>
+              <li>\( \beta \) captures endogenous (peer) effects</li>
+              <li>\( \gamma \) represents contextual effects arising from group characteristics</li>
+              <li>\( \delta \) denotes the direct effect of individual characteristics</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="mb-5">
+          <div class="small-text">
+            <strong>The Identification Problem</strong>
+            <hr>
+            <p>
+              To uncover the identification issues, we begin by aggregating within a group:
+            </p>
+            <pre><code class="language-math">
+\( \bar{y}_g = \frac{1}{N_g} \sum_{j \in g} y_j \)
+            </code></pre>
+            <p>
+              Substituting the individual equation into the group average, we obtain:
+            </p>
+            <pre><code class="language-math">
+\[
+\bar{y}_g = \alpha + \beta \bar{y}_g + (\gamma + \delta) \bar{z}_g + \bar{\epsilon}_g
+\]
+            </code></pre>
+            <p>
+              Rearranging the terms yields:
+            </p>
+            <pre><code class="language-math">
+\[
+\bar{y}_g(1 - \beta) = \alpha + (\gamma + \delta)\bar{z}_g + \bar{\epsilon}_g
+\]
+\[
+\bar{y}_g = \frac{\alpha}{1 - \beta} + \frac{\gamma + \delta}{1 - \beta}\bar{z}_g + \frac{\bar{\epsilon}_g}{1 - \beta}
+\]
+            </code></pre>
+            <p>
+              Plugging this back into the individual equation leads to the reduced form:
+            </p>
+            <pre><code class="language-math">
+\[
+y_i = \frac{\alpha}{1 - \beta} + \left(\frac{\gamma + \beta\delta}{1 - \beta}\right)\bar{z}_g + \delta z_i + u_i
+\]
+            </code></pre>
+            <p>
+              where we define:
+            </p>
+            <pre><code class="language-math">
+\[
+\Pi = \frac{\gamma + \beta\delta}{1 - \beta}
+\]
+            </code></pre>
+            <p>
+              This formulation shows that while the structural model contains three parameters (\(\beta\), \(\gamma\), and \(\delta\)), only two coefficients (\(\Pi\) and \(\delta\)) are observable, leading to an underidentified system.
+            </p>
+          </div>
+        </section>
+
+        <section class="mb-5">
+          <div class="small-text">
+            <strong>Resolving the Reflection Problem</strong>
+            <hr>
+            <p>
+              As discussed by Manski (1993), two common strategies help address this challenge:
+            </p>
+            <ol>
+              <li><strong>Exclusion Restrictions:</strong> For example, assuming \( \delta = 0 \) simplifies the model, so that:
+              </li>
+            </ol>
+            <pre><code class="language-math">
+\[
+\Pi = \frac{\gamma}{1 - \beta} \implies \beta = 1 - \frac{\gamma}{\Pi}
+\]
+            </code></pre>
+            <ol start="2">
+              <li><strong>Instrumental Variables:</strong> Instruments that affect \( \bar{y}_g \) but remain exogenous to \( y_i \) can help isolate the causal peer effects.</li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="mb-5">
+          <div class="small-text">
+            <strong>Key Implications</strong>
+            <hr>
+            <ul>
+              <li><strong>Biased Estimates:</strong> Naive OLS estimates of peer effects are prone to bias due to the reflection problem.</li>
+              <li><strong>Empirical Strategies:</strong> Quasi-experimental designs or instrumental variable approaches are often necessary for credible inference.</li>
+              <li><strong>Social Multipliers:</strong> The multiplier \( \frac{1}{1-\beta} \) illustrates how even modest peer effects can lead to substantial aggregate impacts.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="mb-5">
+          <div class="small-text">
+            <strong>Conclusion</strong>
+            <hr>
+            <p>
+              The reflection problem presents a significant challenge in identifying causal peer effects within econometric models. By understanding the inherent identification issues and employing strategies such as exclusion restrictions or instrumental variables, researchers can better isolate the true impact of social interactions. This enhanced understanding is crucial for accurately analyzing collective behavior in economic and social systems.
+            </p>
+          </div>
+        </section>
+
+        <section class="mb-5">
+          <div class="small-text">
+            <strong>References</strong>
+            <hr>
+            <p>
+              Manski, C. F. (1993). <em>Identification of endogenous social effects: The reflection problem</em>. <em>Review of Economic Studies, 60</em>(3), 531-542.
+            </p>
+          </div>
+        </section>
+        <section>
+          <div class="d-flex align-items-center text-muted">
+            <!-- Author Image -->
+            <img src="/authors/admin/home_avatar.png" alt="Sulman Olieko" class="rounded-circle me-2" width="40" height="40">
+
+            <!-- Author Details and Metadata -->
+            <div class="d-flex flex-column ms-2">
+              <!-- Author Name and Date -->
+              <div class="d-flex align-items-center mb-2">
+                <span class="me-2"><span class="small-text">Sulman Olieko</span></span>
+                <span class="middot-divider mx-2">•</span>
+                <time datetime="2023-10-06" class="text-small"><span class="small-text">October 6, 2023</span></time>
+              </div>
+
+            </div>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Archive -->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="note-box badge-light">
+          <div class="d-flex align-items-center">
+            <!-- Text Content -->
+            <div class="flex-grow-1">
+              <h5 class="h5 card-title">Next Post</h5>
+              <p class="card-text">
+                <span class="small-text">
+                  <a href="/post/magic_bullet/" style="font-weight: bold;">
+                    Why There is No “Magic Bullet” for Causal Inference using Observational Data
+                  </a>
+                </span>
+              </p>
+            </div>
+            <!-- Linked Image -->
+            <div class="ms-4">
+              <a href="/post/magic_bullet/">
+                <img src="/img/magic_bullet.webp" alt="AI image" style="width: 200px; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <style>
+    .floating {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 40px;
+      right: 40px;
+      background-color: #795548;
+      color: #FFF;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 30px;
+      z-index: 100;
+    }
+
+    .float-button {
+      margin-top: 16px;
+    }
+  </style>
+
+  <a href="https://api.whatsapp.com/send?phone=+254710209720&text=Hello!%20I%20came%20across%20your%20website%20and%20would%20like%20to%20learn%20more%20about%20your%20services.%20Can%20you%20please%20assist%20me%3F" class="floating" target="_blank">
+    <i class="fab fa-whatsapp float-button"></i>
+  </a>
+
+  <style>
+    .scroll-button {
+      position: fixed;
+      bottom: 50px;
+      right: 15px;
+      background: #795548;
+      color: white;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      min-height: 40px;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2em;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      z-index: 999;
+      transition: transform 0.3s;
+    }
+
+    .scroll-button:hover {
+      transform: scale(1.1);
+    }
+
+    .scroll-icon {
+      line-height: 1;
+      margin-top: -2px;
+      /* Optical alignment adjustment */
+    }
+  </style>
+
+  <button class="scroll-button" id="scrollButton">
+    <span class="scroll-icon">⌄</span>
+  </button>
+
+  <script>
+    const scrollButton = document.getElementById('scrollButton');
+
+    function toggleScroll() {
+      const scrolledToBottom = window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 50;
+
+      window.scrollTo({
+        top: scrolledToBottom ? 0 : document.documentElement.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
+
+    window.addEventListener('scroll', () => {
+      const scrolledToBottom = window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 50;
+      scrollButton.querySelector('.scroll-icon').textContent =
+        scrolledToBottom ? '⌃' : '⌄';
+    });
+
+    scrollButton.addEventListener('click', toggleScroll);
+  </script>
+
+  <style>
+    .code-container {
+      position: relative;
+      margin: 1rem 0;
+      background: #1e1e1e;
+      border-radius: 8px;
+      padding: 2rem 1rem 1rem;
+      color: #d4d4d4;
+      font-family: 'Fira Code', monospace;
+      overflow-x: auto;
+    }
+
+    pre:has(code) {
+      position: relative;
+      margin: 5px 0;
+      padding: 1.75rem 0 1.75rem 1rem;
+    }
+
+    pre:has(code) button {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
+
+    /* The copy-button is now small and shows an icon */
+    .copy-button {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      width: 24px;
+      height: 24px;
+      background: #3a3a3a;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+      padding: 0;
+    }
+
+    .copy-button svg {
+      width: 16px;
+      height: 16px;
+      fill: #fff;
+    }
+
+    .copy-button:hover {
+      background: #4a4a4a;
+    }
+
+    .copy-button:active {
+      background: #2a2a2a;
+    }
+
+    .copy-button--success {
+      background: #4CAF50 !important;
+    }
+
+    code[class*="language-"] {
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+      display: block;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+
+  <script>
+    (function () {
+      'use strict';
+
+      const copyButtonTimeout = 2000;
+
+      document.querySelectorAll('pre:has(code)').forEach(codeBlock => {
+        if (!navigator.clipboard) return;
+
+        const container = codeBlock.closest('pre');
+        if (!container || container.querySelector('.copy-button')) return;
+
+        container.classList.add('code-container');
+
+        const button = document.createElement('button');
+        button.className = 'copy-button';
+        button.type = 'button';
+        // Use an inline SVG for the copy icon and include a screen-reader only label.
+        button.innerHTML = `
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M19,21H8C6.9,21,6,20.1,6,19V7H8V19H19V21ZM16,3H5C3.9,3,3,3.9,3,5V17H5V5H16V3Z"/>
+          </svg>
+          <span class="sr-only">Copy code to clipboard</span>
+        `;
+
+        button.addEventListener('click', async () => {
+          try {
+            const code = container.querySelector('code').textContent;
+            await navigator.clipboard.writeText(code);
+
+            button.classList.add('copy-button--success');
+            // Optionally update the sr-only text for confirmation.
+            button.querySelector('.sr-only').textContent = 'Copied!';
+
+            setTimeout(() => {
+              button.classList.remove('copy-button--success');
+              button.querySelector('.sr-only').textContent = 'Copy code to clipboard';
+            }, copyButtonTimeout);
+          } catch (err) {
+            button.querySelector('.sr-only').textContent = 'Error copying';
+            console.error('Failed to copy!', err);
+          }
+        });
+
+        container.prepend(button);
+        container.setAttribute('tabindex', '0');
+      });
+    })();
+  </script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+
+  <script>const code_highlighting = true;</script>
+  <script>
+    const search_config = {
+      "indexURI": "/index.json",
+      "minLength": 1,
+      "threshold": 0.3
+    };
+    const i18n = {
+      "no_results": "No results found",
+      "placeholder": "Search...",
+      "results": "results found"
+    };
+    const content_type = {
+      'post': "Posts",
+      'project': "Projects",
+      'publication': "Publications",
+      'talk': "Talks"
+    };
+  </script>
+  <script id="search-hit-fuse-template" type="text/x-template">
+    <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8o5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+  <script src="/js/academic.min.bcfae8267aba63cc55af53a503896bd9.js"></script>
+  <!-- Footer -->
+  <div class="container">
+    <footer class="site-footer">
+      <p class="powered-by">
+        <a href="https://sulmanolieko.github.io/privacy/">Privacy Policy</a>
+        &middot;
+        <a href="https://sulmanolieko.github.io/terms/">Terms</a>
+      </p>
+      <div class="share-box" aria-hidden="true">
+        <ul class="share">
+          <li>
+            <a href="https://www.linkedin.com/in/olieko-sulman" target="_blank" rel="noopener" class="share-btn-linkedin">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/olieko-sulman" target="_blank" rel="noopener" class="share-btn-twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://api.whatsapp.com/send?phone=+254710209720&text=Hello!%20I%20came%20across%20your%20website%20and%20would%20like%20to%20learn%20more%20about%20your%20services.%20Can%20you%20please%20assist%20me%3F" target="_blank" rel="noopener" class="share-btn-whatsapp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:oliekosulman@gmail.com" target="_blank" rel="noopener" class="share-btn-email">
+              <i class="fas fa-envelope"></i>
+            </a>
+          </li>
+
+          <li>
+            <a href="https://service.weibo.com/olieko_sulman" target="_blank" rel="noopener" class="share-btn-weibo">
+              <i class="fab fa-weibo"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <p class="powered-by copyright-license-text">
+        This work is licensed under
+        <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">
+          CC BY NC ND 4.0
+        </a>
+      </p>
+      <p class="powered-by footer-license-icons">
+        <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+          <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+          <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+          <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+          <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+        </a>
+      </p>
+    </footer>
+
+  </div>
+</body>
+
+</html>
