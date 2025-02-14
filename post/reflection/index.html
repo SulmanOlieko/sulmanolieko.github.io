@@ -198,14 +198,14 @@
             <strong>Introduction</strong>
             <hr>
             <p>
-              In many social and economic settings, an individual's outcome is influenced not only by their own characteristics but also by the behaviors and attributes of their peers. This phenomenon, known as peer effects or endogenous social effects, gives rise to what is commonly called the <em>Reflection Problem</em>. In this post, we explore the reflection problem, its implications for econometric modeling, and strategies to overcome its identification challenges.
+              In many social and economic settings, an individual's outcome is influenced not only by their own characteristics but also by the behaviours and attributes of their peers. This phenomenon, known as <i>peer effects</i> or <i>endogenous social effects</i>, gives rise to what is commonly called the <em>reflection problem</em>. In this post, I explore the reflection problem, its implications for econometric modeling, and strategies to overcome its identification challenges.
             </p>
           </div>
         </section>
 
         <section class="mb-5">
           <div class="small-text">
-            <strong>Model Setup</strong>
+            <strong>The model setup</strong>
             <hr>
             <p>
               Consider a linear model where the outcome for individual \( i \) is determined by:
@@ -218,16 +218,18 @@
             <p>
               The model is specified as:
             </p>
-            <pre><code class="language-math">
-\( y_i = \alpha + \beta \bar{y}_g + \gamma \bar{z}_g + \delta z_i + \epsilon_i, \quad \epsilon_i \sim \text{iid}(0, \sigma^2) \)
-            </code></pre>
+
+            <p>
+              \( y_i = \alpha + \beta \bar{y}_g + \gamma \bar{z}_g + \delta z_i + \epsilon_i, \quad \epsilon_i \sim \text{iid}(0, \sigma^2) \)
+            </p>
+
             <p>
               where:
             </p>
             <ul>
               <li>\( \beta \) captures endogenous (peer) effects</li>
               <li>\( \gamma \) represents contextual effects arising from group characteristics</li>
-              <li>\( \delta \) denotes the direct effect of individual characteristics</li>
+              <li>\( \delta \) denotes the direct effect of individual attributes</li>
             </ul>
           </div>
         </section>
@@ -239,44 +241,44 @@
             <p>
               To uncover the identification issues, we begin by aggregating within a group:
             </p>
-            <pre><code class="language-math">
+            <p>
 \( \bar{y}_g = \frac{1}{N_g} \sum_{j \in g} y_j \)
-            </code></pre>
+            </p>
             <p>
               Substituting the individual equation into the group average, we obtain:
             </p>
-            <pre><code class="language-math">
+            <p>
 \[
 \bar{y}_g = \alpha + \beta \bar{y}_g + (\gamma + \delta) \bar{z}_g + \bar{\epsilon}_g
 \]
-            </code></pre>
+            </p>
             <p>
               Rearranging the terms yields:
             </p>
-            <pre><code class="language-math">
+            <p>
 \[
 \bar{y}_g(1 - \beta) = \alpha + (\gamma + \delta)\bar{z}_g + \bar{\epsilon}_g
 \]
 \[
 \bar{y}_g = \frac{\alpha}{1 - \beta} + \frac{\gamma + \delta}{1 - \beta}\bar{z}_g + \frac{\bar{\epsilon}_g}{1 - \beta}
 \]
-            </code></pre>
+            </p>
             <p>
               Plugging this back into the individual equation leads to the reduced form:
             </p>
-            <pre><code class="language-math">
+            <p>
 \[
 y_i = \frac{\alpha}{1 - \beta} + \left(\frac{\gamma + \beta\delta}{1 - \beta}\right)\bar{z}_g + \delta z_i + u_i
 \]
-            </code></pre>
+            </p>
             <p>
               where we define:
             </p>
-            <pre><code class="language-math">
+            <p>
 \[
 \Pi = \frac{\gamma + \beta\delta}{1 - \beta}
 \]
-            </code></pre>
+            </p>
             <p>
               This formulation shows that while the structural model contains three parameters (\(\beta\), \(\gamma\), and \(\delta\)), only two coefficients (\(\Pi\) and \(\delta\)) are observable, leading to an underidentified system.
             </p>
@@ -285,7 +287,7 @@ y_i = \frac{\alpha}{1 - \beta} + \left(\frac{\gamma + \beta\delta}{1 - \beta}\ri
 
         <section class="mb-5">
           <div class="small-text">
-            <strong>Resolving the Reflection Problem</strong>
+            <strong>How can we resolve the Reflection Problem?</strong>
             <hr>
             <p>
               As discussed by Manski (1993), two common strategies help address this challenge:
@@ -294,11 +296,11 @@ y_i = \frac{\alpha}{1 - \beta} + \left(\frac{\gamma + \beta\delta}{1 - \beta}\ri
               <li><strong>Exclusion Restrictions:</strong> For example, assuming \( \delta = 0 \) simplifies the model, so that:
               </li>
             </ol>
-            <pre><code class="language-math">
+            <p>
 \[
 \Pi = \frac{\gamma}{1 - \beta} \implies \beta = 1 - \frac{\gamma}{\Pi}
 \]
-            </code></pre>
+            </p>
             <ol start="2">
               <li><strong>Instrumental Variables:</strong> Instruments that affect \( \bar{y}_g \) but remain exogenous to \( y_i \) can help isolate the causal peer effects.</li>
             </ol>
@@ -322,7 +324,7 @@ y_i = \frac{\alpha}{1 - \beta} + \left(\frac{\gamma + \beta\delta}{1 - \beta}\ri
             <strong>Conclusion</strong>
             <hr>
             <p>
-              The reflection problem presents a significant challenge in identifying causal peer effects within econometric models. By understanding the inherent identification issues and employing strategies such as exclusion restrictions or instrumental variables, researchers can better isolate the true impact of social interactions. This enhanced understanding is crucial for accurately analyzing collective behavior in economic and social systems.
+              The reflection problem presents a significant challenge in identifying causal peer effects within econometric models. Understanding the intrinsic identification issues and applying strategies such as exclusion restrictions or instrumental variables can help researchers to better isolate the true impact of social interactions. Knowledge on as well as controlling for this problem is crucial for accurately analysing collective behaviour of agents in economic and social systems.
             </p>
           </div>
         </section>
