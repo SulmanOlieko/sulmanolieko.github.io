@@ -227,19 +227,15 @@
               The notion that people’s outcomes are interlinked is not new. Scholars in sociology, anthropology, and economics have long recognised that social norms, group pressures, and community contexts play pivotal roles in shaping individual behaviour. Early sociological works placed great emphasis on social structures, while economists historically favoured models centred on individual rational choice. Over time, however, there has been a growing appreciation that ignoring social dynamics can lead to incomplete explanations of economic and social phenomena.
             </p>
             <p>
+            Over the years, my experience as an agricultural and applied economist has shown me that group-level factors can be a powerful determinant of individual outcomes. In many of my studies on technology adoption and innovation systems, for example, the transition from conventional to agro-ecological practices can be facilitated or delayed by peer dynamics within farming communities. At first glance, it may appear straightforward: if enough farmers in a group use a particular technique, others will be encouraged to follow. However, the reflection problem surfaces whenever we attempt to discern whether the group’s behaviour truly influences the individual’s choices, or whether the group’s behaviour is merely reflecting an underlying factor common to everyone (e.g., policy environment, extension services, or agro-climatic conditions).
+            </p>
+            <p>
               Charles F. Manski’s (1993) seminal paper on the reflection problem crystallised the challenge of empirically measuring peer effects. He argued that when one attempts to regress an individual’s outcome on the average outcome of their group, one faces a conundrum: how do we know if the group’s average outcome is truly influencing the individual, or if it merely reflects the aggregation of individual outcomes—potentially including that of the individual in question? Additionally, how do we separate the effect of group-level attributes (contextual effects) from genuine spillovers (endogenous effects)? The reflection problem is thus at the heart of distinguishing between correlation and causation in social interactions.
             </p>
             <p>
-            <strong>Introduction</strong><br>
-            In various social and economic contexts, individuals often adapt their decisions and outlooks in response to group norms and the behaviour of their peers. This tendency is commonly termed “peer effects” or “endogenous social effects.” While it is intuitive to observe that a household’s decisions about, say, resource allocation or schooling may be shaped by neighbours or colleagues, understanding the precise channels of influence can be much more complex. At the heart of this complexity is the <em>reflection problem</em>, a term I find useful in explaining why it is often challenging to distinguish between the influence peers exert on an individual and the parallel influence that the individual’s traits might have on their peers and environment.<br><br>
-
-            This article provides a structured exploration of the reflection problem, emphasising how it arises and why it remains a persistent issue in econometric research. Drawing upon existing scholarship in social interactions and peer effects, I illustrate how underidentification can easily occur if one attempts to measure the impact of group averages on individual outcomes without introducing additional assumptions or well-chosen instruments. In practical terms, this challenge has direct implications for how researchers and policymakers design interventions, interpret correlations, and assess the likely efficacy of group-based policy strategies. By the end, I hope to highlight both the magnitude of the reflection problem and the pathways through which it can be mitigated.<br><br>
-
-            <strong>Context and Relevance</strong><br>
-            Over the years, my experience as an agricultural and applied economist has shown me that group-level factors can be a powerful determinant of individual outcomes. In many of my studies on technology adoption and innovation systems, for example, the transition from conventional to agro-ecological practices can be facilitated or delayed by peer dynamics within farming communities. At first glance, it may appear straightforward: if enough farmers in a group use a particular technique, others will be encouraged to follow. However, the reflection problem surfaces whenever we attempt to discern whether the group’s behaviour truly influences the individual’s choices, or whether the group’s behaviour is merely reflecting an underlying factor common to everyone (e.g., policy environment, extension services, or agro-climatic conditions).<br><br>
-
-            Recognising this subtlety is vital for researchers. If one misinterprets group correlations as evidence of peer effects, the resulting recommendations can mislead policymakers. Conversely, if one assumes there is no meaningful group influence, one might ignore valuable avenues for collective action and interventions that leverage social interaction to enhance outcomes. This dual risk underscores the importance of precisely articulating the reflection problem and examining how best to address it empirically.<br><br>
-
+             Recognising this subtlety is vital for researchers. If one misinterprets group correlations as evidence of peer effects, the resulting recommendations can mislead policymakers. Conversely, if one assumes there is no meaningful group influence, one might ignore valuable avenues for collective action and interventions that leverage social interaction to enhance outcomes. This dual risk underscores the importance of precisely articulating the reflection problem and examining how best to address it empirically. 
+            </p>
+            
             <strong>Basic Model and the Source of Underidentification</strong><br>
             We typically consider a linear model for an individual \( i \) in group \( g \):
             <br><br>
@@ -253,10 +249,15 @@
             <br><br>
             \( \bar{y}_g = \frac{1}{N_g} \sum_{j \in g} y_j. \)
             <br><br>
-            Substituting each \( y_j \) from the original equation into \( \bar{y}_g \) yields a relationship that mixes \(\beta, \gamma,\) and \(\delta\). Solving for \( \bar{y}_g \) and then substituting back into the individual equation typically produces a reduced form with fewer identifiable parameters than we started with, illustrating that the system cannot be pinned down unless we introduce further structure. In simpler terms, the reflection problem warns us that we cannot glean the size of the peer effect just by correlating individual outcomes with group averages, because they simultaneously determine each other.<br><br>
+    ----->        Substituting each \( y_j \) from the original equation into \( \bar{y}_g \) yields a relationship that mixes \(\beta, \gamma,\) and \(\delta\): <br><br>
+            
+            
+     ----->       Solving for \( \bar{y}_g \) and then substituting back into the individual equation typically produces a reduced form with fewer identifiable parameters than we started with, illustrating that the system cannot be pinned down unless we introduce further structure: <br><br>
+            
+            In simpler terms, the reflection problem warns us that we cannot glean the size of the peer effect just by correlating individual outcomes with group averages, because they simultaneously determine each other.<br><br>
 
-            <strong>Why It Matters in Applied Research</strong><br>
-            In my own empirical work, particularly with data from smallholder farmers in East Africa, I have seen how easy it is to misread group correlations. Suppose you observe that in a particular region, the average adoption rate of a new pest management method is high, and that individuals in that region also have high adoption rates. Does that imply the region’s collective usage of this method causes the individual usage, or are both simply responding to an improved extension service or an enabling policy environment? Without careful design, one might attribute changes to peer influence when, in fact, the impetus lies elsewhere.<br><br>
+            <strong>Why it matters in applied research</strong><br>
+            In my empirical work, particularly with data from smallholder farmers in East Africa, I have seen how easy it is to misread group correlations. Suppose you observe that in a particular region, the average adoption rate of a new pest management method is high, and that individuals in that region also have high adoption rates. Does that imply the region’s collective usage of this method causes the individual usage, or are both simply responding to an improved extension service or an enabling policy environment? Without careful design, one might attribute changes to peer influence when, in fact, the impetus lies elsewhere.<br><br>
 
             Similar reasoning applies in education, labour, and health settings. For instance, if you find that pupils in a class with high average test scores tend to have strong individual performance, it could be that peer interactions genuinely lift their performance. Or it might be that the school has excellent resources or more experienced teachers, which simultaneously improves every pupil’s score. The reflection problem is especially problematic in contexts where there is no exogenous variation in group composition or environment. Under these circumstances, the correlation between individual and group outcomes may be strong, but it is not necessarily causal.<br><br>
 
@@ -325,6 +326,11 @@
           </div>
         </section>
 
+
+
+
+
+        
         <section class="mb-5">
           <div class="small-text">
             <strong>Basic Model Setup</strong>
