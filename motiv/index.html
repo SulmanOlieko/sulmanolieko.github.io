@@ -152,7 +152,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/index.html" aria-label="Home"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-        <li class="breadcrumb-item active" aria-current="page"><span>Motivatinal letter</span></li>
+        <li class="breadcrumb-item active" aria-current="page"><span>Motivational letter</span></li>
     </ol>
 </nav>
 
@@ -163,7 +163,11 @@
   <script>
     const config = { 
       documentId: 'e4763c5f-d302-43af-a7c4-e60f6f28d094',
-      darkMode: true, 
+      darkMode: false,  
+      themeColor:"#795548",
+      appBarColored:true,
+      disableToolbar:false,
+      disableElements:[]
     };
     CloudPDF(config, document.getElementById('viewer')).then((instance) => {
       
