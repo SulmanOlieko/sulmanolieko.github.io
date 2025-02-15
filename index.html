@@ -813,28 +813,34 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
       </div>
       </div>
     </script>
-
+    
     <script type="module">
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
     const auth = getAuth();
+  
     onAuthStateChanged(auth, user => {
-      const accountSection = document.getElementById('account-section');
+      const accountNameElem = document.getElementById('account-name');
+      const logoutBtn = document.getElementById('logout-btn');
       if (user) {
         // Use displayName if available; otherwise fallback to email
         const displayName = user.displayName || user.email;
-        accountSection.innerHTML = `
-          <span>Welcome, ${displayName}</span>
-          <button id="logout-btn" style="margin-left: 10px; background: transparent; border: none; cursor: pointer; color: #795548;">Logout</button>
-        `;
-        document.getElementById('logout-btn').addEventListener('click', () => {
+        accountNameElem.textContent = `Welcome, ${displayName}`;
+        // Attach logout event
+        logoutBtn.addEventListener('click', (e) => {
+          e.preventDefault();
           signOut(auth).then(() => {
+            // Redirect to login page or refresh after logout
             window.location.href = '/login.html';
           }).catch(error => {
             console.error("Sign out error:", error);
           });
         });
       } else {
-        accountSection.innerHTML = `<a href="/login.html" style="color: #795548; text-decoration: none;">Login</a>`;
+        // No user signed in: display a Login link instead
+        document.getElementById('account-section').innerHTML = 
+          `<a class="nav-link" href="/login.html" style="color: #795548; text-decoration: none;">
+             <i class="fas fa-user"></i> Login
+           </a>`;
       }
     });
   </script>
