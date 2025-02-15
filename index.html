@@ -834,7 +834,6 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
       // Get the first two letters in uppercase
       const initials = displayName.substring(0, 2).toUpperCase();
       accountSection.innerHTML = `
-      <i class="fas fa-user"></i>
         <span class="account-initials" style="
           display: inline-block;
           width: 32px;
@@ -846,6 +845,7 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
           line-height: 32px;
           font-weight: bold;
         ">
+        <i class="fas fa-user"></i>
           ${initials}
         </span>
         <a href="#" id="logout-btn" style="margin-left: 8px; color: #FFF; text-decoration: none;">Logout</a>
