@@ -53,32 +53,55 @@
   <meta property="og:locale" content="en-us">
   <title>Login | Sulman Olieko</title>
   <style>
-    /* Custom CSS for Login/Signup Container using #795548 */
+    /* Custom CSS for the Login/Signup container using #795548 */
     .login-signup-container {
       background-color: #795548;
       color: #fff;
-      padding: 20px;
+      padding: 30px;
       border-radius: 10px;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      max-width: 400px;
+      width: 100%;
     }
     .login-signup-container h2 {
       color: #fff;
       margin-bottom: 20px;
     }
+    .login-signup-container .input-group {
+      margin-bottom: 20px;
+    }
     .login-signup-container .input-group input {
       background-color: #fff;
       color: #000;
-      border: none;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+    .login-signup-container .input-group input:focus {
+      border-color: #6a4a3c;
+      box-shadow: 0 0 5px rgba(106, 74, 60, 0.5);
     }
     .login-signup-container .btn {
-      background-color: #795548;
-      border: 1px solid #795548;
+      background: linear-gradient(45deg, #795548, #6a4a3c);
+      border: none;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      padding: 10px;
     }
     .login-signup-container .btn:hover {
-      background-color: #6a4a3c;
+      background: linear-gradient(45deg, #6a4a3c, #795548);
     }
     .login-signup-container .toggle-link {
       color: #fff;
+    }
+    /* Wrapper to center the container with realistic spacing */
+    .login-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 80vh;
+      padding: 20px;
     }
   </style>
 </head>
@@ -151,68 +174,70 @@
 
   <!-- Main Content: Login & Signup -->
   <main class="container" style="margin-top: 30px;">
-    <!-- Login Container -->
-    <div class="container login-signup-container" id="login-container">
-      <h2>Login</h2>
-      <form id="login-form">
-        <div class="input-group">
-          <i class="fas fa-envelope"></i>
-          <input type="text" id="login-username" placeholder="Email" />
-          <div class="error-message" id="login-username-error">Email is required</div>
+    <div class="login-wrapper">
+      <!-- Login Container -->
+      <div class="container login-signup-container" id="login-container">
+        <h2>Login</h2>
+        <form id="login-form">
+          <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input type="text" id="login-username" placeholder="Email" />
+            <div class="error-message" id="login-username-error">Email is required</div>
+          </div>
+          <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="login-password" placeholder="Password" />
+            <span class="toggle-password" data-target="login-password"><i class="fas fa-eye"></i></span>
+            <div class="error-message" id="login-password-error">Password is required</div>
+          </div>
+          <div class="remember-me">
+            <input type="checkbox" id="remember-me">
+            <label for="remember-me">Remember me</label>
+          </div>
+          <div class="forgot-password" id="forgot-password">Forgot password?</div>
+          <button type="submit" class="btn">Login</button>
+        </form>
+        <div class="social-login">
+          <p>Or sign in with:</p>
+          <div class="social-btn">
+            <button class="google-btn"><i class="fab fa-google"></i> Google</button>
+            <button class="github-btn"><i class="fab fa-github"></i> GitHub</button>
+          </div>
         </div>
-        <div class="input-group">
-          <i class="fas fa-lock"></i>
-          <input type="password" id="login-password" placeholder="Password" />
-          <span class="toggle-password" data-target="login-password"><i class="fas fa-eye"></i></span>
-          <div class="error-message" id="login-password-error">Password is required</div>
-        </div>
-        <div class="remember-me">
-          <input type="checkbox" id="remember-me">
-          <label for="remember-me">Remember me</label>
-        </div>
-        <div class="forgot-password" id="forgot-password">Forgot password?</div>
-        <button type="submit" class="btn">Login</button>
-      </form>
-      <div class="social-login">
-        <p>Or sign in with:</p>
-        <div class="social-btn">
-          <button class="google-btn"><i class="fab fa-google"></i> Google</button>
-          <button class="github-btn"><i class="fab fa-github"></i> GitHub</button>
-        </div>
+        <p class="toggle-link" onclick="toggleForm()">Don't have an account? Sign up</p>
       </div>
-      <p class="toggle-link" onclick="toggleForm()">Don't have an account? Sign up</p>
-    </div>
 
-    <!-- Signup Container -->
-    <div class="container login-signup-container" id="signup-container" style="display: none;">
-      <h2>Sign Up</h2>
-      <form id="signup-form">
-        <div class="input-group">
-          <i class="fas fa-user"></i>
-          <input type="text" id="signup-username" placeholder="Username" />
-          <div class="error-message" id="signup-username-error">Username is required</div>
+      <!-- Signup Container -->
+      <div class="container login-signup-container" id="signup-container" style="display: none;">
+        <h2>Sign Up</h2>
+        <form id="signup-form">
+          <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input type="text" id="signup-username" placeholder="Username" />
+            <div class="error-message" id="signup-username-error">Username is required</div>
+          </div>
+          <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="signup-email" placeholder="Email" />
+            <div class="error-message" id="signup-email-error">Valid email is required</div>
+          </div>
+          <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="signup-password" placeholder="Password" />
+            <span class="toggle-password" data-target="signup-password"><i class="fas fa-eye"></i></span>
+            <div class="error-message" id="signup-password-error">Password is required</div>
+          </div>
+          <button type="submit" class="btn">Sign Up</button>
+        </form>
+        <div class="social-login">
+          <p>Or sign up with:</p>
+          <div class="social-btn">
+            <button class="google-btn"><i class="fab fa-google"></i> Google</button>
+            <button class="github-btn"><i class="fab fa-github"></i> GitHub</button>
+          </div>
         </div>
-        <div class="input-group">
-          <i class="fas fa-envelope"></i>
-          <input type="email" id="signup-email" placeholder="Email" />
-          <div class="error-message" id="signup-email-error">Valid email is required</div>
-        </div>
-        <div class="input-group">
-          <i class="fas fa-lock"></i>
-          <input type="password" id="signup-password" placeholder="Password" />
-          <span class="toggle-password" data-target="signup-password"><i class="fas fa-eye"></i></span>
-          <div class="error-message" id="signup-password-error">Password is required</div>
-        </div>
-        <button type="submit" class="btn">Sign Up</button>
-      </form>
-      <div class="social-login">
-        <p>Or sign up with:</p>
-        <div class="social-btn">
-          <button class="google-btn"><i class="fab fa-google"></i> Google</button>
-          <button class="github-btn"><i class="fab fa-github"></i> GitHub</button>
-        </div>
+        <p class="toggle-link" onclick="toggleForm()">Already have an account? Login</p>
       </div>
-      <p class="toggle-link" onclick="toggleForm()">Already have an account? Login</p>
     </div>
   </main>
 
