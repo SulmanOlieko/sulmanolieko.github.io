@@ -52,10 +52,39 @@
   <meta property="twitter:image" content="https://sulmanolieko.github.io/img/icon-192.png">
   <meta property="og:locale" content="en-us">
   <title>Login | Sulman Olieko</title>
+  <style>
+    /* Custom CSS for Login/Signup Container using #795548 */
+    .login-signup-container {
+      background-color: #795548;
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .login-signup-container h2 {
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    .login-signup-container .input-group input {
+      background-color: #fff;
+      color: #000;
+      border: none;
+    }
+    .login-signup-container .btn {
+      background-color: #795548;
+      border: 1px solid #795548;
+    }
+    .login-signup-container .btn:hover {
+      background-color: #6a4a3c;
+    }
+    .login-signup-container .toggle-link {
+      color: #fff;
+    }
+  </style>
 </head>
 
 <body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents">
-  <!-- Search and Navigation (template provided) -->
+  <!-- Navigation and Breadcrumbs -->
   <aside class="search-results" id="search">
     <div class="container">
       <section class="search-header">
@@ -123,7 +152,7 @@
   <!-- Main Content: Login & Signup -->
   <main class="container" style="margin-top: 30px;">
     <!-- Login Container -->
-    <div class="container" id="login-container">
+    <div class="container login-signup-container" id="login-container">
       <h2>Login</h2>
       <form id="login-form">
         <div class="input-group">
@@ -155,7 +184,7 @@
     </div>
 
     <!-- Signup Container -->
-    <div class="container" id="signup-container" style="display: none;">
+    <div class="container login-signup-container" id="signup-container" style="display: none;">
       <h2>Sign Up</h2>
       <form id="signup-form">
         <div class="input-group">
@@ -187,7 +216,7 @@
     </div>
   </main>
 
-  <!-- Footer (from your template) -->
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="share-box" aria-hidden="true">
       <ul class="share">
@@ -386,12 +415,11 @@
         try {
           await signInWithEmailAndPassword(auth, email, password);
           alert('Login successful!');
-          if(document.getElementById('remember-me').checked) {
+          if (document.getElementById('remember-me').checked) {
             localStorage.setItem('rememberedEmail', email);
           } else {
             localStorage.removeItem('rememberedEmail');
           }
-          // Redirect to your GitHub dashboard or home page
           window.location.href = "https://sulmanolieko.github.io/dashboard.html";
         } catch (error) {
           alert('Login failed: ' + error.message);
