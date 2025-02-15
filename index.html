@@ -394,16 +394,16 @@
         <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
       </li>
       <li class="nav-item dropdown" id="account-section">
-        <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-user"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdown">
-          <!-- This span will display the user's name/email -->
-          <span class="dropdown-item-text" id="account-name">Account</span>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#" id="logout-btn">Logout</a>
-        </div>
-      </li>
+      <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-user"></i>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdown">
+        <!-- This span will display the user's name/email -->
+        <span class="dropdown-item-text" id="account-name">Account</span>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#" id="logout-btn">Logout</a>
+      </div>
+    </li>
     </ul>
   </div>
 </nav>
@@ -817,34 +817,30 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
     <script type="module">
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
     const auth = getAuth();
-  
+    
     onAuthStateChanged(auth, user => {
       const accountNameElem = document.getElementById('account-name');
       const logoutBtn = document.getElementById('logout-btn');
       if (user) {
-        // Use displayName if available; otherwise fallback to email
         const displayName = user.displayName || user.email;
         accountNameElem.textContent = `Welcome, ${displayName}`;
-        // Attach logout event
         logoutBtn.addEventListener('click', (e) => {
           e.preventDefault();
           signOut(auth).then(() => {
-            // Redirect to login page or refresh after logout
             window.location.href = '/login.html';
           }).catch(error => {
             console.error("Sign out error:", error);
           });
         });
       } else {
-        // No user signed in: display a Login link instead
-        document.getElementById('account-section').innerHTML = 
+        document.getElementById('account-section').innerHTML =
           `<a class="nav-link" href="/login.html" style="color: #795548; text-decoration: none;">
              <i class="fas fa-user"></i> Login
            </a>`;
       }
     });
   </script>
-      
+        
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
     <script src="/js/academic.min.bcfae8267aba63cc55af53a503896bd9.js"></script>
