@@ -393,17 +393,9 @@
       <li class="nav-item">
         <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
       </li>
-      <li class="nav-item dropdown" id="account-section">
-      <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-user"></i>
-      </a>
-      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdown">
-        <!-- This span will display the user's name/email -->
-        <span class="dropdown-item-text" id="account-name">Account</span>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#" id="logout-btn">Logout</a>
-      </div>
-    </li>
+      <li class="nav-item" id="account-section">
+        <!-- This will be populated by Firebase auth state -->
+      </li>
     </ul>
   </div>
 </nav>
@@ -814,13 +806,12 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
       </div>
     </script>
     
-    <!-- Firebase Initialization and Account Logic -->
-<script type="module">
-  // Import Firebase App and Auth modules
+    <script type="module">
+  // Import Firebase app and auth modules
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
   import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
 
-  // Your Firebase configuration (replace with your own config)
+  // Your Firebase configuration object
   const firebaseConfig = {
     apiKey: "AIzaSyCmsR_JUmxQkUDU0qStBhFr5-AkuuNfoI8",
     authDomain: "sulmanolieko-35fd6.firebaseapp.com",
@@ -830,37 +821,54 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
     appId: "1:765226130762:web:f6e87c0ab5f4e27631b5b3"
   };
 
-  // Initialize Firebase and get the Auth service
+  // Initialize Firebase
   const appFirebase = initializeApp(firebaseConfig);
   const auth = getAuth(appFirebase);
 
-  // Listen for changes in authentication state
+  // Listen for auth state changes
   onAuthStateChanged(auth, user => {
     const accountSection = document.getElementById('account-section');
     if (user) {
-      // If user is logged in, display their name (or email) and the logout option
+      // Use displayName if available; otherwise, fallback to email
       const displayName = user.displayName || user.email;
-      document.getElementById('account-name').textContent = `Welcome, ${displayName}`;
-      // Attach logout handler
-      document.getElementById('logout-btn').addEventListener('click', (e) => {
+      // Get the first two letters in uppercase
+      const initials = displayName.substring(0, 2).toUpperCase();
+      accountSection.innerHTML = `
+        <span class="account-initials" style="
+          display: inline-block;
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background: #795548;
+          color: #fff;
+          text-align: center;
+          line-height: 32px;
+          font-weight: bold;
+        ">
+          ${initials}
+        </span>
+        <a href="#" id="logout-btn" style="margin-left: 8px; color: #795548; text-decoration: none;">Logout</a>
+      `;
+      document.getElementById('logout-btn').addEventListener('click', e => {
         e.preventDefault();
-        signOut(auth)
-          .then(() => {
-            // Redirect to login page after successful logout
-            window.location.href = '/login.html';
-          })
-          .catch(error => {
-            console.error("Sign out error:", error);
-          });
+        signOut(auth).then(() => {
+          // Redirect to login page after sign out
+          window.location.href = '/login.html';
+        }).catch(error => {
+          console.error("Sign out error:", error);
+        });
       });
     } else {
-      // If no user is logged in, replace the dropdown with a simple Login link
-      accountSection.innerHTML = `<a class="nav-link" href="/login.html" style="color: #795548; text-decoration: none;">
-                                      <i class="fas fa-user"></i> Login
-                                    </a>`;
+      // If no user is signed in, show a user icon linking to the login page
+      accountSection.innerHTML = `
+        <a class="nav-link" href="/login.html" style="color: #795548; text-decoration: none;">
+          <i class="fas fa-user"></i>
+        </a>
+      `;
     }
   });
 </script>
+
         
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
