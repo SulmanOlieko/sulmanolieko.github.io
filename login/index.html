@@ -481,6 +481,25 @@
     document.getElementById('signup-password').addEventListener('input', () => {
       document.getElementById('signup-password-error').style.display = 'none';
     });
+
+    
+    document.querySelector('.js-dark-toggle').addEventListener('click', function(e) {
+    e.preventDefault();
+    const darkStyle = document.querySelector('link[title="hl-dark"]');
+    const lightStyle = document.querySelector('link[title="hl-light"]');
+    if (darkStyle.disabled) {
+      // Enable dark mode
+      darkStyle.disabled = false;
+      lightStyle.disabled = true;
+      this.innerHTML = '<i class="fas fa-sun"></i>';
+    } else {
+      // Revert to light mode
+      darkStyle.disabled = true;
+      lightStyle.disabled = false;
+      this.innerHTML = '<i class="fas fa-moon"></i>';
+    }
+  });
+
   </script>
 </body>
 </html>
