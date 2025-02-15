@@ -834,15 +834,11 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
       // Get the first two letters in uppercase
       const initials = displayName.substring(0, 2).toUpperCase();
       accountSection.innerHTML = `
-      <a href="#" id="logout-btn" style="margin-left: 8px; color: #FFF; text-decoration: none;"><i class="nav-item" class="fas fa-user"></i></a>
+      <a href="#" id="logout-btn" style="margin-left: 8px; color: #FFF; text-decoration: none;"><i class="nav-link" class="fas fa-user"></i></a>
         <span class="account-initials" style="
-          display: inline-block;
           width: 32px;
           height: 32px;
-          border-radius: 50%;
-          background: #795548;
           color: #fff;
-          text-align: center;
         ">
           ${initials}
         </span>
@@ -859,7 +855,7 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
     } else {
       // If no user is signed in, show a user icon linking to the login page
       accountSection.innerHTML = `
-        <a class="nav-item" href="/login/index.html" style="color: #FFF; text-decoration: none;">
+        <a class="nav-link" href="/login/index.html" style="color: #FFF; text-decoration: none;">
           <i class="fas fa-user"></i>
         </a>
       `;
