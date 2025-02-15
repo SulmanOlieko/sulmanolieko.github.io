@@ -325,7 +325,7 @@
           } else {
             localStorage.removeItem('rememberedEmail');
           }
-          window.location.href = "https://sulmanolieko.github.io/dashboard.html";
+          window.location.href = "https://sulmanolieko.github.io/index.html";
         } catch (error) {
           alert('Login failed: ' + error.message);
         }
@@ -340,7 +340,7 @@
         try {
           await createUserWithEmailAndPassword(auth, email, password);
           alert('Signup successful!');
-          window.location.href = "https://sulmanolieko.github.io/welcome.html";
+          window.location.href = "https://sulmanolieko.github.io/login/index.html";
         } catch (error) {
           alert('Signup failed: ' + error.message);
         }
@@ -353,7 +353,7 @@
         try {
           await signInWithPopup(auth, provider);
           alert('Google login successful!');
-          window.location.href = "https://sulmanolieko.github.io/dashboard.html";
+          window.location.href = "https://sulmanolieko.github.io/index.html";
         } catch (error) {
           alert('Google login failed: ' + error.message);
         }
@@ -366,7 +366,7 @@
         try {
           await signInWithPopup(auth, provider);
           alert('GitHub login successful!');
-          window.location.href = "https://sulmanolieko.github.io/dashboard.html";
+          window.location.href = "https://sulmanolieko.github.io/index.html";
         } catch (error) {
           alert('GitHub login failed: ' + error.message);
         }
