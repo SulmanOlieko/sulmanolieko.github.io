@@ -260,8 +260,6 @@
 
         <section class="mb-5">
           <div class="small-text">
-            <strong>The Reflection Problem Explained</strong>
-            <hr>
             <p>
               The reflection problem arises because group outcomes and individual outcomes often mirror each other. If you aggregate the model across the group, you get:
             </p>
@@ -269,7 +267,33 @@
               \( \bar{y}_g = \frac{1}{N_g} \sum_{j \in g} y_j. \)
             </p>
             <p>
-              Substituting each \(y_j\) from the individual-level equation into \(\bar{y}_g\) introduces a circularity: \(\bar{y}_g\) appears on both sides of the equation, entangling the roles of \(\beta\), \(\gamma\), and \(\delta\). After solving for \(\bar{y}_g\) and plugging it back into the individual equation, you typically end up with a reduced form that reveals you can only identify certain linear combinations of the parameters, not each one independently. This is the essence of underidentification.
+              Substituting each \(y_j\) from the individual-level equation into \(\bar{y}_g\) introduces a circularity: \(\bar{y}_g\) appears on both sides of the equation, entangling the roles of \(\beta\), \(\gamma\), and \(\delta\). 
+            </p>
+            <p>
+              \bar{y}_g &= \alpha + \beta \bar{y}_g + (\gamma + \delta) \bar{z}_g + \bar{\epsilon}_g \nonumber \\
+    \bar{y}_g(1 - \beta) &= \alpha + (\gamma + \delta)\bar{z}_g + \bar{\epsilon}_g \nonumber \\
+    \bar{y}_g &= \frac{\alpha}{1 - \beta} + \frac{\gamma + \delta}{1 - \beta}\bar{z}_g + \frac{\bar{\epsilon}_g}{1 - \beta}
+            </p>
+              <p>
+              After solving for \(\bar{y}_g\) and plugging it back into the individual equation:
+              </p>
+
+              <p>
+                y_i &= \alpha + \beta\left(\frac{\alpha}{1 - \beta} + \frac{\gamma + \delta}{1 - \beta}\bar{z}_g\right) + \gamma \bar{z}_g + \delta z_i + \epsilon_i \\
+    &= \frac{\alpha}{1 - \beta} + \left(\frac{\beta(\gamma + \delta)}{1 - \beta} + \gamma\right)\bar{z}_g + \delta z_i + \epsilon_i + \frac{\beta\bar{\epsilon}_g}{1 - \beta}
+              </p>
+              <p>
+              Thus, you typically end up with a reduced form that reveals you can only identify certain linear combinations of the parameters, not each one independently:
+              </p>
+            <p>
+            </p>
+            y_i = \underbrace{\frac{\alpha}{1 - \beta}}_{\text{Intercept}} + \underbrace{\left(\frac{\gamma + \beta\delta}{1 - \beta}\right)}_{\Pi}\bar{z}_g + \delta z_i + u_i
+            <p>
+            <p>
+              Where: \Pi = \frac{\gamma + \beta\delta}{1 - \beta}
+            </p>
+            <p>
+              This is the essence of underidentification.
             </p>
             <p>
               In more intuitive terms, if the average group outcome is partly driven by each individual’s outcome, it is not clear whether changes in the group outcome cause changes in the individual or vice versa. This simultaneity is precisely what Manski highlights. Without additional information or constraints, one cannot simply look at a correlation between an individual’s outcome and the group’s outcome and conclude that peer influence is at work.
