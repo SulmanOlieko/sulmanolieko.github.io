@@ -831,7 +831,7 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
       // Get the first two letters in uppercase
       const initials = displayName.substring(0, 2).toUpperCase();
       accountSection.innerHTML = `
-      <a href="#" id="logout-btn" style="margin-left: 8px; color: #FFF; text-decoration: none;">
+      <a href="#" id="logout-btn" style="color: #FFF; text-decoration: none;">
         <span class="account-initials" style="
           display: inline-block;
           width: 32px;
@@ -858,7 +858,7 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
       // If no user is signed in, show a user icon linking to the login page
       accountSection.innerHTML = `
         <a class="nav-item nav-link" href="/login/index.html" style="color: #FFF; text-decoration: none;">
-          <i class="fa fa-sign-in" aria-hidden="true"></i>
+          <i class="fal fa-sign-in-alt" aria-hidden="true"></i>
         </a>
       `;
     }
