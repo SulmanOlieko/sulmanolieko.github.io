@@ -255,11 +255,6 @@
             <p>
               Here, \(\beta\) captures the endogenous peer effect, \(\gamma\) captures the contextual or exogenous group effect, and \(\delta\) measures how much individual attributes directly affect the outcome. At first glance, this model seems straightforward. However, the challenge arises because \(\bar{y}_g\) is itself a function of the outcomes \(y_j\) for all individuals \(j\in g\), including \(y_i\). This simultaneity means that a naive regression of \(y_i\) on \(\bar{y}_g\) risks conflating the individual’s effect on the group with the group’s effect on the individual.
             </p>
-          </div>
-        </section>
-
-        <section class="mb-5">
-          <div class="small-text">
             <p>
               The reflection problem arises because group outcomes and individual outcomes often mirror each other. If you aggregate the model across the group, you get:
             </p>
@@ -318,7 +313,7 @@
             <strong>Underidentification and Its Consequences</strong>
             <hr>
             <p>
-              Econometric identification is about whether one can isolate unique values for parameters of interest from the data. In the reflection problem, there are three structural parameters—\(\beta\), \(\gamma\), and \(\delta\)—but fewer degrees of freedom in the reduced form, leading to underidentification. Consequently, naive OLS regressions that include \(\bar{y}_g\) as an explanatory variable risk mixing up these effects, resulting in biased or inconsistent estimates.
+              Econometric identification is about whether one can isolate unique values for parameters of interest from the data. In the reflection problem, there are three structural parameters—\(\beta\), \(\gamma\), and \(\delta\)—but fewer degrees of freedom in the reduced form (only two estimable coefficients (\(\Pi, \delta\))), leading to underidentification. Consequently, naive OLS regressions that include \(\bar{y}_g\) as an explanatory variable risk mixing up these effects, resulting in biased or inconsistent estimates.
             </p>
             <p>
               This underidentification matters greatly in practice. Suppose you observe that in a certain region, both the group average outcome and individual outcomes are high. One might be tempted to attribute this to strong peer effects. However, it could be that the region simply has superior infrastructure or a well-designed policy environment that raises everyone’s outcome, creating an illusion of peer influence. If policymakers interpret this correlation as evidence of strong peer effects and design interventions accordingly, they may be disappointed when those interventions fail to replicate the observed outcomes in other contexts.
