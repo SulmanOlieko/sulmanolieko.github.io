@@ -1,261 +1,200 @@
 <!DOCTYPE html>
 <html lang="en-us">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Source Themes Academic 4.6.2">
-  <meta name="description" content="">
-  <link rel="alternate" hreflang="en-us" href="https://sulmanolieko.github.io/404.html">
-  <meta name="theme-color" content="#795548">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
-  <link rel="stylesheet" href="/css/academic.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
-  <!--Google Webfonts-->
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-MDK8S5X2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    function trackOutboundLink(url) {
-      gtag('event', 'click', {
-        'event_category': 'outbound',
-        'event_label': url,
-        'transport_type': 'beacon',
-        'event_callback': function () { document.location = url; }
-      });
-      console.debug("Outbound link clicked: " + url);
-    }
-    function onClickCallback(event) {
-      if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) { return; }
-      trackOutboundLink(event.target);
-    }
-    gtag('js', new Date());
-    gtag('config', 'GTM-MDK8S5X2', {});
-    document.addEventListener('click', onClickCallback, false);
-  </script>
-  <link rel="manifest" href="/index.webmanifest">
-  <link rel="icon" type="image/png" href="/img/icon-32.png">
-  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
-  <link rel="canonical" href="https://sulmanolieko.github.io/login.html">
-  <meta property="twitter:card" content="summary">
-  <meta property="og:site_name" content="Sulman Olieko">
-  <meta property="og:url" content="https://sulmanolieko.github.io/login.html">
-  <meta property="og:title" content="Login | Sulman Olieko">
-  <meta property="og:description" content="">
-  <meta property="og:image" content="https://sulmanolieko.github.io/img/icon-192.png">
-  <meta property="twitter:image" content="https://sulmanolieko.github.io/img/icon-192.png">
-  <meta property="og:locale" content="en-us">
   <title>Login | Sulman Olieko</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
   <style>
-    /* Custom CSS for the Login/Signup container */
-    .login-signup-container {
-      background-color: #fff;  /* White container */
-      color: #000;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      max-width: 400px;
-      width: 100%;
-    }
-    .login-signup-container h2 {
-      color: #000;
-      margin-bottom: 20px;
-    }
-    .login-signup-container .input-group input {
-      background-color: #fff;
-      color: #000;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-    }
-    .login-signup-container .input-group input:focus {
-      border-color: #6a4a3c;
-      box-shadow: 0 0 5px rgba(106, 74, 60, 0.5);
-    }
-    .login-signup-container .btn {
-      background: #795548;  /* Buttons in #795548 */
-      border: none;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-      font-size: 1rem;
-      padding: 10px;
-      color: #fff;
-    }
-    .login-signup-container .btn:hover {
-      background: #6a4a3c;
-    }
-    .login-signup-container .toggle-link {
-      color: #000;
-    }
-    /* Wrapper to center the container with realistic spacing */
-    .login-wrapper {
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f5f5f5;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 80vh;
-      padding: 20px;
+      min-height: 100vh;
+    }
+    .login-wrapper {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      max-width: 400px;
+      width: 90%;
+    }
+    .login-wrapper h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .input-group {
+      position: relative;
+      margin-bottom: 15px;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 12px 40px 12px 40px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    .input-group input:focus {
+      border-color: #795548;
+      box-shadow: 0 0 5px rgba(121,85,72,0.5);
+      outline: none;
+    }
+    .input-group i {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #795548;
+      font-size: 1.2rem;
+    }
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #795548;
+      font-size: 1.2rem;
+    }
+    .error-message {
+      font-size: 0.85rem;
+      color: red;
+      margin-top: 5px;
+      display: none;
+    }
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: #795548;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 10px;
+    }
+    .btn:hover {
+      background: #6a4a3c;
+    }
+    .social-login {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .social-btn {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .social-btn button {
+      flex: 1;
+      padding: 10px;
+      background: #795548;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .social-btn button:hover {
+      background: #6a4a3c;
+    }
+    .toggle-link {
+      text-align: center;
+      margin-top: 15px;
+      color: #795548;
+      cursor: pointer;
+    }
+    .remember-me, .forgot-password {
+      font-size: 0.9rem;
+      margin: 5px 0;
+    }
+    .remember-me input {
+      margin-right: 5px;
+    }
+    .forgot-password {
+      text-align: right;
+      color: #795548;
+      cursor: pointer;
     }
   </style>
 </head>
-
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents">
-
-  <!-- Main Content: Login & Signup -->
-  <main class="container" style="margin-top: 30px;">
-    <div class="login-wrapper">
-      <!-- Login Container -->
-      <div class="container login-signup-container" id="login-container">
-        <h2>Login</h2>
-        <form id="login-form">
-          <div class="input-group">
-            <i class="fas fa-envelope"></i>
-            <input type="text" id="login-username" placeholder="Email" />
-            <div class="error-message" id="login-username-error">Email is required</div>
-          </div>
-          <div class="input-group">
-            <i class="fas fa-lock"></i>
-            <input type="password" id="login-password" placeholder="Password" />
-            <span class="toggle-password" data-target="login-password"><i class="fas fa-eye"></i></span>
-            <div class="error-message" id="login-password-error">Password is required</div>
-          </div>
-          <div class="remember-me">
-            <input type="checkbox" id="remember-me">
-            <label for="remember-me">Remember me</label>
-          </div>
-          <div class="forgot-password" id="forgot-password">Forgot password?</div>
-          <button type="submit" class="btn">Login</button>
-        </form>
-        <div class="social-login">
-          <p>Or sign in with:</p>
-          <div class="social-btn">
-            <button class="google-btn"><i class="fab fa-google"></i> Google</button>
-            <button class="github-btn"><i class="fab fa-github"></i> GitHub</button>
-          </div>
+<body>
+  <div class="login-wrapper">
+    <!-- Login Container -->
+    <div id="login-container">
+      <h2>Login</h2>
+      <form id="login-form">
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="text" id="login-username" placeholder="Email">
+          <div class="error-message" id="login-username-error">Email is required</div>
         </div>
-        <p class="toggle-link" onclick="toggleForm()">Don't have an account? Sign up</p>
-      </div>
-
-      <!-- Signup Container -->
-      <div class="container login-signup-container" id="signup-container" style="display: none;">
-        <h2>Sign Up</h2>
-        <form id="signup-form">
-          <div class="input-group">
-            <i class="fas fa-user"></i>
-            <input type="text" id="signup-username" placeholder="Username" />
-            <div class="error-message" id="signup-username-error">Username is required</div>
-          </div>
-          <div class="input-group">
-            <i class="fas fa-envelope"></i>
-            <input type="email" id="signup-email" placeholder="Email" />
-            <div class="error-message" id="signup-email-error">Valid email is required</div>
-          </div>
-          <div class="input-group">
-            <i class="fas fa-lock"></i>
-            <input type="password" id="signup-password" placeholder="Password" />
-            <span class="toggle-password" data-target="signup-password"><i class="fas fa-eye"></i></span>
-            <div class="error-message" id="signup-password-error">Password is required</div>
-          </div>
-          <button type="submit" class="btn">Sign Up</button>
-        </form>
-        <div class="social-login">
-          <p>Or sign up with:</p>
-          <div class="social-btn">
-            <button class="google-btn"><i class="fab fa-google"></i> Google</button>
-            <button class="github-btn"><i class="fab fa-github"></i> GitHub</button>
-          </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="login-password" placeholder="Password">
+          <span class="toggle-password" data-target="login-password"><i class="fas fa-eye"></i></span>
+          <div class="error-message" id="login-password-error">Password is required</div>
         </div>
-        <p class="toggle-link" onclick="toggleForm()">Already have an account? Login</p>
-      </div>
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="share-box" aria-hidden="true">
-      <ul class="share">
-        <li>
-          <a href="https://www.linkedin.com/in/olieko-sulman/" target="_blank" rel="noopener" class="share-btn-linkedin">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://twitter.com/olieko_sulman" target="_blank" rel="noopener" class="share-btn-twitter">
-            <i class="fab fa-twitter"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://api.whatsapp.com/send?phone=+254710209720&text=Hello!%20I%20came%20across%20your%20website%20and%20would%20like%20to%20learn%20more%20about%20your%20services.%20Can%20you%20please%20assist%20me%3F" target="_blank" rel="noopener" class="share-btn-whatsapp">
-            <i class="fab fa-whatsapp"></i>
-          </a>
-        </li>
-        <li>
-          <a href="mailto:oliekosulman@gmail.com" target="_blank" rel="noopener" class="share-btn-email">
-            <i class="fas fa-envelope"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://service.weibo.com/olieko_sulman" target="_blank" rel="noopener" class="share-btn-weibo">
-            <i class="fab fa-weibo"></i>
-          </a>
-        </li>
-      </ul>
-    </div>
-    <p class="powered-by copyright-license-text">
-      This work is licensed under 
-      <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">
-        CC BY NC ND 4.0
-      </a>
-    </p>
-    <p class="powered-by footer-license-icons">
-      <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
-        <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
-        <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
-        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
-        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
-      </a>
-    </p>
-  </footer>
-
-  <!-- Template Scripts -->
-  <script src="cookie.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
-  <script>const code_highlighting = true;</script>
-  <script>
-    const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
-    const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
-    const content_type = {
-      'post': "Posts",
-      'project': "Projects",
-      'publication' : "Publications",
-      'talk' : "Talks"
-    };
-  </script>
-  <script id="search-hit-fuse-template" type="text/x-template">
-    <div class="search-hit" id="summary-{{key}}">
-      <div class="search-hit-content">
-        <div class="search-hit-name">
-          <a href="{{relpermalink}}">{{title}}</a>
-          <div class="article-metadata search-hit-type">{{type}}</div>
-          <p class="search-hit-description">{{snippet}}</p>
+        <div class="remember-me">
+          <input type="checkbox" id="remember-me">
+          <label for="remember-me">Remember me</label>
+        </div>
+        <div class="forgot-password" id="forgot-password">Forgot password?</div>
+        <button type="submit" class="btn">Login</button>
+      </form>
+      <div class="social-login">
+        <p>Or sign in with:</p>
+        <div class="social-btn">
+          <button class="google-btn"><i class="fab fa-google"></i> Google</button>
+          <button class="github-btn"><i class="fab fa-github"></i> GitHub</button>
         </div>
       </div>
+      <p class="toggle-link" onclick="toggleForm()">Don't have an account? Sign up</p>
     </div>
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
-  <script src="/js/academic.min.bcfae8267aba63cc55af53a503896bd9.js"></script>
-  
+
+    <!-- Signup Container -->
+    <div id="signup-container" style="display: none;">
+      <h2>Sign Up</h2>
+      <form id="signup-form">
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" id="signup-username" placeholder="Username">
+          <div class="error-message" id="signup-username-error">Username is required</div>
+        </div>
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" id="signup-email" placeholder="Email">
+          <div class="error-message" id="signup-email-error">Valid email is required</div>
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="signup-password" placeholder="Password">
+          <span class="toggle-password" data-target="signup-password"><i class="fas fa-eye"></i></span>
+          <div class="error-message" id="signup-password-error">Password is required</div>
+        </div>
+        <button type="submit" class="btn">Sign Up</button>
+      </form>
+      <div class="social-login">
+        <p>Or sign up with:</p>
+        <div class="social-btn">
+          <button class="google-btn"><i class="fab fa-google"></i> Google</button>
+          <button class="github-btn"><i class="fab fa-github"></i> GitHub</button>
+        </div>
+      </div>
+      <p class="toggle-link" onclick="toggleForm()">Already have an account? Login</p>
+    </div>
+  </div>
+
   <!-- Firebase and Login/Signup Logic -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
