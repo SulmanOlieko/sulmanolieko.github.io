@@ -53,10 +53,10 @@
   <meta property="og:locale" content="en-us">
   <title>Login | Sulman Olieko</title>
   <style>
-    /* Custom CSS for the Login/Signup container using #795548 */
+    /* Custom CSS for the Login/Signup container */
     .login-signup-container {
-      background-color: #795548;
-      color: #fff;
+      background-color: #fff;  /* White container */
+      color: #000;
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -64,10 +64,7 @@
       width: 100%;
     }
     .login-signup-container h2 {
-      color: #fff;
-      margin-bottom: 20px;
-    }
-    .login-signup-container .input-group {
+      color: #000;
       margin-bottom: 20px;
     }
     .login-signup-container .input-group input {
@@ -82,18 +79,19 @@
       box-shadow: 0 0 5px rgba(106, 74, 60, 0.5);
     }
     .login-signup-container .btn {
-      background: linear-gradient(45deg, #795548, #6a4a3c);
+      background: #795548;  /* Buttons in #795548 */
       border: none;
       border-radius: 5px;
       transition: all 0.3s ease;
       font-size: 1rem;
       padding: 10px;
+      color: #fff;
     }
     .login-signup-container .btn:hover {
-      background: linear-gradient(45deg, #6a4a3c, #795548);
+      background: #6a4a3c;
     }
     .login-signup-container .toggle-link {
-      color: #fff;
+      color: #000;
     }
     /* Wrapper to center the container with realistic spacing */
     .login-wrapper {
@@ -107,70 +105,6 @@
 </head>
 
 <body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents">
-  <!-- Navigation and Breadcrumbs -->
-  <aside class="search-results" id="search">
-    <div class="container">
-      <section class="search-header">
-        <div class="row no-gutters justify-content-between mb-3">
-          <div class="col-6">
-            <h1>Search...</h1>
-          </div>
-          <div class="col-6 col-search-close">
-            <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
-          </div>
-        </div>
-        <div id="search-box">
-          <input name="q" id="search-query" placeholder="Search..." autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" type="search">
-        </div>
-      </section>
-      <section class="section-search-results">
-        <div id="search-hits"></div>
-      </section>
-    </div>
-  </aside>
-  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
-    <div class="container">
-      <a class="navbar-brand" href="https://ekonly.org">
-        <img src="/img/ekonly-logo.svg" alt="Ekonly Logo" style="height: 40px;">
-      </a>
-      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-        <span><i class="fas fa-bars"></i></span>
-      </button>
-      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
-        <ul class="navbar-nav d-md-inline-flex">
-          <li class="nav-item">
-            <a class="nav-link" href="/index.html" data-target="index.html"><span>Homepage</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/publication/" data-target="/publication/"><span>Publications</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/post/" data-target="/post/"><span>Blogs</span></a>
-          </li>
-        </ul>
-      </div>
-      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
-        <li class="nav-item">
-          <a class="nav-link" href="/cv/#viewer"><strong>CV</strong></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="mailto:oliekosulman@gmail.com"><i class="fas fa-envelope fa-1x" aria-hidden="true"></i></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/index.html" aria-label="Home"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-      <li class="breadcrumb-item active" aria-current="page"><span>Login</span></li>
-    </ol>
-  </nav>
 
   <!-- Main Content: Login & Signup -->
   <main class="container" style="margin-top: 30px;">
