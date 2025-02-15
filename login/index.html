@@ -7,6 +7,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
   <style>
+    /* Ensure consistent box-sizing */
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
@@ -40,6 +44,7 @@
       border-radius: 5px;
       font-size: 1rem;
       transition: all 0.3s ease;
+      height: 48px;
     }
     .input-group input:focus {
       border-color: #795548;
@@ -56,12 +61,13 @@
     }
     .toggle-password {
       position: absolute;
-      right: 10px;
+      right: 5px;  /* Moved inwards from 10px to 5px */
       top: 50%;
       transform: translateY(-50%);
       cursor: pointer;
       color: #795548;
       font-size: 1.2rem;
+      z-index: 2;
     }
     .error-message {
       font-size: 0.85rem;
@@ -71,7 +77,8 @@
     }
     .btn {
       width: 100%;
-      padding: 12px;
+      height: 48px;
+      line-height: 48px;
       background: #795548;
       color: #fff;
       border: none;
@@ -96,7 +103,7 @@
     }
     .social-btn button {
       flex: 1;
-      padding: 10px;
+      height: 48px;
       background: #795548;
       border: none;
       border-radius: 5px;
