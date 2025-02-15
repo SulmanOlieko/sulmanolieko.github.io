@@ -362,6 +362,50 @@
   
 <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
   <div class="container">
+    <div id="account-section">
+      <script type="module">
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
+
+  const auth = getAuth();
+
+  onAuthStateChanged(auth, user => {
+    const accountSection = document.getElementById('account-section');
+    if (user) {
+      // Use the displayName if available; otherwise fallback to email
+      const displayName = user.displayName || user.email;
+      accountSection.innerHTML = `
+        <span>Welcome, ${displayName}</span>
+        <button id="logout-btn" style="margin-left: 10px; background: transparent; border: none; cursor: pointer; color: #795548;">Logout</button>
+      `;
+      document.getElementById('logout-btn').addEventListener('click', () => {
+        signOut(auth).then(() => {
+          // Optionally, redirect to login page or refresh the page
+          window.location.href = '/login.html';
+        }).catch(error => {
+          console.error("Sign out error:", error);
+        });
+      });
+    } else {
+      // No user is signed in – show a login link
+      accountSection.innerHTML = `<a href="/login.html" style="color: #795548; text-decoration: none;">Login</a>`;
+    }
+  });
+</script>
+<style>
+  /* Example styling for the account section in the nav */
+#account-section {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+#account-section span {
+  font-weight: 500;
+}
+#account-section a {
+  text-decoration: none;
+}
+</style>
+    </div>
       <a class="navbar-brand" href="/">
     <img src="/img/ekonly-logo.svg" alt="Ekonly Logo" style="height: 40px;">
     </a>
