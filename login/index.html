@@ -40,6 +40,8 @@
       width: 100%;
       padding: 10px;
       padding-left: 40px;
+      /* Added padding-right so that text doesn't overlap the toggle icon */
+      padding-right: 40px;
       border: 1px solid #ccc;
       border-radius: 5px;
       outline: none;
@@ -50,6 +52,17 @@
       top: 50%;
       transform: translateY(-50%);
       color: #666;
+    }
+    /* Style for the toggle eye icon inside the input */
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #666;
+      z-index: 2;
+      font-size: 18px;
     }
     .error-message {
       color: red;
@@ -105,22 +118,44 @@
     .github-btn {
       background: #333;
     }
+    .remember-me {
+      text-align: left;
+      margin-bottom: 10px;
+    }
+    .remember-me input {
+      margin-right: 5px;
+    }
+    .forgot-password {
+      text-align: right;
+      margin-bottom: 20px;
+      font-size: 12px;
+      color: #ff758c;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
+  <!-- Login Container -->
   <div class="container" id="login-container">
     <h2>Login</h2>
     <form id="login-form">
       <div class="input-group">
-        <i class="fas fa-user"></i>
-        <input type="text" id="login-username" placeholder="Username" />
-        <div class="error-message" id="login-username-error">Username is required</div>
+        <i class="fas fa-envelope"></i>
+        <input type="text" id="login-username" placeholder="Email" />
+        <div class="error-message" id="login-username-error">Email is required</div>
       </div>
       <div class="input-group">
         <i class="fas fa-lock"></i>
         <input type="password" id="login-password" placeholder="Password" />
+        <!-- Toggle icon inside the input field -->
+        <span class="toggle-password" data-target="login-password"><i class="fas fa-eye"></i></span>
         <div class="error-message" id="login-password-error">Password is required</div>
       </div>
+      <div class="remember-me">
+        <input type="checkbox" id="remember-me">
+        <label for="remember-me">Remember me</label>
+      </div>
+      <div class="forgot-password" id="forgot-password">Forgot password?</div>
       <button type="submit" class="btn">Login</button>
     </form>
     <div class="social-login">
@@ -133,6 +168,7 @@
     <p class="toggle-link" onclick="toggleForm()">Don't have an account? Sign up</p>
   </div>
 
+  <!-- Signup Container -->
   <div class="container" id="signup-container" style="display: none;">
     <h2>Sign Up</h2>
     <form id="signup-form">
@@ -149,6 +185,8 @@
       <div class="input-group">
         <i class="fas fa-lock"></i>
         <input type="password" id="signup-password" placeholder="Password" />
+        <!-- Toggle icon inside the input field -->
+        <span class="toggle-password" data-target="signup-password"><i class="fas fa-eye"></i></span>
         <div class="error-message" id="signup-password-error">Password is required</div>
       </div>
       <button type="submit" class="btn">Sign Up</button>
@@ -163,8 +201,103 @@
     <p class="toggle-link" onclick="toggleForm()">Already have an account? Login</p>
   </div>
 
-  <script>
-    // Toggle between login and signup forms using computed style
+  <!-- Firebase and App Logic -->
+  <script type="module">
+    // Import Firebase app and auth functions
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+    import {
+      getAuth,
+      signInWithEmailAndPassword,
+      createUserWithEmailAndPassword,
+      sendPasswordResetEmail,
+      signInWithPopup,
+      GoogleAuthProvider,
+      GithubAuthProvider
+    } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
+
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCmsR_JUmxQkUDU0qStBhFr5-AkuuNfoI8",
+      authDomain: "sulmanolieko-35fd6.firebaseapp.com",
+      projectId: "sulmanolieko-35fd6",
+      storageBucket: "sulmanolieko-35fd6.firebasestorage.app",
+      messagingSenderId: "765226130762",
+      appId: "1:765226130762:web:f6e87c0ab5f4e27631b5b3"
+    };
+
+    // Initialize Firebase and Auth
+    const appFirebase = initializeApp(firebaseConfig);
+    const auth = getAuth(appFirebase);
+
+    // Validation Functions
+    function validateEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    }
+    
+    function validateLogin() {
+      let isValid = true;
+      const emailField = document.getElementById('login-username');
+      const passwordField = document.getElementById('login-password');
+      
+      if (!emailField.value.trim()) {
+        document.getElementById('login-username-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('login-username-error').style.display = 'none';
+      }
+      if (!passwordField.value.trim()) {
+        document.getElementById('login-password-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('login-password-error').style.display = 'none';
+      }
+      return isValid;
+    }
+    
+    function validateSignup() {
+      let isValid = true;
+      const usernameField = document.getElementById('signup-username');
+      const emailField = document.getElementById('signup-email');
+      const passwordField = document.getElementById('signup-password');
+      
+      if (!usernameField.value.trim()) {
+        document.getElementById('signup-username-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('signup-username-error').style.display = 'none';
+      }
+      if (!emailField.value.trim() || !validateEmail(emailField.value.trim())) {
+        document.getElementById('signup-email-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('signup-email-error').style.display = 'none';
+      }
+      if (!passwordField.value.trim()) {
+        document.getElementById('signup-password-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('signup-password-error').style.display = 'none';
+      }
+      return isValid;
+    }
+    
+    // Toggle password visibility
+    document.querySelectorAll('.toggle-password').forEach(toggle => {
+      toggle.addEventListener('click', function() {
+        const targetId = this.getAttribute('data-target');
+        const passwordInput = document.getElementById(targetId);
+        if (passwordInput.type === 'password') {
+          passwordInput.type = 'text';
+          this.innerHTML = '<i class="fas fa-eye-slash"></i>';
+        } else {
+          passwordInput.type = 'password';
+          this.innerHTML = '<i class="fas fa-eye"></i>';
+        }
+      });
+    });
+    
+    // Toggle Form Function
     function toggleForm() {
       const loginContainer = document.getElementById('login-container');
       const signupContainer = document.getElementById('signup-container');
@@ -176,127 +309,115 @@
         signupContainer.style.display = 'none';
       }
     }
+    // Expose toggleForm globally so inline onclick works
+    window.toggleForm = toggleForm;
 
-    // Simple email validation regex
-    function validateEmail(email) {
-      const re = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
-      return re.test(email);
-    }
-
-    // Validate login form fields
-    function validateLogin() {
-      let isValid = true;
-      const username = document.getElementById('login-username');
-      const password = document.getElementById('login-password');
-
-      if (!username.value.trim()) {
-        document.getElementById('login-username-error').style.display = 'block';
-        isValid = false;
-      } else {
-        document.getElementById('login-username-error').style.display = 'none';
+    // Remember me: load remembered email if exists
+    window.addEventListener('DOMContentLoaded', () => {
+      const rememberedEmail = localStorage.getItem('rememberedEmail');
+      if (rememberedEmail) {
+        document.getElementById('login-username').value = rememberedEmail;
+        document.getElementById('remember-me').checked = true;
       }
+    });
 
-      if (!password.value.trim()) {
-        document.getElementById('login-password-error').style.display = 'block';
-        isValid = false;
-      } else {
-        document.getElementById('login-password-error').style.display = 'none';
-      }
-
-      return isValid;
-    }
-
-    // Validate signup form fields
-    function validateSignup() {
-      let isValid = true;
-      const username = document.getElementById('signup-username');
-      const email = document.getElementById('signup-email');
-      const password = document.getElementById('signup-password');
-
-      if (!username.value.trim()) {
-        document.getElementById('signup-username-error').style.display = 'block';
-        isValid = false;
-      } else {
-        document.getElementById('signup-username-error').style.display = 'none';
-      }
-
-      if (!email.value.trim() || !validateEmail(email.value.trim())) {
-        document.getElementById('signup-email-error').style.display = 'block';
-        isValid = false;
-      } else {
-        document.getElementById('signup-email-error').style.display = 'none';
-      }
-
-      if (!password.value.trim()) {
-        document.getElementById('signup-password-error').style.display = 'block';
-        isValid = false;
-      } else {
-        document.getElementById('signup-password-error').style.display = 'none';
-      }
-
-      return isValid;
-    }
-
-    // Attach event listeners after DOM is loaded
-    document.addEventListener("DOMContentLoaded", function() {
-      // Login form submission
-      document.getElementById('login-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        if (validateLogin()) {
+    // Event Listener for Login Form Submission
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (validateLogin()) {
+        const email = document.getElementById('login-username').value.trim();
+        const password = document.getElementById('login-password').value.trim();
+        try {
+          await signInWithEmailAndPassword(auth, email, password);
           alert('Login successful!');
-          // Add your login logic here
+          // Remember email if checkbox is checked
+          if (document.getElementById('remember-me').checked) {
+            localStorage.setItem('rememberedEmail', email);
+          } else {
+            localStorage.removeItem('rememberedEmail');
+          }
+          // Redirect to your GitHub website (adjust URL as needed)
+          window.location.href = "https://sulmanolieko.github.io/index.html";
+        } catch (error) {
+          alert('Login failed: ' + error.message);
         }
-      });
+      }
+    });
 
-      // Signup form submission
-      document.getElementById('signup-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        if (validateSignup()) {
+    // Event Listener for Signup Form Submission
+    document.getElementById('signup-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (validateSignup()) {
+        const email = document.getElementById('signup-email').value.trim();
+        const password = document.getElementById('signup-password').value.trim();
+        try {
+          await createUserWithEmailAndPassword(auth, email, password);
           alert('Signup successful!');
-          // Add your signup logic here
+          // Redirect to your GitHub website (adjust URL as needed)
+          window.location.href = "https://sulmanolieko.github.io/index.html";
+        } catch (error) {
+          alert('Signup failed: ' + error.message);
+        }
+      }
+    });
+
+    // Social Authentication - Google
+    document.querySelectorAll('.google-btn').forEach(button => {
+      button.addEventListener('click', async () => {
+        const provider = new GoogleAuthProvider();
+        try {
+          await signInWithPopup(auth, provider);
+          alert('Google login successful!');
+          window.location.href = "https://sulmanolieko.github.io/index.html";
+        } catch (error) {
+          alert('Google login failed: ' + error.message);
         }
       });
+    });
 
-      // Clear error messages on user input
-      document.getElementById('login-username').addEventListener('input', function () {
-        document.getElementById('login-username-error').style.display = 'none';
+    // Social Authentication - GitHub
+    document.querySelectorAll('.github-btn').forEach(button => {
+      button.addEventListener('click', async () => {
+        const provider = new GithubAuthProvider();
+        try {
+          await signInWithPopup(auth, provider);
+          alert('GitHub login successful!');
+          window.location.href = "https://sulmanolieko.github.io/dashboard.html";
+        } catch (error) {
+          alert('GitHub login failed: ' + error.message);
+        }
       });
-      document.getElementById('login-password').addEventListener('input', function () {
-        document.getElementById('login-password-error').style.display = 'none';
-      });
-      document.getElementById('signup-username').addEventListener('input', function () {
-        document.getElementById('signup-username-error').style.display = 'none';
-      });
-      document.getElementById('signup-email').addEventListener('input', function () {
-        document.getElementById('signup-email-error').style.display = 'none';
-      });
-      document.getElementById('signup-password').addEventListener('input', function () {
-        document.getElementById('signup-password-error').style.display = 'none';
-      });
+    });
+
+    // Password Reset: "Forgot password?" functionality
+    document.getElementById('forgot-password').addEventListener('click', async () => {
+      const email = prompt('Please enter your email for password reset:');
+      if (email) {
+        try {
+          await sendPasswordResetEmail(auth, email);
+          alert('Password reset email sent!');
+        } catch (error) {
+          alert('Password reset failed: ' + error.message);
+        }
+      }
+    });
+
+    // Clear error messages on input
+    document.getElementById('login-username').addEventListener('input', () => {
+      document.getElementById('login-username-error').style.display = 'none';
+    });
+    document.getElementById('login-password').addEventListener('input', () => {
+      document.getElementById('login-password-error').style.display = 'none';
+    });
+    document.getElementById('signup-username').addEventListener('input', () => {
+      document.getElementById('signup-username-error').style.display = 'none';
+    });
+    document.getElementById('signup-email').addEventListener('input', () => {
+      document.getElementById('signup-email-error').style.display = 'none';
+    });
+    document.getElementById('signup-password').addEventListener('input', () => {
+      document.getElementById('signup-password-error').style.display = 'none';
     });
   </script>
 </body>
-  <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyCmsR_JUmxQkUDU0qStBhFr5-AkuuNfoI8",
-    authDomain: "sulmanolieko-35fd6.firebaseapp.com",
-    projectId: "sulmanolieko-35fd6",
-    storageBucket: "sulmanolieko-35fd6.firebasestorage.app",
-    messagingSenderId: "765226130762",
-    appId: "1:765226130762:web:f6e87c0ab5f4e27631b5b3"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-</script>
-
 </html>
-
-
-
