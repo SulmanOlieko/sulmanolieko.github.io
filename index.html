@@ -393,10 +393,17 @@
       <li class="nav-item">
         <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
       </li>
-      <li class="nav-item" id="account-section">
-        <a class="nav-link"><i class="fas fa-user"></i></a>
-          <!-- This will be populated by Firebase auth state -->
-        </li>
+      <li class="nav-item dropdown" id="account-section">
+        <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdown">
+          <!-- This span will display the user's name/email -->
+          <span class="dropdown-item-text" id="account-name">Account</span>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#" id="logout-btn">Logout</a>
+        </div>
+      </li>
     </ul>
   </div>
 </nav>
