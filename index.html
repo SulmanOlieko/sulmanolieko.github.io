@@ -853,7 +853,7 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
         e.preventDefault();
         signOut(auth).then(() => {
           // Redirect to login page after sign out
-          window.location.href = '/login.html';
+          window.location.href = '/login/index.html';
         }).catch(error => {
           console.error("Sign out error:", error);
         });
@@ -861,7 +861,7 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
     } else {
       // If no user is signed in, show a user icon linking to the login page
       accountSection.innerHTML = `
-        <a class="nav-link" href="/login.html" style="color: #795548; text-decoration: none;">
+        <a class="nav-link" href="/login/index.html" style="color: #FFF; text-decoration: none;">
           <i class="fas fa-user"></i>
         </a>
       `;
