@@ -1,7 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login & Signup</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    }
+    .container {
+      width: 350px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .container h2 {
+      margin-bottom: 20px;
+    }
+    .input-group {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 10px;
+      padding-left: 40px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+    }
+    .input-group i {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #666;
+    }
+    .error-message {
+      color: red;
+      font-size: 12px;
+      display: none;
+      text-align: left;
+      margin-top: 5px;
+    }
+    .btn {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background: #ff758c;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background: #ff5e73;
+    }
+    .toggle-link {
+      margin-top: 15px;
+      display: block;
+      color: #ff758c;
+      cursor: pointer;
+    }
+    .social-login {
+      margin-top: 20px;
+    }
+    .social-btn {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .social-btn button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+      color: white;
+      width: 100%;
+    }
+    .google-btn {
+      background: #db4437;
+    }
+    .github-btn {
+      background: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="login-container">
+    <h2>Login</h2>
+    <form id="login-form">
+      <div class="input-group">
+        <i class="fas fa-user"></i>
+        <input type="text" id="login-username" placeholder="Username" />
+        <div class="error-message" id="login-username-error">Username is required</div>
+      </div>
+      <div class="input-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="login-password" placeholder="Password" />
+        <div class="error-message" id="login-password-error">Password is required</div>
+      </div>
+      <button type="submit" class="btn">Login</button>
+    </form>
+    <div class="social-login">
+      <p>Or sign in with:</p>
+      <div class="social-btn">
+        <button class="google-btn"><i class="fab fa-google"></i> Google</button>
+        <button class="github-btn"><i class="fab fa-github"></i> GitHub</button>
+      </div>
+    </div>
+    <p class="toggle-link" onclick="toggleForm()">Don't have an account? Sign up</p>
+  </div>
 
+  <div class="container" id="signup-container" style="display: none;">
+    <h2>Sign Up</h2>
+    <form id="signup-form">
+      <div class="input-group">
+        <i class="fas fa-user"></i>
+        <input type="text" id="signup-username" placeholder="Username" />
+        <div class="error-message" id="signup-username-error">Username is required</div>
+      </div>
+      <div class="input-group">
+        <i class="fas fa-envelope"></i>
+        <input type="email" id="signup-email" placeholder="Email" />
+        <div class="error-message" id="signup-email-error">Valid email is required</div>
+      </div>
+      <div class="input-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="signup-password" placeholder="Password" />
+        <div class="error-message" id="signup-password-error">Password is required</div>
+      </div>
+      <button type="submit" class="btn">Sign Up</button>
+    </form>
+    <div class="social-login">
+      <p>Or sign up with:</p>
+      <div class="social-btn">
+        <button class="google-btn"><i class="fab fa-google"></i> Google</button>
+        <button class="github-btn"><i class="fab fa-github"></i> GitHub</button>
+      </div>
+    </div>
+    <p class="toggle-link" onclick="toggleForm()">Already have an account? Login</p>
+  </div>
 
+  <script>
+    // Toggle between login and signup forms using computed style
+    function toggleForm() {
+      const loginContainer = document.getElementById('login-container');
+      const signupContainer = document.getElementById('signup-container');
+      if (window.getComputedStyle(loginContainer).display !== 'none') {
+        loginContainer.style.display = 'none';
+        signupContainer.style.display = 'block';
+      } else {
+        loginContainer.style.display = 'block';
+        signupContainer.style.display = 'none';
+      }
+    }
 
-<script type="module">
+    // Simple email validation regex
+    function validateEmail(email) {
+      const re = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+      return re.test(email);
+    }
+
+    // Validate login form fields
+    function validateLogin() {
+      let isValid = true;
+      const username = document.getElementById('login-username');
+      const password = document.getElementById('login-password');
+
+      if (!username.value.trim()) {
+        document.getElementById('login-username-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('login-username-error').style.display = 'none';
+      }
+
+      if (!password.value.trim()) {
+        document.getElementById('login-password-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('login-password-error').style.display = 'none';
+      }
+
+      return isValid;
+    }
+
+    // Validate signup form fields
+    function validateSignup() {
+      let isValid = true;
+      const username = document.getElementById('signup-username');
+      const email = document.getElementById('signup-email');
+      const password = document.getElementById('signup-password');
+
+      if (!username.value.trim()) {
+        document.getElementById('signup-username-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('signup-username-error').style.display = 'none';
+      }
+
+      if (!email.value.trim() || !validateEmail(email.value.trim())) {
+        document.getElementById('signup-email-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('signup-email-error').style.display = 'none';
+      }
+
+      if (!password.value.trim()) {
+        document.getElementById('signup-password-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('signup-password-error').style.display = 'none';
+      }
+
+      return isValid;
+    }
+
+    // Attach event listeners after DOM is loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      // Login form submission
+      document.getElementById('login-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (validateLogin()) {
+          alert('Login successful!');
+          // Add your login logic here
+        }
+      });
+
+      // Signup form submission
+      document.getElementById('signup-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (validateSignup()) {
+          alert('Signup successful!');
+          // Add your signup logic here
+        }
+      });
+
+      // Clear error messages on user input
+      document.getElementById('login-username').addEventListener('input', function () {
+        document.getElementById('login-username-error').style.display = 'none';
+      });
+      document.getElementById('login-password').addEventListener('input', function () {
+        document.getElementById('login-password-error').style.display = 'none';
+      });
+      document.getElementById('signup-username').addEventListener('input', function () {
+        document.getElementById('signup-username-error').style.display = 'none';
+      });
+      document.getElementById('signup-email').addEventListener('input', function () {
+        document.getElementById('signup-email-error').style.display = 'none';
+      });
+      document.getElementById('signup-password').addEventListener('input', function () {
+        document.getElementById('signup-password-error').style.display = 'none';
+      });
+    });
+  </script>
+</body>
+  <script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
   // TODO: Add SDKs for Firebase products that you want to use
@@ -20,3 +295,8 @@
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
 </script>
+
+</html>
+
+
+
