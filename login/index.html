@@ -283,6 +283,10 @@
     </div>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    <script src="/js/academic.min.bcfae8267aba63cc55af53a503896bd9.js"></script>
+                  
   <!-- Firebase and Login/Signup Logic -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
@@ -481,29 +485,6 @@
     document.getElementById('signup-password').addEventListener('input', () => {
       document.getElementById('signup-password-error').style.display = 'none';
     });
-
-    
-    document.querySelector('.js-dark-toggle').addEventListener('click', function(e) {
-    e.preventDefault();
-    const darkStyle = document.querySelector('link[title="hl-dark"]');
-    const lightStyle = document.querySelector('link[title="hl-light"]');
-    
-    if (darkStyle.disabled) {
-      // Enable dark mode
-      darkStyle.disabled = false;
-      lightStyle.disabled = true;
-      document.body.style.background = "#121212"; // dark background
-      document.body.style.color = "#ffffff"; // light text
-      this.innerHTML = '<i class="fas fa-sun"></i>';
-    } else {
-      // Revert to light mode
-      darkStyle.disabled = true;
-      lightStyle.disabled = false;
-      document.body.style.background = "#f5f5f5"; // light background (as originally set)
-      document.body.style.color = "#333333"; // dark text
-      this.innerHTML = '<i class="fas fa-moon"></i>';
-    }
-  });
 
   </script>
 </body>
