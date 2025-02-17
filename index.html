@@ -90,7 +90,95 @@
       transform: scale(1.2);
 }
   </style>
-  
+  <style>
+    /* Reset margin and padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body styling */
+    body {
+      font-family: sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Sticky navigation toggle button */
+    .nav-toggle {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      /* Adjusted transform to only center vertically and rotate */
+      transform: translateY(-50%) rotate(-90deg);
+      transform-origin: left center;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 0 0 0.5rem 0.5rem;
+      cursor: pointer;
+      z-index: 1001;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-toggle:hover {
+      background-color: #0056b3;
+    }
+
+    /* Off-canvas navigation drawer */
+    .nav-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 220px;
+      background-color: #fff;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+      z-index: 1000;
+      border-radius: 0 0.5rem 0.5rem 0;
+      overflow-y: auto;
+      padding-top: 3rem;
+    }
+
+    /* Show drawer when open */
+    .nav-drawer.open {
+      transform: translateX(0);
+    }
+
+    /* Navigation links styling */
+    .nav-drawer ul {
+      list-style: none;
+    }
+
+    .nav-drawer li {
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .nav-drawer a {
+      display: block;
+      padding: 1rem;
+      color: #333;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-drawer a:hover {
+      background-color: #f8f9fa;
+    }
+
+    /* Content sections for demonstration */
+    main {
+      padding: 2rem;
+      margin-left: 240px; /* Provide space when the drawer is open */
+    }
+
+    section {
+      margin-bottom: 2rem;
+    }
+  </style>
   
 <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-MDK8S5X2"></script>
 <script>
@@ -348,7 +436,20 @@
         <li class="breadcrumb-item active" aria-current="page"><span>Sulman</span></li>
     </ol>
   -->
-  
+
+    <!-- Navigation toggle button -->
+  <button id="nav-toggle" class="nav-toggle" aria-label="Open navigation">
+    Navigation
+  </button>
+
+  <!-- Off-canvas navigation panel -->
+  <nav id="nav-drawer" class="nav-drawer" aria-hidden="true">
+    <ul>
+      <li><a href="#section1" class="nav-link">Section 1</a></li>
+      <li><a href="#section2" class="nav-link">Section 2</a></li>
+      <li><a href="#section3" class="nav-link">Section 3</a></li>
+    </ul>
+  </nav>
   <!-- Main Content Area -->
   <main>
     
@@ -932,5 +1033,30 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
   </p>
 </footer>
     </main>
+      <script>
+    // Toggle the navigation drawer on button click
+    const toggleButton = document.getElementById('nav-toggle');
+    const navDrawer = document.getElementById('nav-drawer');
+
+    toggleButton.addEventListener('click', () => {
+      navDrawer.classList.toggle('open');
+      // Update ARIA state for accessibility
+      const isOpen = navDrawer.classList.contains('open');
+      navDrawer.setAttribute('aria-hidden', !isOpen);
+    });
+
+    // Close the drawer when a navigation link is clicked
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', (event) => {
+        navDrawer.classList.remove('open');
+        navDrawer.setAttribute('aria-hidden', 'true');
+        // Smooth scrolling to section
+        event.preventDefault();
+        document.querySelector(link.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
 </body>
 </html>
