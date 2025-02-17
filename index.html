@@ -422,10 +422,10 @@
   <!-- Off-canvas navigation panel -->
   <nav id="nav-drawer" class="nav-drawer" aria-hidden="true">
     <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#profile">Profile</a></li>
-      <li><a href="#viewer">CV</a></li>
-      <li><a href="#working-paper">Featured research</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#profile" class="nav-link">Profile</a></li>
+      <li><a href="#viewer" class="nav-link">CV</a></li>
+      <li><a href="#working-paper" class="nav-link">Featured research</a></li>
     </ul>
   </nav>
   <!-- Main Content Area -->
@@ -1024,7 +1024,7 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
     });
 
     // Close the drawer when a navigation link is clicked
-    document.querySelectorAll('.nav-link').forEach(link => {
+    document.querySelectorAll('#nav-drawer .nav-link').forEach(link => {
       link.addEventListener('click', (event) => {
         navDrawer.classList.remove('open');
         navDrawer.setAttribute('aria-hidden', 'true');
