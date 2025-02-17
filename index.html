@@ -90,7 +90,55 @@
       transform: scale(1.2);
 }
   </style>
+   <style>
+        .nav-sidebar {
+            display: none;
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            padding: 15px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 200px;
+            z-index: 1000;
+        }
 
+        .nav-sidebar.visible {
+            display: block;
+        }
+
+        .nav-sidebar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-sidebar li {
+            margin: 5px 0;
+        }
+
+        .nav-sidebar a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            line-height: 1.4;
+            display: block;
+            padding: 3px 0;
+        }
+
+        .nav-sidebar a.active {
+            color: #0066cc;
+            font-weight: bold;
+        }
+
+        .content-section {
+            margin-left: 250px;
+            padding: 20px;
+            max-width: 800px;
+        }
+    </style>
 </head>
 <body>
   <!-- Your website content goes here -->
@@ -406,9 +454,12 @@
         <li class="breadcrumb-item active" aria-current="page"><span>Sulman</span></li>
     </ol>
   -->
-
+<!-- Navigation Sidebar -->
+    <nav class="nav-sidebar" id="navSidebar">
+        <ul id="navLinks"></ul>
+    </nav>
   <!-- Main Content Area -->
-  <div class="main-content">
+  <div class="content-section">
     
 <section id="about" class="home-section wg-about">
 <div class="container">
@@ -870,6 +921,63 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
   });
 </script>
 
+          <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.getElementById('navLinks');
+            const sidebar = document.getElementById('navSidebar');
+            
+            // Create navigation links
+            sections.forEach(section => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.textContent = section.querySelector('h2').textContent;
+                a.href = `#${section.id}`;
+                a.dataset.target = section.id;
+                li.appendChild(a);
+                navLinks.appendChild(li);
+            });
+
+            // Scroll handler
+            let lastScrollTop = 0;
+            window.addEventListener('scroll', function() {
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Toggle sidebar visibility
+                sidebar.classList.toggle('visible', currentScroll > 200);
+                
+                // Update active links
+                sections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    const link = document.querySelector(`a[data-target="${section.id}"]`);
+                    
+                    if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+
+                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+            }, { passive: true });
+
+            // Smooth scroll behavior
+            navLinks.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    e.preventDefault();
+                    const targetId = e.target.dataset.target;
+                    const targetSection = document.getElementById(targetId);
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+
+            // Initialize sidebar position
+            window.dispatchEvent(new Event('scroll'));
+        });
+    </script>
         
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
