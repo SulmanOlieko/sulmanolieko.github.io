@@ -91,16 +91,6 @@
 }
   </style>
 
-  <style>
-    .aside {
-      float: right;
-      margin: 0 1.5%;
-      position: relative;
-      color: black;
-      width: 50%;
-      display: block;
-    }
-  </style>
 </head>
 <body>
   <!-- Your website content goes here -->
@@ -417,6 +407,56 @@
     </ol>
   -->
 
+  <!-- Right-side Navigation Bar -->
+    <style>
+    /* Right-side Navigation Bar */
+    aside.navbar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 220px; /* adjust width as needed */
+      background-color: #f4f4f4;
+      border-left: 1px solid #ccc;
+      padding: 20px;
+      overflow-y: auto;
+      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    aside.navbar nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    aside.navbar nav ul li {
+      margin-bottom: 15px;
+    }
+    
+    aside.navbar nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+    
+    /* Main content styling to avoid overlap with the nav bar */
+    .main-content {
+      margin-right: 240px; /* extra space to ensure no overlap */
+      padding: 20px;
+    }
+  </style>
+
+  <aside class="navbar">
+    <nav>
+      <ul>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#working-paper">Featured Research</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </aside>
+  
 <section id="about" class="home-section wg-about">
 <div class="container">
 <div class="row">
