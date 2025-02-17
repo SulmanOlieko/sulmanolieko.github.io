@@ -90,50 +90,95 @@
       transform: scale(1.2);
 }
   </style>
-   <style>
-        .nav-sidebar {
-            display: none;
-            position: fixed;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: white;
-            padding: 15px;
-            border: 1px solid #ddd;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            max-width: 200px;
-            z-index: 1000;
-        }
+  <style>
+    /* Reset margin and padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .nav-sidebar.visible {
-            display: block;
-        }
+    /* Body styling */
+    body {
+      font-family: sans-serif;
+      line-height: 1.6;
+    }
 
-        .nav-sidebar ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
+    /* Sticky navigation toggle button */
+    .nav-toggle {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      transform: translate(-50%, -50%) rotate(-90deg);
+      transform-origin: left center;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 0 0 0.5rem 0.5rem;
+      cursor: pointer;
+      z-index: 1001;
+      transition: background-color 0.3s ease;
+    }
 
-        .nav-sidebar li {
-            margin: 5px 0;
-        }
+    .nav-toggle:hover {
+      background-color: #0056b3;
+    }
 
-        .nav-sidebar a {
-            text-decoration: none;
-            color: #333;
-            font-size: 14px;
-            line-height: 1.4;
-            display: block;
-            padding: 3px 0;
-        }
+    /* Off-canvas navigation drawer */
+    .nav-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 220px;
+      background-color: #fff;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+      z-index: 1000;
+      border-radius: 0 0.5rem 0.5rem 0;
+      overflow-y: auto;
+      padding-top: 3rem;
+    }
 
-        .nav-sidebar a.active {
-            color: #0066cc;
-            font-weight: bold;
-        }
+    /* Show drawer when open */
+    .nav-drawer.open {
+      transform: translateX(0);
+    }
 
-    </style>
+    /* Navigation links styling */
+    .nav-drawer ul {
+      list-style: none;
+    }
+
+    .nav-drawer li {
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .nav-drawer a {
+      display: block;
+      padding: 1rem;
+      color: #333;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-drawer a:hover {
+      background-color: #f8f9fa;
+    }
+
+    /* Content sections for demonstration */
+    main {
+      padding: 2rem;
+      margin-left: 240px; /* Provide space when the drawer is open */
+    }
+
+    section {
+      margin-bottom: 2rem;
+    }
+  </style>
+  
   
 <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-MDK8S5X2"></script>
 <script>
@@ -391,17 +436,22 @@
         <li class="breadcrumb-item active" aria-current="page"><span>Sulman</span></li>
     </ol>
   -->
-<!-- Navigation Sidebar -->
-    <nav class="nav-sidebar" id="navSidebar">
-        <ul id="navLinks">
-          <li>Profile</li>
-          <li>CV</li>
-          <li>Featured papers</li>
-        </ul>
-    </nav>
+  <!-- Navigation toggle button -->
+  <button id="nav-toggle" class="nav-toggle" aria-label="Open navigation">
+    Navigation
+  </button>
+
+  <!-- Off-canvas navigation panel -->
+  <nav id="nav-drawer" class="nav-drawer" aria-hidden="true">
+    <ul>
+      <li><a href="#section1" class="nav-link">Section 1</a></li>
+      <li><a href="#section2" class="nav-link">Section 2</a></li>
+      <li><a href="#section3" class="nav-link">Section 3</a></li>
+    </ul>
+  </nav>
   
   <!-- Main Content Area -->
-  <div class="content-section">
+  <main>
     
 <section id="about" class="home-section wg-about">
 <div class="container">
@@ -923,63 +973,31 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
   });
 </script>
 
-          <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.getElementById('navLinks');
-            const sidebar = document.getElementById('navSidebar');
-            
-            // Create navigation links
-            sections.forEach(section => {
-                const li = document.createElement('li');
-                const a = document.createElement('a');
-                a.textContent = section.querySelector('h2').textContent;
-                a.href = `#${section.id}`;
-                a.dataset.target = section.id;
-                li.appendChild(a);
-                navLinks.appendChild(li);
-            });
+ <script>
+    // Toggle the navigation drawer on button click
+    const toggleButton = document.getElementById('nav-toggle');
+    const navDrawer = document.getElementById('nav-drawer');
 
-            // Scroll handler
-            let lastScrollTop = 0;
-            window.addEventListener('scroll', function() {
-                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-                
-                // Toggle sidebar visibility
-                sidebar.classList.toggle('visible', currentScroll > 200);
-                
-                // Update active links
-                sections.forEach(section => {
-                    const rect = section.getBoundingClientRect();
-                    const link = document.querySelector(`a[data-target="${section.id}"]`);
-                    
-                    if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-                        link.classList.add('active');
-                    } else {
-                        link.classList.remove('active');
-                    }
-                });
+    toggleButton.addEventListener('click', () => {
+      navDrawer.classList.toggle('open');
+      // Update ARIA state for accessibility
+      const isOpen = navDrawer.classList.contains('open');
+      navDrawer.setAttribute('aria-hidden', !isOpen);
+    });
 
-                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-            }, { passive: true });
-
-            // Smooth scroll behavior
-            navLinks.addEventListener('click', function(e) {
-                if (e.target.tagName === 'A') {
-                    e.preventDefault();
-                    const targetId = e.target.dataset.target;
-                    const targetSection = document.getElementById(targetId);
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-
-            // Initialize sidebar position
-            window.dispatchEvent(new Event('scroll'));
+    // Close the drawer when a navigation link is clicked
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', (event) => {
+        navDrawer.classList.remove('open');
+        navDrawer.setAttribute('aria-hidden', 'true');
+        // Smooth scrolling to section
+        event.preventDefault();
+        document.querySelector(link.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
         });
-    </script>
+      });
+    });
+  </script>
         
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
@@ -1040,6 +1058,6 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
     </a>
   </p>
 </footer>
-    </div>
+    </main>
 </body>
 </html>
