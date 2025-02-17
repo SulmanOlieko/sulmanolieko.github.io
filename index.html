@@ -134,64 +134,6 @@
         }
 
     </style>
-</head>
-<body>
-  <!-- Your website content goes here -->
-
-  <!-- Install PWA popup -->
-  <div id="installPopup">
-    <p>Install our app for a better experience!</p>
-    <button id="installButton">Install</button>
-  </div>
-
-  <script>
-    window.addEventListener('beforeinstallprompt', (event) => {
-      // Prevent Chrome 67 and earlier from automatically showing the prompt
-      event.preventDefault();
-      // Stash the event so it can be triggered later
-      window.deferredPrompt = event;
-      // Show the install popup
-      document.getElementById('installPopup').classList.add('show');
-    });
-
-    // Handle the install button click
-    document.getElementById('installButton').addEventListener('click', () => {
-      const deferredPrompt = window.deferredPrompt;
-      if (deferredPrompt) {
-        // Show the install prompt
-        deferredPrompt.prompt();
-        // Wait for the user to respond to the prompt
-        deferredPrompt.userChoice
-          .then((choiceResult) => {
-            if (choiceResult.outcome === 'accepted') {
-              console.log('User accepted the install prompt');
-              // Reset the deferred prompt variable
-              window.deferredPrompt = null;
-              // Hide the install popup
-              document.getElementById('installPopup').classList.remove('show');
-            } else {
-              console.log('User dismissed the install prompt');
-            }
-          });
-      }
-    });
-  </script>
-
-  <!-- Boxicons CSS -->
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
-    <script src="script.js" defer></script>
-  
-<!-- PushAlert -->
-<script type="text/javascript">
-        (function(d, t) {
-                var g = d.createElement(t),
-                s = d.getElementsByTagName(t)[0];
-                g.src = "https://cdn.pushalert.co/integrate_90d37d1c064f80a89c562983e6ab05eb.js";
-                s.parentNode.insertBefore(g, s);
-        }(document, "script"));
-</script>
-<!-- End PushAlert -->
   
 <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-MDK8S5X2"></script>
 <script>
@@ -453,6 +395,7 @@
     <nav class="nav-sidebar" id="navSidebar">
         <ul id="navLinks"></ul>
     </nav>
+  
   <!-- Main Content Area -->
   <div class="content-section">
     
@@ -821,7 +764,67 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
     scrollButton.addEventListener('click', toggleScroll);
   </script>
 
+  
       
+      
+      
+        <!-- Install PWA popup -->
+        <div id="installPopup">
+          <p>Install our app for a better experience!</p>
+          <button id="installButton">Install</button>
+        </div>
+      
+        <script>
+          window.addEventListener('beforeinstallprompt', (event) => {
+            // Prevent Chrome 67 and earlier from automatically showing the prompt
+            event.preventDefault();
+            // Stash the event so it can be triggered later
+            window.deferredPrompt = event;
+            // Show the install popup
+            document.getElementById('installPopup').classList.add('show');
+          });
+      
+          // Handle the install button click
+          document.getElementById('installButton').addEventListener('click', () => {
+            const deferredPrompt = window.deferredPrompt;
+            if (deferredPrompt) {
+              // Show the install prompt
+              deferredPrompt.prompt();
+              // Wait for the user to respond to the prompt
+              deferredPrompt.userChoice
+                .then((choiceResult) => {
+                  if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted the install prompt');
+                    // Reset the deferred prompt variable
+                    window.deferredPrompt = null;
+                    // Hide the install popup
+                    document.getElementById('installPopup').classList.remove('show');
+                  } else {
+                    console.log('User dismissed the install prompt');
+                  }
+                });
+            }
+          });
+        </script>
+
+
+       <!-- Boxicons CSS -->
+      <link rel="stylesheet" href="style.css" />
+      <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+        <script src="script.js" defer></script>
+      
+    <!-- PushAlert -->
+    <script type="text/javascript">
+            (function(d, t) {
+                    var g = d.createElement(t),
+                    s = d.getElementsByTagName(t)[0];
+                    g.src = "https://cdn.pushalert.co/integrate_90d37d1c064f80a89c562983e6ab05eb.js";
+                    s.parentNode.insertBefore(g, s);
+            }(document, "script"));
+    </script>
+    <!-- End PushAlert -->
+    
+          
       <script src="cookie.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
