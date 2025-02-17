@@ -407,20 +407,18 @@
     </ol>
   -->
 
-  <!-- Right-side Navigation Bar -->
-    <style>
-    /* Right-side Navigation Bar */
+ <style>
+    /* Right-side Navigation Bar (height set to auto to fit content) */
     aside.navbar {
       position: fixed;
-      top: 0;
-      right: 0;
-      height: 100%;
-      width: 220px; /* adjust width as needed */
+      top: 20px; /* Adjust spacing from the top as needed */
+      right: 20px;
+      width: 220px; /* Adjust width as needed */
       background-color: #f4f4f4;
       border-left: 1px solid #ccc;
       padding: 20px;
-      overflow-y: auto;
       box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+      /* Note: No fixed height here—height adjusts to content */
     }
     
     aside.navbar nav ul {
@@ -441,7 +439,7 @@
     
     /* Main content styling to avoid overlap with the nav bar */
     .main-content {
-      margin-right: 240px; /* extra space to ensure no overlap */
+      margin-right: 260px; /* Ensure main content doesn’t overlap the nav bar */
       padding: 20px;
     }
   </style>
@@ -456,7 +454,9 @@
       </ul>
     </nav>
   </aside>
-  
+  <!-- Main Content Area -->
+  <div class="main-content">
+    
 <section id="about" class="home-section wg-about">
 <div class="container">
 <div class="row">
@@ -978,6 +978,6 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
     </a>
   </p>
 </footer>
-
+    </div>
 </body>
 </html>
