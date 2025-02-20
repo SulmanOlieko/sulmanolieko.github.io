@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sulman Olieko Owili | Landing Page</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Roboto:300,400,500" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #795548;
+      --secondary-color: #5d4037;
+      --accent-color: #8d6e63;
+      --bg-color: #f4f4f9;
+      --text-color: #333;
+      --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      --transition: 0.5s ease;
+    }
+    /* Preloader */
+    #preloader {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+    #preloader .spinner {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid var(--primary-color);
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    /* Global Reset and Smooth Scroll */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--bg-color);
+      background-image: linear-gradient(90deg, rgba(121,85,72,0.15) 1%, transparent 1%, transparent 99%, rgba(121,85,72,0.15) 99%);
+      background-size: 200px 200px;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    /* Navigation */
+    nav {
+      background: var(--secondary-color);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav .logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.8em;
+      color: white;
+      text-decoration: none;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+    nav ul li { margin-left: 20px; }
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 1em;
+      transition: color var(--transition);
+    }
+    nav ul li a:hover { color: var(--accent-color); }
+    /* Hero Section with Parallax Effect */
+    .hero {
+      height: 100vh;
+      background: url('banner.jpg') no-repeat center center/cover;
+      background-attachment: fixed;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top:0; left:0; right:0; bottom:0;
+      background: rgba(0,0,0,0.5);
+    }
+    .hero-content {
+      position: relative;
+      padding: 20px;
+      max-width: 800px;
+      z-index: 1;
+      animation: fadeIn 1s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-content h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3.5em;
+      margin-bottom: 20px;
+    }
+    .hero-content p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+    .hero-content .cta {
+      background: var(--primary-color);
+      padding: 15px 30px;
+      color: white;
+      text-decoration: none;
+      font-size: 1.2em;
+      border-radius: 5px;
+      transition: background var(--transition);
+    }
+    .hero-content .cta:hover { background: var(--accent-color); }
+    /* Scroll Down Indicator */
+    .scroll-down {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2em;
+      color: white;
+      cursor: pointer;
+      animation: bounce 2s infinite;
+      z-index: 2;
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-10px); }
+      60% { transform: translateX(-50%) translateY(-5px); }
+    }
+    /* About Section */
+    .about {
+      padding: 60px 20px;
+      text-align: center;
+      animation: fadeIn 1s ease-out;
+    }
+    .about h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+    }
+    .about p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1em;
+    }
+    /* Testimonials Section (Optional) */
+    .testimonials {
+      padding: 60px 20px;
+      background: #eee;
+      text-align: center;
+    }
+    .testimonials h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+    }
+    .testimonial-slider { max-width: 80%; margin: 0 auto; overflow: hidden; position: relative; }
+    .testimonial { padding: 20px; font-style: italic; }
+    /* Contact Section with Form */
+    .contact {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .contact h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+    }
+    .contact form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .contact input, .contact textarea {
+      padding: 15px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .contact button {
+      padding: 15px;
+      font-size: 1em;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+    .contact button:hover { background: var(--accent-color); }
+    /* Back-to-Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--primary-color);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 50%;
+      text-decoration: none;
+      font-size: 1.5em;
+      display: none;
+      transition: background var(--transition);
+      z-index: 1000;
+    }
+    .back-to-top:hover { background: var(--accent-color); }
+    /* Modal Subscription Popup */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1500;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgba(0,0,0,0.7);
+    }
+    .modal-content {
+      background: white;
+      margin: 10% auto;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 500px;
+      text-align: center;
+      position: relative;
+    }
+    .modal-content h2 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+    .modal-content p { margin-bottom: 20px; }
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5em;
+      color: var(--primary-color);
+      cursor: pointer;
+    }
+    /* Chat Widget */
+    .chat-widget {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      background: var(--primary-color);
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .chat-modal {
+      display: none;
+      position: fixed;
+      bottom: 100px;
+      left: 30px;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      width: 300px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 1500;
+    }
+    .chat-modal header {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+    .chat-modal .close-chat {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      cursor: pointer;
+      color: var(--primary-color);
+    }
+    /* Featured Publications Slider Widget */
+    .slider-container {
+      max-width: 80%;
+      margin: 30px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+      transition: height var(--transition);
+    }
+    .slider-container h2 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .slider {
+      position: relative;
+    }
+    .slide {
+      position: absolute;
+      width: 100%;
+      opacity: 0;
+      transition: opacity var(--transition);
+      padding: 20px;
+      line-height: 1.6;
+      min-height: 200px;
+    }
+    .slide.active {
+      opacity: 1;
+      position: relative;
+    }
+    .slide h3 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      font-size: 1.3em;
+    }
+    .slide p {
+      font-size: 1em;
+      color: #555;
+      margin-bottom: 5px;
+    }
+    .slide a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    /* Widget Grid (Static Widgets) */
+    .widget-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 80%;
+      margin: 30px auto;
+    }
+    .widget-item {
+      background: linear-gradient(135deg, #fff, var(--bg-color));
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .widget-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .widget-icon {
+      font-size: 3em;
+      margin-bottom: 10px;
+      color: var(--primary-color);
+    }
+    .widget-item h3 {
+      font-family: 'Montserrat', sans-serif;
+      margin: 10px 0;
+      color: var(--primary-color);
+    }
+    .widget-item p {
+      font-size: 1em;
+      color: #555;
+    }
+    /* Footer */
+    footer {
+      background: var(--secondary-color);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      width: 100%;
+    }
+    /* Intersection Observer Animations */
+    .animate { opacity: 0; transform: translateY(20px); transition: opacity 1s ease-out, transform 1s ease-out; }
+    .animate.visible { opacity: 1; transform: translateY(0); }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-content h1 { font-size: 2.5em; }
+      .hero-content p { font-size: 1em; }
+      .about h2, .contact h2 { font-size: 2em; }
+      .fancy-container, .container-grid, .widget-grid, .slider-container { max-width: 90%; padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="spinner"></div>
+  </div>
+  
+  <!-- Navigation -->
+  <nav>
+    <a href="#" class="logo">SulmanOlieko</a>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Publications</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">CV</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content animate">
+      <h1>Welcome to My Professional Space</h1>
+      <p>Dedicated to innovative research, impactful publications, and sustainable solutions in the agri-food sector.</p>
+      <a href="#about" class="cta">Discover More</a>
+    </div>
+    <div class="scroll-down" onclick="document.querySelector('.about').scrollIntoView({ behavior: 'smooth' });">
+      &#x25BC;
+    </div>
+  </section>
+  
+  <!-- About Section -->
+  <section class="about animate" id="about">
+    <h2>About Me</h2>
+    <p>I am an agricultural and applied economist with a passion for using innovative research techniques to shape sustainable policies. My work focuses on transforming research into real-world solutions that drive sustainability in the agri-food sector.</p>
+  </section>
+  
+  <!-- Testimonials Section (Optional) -->
+  <section class="testimonials animate">
+    <h2>Testimonials</h2>
+    <div class="testimonial-slider">
+      <div class="testimonial">"Sulman is a visionary in agricultural economics – his research has transformed our approach to sustainable practices." - Colleague</div>
+      <div class="testimonial">"A true innovator, his work bridges theory and practice in the agri-food sector." - Industry Expert</div>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section class="contact animate" id="contact">
+    <h2>Contact Me</h2>
+    <form id="contactForm">
+      <input type="text" id="name" name="name" placeholder="Your Name" required>
+      <input type="email" id="email" name="email" placeholder="Your Email" required>
+      <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+  
+  <!-- Back-to-Top Button -->
+  <a href="#" class="back-to-top" id="backToTop">&#8679;</a>
+  
+  <!-- Modal Subscription Popup -->
+  <div class="modal" id="subscriptionModal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <h2>Subscribe to Our Newsletter</h2>
+      <p>Get the latest updates on research, publications, and industry news.</p>
+      <form id="subscribeForm">
+        <input type="email" id="subscribeEmail" name="subscribeEmail" placeholder="Your Email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Chat Widget -->
+  <div class="chat-widget" id="chatWidget">&#128172;</div>
+  <div class="chat-modal" id="chatModal">
+    <header>
+      Chat with Us
+      <span class="close-chat" id="closeChat">&#10006;</span>
+    </header>
+    <div class="chat-content">
+      <p>Welcome! How can we help you today?</p>
+    </div>
+    <input type="text" id="chatInput" placeholder="Type your message..." />
+  </div>
+  
+  <!-- Featured Publications Slider Widget -->
+  <div class="slider-container animate" id="sliderContainer">
+    <h2>Featured Publications</h2>
+    <div class="slider" id="slider">
+      <!-- Slide 1 -->
+      <div class="slide active">
+        <h3><a href="https://hdl.handle.net/10568/170186" target="_blank">Heterogeneous Efficiency Effects of Agro-Ecological Fruit Fly Management Transition and Intensification among Smallholder Mango Farmers: A Latent Class Stochastic Metafrontier Approach</a></h3>
+        <p><strong>Authors:</strong> Owili, S.O.; Otieno, D.J.; Chimoita, E.L.; Baijukya, F.P.</p>
+        <p><strong>Type:</strong> Preprint</p>
+        <p><strong>Published:</strong> 2024</p>
+        <p><strong>DOI:</strong> <a href="https://hdl.handle.net/10568/170186" target="_blank">https://hdl.handle.net/10568/170186</a></p>
+      </div>
+      <!-- Slide 2 -->
+      <div class="slide">
+        <h3><a href="https://hdl.handle.net/10568/169052" target="_blank">Performance Assessment of Agroecology in Makueni and Kiambu Counties, Kenya</a></h3>
+        <p><strong>Authors:</strong> Nyawira, S.S.; Korir, H.; Bolo, P.; Omondi, K.; Owili, S.O.; Letty, B.; Wamaitha, C.; Njogu, M.; Anyango, E.; Baijukya, F.</p>
+        <p><strong>Type:</strong> Technical Report</p>
+        <p><strong>Published:</strong> 2024</p>
+        <p><strong>DOI:</strong> <a href="https://hdl.handle.net/10568/169052" target="_blank">https://hdl.handle.net/10568/169052</a></p>
+      </div>
+      <!-- Slide 3 -->
+      <div class="slide">
+        <h3><a href="https://doi.org/10.1080/09670874.2024.2413592" target="_blank">Factors Influencing Adoption of Agro-Ecological Pest Management Options for Mango Fruit Fly under Information Constraints: A Two-Part Fractional Regression Approach</a></h3>
+        <p><strong>Authors:</strong> Sulman Olieko Owili, David Jakinda Otieno, Evans Ligare Chimoita, Frederick Philbert Baijukya</p>
+        <p><strong>Journal:</strong> International Journal of Pest Management</p>
+        <p><strong>Published:</strong> November 4, 2024 | Pages: 1-19</p>
+        <p><strong>Publisher:</strong> Informa UK Limited (Taylor &amp; Francis)</p>
+        <p><strong>DOI:</strong> <a href="https://doi.org/10.1080/09670874.2024.2413592" target="_blank">https://doi.org/10.1080/09670874.2024.2413592</a></p>
+      </div>
+      <!-- Slide 4 -->
+      <div class="slide">
+        <h3><a href="https://doi.org/10.3389/fsufs.2024.1449615" target="_blank">Scaling Models for Regreening Africa: Enhancing Agroecological Integration through Smallholders' Assets and Agency in Kenya</a></h3>
+        <p><strong>Authors:</strong> Lisa Elena Fuchs, Levi Orero, Lang'at Kipkorir, Victoria Apondi, Sulman Olieko Owili</p>
+        <p><strong>Journal:</strong> Frontiers in Sustainable Food Systems</p>
+        <p><strong>Published:</strong> November 11, 2024 | Volume: 8</p>
+        <p><strong>Publisher:</strong> Frontiers Media SA</p>
+        <p><strong>DOI:</strong> <a href="https://doi.org/10.3389/fsufs.2024.1449615" target="_blank">https://doi.org/10.3389/fsufs.2024.1449615</a></p>
+      </div>
+      <!-- Slide 5 -->
+      <div class="slide">
+        <h3><a href="https://doi.org/10.13140/RG.2.2.36127.53928" target="_blank">Kenya Context Assessment Report: A Desk-Top Review of the Context of Agroecological Principles of Kiambu and Makueni Counties</a></h3>
+        <p><strong>Authors:</strong> Nyawira, S.; Bolo, P.; Ntinyari, W.; Orero, L.; Onyango, K.; Manjella, A.; Sakha, M.; Owili, S.O.; Gumo, P.; Mbelwa, M.; Korir, H.; Fuchs, L.E.</p>
+        <p><strong>Type:</strong> Technical Report</p>
+        <p><strong>Published:</strong> 2024</p>
+        <p><strong>Publisher:</strong> CGSpace - Alliance of Bioversity &amp; CIAT</p>
+        <p><strong>DOI:</strong> <a href="https://doi.org/10.13140/RG.2.2.36127.53928" target="_blank">https://doi.org/10.13140/RG.2.2.36127.53928</a></p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Widget Grid (Static Widgets) -->
+  <div class="widget-grid">
+    <div class="widget-item">
+      <div class="widget-icon">📚</div>
+      <h3>Research Impact</h3>
+      <p>Over 20+ publications driving sustainable agriculture policies.</p>
+    </div>
+    <div class="widget-item">
+      <div class="widget-icon">🤝</div>
+      <h3>Collaborations</h3>
+      <p>Partnered with leading institutions in research and consultancy.</p>
+    </div>
+    <div class="widget-item">
+      <div class="widget-icon">🏆</div>
+      <h3>Awards</h3>
+      <p>Recognized for excellence in research and academic contributions.</p>
+    </div>
+    <div class="widget-item">
+      <div class="widget-icon">✉️</div>
+      <h3>Connect</h3>
+      <p>Contact me for collaborations, speaking engagements, and consulting.</p>
+    </div>
+    <div class="widget-item">
+      <div class="widget-icon">💡</div>
+      <h3>Innovation</h3>
+      <p>Pioneering sustainable research methods and creative solutions.</p>
+    </div>
+    <div class="widget-item">
+      <div class="widget-icon">📝</div>
+      <h3>Publications</h3>
+      <p>Regularly contributing scholarly articles and research papers.</p>
+    </div>
+    <div class="widget-item">
+      <div class="widget-icon">🚀</div>
+      <h3>Projects</h3>
+      <p>Leading innovative projects that reshape the agri-food landscape.</p>
+    </div>
+    <div class="widget-item">
+      <div class="widget-icon">📰</div>
+      <h3>Media Coverage</h3>
+      <p>Featured in various media outlets for research excellence.</p>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+    &copy; 2024 Sulman Olieko Owili. All rights reserved.
+  </footer>
+  
+  <!-- Slider Functionality Script -->
+  <script>
+    // Preloader removal with fallback timeout
+    function removePreloader() {
+      const preloader = document.getElementById('preloader');
+      if (preloader) {
+        preloader.style.display = 'none';
+      }
+    }
+    window.addEventListener('load', removePreloader);
+    setTimeout(removePreloader, 5000);
+    
+    // Slider functionality
+    const slides = document.querySelectorAll('.slide');
+    const sliderContainer = document.getElementById('sliderContainer');
+    let currentSlide = 0;
+    
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+      // Adjust container height to active slide's height plus extra space for heading
+      const activeSlide = slides[index];
+      sliderContainer.style.height = activeSlide.offsetHeight + 60 + 'px';
+    }
+    
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+    
+    window.addEventListener('load', () => {
+      showSlide(currentSlide);
+    });
+    
+    setInterval(nextSlide, 5000);
+    
+    // Back-to-top button functionality
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.style.display = 'block';
+      } else {
+        backToTop.style.display = 'none';
+      }
+    });
+    
+    // Modal Subscription Popup functionality
+    const subscriptionModal = document.getElementById('subscriptionModal');
+    const closeModal = document.getElementById('closeModal');
+    setTimeout(() => {
+      if (subscriptionModal) {
+        subscriptionModal.style.display = 'block';
+      }
+    }, 10000);
+    if (closeModal) {
+      closeModal.addEventListener('click', () => {
+        subscriptionModal.style.display = 'none';
+      });
+    }
+    
+    // Chat Widget functionality
+    const chatWidget = document.getElementById('chatWidget');
+    const chatModal = document.getElementById('chatModal');
+    const closeChat = document.getElementById('closeChat');
+    if (chatWidget) {
+      chatWidget.addEventListener('click', () => {
+        chatModal.style.display = 'block';
+      });
+    }
+    if (closeChat) {
+      closeChat.addEventListener('click', () => {
+        chatModal.style.display = 'none';
+      });
+    }
+    
+    // Intersection Observer for animating elements on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+    
+    document.querySelectorAll('.animate').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
