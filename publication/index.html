@@ -195,50 +195,14 @@
       width: 100%;
     }
       </style>
-    <section id="data-visualization" class="visualization">
+    <div id="data-visualization" class="visualization">
       <div class="container">
         <h2>Interactive Data Visualization</h2>
         <div class="chart-container">
           <canvas id="economicsChart"></canvas>
         </div>
       </div>
-    </section>
-      
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Get the context of the canvas element for Chart.js
-      const ctx = document.getElementById('economicsChart').getContext('2d');
-      // Create an interactive line chart showing a sample economic growth trend
-      const economicsChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['2018', '2019', '2020', '2021', '2022', '2023'],
-          datasets: [{
-            label: 'Economic Growth (%)',
-            data: [2.5, 2.7, -3.0, 4.0, 3.5, 3.0],
-            backgroundColor: 'rgba(230, 126, 34, 0.2)',
-            borderColor: 'rgba(230, 126, 34, 1)',
-            borderWidth: 2,
-            fill: true,
-            tension: 0.3,
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            y: {
-              beginAtZero: true,
-            }
-          }
-        }
-      });
-    });
-  </script>
-
-
-
-
+    </div>
       
       <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
       <img src="/images/open-doodles/svg/SitReadingDoodle.svg" alt="publication doodle" style="width: 300px; height: auto;">
@@ -728,6 +692,38 @@ The   Kenyan ALLs will be hosted in CSHEP and DNRC, which are part of the Partic
       </div>
       </div>
     </script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Get the context of the canvas element for Chart.js
+      const ctx = document.getElementById('economicsChart').getContext('2d');
+      // Create an interactive line chart showing a sample economic growth trend
+      const economicsChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['2018', '2019', '2020', '2021', '2022', '2023'],
+          datasets: [{
+            label: 'Economic Growth (%)',
+            data: [2.5, 2.7, -3.0, 4.0, 3.5, 3.0],
+            backgroundColor: 'rgba(230, 126, 34, 0.2)',
+            borderColor: 'rgba(230, 126, 34, 1)',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.3,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+            }
+          }
+        }
+      });
+    });
+  </script>
   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
