@@ -45,7 +45,20 @@
     .breadcrumb-item:last-child::after {
       content: "";
     }
-    /* Additional custom styles can be added below or inlined from your style.css */
+   /* Existing styles for the visualization */
+  .chart-container {
+    position: relative;
+    height: 400px; /* Default height for larger screens */
+    width: 100%;
+  }
+
+  /* Mobile-specific styles */
+  @media only screen and (max-width: 600px) {
+    .chart-container {
+      height: 300px; /* Reduce height on mobile devices */
+    }
+    /* Optional: Adjust font sizes for chart labels via Chart.js options as needed */
+  }
   </style>
 
   <link rel="stylesheet" href="/css/academic.css">
