@@ -661,7 +661,7 @@
       </p>
     </footer>
   </div>
-<script>
+ <script>
 document.addEventListener('DOMContentLoaded', function () {
   // 1. Gather publication data from the container
   const pubContainer = document.getElementById('container-publications');
@@ -678,34 +678,22 @@ document.addEventListener('DOMContentLoaded', function () {
     'pubtype-7': 'Others'
   };
 
-  // Objects to store counts per year and type, and citations per year.
-  // Example: dataByYear = { "2024": { "Journal article": 2, "Poster": 1 } }
+  // Object to store counts per year and type, e.g. { "2024": { "Journal article": 2, "Poster": 1 } }
   const dataByYear = {};
-  // Example: citationsByYear = { "2024": 25 }
-  const citationsByYear = {};
 
   publicationElements.forEach(el => {
-    // Get the classes from the element.
+    // Get the classes from the element
     const classes = el.className.split(' ');
-    // Extract all classes that begin with "year-" and remove the prefix.
+    // Extract all classes that begin with "year-"
     const years = classes.filter(cls => cls.startsWith('year-'))
                          .map(cls => cls.replace('year-', ''));
     // Extract all classes that begin with "pubtype-"
     const types = classes.filter(cls => cls.startsWith('pubtype-'));
-    // Get citation count from data attribute (assumes each element has data-citations)
-    const citations = parseInt(el.getAttribute('data-citations')) || 0;
-
+    // For each year the publication belongs to...
     years.forEach(year => {
-      // Initialize publication count for the year if needed.
       if (!dataByYear[year]) {
         dataByYear[year] = {};
       }
-      // Sum citations for the year.
-      if (!citationsByYear[year]) {
-         citationsByYear[year] = 0;
-      }
-      citationsByYear[year] += citations;
-
       // For each type this publication belongs to...
       types.forEach(typeCls => {
         const typeName = typeMapping[typeCls] || typeCls;
@@ -729,7 +717,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   const allTypesArr = Array.from(allTypes);
 
-  // 4. Prepare Chart.js datasets for the stacked bar chart (publications)
+  // 4. Prepare Chart.js datasets. For each type, create an array of counts per year.
   const colors = {
     'Journal article': 'rgba(75, 192, 192, 0.7)',
     'Conference paper': 'rgba(54, 162, 235, 0.7)',
@@ -747,32 +735,14 @@ document.addEventListener('DOMContentLoaded', function () {
       data: counts,
       backgroundColor: colors[typeName] || 'rgba(0,0,0,0.7)',
       borderColor: (colors[typeName] || 'rgba(0,0,0,0.7)').replace('0.7', '1'),
-      borderWidth: 1,
-      stack: 'stack1' // Group all bars in one stack.
+      borderWidth: 1
     };
   });
 
-  // 5. Prepare the citations dataset: total citations per year.
-  const citationsData = yearsSorted.map(year => citationsByYear[year] || 0);
-
-  // Add a dataset for citations, as a smooth line.
-  datasets.push({
-    type: 'line',
-    label: 'Citations',
-    data: citationsData,
-    borderColor: 'rgba(0, 0, 0, 0.9)',
-    backgroundColor: 'rgba(0, 0, 0, 0.0)',
-    tension: 0.4, // Smooth the line.
-    fill: false,
-    borderWidth: 2,
-    yAxisID: 'y1'
-  });
-
-  // 6. Create a mixed chart using Chart.js with two y-axes:
-  //    - Left (y): for publication counts (stacked bars)
-  //    - Right (y1): for citations (line)
+  // 5. Create a stacked bar chart using Chart.js with responsive and interactive options
   const ctx = document.getElementById('economicsChart').getContext('2d');
   const publicationsChart = new Chart(ctx, {
+    type: 'bar',
     data: {
       labels: yearsSorted,
       datasets: datasets
@@ -797,39 +767,18 @@ document.addEventListener('DOMContentLoaded', function () {
             text: 'Year'
           },
           ticks: {
+            // Optionally reduce font size on mobile devices
             font: {
               size: window.innerWidth < 600 ? 10 : 12
             }
           }
         },
         y: {
-          type: 'linear',
-          display: true,
-          position: 'left',
           stacked: true,
           beginAtZero: true,
           title: {
             display: true,
             text: 'Number of Publications'
-          },
-          ticks: {
-            font: {
-              size: window.innerWidth < 600 ? 10 : 12
-            }
-          }
-        },
-        y1: {
-          type: 'linear',
-          display: true,
-          position: 'right',
-          stacked: false,
-          beginAtZero: true,
-          title: {
-            display: true,
-            text: 'Number of Citations'
-          },
-          grid: {
-            drawOnChartArea: false // Avoid duplicate grid lines.
           },
           ticks: {
             font: {
@@ -842,12 +791,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (elements.length > 0) {
           const firstPoint = elements[0];
           const clickedYear = publicationsChart.data.labels[firstPoint.index];
-          let clickedType = '';
-          if (publicationsChart.data.datasets[firstPoint.datasetIndex].type === 'line') {
-            clickedType = 'Citations';
-          } else {
-            clickedType = publicationsChart.data.datasets[firstPoint.datasetIndex].label;
-          }
+          const clickedType = publicationsChart.data.datasets[firstPoint.datasetIndex].label;
           console.log(`Clicked on ${clickedType} for the year ${clickedYear}`);
           // Additional interactivity (e.g., filtering the publication list) can be added here.
         }
