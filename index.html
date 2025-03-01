@@ -157,96 +157,7 @@
     }
   </style>
 
-  <style>
-    /* Chatbot Container (hidden by default) */
-.chatbot {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 300px;
-  max-height: 400px;
-  background: #fff;
-  border: 1px solid #ddd;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  display: none;
-  flex-direction: column;
-  z-index: 1000;
-}
-
-/* Chatbot Header */
-.chatbot-header {
-  background: #2c3e50;
-  color: #fff;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Chat Messages Area */
-.chatbot-messages {
-  padding: 10px;
-  overflow-y: auto;
-  flex: 1;
-}
-.chatbot-messages .message {
-  margin-bottom: 10px;
-  word-wrap: break-word;
-}
-.chatbot-messages .message.user {
-  text-align: right;
-  color: #2c3e50;
-}
-.chatbot-messages .message.bot {
-  text-align: left;
-  color: #333;
-}
-
-/* Chatbot Input Form */
-#chatbot-form {
-  display: flex;
-  border-top: 1px solid #ddd;
-}
-#chatbot-form input {
-  flex: 1;
-  border: none;
-  padding: 10px;
-}
-#chatbot-form button {
-  border: none;
-  padding: 10px;
-  background: #2c3e50;
-  color: #fff;
-  cursor: pointer;
-}
-
-/* Chatbot Toggle Button */
-.chatbot-toggle {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #2c3e50;
-  color: #fff;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 1001;
-}
-
-/* Responsive Adjustments */
-@media only screen and (max-width: 600px) {
-  .chatbot {
-    width: 90%;
-    right: 5%;
-  }
-  .chatbot-toggle {
-    right: 5%;
-  }
-}
-
-  </style>
-  
+ 
 <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-MDK8S5X2"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -854,20 +765,6 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
       </div>
     </div>
 
-      <!-- Chatbot Widget -->
-<div id="chatbot" class="chatbot">
-  <div class="chatbot-header">
-    <h3>Assistant</h3>
-    <button id="chatbot-close">&times;</button>
-  </div>
-  <div class="chatbot-messages" id="chatbot-messages"></div>
-  <form id="chatbot-form">
-    <input type="text" id="chatbot-input" placeholder="Type your message..." autocomplete="off">
-    <button type="submit">Send</button>
-  </form>
-</div>
-<button id="chatbot-toggle" class="chatbot-toggle">Chat</button>
-
       
  <a href="https://api.whatsapp.com/send?phone=+254710209720&text=Hello!%20I%20came%20across%20your%20website%20and%20would%20like%20to%20learn%20more%20about%20your%20services.%20Can%20you%20please%20assist%20me%3F" 
    class="floating" target="_blank">
@@ -1144,76 +1041,6 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
         });
       });
     });
-  </script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function(){
-  const chatbot = document.getElementById('chatbot');
-  const toggleBtn = document.getElementById('chatbot-toggle');
-  const closeBtn = document.getElementById('chatbot-close');
-  const form = document.getElementById('chatbot-form');
-  const input = document.getElementById('chatbot-input');
-  const messagesDiv = document.getElementById('chatbot-messages');
-
-  // Toggle chatbot visibility
-  toggleBtn.addEventListener('click', function(){
-    chatbot.style.display = 'flex';
-    toggleBtn.style.display = 'none';
-  });
-
-  closeBtn.addEventListener('click', function(){
-    chatbot.style.display = 'none';
-    toggleBtn.style.display = 'block';
-  });
-
-  // Handle sending a message
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    const userMessage = input.value.trim();
-    if(userMessage === '') return;
-    addMessage(userMessage, 'user');
-    input.value = '';
-    fetchChatbotResponse(userMessage);
-  });
-
-  // Add message to chat window
-  function addMessage(text, sender){
-    const messageEl = document.createElement('div');
-    messageEl.classList.add('message', sender);
-    messageEl.textContent = text;
-    messagesDiv.appendChild(messageEl);
-    messagesDiv.scrollTop = messagesDiv.scrollHeight;
-  }
-
-  // Simulate an AI response (replace with API call if needed)
-  function fetchChatbotResponse(message){
-    // Simulate a delay to mimic network latency
-    setTimeout(() => {
-      // For demonstration, echo the message. Replace with your logic or API call.
-      const botResponse = "You said: " + message;
-      addMessage(botResponse, 'bot');
-    }, 1000);
-
-    /* Example of using an API call:
-    fetch('/api/chatbot', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ message: message })
-    })
-    .then(response => response.json())
-    .then(data => {
-      addMessage(data.reply, 'bot');
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      addMessage('Sorry, something went wrong.', 'bot');
-    });
-    */
-  }
-});
-
   </script>
 </body>
 </html>
