@@ -740,7 +740,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
   });
 
-  // 5. Create a stacked bar chart using Chart.js
+  // 5. Create a stacked bar chart using Chart.js with responsive and interactive options
   const ctx = document.getElementById('economicsChart').getContext('2d');
   const publicationsChart = new Chart(ctx, {
     type: 'bar',
@@ -750,6 +750,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         tooltip: {
           mode: 'index',
@@ -765,6 +766,12 @@ document.addEventListener('DOMContentLoaded', function () {
           title: {
             display: true,
             text: 'Year'
+          },
+          ticks: {
+            // Optionally reduce font size on mobile devices
+            font: {
+              size: window.innerWidth < 600 ? 10 : 12
+            }
           }
         },
         y: {
@@ -773,23 +780,26 @@ document.addEventListener('DOMContentLoaded', function () {
           title: {
             display: true,
             text: 'Number of Publications'
+          },
+          ticks: {
+            font: {
+              size: window.innerWidth < 600 ? 10 : 12
+            }
           }
         }
       },
-      // Example interactive onClick handler (expand as needed)
       onClick: (evt, elements) => {
         if (elements.length > 0) {
           const firstPoint = elements[0];
           const clickedYear = publicationsChart.data.labels[firstPoint.index];
           const clickedType = publicationsChart.data.datasets[firstPoint.datasetIndex].label;
           console.log(`Clicked on ${clickedType} for the year ${clickedYear}`);
-          // You can add further interactivity here, such as filtering the publication list.
+          // Additional interactivity (e.g., filtering the publication list) can be added here.
         }
       }
     }
   });
 });
 </script>
-
 </body>
 </html>
