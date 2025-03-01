@@ -208,6 +208,16 @@
               </div>
             </div>
           </div>
+
+          <div class="visualization" id="combined-visualization card-transparent">
+          <div class="container">
+            <h2>Publications & Citations per year</h2>
+            <div class="chart-container">
+              <canvas id="combinedChart"></canvas>
+            </div>
+          </div>
+        </div>
+
           <h1>Publications</h1>
         </div>
         <div class="form-row mb-4">
@@ -800,6 +810,155 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
+
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Select all publication elements from the container.
+  const pubContainer = document.getElementById('container-publications');
+  const publicationElements = pubContainer.querySelectorAll('.isotope-item');
+
+  // Objects to store totals per year.
+  // publicationCounts: { "2023": 3, "2024": 5, ... }
+  // citationCounts: { "2023": 0, "2024": 0, "2025": 1, ... }
+  const publicationCounts = {};
+  const citationCounts = {};
+
+  publicationElements.forEach(el => {
+    // Extract all classes that start with "year-"
+    const classes = el.className.split(' ');
+    const yearClasses = classes.filter(cls => cls.startsWith('year-'));
+
+    // Get citation count from the element's data attribute (default to 0 if missing)
+    const citations = parseInt(el.getAttribute('data-citations')) || 0;
+
+    yearClasses.forEach(cls => {
+      const year = cls.replace('year-', '');
+      // Increase publication count for this year
+      if (!publicationCounts[year]) {
+        publicationCounts[year] = 0;
+      }
+      publicationCounts[year] += 1;
+
+      // Add citations for this year
+      if (!citationCounts[year]) {
+        citationCounts[year] = 0;
+      }
+      citationCounts[year] += citations;
+    });
+  });
+
+  // Get a sorted array of years (x-axis labels).
+  const yearsSorted = Object.keys(publicationCounts).sort();
+
+  // Create arrays for total publications and total citations per year.
+  const pubData = yearsSorted.map(year => publicationCounts[year] || 0);
+  const citData = yearsSorted.map(year => citationCounts[year] || 0);
+
+  // Create a mixed chart using Chart.js.
+  const ctx = document.getElementById('combinedChart').getContext('2d');
+  const combinedChart = new Chart(ctx, {
+    data: {
+      labels: yearsSorted,
+      datasets: [
+        {
+          type: 'line',
+          label: 'Total Publications',
+          data: pubData,
+          borderColor: 'rgba(54, 162, 235, 1)',
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          fill: true,
+          tension: 0.4,  // Smooth the line
+          yAxisID: 'y'
+        },
+        {
+          type: 'bar',
+          label: 'Total Citations',
+          data: citData,
+          backgroundColor: 'rgba(255, 99, 132, 0.7)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 1,
+          yAxisID: 'y1'
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+        },
+        legend: {
+          position: 'top',
+        }
+      },
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: 'Year'
+          },
+          ticks: {
+            font: {
+              size: window.innerWidth < 600 ? 10 : 12
+            }
+          }
+        },
+        y: {
+          type: 'linear',
+          display: true,
+          position: 'left',
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Total Publications'
+          },
+          ticks: {
+            font: {
+              size: window.innerWidth < 600 ? 10 : 12
+            }
+          }
+        },
+        y1: {
+          type: 'linear',
+          display: true,
+          position: 'right',
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Total Citations'
+          },
+          grid: {
+            drawOnChartArea: false  // Prevent duplicate grid lines
+          },
+          ticks: {
+            font: {
+              size: window.innerWidth < 600 ? 10 : 12
+            }
+          }
+        }
+      },
+      onClick: (evt, elements) => {
+        if (elements.length > 0) {
+          const firstPoint = elements[0];
+          const clickedYear = combinedChart.data.labels[firstPoint.index];
+          let clickedType = '';
+          // Check which dataset was clicked.
+          if (combinedChart.data.datasets[firstPoint.datasetIndex].type === 'line') {
+            clickedType = 'Publications';
+          } else {
+            clickedType = 'Citations';
+          }
+          console.log(`Clicked on ${clickedType} for the year ${clickedYear}`);
+          // Additional interactivity (e.g., filtering the publication list) can be implemented here.
+        }
+      }
+    }
+  });
+});
+</script>
+
 
 </body>
 </html>
