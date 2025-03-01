@@ -650,35 +650,133 @@
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Get the context of the canvas element for Chart.js
-      const ctx = document.getElementById('economicsChart').getContext('2d');
-      // Create an interactive line chart showing a sample economic growth trend
-      const economicsChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['2018', '2019', '2020', '2021', '2022', '2023'],
-          datasets: [{
-            label: 'Economic Growth (%)',
-            data: [2.5, 2.7, -3.0, 4.0, 3.5, 3.0],
-            backgroundColor: 'rgba(230, 126, 34, 0.2)',
-            borderColor: 'rgba(230, 126, 34, 1)',
-            borderWidth: 2,
-            fill: true,
-            tension: 0.3,
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            y: {
-              beginAtZero: true,
-            }
-          }
+document.addEventListener('DOMContentLoaded', function () {
+  // 1. Gather publication data from the container
+  const pubContainer = document.getElementById('container-publications');
+  const publicationElements = pubContainer.querySelectorAll('.isotope-item');
+
+  // Mapping of publication type classes to human-readable names
+  const typeMapping = {
+    'pubtype-1': 'Journal article',
+    'pubtype-2': 'Conference paper',
+    'pubtype-3': 'Preprint',
+    'pubtype-4': 'Working paper',
+    'pubtype-5': 'Report',
+    'pubtype-6': 'Poster',
+    'pubtype-7': 'Others'
+  };
+
+  // Object to store counts per year and type, e.g. { "2024": { "Journal article": 2, "Poster": 1 } }
+  const dataByYear = {};
+
+  publicationElements.forEach(el => {
+    // Get the classes from the element
+    const classes = el.className.split(' ');
+    // Extract all classes that begin with "year-"
+    const years = classes.filter(cls => cls.startsWith('year-'))
+                         .map(cls => cls.replace('year-', ''));
+    // Extract all classes that begin with "pubtype-"
+    const types = classes.filter(cls => cls.startsWith('pubtype-'));
+    // For each year the publication belongs to...
+    years.forEach(year => {
+      if (!dataByYear[year]) {
+        dataByYear[year] = {};
+      }
+      // For each type this publication belongs to...
+      types.forEach(typeCls => {
+        const typeName = typeMapping[typeCls] || typeCls;
+        if (!dataByYear[year][typeName]) {
+          dataByYear[year][typeName] = 0;
         }
+        dataByYear[year][typeName] += 1;
       });
     });
-  </script>
+  });
+
+  // 2. Sort years (x-axis labels)
+  const yearsSorted = Object.keys(dataByYear).sort();
+
+  // 3. Determine all publication types used across years
+  const allTypes = new Set();
+  yearsSorted.forEach(year => {
+    Object.keys(dataByYear[year]).forEach(typeName => {
+      allTypes.add(typeName);
+    });
+  });
+  const allTypesArr = Array.from(allTypes);
+
+  // 4. Prepare Chart.js datasets. For each type, create an array of counts per year.
+  const colors = {
+    'Journal article': 'rgba(75, 192, 192, 0.7)',
+    'Conference paper': 'rgba(54, 162, 235, 0.7)',
+    'Preprint': 'rgba(255, 206, 86, 0.7)',
+    'Working paper': 'rgba(153, 102, 255, 0.7)',
+    'Report': 'rgba(255, 159, 64, 0.7)',
+    'Poster': 'rgba(255, 99, 132, 0.7)',
+    'Others': 'rgba(201, 203, 207, 0.7)'
+  };
+
+  const datasets = allTypesArr.map(typeName => {
+    const counts = yearsSorted.map(year => dataByYear[year][typeName] || 0);
+    return {
+      label: typeName,
+      data: counts,
+      backgroundColor: colors[typeName] || 'rgba(0,0,0,0.7)',
+      borderColor: (colors[typeName] || 'rgba(0,0,0,0.7)').replace('0.7', '1'),
+      borderWidth: 1
+    };
+  });
+
+  // 5. Create a stacked bar chart using Chart.js
+  const ctx = document.getElementById('economicsChart').getContext('2d');
+  const publicationsChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: yearsSorted,
+      datasets: datasets
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+        },
+        legend: {
+          position: 'top',
+        }
+      },
+      scales: {
+        x: {
+          stacked: true,
+          title: {
+            display: true,
+            text: 'Year'
+          }
+        },
+        y: {
+          stacked: true,
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Number of Publications'
+          }
+        }
+      },
+      // Example interactive onClick handler (expand as needed)
+      onClick: (evt, elements) => {
+        if (elements.length > 0) {
+          const firstPoint = elements[0];
+          const clickedYear = publicationsChart.data.labels[firstPoint.index];
+          const clickedType = publicationsChart.data.datasets[firstPoint.datasetIndex].label;
+          console.log(`Clicked on ${clickedType} for the year ${clickedYear}`);
+          // You can add further interactivity here, such as filtering the publication list.
+        }
+      }
+    }
+  });
+});
+</script>
+
 </body>
 </html>
