@@ -131,7 +131,7 @@
     /* 1) Animated swirling background gradient inside the footer */
     footer::before {
       content: '';
-      position: fixed;
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
