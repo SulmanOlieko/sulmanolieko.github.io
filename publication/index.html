@@ -599,30 +599,6 @@
     <i class="fab fa-whatsapp float-button"></i>
   </a>
 
-  <button class="scroll-button" id="scrollButton">
-    <span class="scroll-icon">⌄</span>
-  </button>
-
-  <!-- Inline JavaScript for scroll button -->
-  <script>
-    const scrollButton = document.getElementById('scrollButton');
-
-    function toggleScroll() {
-      const scrolledToBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
-      window.scrollTo({
-        top: scrolledToBottom ? 0 : document.documentElement.scrollHeight,
-        behavior: 'smooth'
-      });
-    }
-
-    window.addEventListener('scroll', () => {
-      const scrolledToBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
-      scrollButton.querySelector('.scroll-icon').textContent = scrolledToBottom ? '⌃' : '⌄';
-    });
-
-    scrollButton.addEventListener('click', toggleScroll);
-  </script>
-
   <!-- External Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
