@@ -724,36 +724,6 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
    class="floating" target="_blank">
    <i class="fab fa-whatsapp float-button"></i>
     </a>
-
-    <button class="scroll-button" id="scrollButton">
-        <span class="scroll-icon">⌄</span>
-    </button>
-
-  <script>
-    /* Add a script that controls the scroll button */
-
-    const scrollButton = document.getElementById('scrollButton');
-    
-    function toggleScroll() {
-        const scrolledToBottom = window.innerHeight + window.scrollY >= 
-            document.documentElement.scrollHeight - 50;
-        
-        window.scrollTo({
-            top: scrolledToBottom ? 0 : document.documentElement.scrollHeight,
-            behavior: 'smooth'
-        });
-    }
-
-    window.addEventListener('scroll', () => {
-        const scrolledToBottom = window.innerHeight + window.scrollY >= 
-            document.documentElement.scrollHeight - 50;
-        scrollButton.querySelector('.scroll-icon').textContent = 
-            scrolledToBottom ? '⌃' : '⌄';
-    });
-
-    scrollButton.addEventListener('click', toggleScroll);
-  </script>
-
   
         <!-- Install PWA popup -->
         <div id="installPopup">
@@ -915,7 +885,7 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
       <!-- Left Section -->
       <div class="footer-left">
         <!-- Dynamic year -->
-        <p>&copy; <span id="dynamicYear"></span> Visionary Institution. All Rights Reserved.</p>
+        <p>&copy; <span id="dynamicYear"></span> Sulman Olieko Owili. All Rights Reserved.</p>
       </div>
 
       <!-- Center Section: Newsletter -->
