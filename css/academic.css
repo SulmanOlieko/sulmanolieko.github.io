@@ -111,35 +111,199 @@
 .float-button{
     margin-top:16px;
   }
-.scroll-button {
-    position: fixed;
-    bottom: 50px;
-    right: 15px;
-    background: #795548;
-    color: white;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-    min-height: 40px;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2em;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    z-index: 999;
-    transition: transform 0.3s;
-}
 
-.scroll-button:hover {
-    transform: scale(1.1);
-}
 
-.scroll-icon {
-    line-height: 1;
-    margin-top: -2px; /* Optical alignment adjustment */
-}
+    /*
+      ANIMATED FOOTER (NO WAVE)
+      - Animated swirling gradient background
+      - Subtle overlay pattern
+      - Flexible containers
+      - Even smaller overall
+    */
+    footer {
+      position: relative;
+      color: #fff;
+      margin-top: auto;
+      overflow: hidden;
+      background: #795548; /* fallback background color */
+    }
+
+    /* 1) Animated swirling background gradient inside the footer */
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      background: conic-gradient(
+        from 0deg,
+        #5d4037,
+        #795548,
+        #6d4c41,
+        #8d6e63,
+        #5d4037
+      );
+      background-size: 400% 400%;
+      animation: swirl 30s linear infinite;
+      opacity: 0.25; /* keep it subtle behind content */
+    }
+
+    @keyframes swirl {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* 2) Subtle radial pattern overlay (for extra texture) */
+    footer::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: radial-gradient(
+        circle at 50% 50%,
+        rgba(255, 255, 255, 0.04) 0%,
+        transparent 60%
+      );
+      z-index: 1;
+    }
+
+    .footer-content {
+      position: relative;
+      z-index: 2; /* above the swirling background */
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      /* Further reduced padding to make footer smaller */
+      padding: 20px 10px 10px;
+    }
+
+    /* Make columns flexible, reduce spacing even more */
+    .footer-left,
+    .footer-center,
+    .footer-right {
+      flex: 1;
+      margin: 3px;
+    }
+
+    .footer-left p {
+      font-size: 12px; /* smaller text */
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    /* Center section: Newsletter only here */
+    .footer-center {
+      text-align: center;
+    }
+
+    /* Newsletter box styling */
+    .newsletter-box {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      justify-content: center;
+    }
+
+    .newsletter-box input {
+      padding: 4px;
+      border: 1px solid #eee;
+      border-radius: 15px;
+      font-size: 10px;
+      color: #795548;
+    }
+
+    .newsletter-box button {
+      padding: 4px 8px;
+      border: none;
+      border-radius: 15px;
+      background: #ffecb3;
+      color: #795548;
+      font-size: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .newsletter-box button:hover {
+      background: #ccb69f;
+    }
+
+    /* Right section: academic & social links */
+    .footer-right a {
+      display: inline-flex;
+      align-items: center;
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px; /* smaller link text */
+      margin: 3px 0;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .footer-right a i {
+      margin-right: 5px;
+      font-size: 14px;
+    }
+
+    .footer-right a:hover {
+      color: #ffecb3;
+      transform: translateX(5px);
+    }
+
+    /* "Back to Top" Button */
+    .back-to-top {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      z-index: 999;
+    }
+
+    .back-to-top button {
+      background: #ffecb3;
+      color: #795548;
+      border: none;
+      padding: 6px 10px; /* smaller button size */
+      cursor: pointer;
+      border-radius: 30px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s, transform 0.3s;
+      font-size: 10px; /* smaller font */
+    }
+
+    .back-to-top button:hover {
+      background: #ccb69f;
+      transform: scale(1.1);
+    }
+
+    /* Error message styling below the input */
+    .error-message {
+      display: block;
+      color: #ffb3b3;
+      font-size: 10px;
+      margin-top: 4px;
+      text-align: center;
+    }
+
+    /* Responsive design adjustments */
+    @media (max-width: 992px) {
+      .footer-content {
+        flex-direction: column;
+        align-items: center;
+      }
+      .footer-left,
+      .footer-center,
+      .footer-right {
+        text-align: center;
+        margin: 5px 0;
+      }
+    }
