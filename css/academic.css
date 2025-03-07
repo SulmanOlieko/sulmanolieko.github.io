@@ -121,7 +121,7 @@
       - Even smaller overall
     */
     footer {
-      position: absolute;
+      position: relative;
       left: 0;
       bottom: 0;
       color: #fff;
@@ -131,16 +131,14 @@
     }
 
     .footer-content {
-      position: absolute;
-      z-index: 2; 
+      position: relative;
       max-width: 1200px;
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: flex-start;
-      /* Further reduced padding to make footer smaller */
-      padding: 20px 10px 10px;
+      padding: 10px 10px 10px;
     }
 
     /* Make columns flexible, reduce spacing even more */
