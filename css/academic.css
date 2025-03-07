@@ -121,11 +121,11 @@
       - Even smaller overall
     */
     footer {
-      position: fixed;
+      position: relative;
       left: 0;
       bottom: 0;
       color: #fff;
-      margin-top: auto;relative
+      margin-top: auto;
       overflow: hidden;
       background: #795548; /* fallback background color */
     }
