@@ -125,7 +125,7 @@
       left: 0;
       bottom: 0;
       color: #fff;
-      margin-top: auto;
+      margin-top: auto;relative
       overflow: hidden;
       background: #795548; /* fallback background color */
     }
