@@ -121,18 +121,18 @@
       - Even smaller overall
     */
     footer {
-      position: relative;
+      position: absolute;
       left: 0;
       bottom: 0;
       color: #fff;
       margin-top: auto;
       overflow: hidden;
-      background: #795548; /* fallback background color */
+      background: #795548; 
     }
 
     .footer-content {
-      position: relative;
-      z-index: 2; /* above the swirling background */
+      position: absolute;
+      z-index: 2; 
       max-width: 1200px;
       margin: 0 auto;
       display: flex;
