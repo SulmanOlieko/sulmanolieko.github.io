@@ -121,7 +121,7 @@
       - Even smaller overall
     */
     footer {
-      position: fixed;
+      position: absolute;
       color: #fff;
       margin-top: auto;
       overflow: hidden;
