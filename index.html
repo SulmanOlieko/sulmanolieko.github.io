@@ -839,53 +839,20 @@ Like a tree, we grow with time&mdash; Shedding leaves, gaining new ones...
       // Get the first two letters in uppercase
       const initials = displayName.substring(0, 2).toUpperCase();
       accountSection.innerHTML = `
-      <style>
-  .account-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: #333; /* Adjust as needed */
-    color: #fff;
-  }
-
-  .account-info {
-    display: flex;
-    align-items: center;
-  }
-
-  .account-initials {
-    display: inline-block;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background-color: #555; /* A contrasting color */
-    color: #fff;
-    text-align: center;
-    line-height: 32px; /* Centers the text vertically */
-    font-weight: bold;
-    margin-right: 8px;
-  }
-
-  .logout-btn {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: #fff;
-    font-size: 1rem; /* Adjust the size as needed */
-  }
-</style>
-
-<div class="account-section">
-  <div class="account-info">
-    <span class="account-initials">${initials}</span>
-    <i class="fas fa-user account-icon" aria-hidden="true"></i>
-  </div>
-  <button id="logout-btn" class="logout-btn" aria-label="Logout">
-    <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
-  </button>
-</div>
-
+      <a href="#" id="logout-btn" style="color: #FFF; text-decoration: none;">
+        <span class="account-initials" style="
+          display: inline-block;
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          color: #fff;
+          text-align: center;
+          font-weight: bold;
+        ">
+        <i class="fas fa-sign-out-alt"></i> 
+        </span>
+        </a>
+        <i class="fas fa-user" style="color:#FFF">${initials}</i>
       `;
       document.getElementById('logout-btn').addEventListener('click', e => {
         e.preventDefault();
