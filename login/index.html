@@ -94,7 +94,7 @@
 </aside>
 <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
   <div class="container">
-      <a class="navbar-brand" href="">
+      <a class="navbar-brand" href="sulmanolieko.github.io/">
     <img src="/img/ekonly-logo.svg" alt="Ekonly Logo" style="height: 40px;">
       </a>
   
@@ -111,19 +111,7 @@
   </div>
 </nav>
 <span class="js-widget-page d-none"></span>
-  <style>
-    .breadcrumb {
-    display: flex;
-    list-style: none;
-    padding: 10px;
-    margin: 0;
-}
 
-.breadcrumb-item:last-child::after {
-    content: ""; /* Removes the arrow from the last item */
-}
-
-  </style>
 <style>
     /* Ensure consistent box-sizing */
     * {
@@ -262,7 +250,7 @@
     <!-- Login Container -->
     <div id="login-container">
       <h2>Login</h2>
-      <form id="login-form">
+      <form id="login-form" class="card-simple card-view">
         <div class="input-group">
           <i class="fas fa-envelope"></i>
           <input type="text" id="login-username" placeholder="Email">
@@ -281,6 +269,7 @@
         <div class="forgot-password" id="forgot-password">Forgot password?</div>
         <button type="submit" class="btn" style="display: flex;align-items: center;justify-content: center;">Login</button>
       </form>
+      <!--
       <div class="social-login">
         <p>Or sign in with:</p>
         <div class="social-btn">
@@ -288,13 +277,15 @@
           <button class="github-btn"><i class="fab fa-github"></i> GitHub</button>
         </div>
       </div>
+       -->
       <p class="toggle-link" onclick="toggleForm()">Don't have an account? Sign up</p>
     </div>
-
+   
+      
     <!-- Signup Container -->
     <div id="signup-container" style="display: none;">
       <h2>Sign Up</h2>
-      <form id="signup-form">
+      <form id="signup-form" class="card-simple card-view">
         <div class="input-group">
           <i class="fas fa-user"></i>
           <input type="text" id="signup-username" placeholder="Username">
@@ -313,6 +304,7 @@
         </div>
         <button type="submit" class="btn" style="display: flex;align-items: center;justify-content: center;">Sign Up</button>
       </form>
+      <!--
       <div class="social-login">
         <p>Or sign up with:</p>
         <div class="social-btn">
@@ -320,51 +312,15 @@
           <button class="github-btn"><i class="fab fa-github"></i> GitHub</button>
         </div>
       </div>
+      -->
       <p class="toggle-link" onclick="toggleForm()">Already have an account? Login</p>
     </div>
   </div>
-
-
-
-
-
-
-
-
-  
 
   <a href="https://api.whatsapp.com/send?phone=+254710209720&text=Hello!%20I%20came%20across%20your%20website%20and%20would%20like%20to%20learn%20more%20about%20your%20services.%20Can%20you%20please%20assist%20me%3F" 
    class="floating" target="_blank">
    <i class="fab fa-whatsapp float-button"></i>
     </a>
-
-    <button class="scroll-button" id="scrollButton">
-        <span class="scroll-icon">⌄</span>
-    </button>
-  <script>
-    /* Add a script that controls the scroll button */
-
-    const scrollButton = document.getElementById('scrollButton');
-    
-    function toggleScroll() {
-        const scrolledToBottom = window.innerHeight + window.scrollY >= 
-            document.documentElement.scrollHeight - 50;
-        
-        window.scrollTo({
-            top: scrolledToBottom ? 0 : document.documentElement.scrollHeight,
-            behavior: 'smooth'
-        });
-    }
-
-    window.addEventListener('scroll', () => {
-        const scrolledToBottom = window.innerHeight + window.scrollY >= 
-            document.documentElement.scrollHeight - 50;
-        scrollButton.querySelector('.scroll-icon').textContent = 
-            scrolledToBottom ? '⌃' : '⌄';
-    });
-
-    scrollButton.addEventListener('click', toggleScroll);
-  </script>
 
       <script src="cookie.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
