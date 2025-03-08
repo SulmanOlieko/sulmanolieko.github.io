@@ -360,69 +360,6 @@ devtools::install_github("SulmanOlieko/collatzR")</code></pre>
   </a>
 
   <style>
-    .scroll-button {
-      position: fixed;
-      bottom: 50px;
-      right: 15px;
-      background: #795548;
-      color: white;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      min-width: 40px;
-      min-height: 40px;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2em;
-      cursor: pointer;
-      border: none;
-      outline: none;
-      z-index: 999;
-      transition: transform 0.3s;
-    }
-
-    .scroll-button:hover {
-      transform: scale(1.1);
-    }
-
-    .scroll-icon {
-      line-height: 1;
-      margin-top: -2px;
-      /* Optical alignment adjustment */
-    }
-  </style>
-
-  <button class="scroll-button" id="scrollButton">
-    <span class="scroll-icon">⌄</span>
-  </button>
-
-  <script>
-    const scrollButton = document.getElementById('scrollButton');
-
-    function toggleScroll() {
-      const scrolledToBottom = window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 50;
-
-      window.scrollTo({
-        top: scrolledToBottom ? 0 : document.documentElement.scrollHeight,
-        behavior: 'smooth'
-      });
-    }
-
-    window.addEventListener('scroll', () => {
-      const scrolledToBottom = window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 50;
-      scrollButton.querySelector('.scroll-icon').textContent =
-        scrolledToBottom ? '⌃' : '⌄';
-    });
-
-    scrollButton.addEventListener('click', toggleScroll);
-  </script>
-
-  <style>
     .code-container {
       position: relative;
       margin: 1rem 0;
