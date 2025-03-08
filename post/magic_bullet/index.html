@@ -401,34 +401,6 @@
     <i class="fab fa-whatsapp float-button"></i>
   </a>
   
-  <button class="scroll-button" id="scrollButton">
-    <span class="scroll-icon">⌄</span>
-  </button>
-  
-  <script>
-    /* Add a script that controls the scroll button */
-    const scrollButton = document.getElementById('scrollButton');
-    
-    function toggleScroll() {
-      const scrolledToBottom = window.innerHeight + window.scrollY >= 
-          document.documentElement.scrollHeight - 50;
-      
-      window.scrollTo({
-        top: scrolledToBottom ? 0 : document.documentElement.scrollHeight,
-        behavior: 'smooth'
-      });
-    }
-  
-    window.addEventListener('scroll', () => {
-      const scrolledToBottom = window.innerHeight + window.scrollY >= 
-          document.documentElement.scrollHeight - 50;
-      scrollButton.querySelector('.scroll-icon').textContent = 
-          scrolledToBottom ? '⌃' : '⌄';
-    });
-  
-    scrollButton.addEventListener('click', toggleScroll);
-  </script>
-  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
