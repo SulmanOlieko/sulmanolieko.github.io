@@ -593,61 +593,83 @@ devtools::install_github("SulmanOlieko/collatzR")</code></pre>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
   <script src="/js/academic.min.bcfae8267aba63cc55af53a503896bd9.js"></script>
-  <!-- Footer -->
-  <div class="container">
-    <footer class="site-footer">
-      <p class="powered-by">
-        <a href="https://sulmanolieko.github.io/privacy/">Privacy Policy</a>
-        &middot;
-        <a href="https://sulmanolieko.github.io/terms/">Terms</a>
-      </p>
-      <div class="share-box" aria-hidden="true">
-        <ul class="share">
-          <li>
-            <a href="https://www.linkedin.com/in/olieko-sulman" target="_blank" rel="noopener" class="share-btn-linkedin">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://twitter.com/olieko-sulman" target="_blank" rel="noopener" class="share-btn-twitter">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://api.whatsapp.com/send?phone=+254710209720&text=Hello!%20I%20came%20across%20your%20website%20and%20would%20like%20to%20learn%20more%20about%20your%20services.%20Can%20you%20please%20assist%20me%3F" target="_blank" rel="noopener" class="share-btn-whatsapp">
-              <i class="fab fa-whatsapp"></i>
-            </a>
-          </li>
-          <li>
-            <a href="mailto:oliekosulman@gmail.com" target="_blank" rel="noopener" class="share-btn-email">
-              <i class="fas fa-envelope"></i>
-            </a>
-          </li>
-
-          <li>
-            <a href="https://service.weibo.com/olieko_sulman" target="_blank" rel="noopener" class="share-btn-weibo">
-              <i class="fab fa-weibo"></i>
-            </a>
-          </li>
-        </ul>
+  <footer>
+    <div class="footer-content">
+      <!-- Left Section -->
+      <div class="footer-left">
+        <!-- Dynamic year -->
+        <p>&copy; <span id="dynamicYear"></span> Sulman Olieko Owili. All Rights Reserved.</p>
       </div>
-      <p class="powered-by copyright-license-text">
-        This work is licensed under
-        <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">
-          CC BY NC ND 4.0
-        </a>
-      </p>
-      <p class="powered-by footer-license-icons">
-        <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
-          <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
-          <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
-          <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
-          <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
-        </a>
-      </p>
-    </footer>
 
-  </div>
+      <!-- Center Section: Newsletter -->
+      <div class="footer-center">
+        <div class="newsletter-box">
+          <input type="email" id="newsletterEmail" placeholder="Your Email" required />
+          <button type="button" onclick="subscribeNewsletter()">Subscribe</button>
+        </div>
+        <!-- error message container -->
+        <span id="newsletterError" class="error-message" style="display: none;"></span>
+      </div>
+
+      <!-- Right Section: Academic / Social Links -->
+      <div class="footer-right">
+        <a href="https://scholar.google.com" target="_blank">
+          <i class="fas fa-graduation-cap"></i> Scholar
+        </a>
+        <a href="https://www.researchgate.net" target="_blank">
+          <i class="fas fa-flask"></i> ResearchGate
+        </a>
+        <a href="https://linkedin.com" target="_blank">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="https://twitter.com" target="_blank">
+          <i class="fab fa-twitter"></i> Twitter
+        </a>
+      </div>
+    </div>
+
+    <div class="back-to-top">
+      <button onclick="scrollToTop()">↑</button>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll to top behavior
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Dynamic year
+    document.getElementById('dynamicYear').textContent = new Date().getFullYear();
+
+    // Newsletter subscription with better validation
+    function subscribeNewsletter() {
+      const emailInput = document.getElementById('newsletterEmail');
+      const errorMsg = document.getElementById('newsletterError');
+      const email = emailInput.value.trim();
+
+      // Basic email pattern check
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!email) {
+        errorMsg.textContent = 'Please enter your email address.';
+        errorMsg.style.display = 'block';
+        return;
+      } else if (!emailRegex.test(email)) {
+        errorMsg.textContent = 'Please enter a valid email address.';
+        errorMsg.style.display = 'block';
+        return;
+      }
+
+      // No errors => proceed
+      errorMsg.style.display = 'none';
+      alert(`Thanks for subscribing, ${email}!`);
+
+      // Reset the input (optional)
+      emailInput.value = '';
+    }
+  </script>
+
 </body>
 
 </html>
