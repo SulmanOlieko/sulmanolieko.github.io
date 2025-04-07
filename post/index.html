@@ -420,7 +420,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
     <script src="/js/academic.min.bcfae8267aba63cc55af53a503896bd9.js"></script>
   <div class="container">
-  <footer>
+    <footer>
     <div class="footer-content">
       <!-- Left Section -->
       <div class="footer-left">
@@ -436,32 +436,51 @@
         </div>
         <!-- error message container -->
         <span id="newsletterError" class="error-message" style="display: none;"></span>
+        
       </div>
 
       <!-- Right Section: Academic / Social Links -->
       <div class="footer-right">
-        <a href="https://scholar.google.com" target="_blank">
-          <i class="fas fa-graduation-cap"></i> Scholar
-        </a>
-        <a href="https://www.researchgate.net" target="_blank">
-          <i class="fas fa-flask"></i> ResearchGate
-        </a>
-        <a href="https://linkedin.com" target="_blank">
-          <i class="fab fa-linkedin"></i> LinkedIn
-        </a>
-        <a href="https://twitter.com" target="_blank">
-          <i class="fab fa-twitter"></i> Twitter
-        </a>
+        <ul class="network-icon" aria-hidden="true"> 
+        <li>
+          <a href="https://www.webofscience.com/wos/author/record/MIN-3034-2025" target="_blank" rel="noopener">
+            <i class="ai ai-clarivate-square big-icon"></i>
+          </a>
+        </li> 
+        <li>
+          <a href="https://orcid.org/0000-0001-7401-5326" target="_blank" rel="noopener">
+            <i class="fab fa-orcid big-icon"></i>
+          </a>
+        </li> 
+        <li>
+          <a href="https://www.researchgate.net/profile/Sulman-Owili" target="_blank" rel="noopener">
+              <i class="fab fa-researchgate big-icon"></i>
+          </a>
+        </li> 
+        <li>
+          <a href="https://scholar.google.com/citations?user=WYivQV4AAAAJ&hl=en" target="_blank" rel="noopener">
+            <i class="ai ai-google-scholar big-icon"></i>
+          </a>
+        </li> 
+        <li>
+          <a href="https://github.com/SulmanOlieko" target="_blank" rel="noopener">
+            <i class="fab fa-github big-icon"></i>
+          </a>
+        </li>      
+        <li>
+           <a href="#viewer" target="#viewer">
+            <i class="ai ai-cv big-icon"></i>
+          </a>
+        </li> 
+      </ul>
       </div>
-    </div>
 
     <div class="back-to-top">
       <button onclick="scrollToTop()">↑</button>
     </div>
+    </div>
   </footer>
-  </div>
-</main>
-</section>
+
   <script>
     // Scroll to top behavior
     function scrollToTop() {
@@ -497,6 +516,31 @@
       // Reset the input (optional)
       emailInput.value = '';
     }
+  </script>
+      <script>
+    // Toggle the navigation drawer on button click
+    const toggleButton = document.getElementById('nav-toggle');
+    const navDrawer = document.getElementById('nav-drawer');
+
+    toggleButton.addEventListener('click', () => {
+      navDrawer.classList.toggle('open');
+      // Update ARIA state for accessibility
+      const isOpen = navDrawer.classList.contains('open');
+      navDrawer.setAttribute('aria-hidden', !isOpen);
+    });
+
+    // Close the drawer when a navigation link is clicked
+    document.querySelectorAll('#nav-drawer .nav-link').forEach(link => {
+      link.addEventListener('click', (event) => {
+        navDrawer.classList.remove('open');
+        navDrawer.setAttribute('aria-hidden', 'true');
+        // Smooth scrolling to section
+        event.preventDefault();
+        document.querySelector(link.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
   </script>
   </div>
 
