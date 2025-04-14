@@ -264,41 +264,75 @@
 
 
 <style>
-  #sidebar {
+  /* Modern File Tree Styling */
+  #fileTree {
     padding: 1rem;
     overflow-y: auto;
+    font-family: Arial, sans-serif;
   }
-  #sidebar h5 {
-    font-size: 1rem;
+  #fileTree h5 {
+    font-size: 1.2rem;
     margin-bottom: 1rem;
+    color: #007bff;
   }
-  #sidebar .nav-link {
-    color: #795548;
-    padding: 0.5rem 1rem;
+  #fileTree ul {
+    list-style: none;
+    padding-left: 1rem;
+    margin: 0;
+  }
+  #fileTree li {
+    margin: 0.25rem 0;
+    position: relative;
+  }
+  #fileTree a {
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 0.75rem;
     border-radius: 0.375rem;
+    color: #795548;
     transition: background-color 0.2s ease, color 0.2s ease;
   }
-  #sidebar .nav-link:hover,
-  #sidebar .nav-link:focus {
+  #fileTree a:hover,
+  #fileTree a:focus {
     color: #fff;
+    background-color: #6c757d;
   }
-  #sidebar .nav-link.active {
+  #fileTree a.active {
     font-weight: 500;
     color: #fff;
+    background-color: #6c757d;
+  }
+  /* Folder and file icons using emoji */
+  #fileTree li.folder > a::before {
+    content: "📁 ";
+    margin-right: 0.5em;
+  }
+  #fileTree li.file > a::before {
+    content: "📄 ";
+    margin-right: 0.5em;
   }
 </style>
- 
-  <!-- Main Content Area -->
-  <main>
-<aside id="sidebar" class="home-section">
-  <small><h5 class="text-primary">On this page</h5></small>
-  <nav class="nav flex-column">
-    <small>
-    <a class="nav-link active" href="#about">About me</a>
-    <a class="nav-link" href="#featured-research">Featured research</a>
-    </small>
-  </nav>
+<main>
+<aside id="fileTree">
+  <h5>On this page</h5>
+  <ul>
+    <li class="folder">
+      <a class="active" href="#about">About me</a>
+      <ul>
+        <li class="file"><a href="#overview">Overview</a></li>
+        <li class="file"><a href="#team">Team</a></li>
+      </ul>
+    </li>
+    <li class="folder">
+      <a href="#featured-research">Featured research</a>
+      <ul>
+        <li class="file"><a href="#project1">Project 1</a></li>
+        <li class="file"><a href="#project2">Project 2</a></li>
+      </ul>
+    </li>
+  </ul>
 </aside>
+
     
 <div id="about" class="home-section wg-about">
 <div class="container">
