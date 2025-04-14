@@ -264,74 +264,107 @@
 
 
 <style>
-  /* Modern File Tree Styling */
-  #fileTree {
+  /* Sidebar Base Styles */
+  #sidebar {
     padding: 1rem;
     overflow-y: auto;
-    font-family: Arial, sans-serif;
   }
-  #fileTree h5 {
-    font-size: 1.2rem;
+  #sidebar h5 {
+    font-size: 1rem;
     margin-bottom: 1rem;
-    color: #007bff;
   }
-  #fileTree ul {
-    list-style: none;
-    padding-left: 1rem;
-    margin: 0;
-  }
-  #fileTree li {
-    margin: 0.25rem 0;
-    position: relative;
-  }
-  #fileTree a {
-    text-decoration: none;
-    display: block;
-    padding: 0.5rem 0.75rem;
-    border-radius: 0.375rem;
+  #sidebar .nav-link {
     color: #795548;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
     transition: background-color 0.2s ease, color 0.2s ease;
+    display: inline-block;
   }
-  #fileTree a:hover,
-  #fileTree a:focus {
+  #sidebar .nav-link:hover,
+  #sidebar .nav-link:focus {
     color: #fff;
-    background-color: #6c757d;
+    background-color: rgba(121, 85, 72, 0.8);
   }
-  #fileTree a.active {
+  #sidebar .nav-link.active {
     font-weight: 500;
     color: #fff;
-    background-color: #6c757d;
+    background-color: rgba(121, 85, 72, 0.8);
   }
-  /* Folder and file icons using emoji */
-  #fileTree li.folder > a::before {
-    content: "📁 ";
-    margin-right: 0.5em;
+
+  /* File Tree Container */
+  .file-tree {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
   }
-  #fileTree li.file > a::before {
-    content: "📄 ";
-    margin-right: 0.5em;
+  /* Nested UL: indent and draw the vertical connector */
+  .file-tree ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 1.2rem;
+    position: relative;
+  }
+  .file-tree ul::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    background: #795548;
+  }
+  /* Tree Items & Horizontal Connector */
+  .file-tree li {
+    position: relative;
+    margin: 0.5rem 0;
+  }
+  .file-tree li::before {
+    content: "";
+    position: absolute;
+    top: 0.75rem;  /* Adjust to vertically center with nav-link text */
+    left: -1.2rem;
+    width: 1rem;
+    height: 1px;
+    background: #795548;
   }
 </style>
-<main>
-<aside id="fileTree">
-  <h5>On this page</h5>
-  <ul>
-    <li class="folder">
-      <a class="active" href="#about">About me</a>
-      <ul>
-        <li class="file"><a href="#overview">Overview</a></li>
-        <li class="file"><a href="#team">Team</a></li>
-      </ul>
-    </li>
-    <li class="folder">
-      <a href="#featured-research">Featured research</a>
-      <ul>
-        <li class="file"><a href="#project1">Project 1</a></li>
-        <li class="file"><a href="#project2">Project 2</a></li>
-      </ul>
-    </li>
-  </ul>
+
+<aside id="sidebar" class="home-section">
+  <small><h5 class="text-primary">On this page</h5></small>
+  <nav>
+    <ul class="file-tree">
+      <li>
+        <small><a class="nav-link active" href="#about">About me</a></small>
+        <ul>
+          <li>
+            <small><a class="nav-link" href="#bio">Biography</a></small>
+          </li>
+          <li>
+            <small><a class="nav-link" href="#skills">Skills</a></small>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <small><a class="nav-link" href="#featured-research">Featured research</a></small>
+        <ul>
+          <li>
+            <small><a class="nav-link" href="#project1">Project 1</a></small>
+          </li>
+          <li>
+            <small><a class="nav-link" href="#project2">Project 2</a></small>
+            <ul>
+              <li>
+                <small><a class="nav-link" href="#subproject">Sub Project</a></small>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
 </aside>
+
 
     
 <div id="about" class="home-section wg-about">
