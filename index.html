@@ -409,20 +409,86 @@
 </nav>
 <span class="js-widget-page d-none"></span>
 
-    <!-- Navigation toggle button 
-  <button id="nav-toggle" class="nav-toggle" aria-label="Open navigation">
-    Jump to section
-  </button>
-    -->
-  <!-- Off-canvas navigation panel -->
-  <nav id="nav-drawer" class="nav-drawer" aria-hidden="true">
-    <ul>
-      <li><a href="#about" class="nav-link">About</a></li>
-      <li><a href="#profile" class="nav-link">Profile</a></li>
-      <li><a href="#viewer" class="nav-link">CV</a></li>
-      <li><a href="#working-paper" class="nav-link">Featured research</a></li>
-    </ul>
+
+
+
+
+    <style>
+    /* Sidebar width and background */
+    #sidebar {
+      width: 250px;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1030;
+      background-color: #f8f9fa;
+      border-right: 1px solid #dee2e6;
+      padding-top: 1rem;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    #sidebar .nav-link {
+      color: #333;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    #sidebar .nav-link:hover {
+      background-color: #e9ecef;
+      color: #0d6efd;
+    }
+
+    #sidebarCollapseBtn {
+      z-index: 1040;
+    }
+
+    /* Hide sidebar by default on small screens */
+    @media (max-width: 991.98px) {
+      #sidebar {
+        transform: translateX(-100%);
+      }
+
+      #sidebar.show {
+        transform: translateX(0);
+      }
+    }
+
+    /* Push content on large screens */
+    @media (min-width: 992px) {
+      body {
+        margin-left: 250px;
+      }
+    }
+  </style>
+
+
+<!-- Collapse Toggle Button (visible on small screens) -->
+<button class="btn btn-outline-primary m-2 d-lg-none" id="sidebarCollapseBtn">
+  ☰ Menu
+</button>
+
+<!-- Sidebar -->
+<div id="sidebar">
+  <h5 class="px-3 text-primary">On this page</h5>
+  <nav class="nav flex-column px-2">
+    <a class="nav-link active" href="#about-me">About me</a>
+    <a class="nav-link" href="#research">Research</a>
+    <a class="nav-link" href="#career">Career</a>
+    <a class="nav-link" href="#scholarships-and-grants">Scholarships and grants</a>
   </nav>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Toggle sidebar on small screens
+  const sidebar = document.getElementById('sidebar');
+  const toggleBtn = document.getElementById('sidebarCollapseBtn');
+
+  toggleBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('show');
+  });
+</script>
+ 
   <!-- Main Content Area -->
   <main>
     
