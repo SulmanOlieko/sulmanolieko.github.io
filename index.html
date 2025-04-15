@@ -161,15 +161,13 @@
     background: #795548;
   }
     /* Hide sidebar by default on small screens */
+    /* Remove sidebar completely on small screens */
     @media (max-width: 991.98px) {
       #sidebar {
-        transform: translateX(-100%);
+        display: none;
       }
+}
 
-      #sidebar.show {
-        transform: translateX(0);
-      }
-    }
 </style>
  
 <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-MDK8S5X2"></script>
