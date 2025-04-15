@@ -91,7 +91,76 @@
       transform: scale(1.2);
 }
   </style>
+    <div class="col-12 col-lg-3">
+      <style>
+  /* Sidebar Base Styles */
+  #sidebar {
+    padding: 1rem;
+    overflow-y: auto;
+  }
+  #sidebar h5 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+  }
+  #sidebar .nav-link {
+    color: #795548;
+    padding: 0.3rem 0.75rem;
+    border-radius: 0.375rem;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+    text-decoration: none;
+  }
+  #sidebar .nav-link:hover,
+  #sidebar .nav-link:focus {
+    color: #fff;
+    background-color: rgba(121, 85, 72, 0.65);
+    transform: translateX(4px);
+  }
+  #sidebar .nav-link.active {
+    font-weight: 500;
+    color: #fff;
+    background-color: rgba(121, 85, 72, 0.85);
+  }
 
+  /* File Tree Container */
+  .file-tree {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+  /* Nested UL: indent and draw the vertical connector */
+  .file-tree ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+  .file-tree ul::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    background: #795548;
+  }
+  /* Tree Items & Horizontal Connector */
+  .file-tree li {
+    position: relative;
+    margin: 0.5rem 0;
+  }
+  .file-tree li::before {
+    content: "";
+    position: absolute;
+    top: 0.6rem;
+    left: -1.5rem;
+    width: 1.5rem;
+    height: 1px;
+    background: #795548;
+  }
+</style>
  
 <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-MDK8S5X2"></script>
 <script>
@@ -379,7 +448,32 @@
     });
   </script>
   </div>
-  
+  <div class="row">
+
+     <!-- Sidebar Row -->
+      <aside class="home-section">
+        <small><h5 class="text-primary">On this page</h5></small>
+        <nav>
+          <ul class="file-tree">
+            <li>
+              <small><a class="nav-link active" href="#profile">About me</a></small>
+              <ul>
+                <li>
+                  <small><a class="nav-link" href="#bio">Biography</a></small>
+                </li>
+                <li>
+                  <small><a class="nav-link" href="#viewer">CV</a></small>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <small><a class="nav-link" href="#featured-research">Featured research</a></small>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+    </div>
+  </div>
 </div>
     
     <div id="featured-research" style="max-width: 1200px; margin: 0 auto; padding: 0 15px;">
