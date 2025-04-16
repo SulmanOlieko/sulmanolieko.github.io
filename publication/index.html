@@ -542,7 +542,35 @@
         <div class="ml-3"></div>
       </div>
     </div>
+<style>
+  /* Flex container for side-by-side layout */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between visualizations */
+  }
+  /* Each visualization takes up roughly half the container width */
+  .row > .visualization {
+    flex: 1 1 49%;
+    box-sizing: border-box;
+  }
+  /* Ensure the chart container fills its parent and has a fixed height */
+  .chart-container {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Adjust as needed */
+  }
 
+  /* Mobile: Stack vertically on smaller screens */
+  @media only screen and (max-width: 600px) {
+    .row {
+      flex-direction: column;
+    }
+    .row > .visualization {
+      flex: 1 1 80%;
+    }
+  }
+</style>
       <div class="universal-wrapper">
     <div class="row">
   <!-- Publications to-date Visualization -->
