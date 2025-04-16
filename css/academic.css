@@ -261,8 +261,15 @@
     left: calc(50% + 600px + 20px); 
     width: 250px;
     position: fixed;
-    top: 0;
+    top: ;
   }
+#chart-sidebar{
+    padding: 1rem;
+    overflow-y: auto;
+    right: calc(50% + 600px + 20px); 
+    width: 400px;
+    position: fixed;
+}
   #sidebar h5 {
     font-size: 1rem;
     margin-bottom: 0.5rem;
