@@ -257,7 +257,7 @@
     padding: 1rem;
     overflow-y: auto;
     left: calc(50% + 600px + 20px); 
-    width: 250px;
+    width: 400px;
     position: fixed;
   }
   #sidebar h5 {
