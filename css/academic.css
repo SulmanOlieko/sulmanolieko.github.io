@@ -251,13 +251,12 @@
       }
     }
 
-
   /* Sidebar Base Styles */
   #sidebar {
     padding: 1rem;
     overflow-y: auto;
     left: calc(50% + 500px + 0px);
-    width: 100%;
+    width: auto;
     position: fixed;
   }
   #sidebar h5 {
@@ -280,7 +279,6 @@
     transform: translateX(4px);
   }
   #sidebar .nav-link.active {
-    font-weight: 500;
     color: #fff;
     background-color: rgba(121, 85, 72, 0.85);
   }
