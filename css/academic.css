@@ -256,7 +256,7 @@
   #sidebar {
     padding: 1rem;
     overflow-y: auto;
-    left: calc(50% + 600px + 20px); 
+    left: calc(50% + 550px + 20px); 
     width: 400px;
     position: fixed;
   }
