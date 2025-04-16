@@ -112,8 +112,6 @@
     margin-top:16px;
   }
 
-
-
     footer {
       position: relative;
       left: 0;
@@ -261,7 +259,6 @@
     left: calc(50% + 600px + 20px); 
     width: 250px;
     position: fixed;
-    top: ;
   }
   #sidebar h5 {
     font-size: 1rem;
