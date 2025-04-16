@@ -32,7 +32,7 @@
     .chart-container {
       position: relative;
       height: 200px;
-      width: 100%;
+      width: auto;
     }
     /* Breadcrumb styling */
     .breadcrumb {
@@ -48,7 +48,7 @@
   .chart-container {
     position: relative;
     height: 200px; /* Default height for larger screens */
-    width: 100%;
+    width: auto;
   }
 
   /* Mobile-specific styles */
@@ -196,35 +196,9 @@
   
 <div class="universal-wrapper" style="max-width: 800px; margin: 0 auto; padding: 0 2px;">
     <div class="row">
-      <style>
-  /* Flex container for side-by-side layout */
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px; /* Space between visualizations */
-  }
-  /* Each visualization takes up roughly half the container width */
-  .row > .visualization {
-    flex: 1 1 49%;
-    box-sizing: border-box;
-  }
-  /* Ensure the chart container fills its parent and has a fixed height */
-  .chart-container {
-    position: relative;
-    width: 100%;
-    height: 200px; /* Adjust as needed */
-  }
 
-  /* Mobile: Stack vertically on smaller screens */
-  @media only screen and (max-width: 600px) {
-    .row {
-      flex-direction: column;
-    }
-    .row > .visualization {
-      flex: 1 1 80%;
-    }
-  }
-</style>
+
+      
     <hr>
       <aside id="sidebar" style="max-width: 100%;">
   <!-- Publications to-date Visualization -->
