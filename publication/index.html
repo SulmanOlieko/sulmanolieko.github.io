@@ -34,19 +34,18 @@
       height: 200px;
       width: auto;
     }
-   /* Existing styles for the visualization */
+   
   .chart-container {
     position: relative;
-    height: 200px; /* Default height for larger screens */
+    height: 200px; 
     width: auto;
   }
 
-  /* Mobile-specific styles */
   @media only screen and (max-width: 600px) {
     .chart-container {
       height: 200px; /* Reduce height on mobile devices */
     }
-    /* Optional: Adjust font sizes for chart labels via Chart.js options as needed */
+   
   }
   </style>
 
@@ -183,7 +182,28 @@
       <li class="breadcrumb-item active" aria-current="page"><span>Publications</span></li>
     </ol>
   </nav> 
-  
+  <hr>
+        <aside id="sidebar" style="max-width: 100%;">
+        <!-- Publications to-date Visualization -->
+        <h4>Publications to-date</h4>
+        <div id="data-visualization" class="visualization card-transparent card-simple view-card">
+          <div class="container">
+            <div class="chart-container">
+              <canvas id="economicsChart"></canvas>
+            </div>
+          </div>
+        </div>
+        <!-- Publications & citations per year Visualization -->
+        <h4>Publications & citations per year</h4>
+        <div class="visualization card-transparent card-simple view-card" id="combined-visualization">
+          <div class="container">
+            <div class="chart-container">
+              <canvas id="combinedChart"></canvas>
+            </div>
+          </div>
+        </div>
+        </aside>
+        <hr>
 <div class="universal-wrapper" style="max-width: 1000px; margin: 0 auto; padding: 0 2px;">
     <div class="row">
       <div class="col-lg-16">
@@ -218,7 +238,7 @@
 
         <!-- Container for all publications -->
         <div id="container-publications">
-
+          
           <!-- Single Publication Entry -->
           <div class="grid-sizer col-lg-6 isotope-item pubtype-2 pubtype-3 pubtype-6 year-2024 year-2025" data-citations="0">
             <div class="media stream-item">
@@ -527,28 +547,7 @@
 
         <div class="ml-3"></div>
       </div>
-        <hr>
-        <aside id="sidebar" style="max-width: 100%;">
-        <!-- Publications to-date Visualization -->
-        <h4>Publications to-date</h4>
-        <div id="data-visualization" class="visualization card-transparent card-simple view-card">
-          <div class="container">
-            <div class="chart-container">
-              <canvas id="economicsChart"></canvas>
-            </div>
-          </div>
-        </div>
-        <!-- Publications & citations per year Visualization -->
-        <h4>Publications & citations per year</h4>
-        <div class="visualization card-transparent card-simple view-card" id="combined-visualization">
-          <div class="container">
-            <div class="chart-container">
-              <canvas id="combinedChart"></canvas>
-            </div>
-          </div>
-        </div>
-        </aside>
-        <hr>
+        
     </div>
 
     
