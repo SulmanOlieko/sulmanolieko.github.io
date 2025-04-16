@@ -478,8 +478,18 @@
           </ul>
         </nav>
       </aside>
-  <aside class='sk-ww-linkedin-profile-post card-simple view-card' data-embed-id='25546699' style="max-height: 500px; width: 100%; ">
-  </aside>
+  <aside class="linkedin-widget-aside" style="max-width: 300px;">
+  <div class="sk-ww-linkedin-profile-post" data-embed-id="25546699"></div>
+  <script src="https://widgets.sociablekit.com/linkedin-profile-posts/widget.js" defer></script>
+</aside>
+
+<!-- Custom CSS to hide posts after the first one -->
+<style>
+  /* Adjust the selector based on the generated HTML; here we assume each post is a direct div child */
+  .linkedin-widget-aside .sk-ww-linkedin-profile-post > div:not(:first-child) {
+    display: none;
+  }
+</style>
   </div>
   
     <div id="featured-research" style="max-width: 1200px; margin: 0 auto; padding: 0 15px;">
