@@ -197,57 +197,9 @@
 
   <div class="universal-wrapper">
     <div class="row">
-      <style>
-  /* Flex container for side-by-side layout */
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px; /* Space between visualizations */
-  }
-  /* Each visualization takes up roughly half the container width */
-  .row > .visualization {
-    flex: 1 1 49%;
-    box-sizing: border-box;
-  }
-  /* Ensure the chart container fills its parent and has a fixed height */
-  .chart-container {
-    position: relative;
-    width: 100%;
-    height: 400px; /* Adjust as needed */
-  }
 
-  /* Mobile: Stack vertically on smaller screens */
-  @media only screen and (max-width: 600px) {
-    .row {
-      flex-direction: column;
-    }
-    .row > .visualization {
-      flex: 1 1 80%;
-    }
-  }
-</style>
+
       
-<div class="row">
-  <!-- Publications to-date Visualization -->
-  <div id="data-visualization" class="visualization card-transparent card-simple view-card">
-    <div class="container">
-      <h2>Publications to-date</h2>
-      <div class="chart-container">
-        <canvas id="economicsChart"></canvas>
-      </div>
-    </div>
-  </div>
-  <!-- Publications & citations per year Visualization -->
-  <div class="visualization card-transparent card-simple view-card" id="combined-visualization">
-    <div class="container">
-      <h2>Publications & citations per year</h2>
-      <div class="chart-container">
-        <canvas id="combinedChart"></canvas>
-      </div>
-    </div>
-  </div>
-</div>
-
       <div class="col-lg-12">
         <div class="universal-wrapper pt-3">
           <h1>Publications</h1>
@@ -590,6 +542,63 @@
         <div class="ml-3"></div>
       </div>
     </div>
+
+      <div class="universal-wrapper">
+    <div class="row">
+      <style>
+  /* Flex container for side-by-side layout */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between visualizations */
+  }
+  /* Each visualization takes up roughly half the container width */
+  .row > .visualization {
+    flex: 1 1 49%;
+    box-sizing: border-box;
+  }
+  /* Ensure the chart container fills its parent and has a fixed height */
+  .chart-container {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Adjust as needed */
+  }
+
+  /* Mobile: Stack vertically on smaller screens */
+  @media only screen and (max-width: 600px) {
+    .row {
+      flex-direction: column;
+    }
+    .row > .visualization {
+      flex: 1 1 80%;
+    }
+  }
+</style>
+      
+<div class="row">
+  <!-- Publications to-date Visualization -->
+  <div id="data-visualization" class="visualization card-transparent card-simple view-card">
+    <div class="container">
+      <h2>Publications to-date</h2>
+      <div class="chart-container">
+        <canvas id="economicsChart"></canvas>
+      </div>
+    </div>
+  </div>
+  <!-- Publications & citations per year Visualization -->
+  <div class="visualization card-transparent card-simple view-card" id="combined-visualization">
+    <div class="container">
+      <h2>Publications & citations per year</h2>
+      <div class="chart-container">
+        <canvas id="combinedChart"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+      </div>
+        
+    
     <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
       <img src="/images/open-doodles/svg/SitReadingDoodle.svg" alt="publication doodle" style="width: 300px; height: auto;">
     </div>
