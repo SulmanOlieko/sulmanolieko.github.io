@@ -258,6 +258,7 @@
     left: calc(50% + 500px + 0px);
     width: auto;
     position: fixed;
+    z-index: 9999;
   }
   #sidebar h5 {
     font-size: 1rem;
