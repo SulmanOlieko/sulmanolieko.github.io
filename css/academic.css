@@ -338,7 +338,7 @@
     }
 
     /* hide the checkbox */
-    .read-more-toggle {
+    #read-more-toggle {
       display: none;
     }
 
