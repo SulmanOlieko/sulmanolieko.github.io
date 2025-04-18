@@ -49,48 +49,6 @@
    
   }
 
-    .read-more-container {
-      position: relative;
-      max-width: 600px;
-      margin: 2em auto;
-      font-family: sans-serif;
-      line-height: 1.5;
-    }
-
-    /* hide the checkbox */
-    #read-more-toggle {
-      display: none;
-    }
-
-    /* the text to collapse */
-    .read-more-content {
-      max-height: 4.5em;       /* ~3 lines at line-height:1.5 */
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-    }
-
-    /* when checked, expand to show everything */
-    .read-more-toggle:checked ~ .read-more-content {
-      max-height: 100vh;       /* large enough to show all */
-    }
-
-    /* the label styled as a link/button */
-    .read-more-trigger {
-      display: inline-block;
-      margin-top: 0.5em;
-      colour: #0074D9;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    /* change the label text via pseudo‑element */
-    .read-more-trigger::after {
-      content: 'Read more';
-    }
-    /* toggle text when checked */
-    .read-more-toggle:checked ~ .read-more-trigger::after {
-      content: 'Show less';
-    }
   </style>
 
   <!-- Google Tag Manager and Analytics Scripts -->
@@ -549,7 +507,7 @@
 </div>
 <!-- End Container for all publications -->
 
-        <div class="ml-3"></div>
+    <div class="ml-3"></div>
       </div>
           <!-- Sidebar Row -->
       <aside id="sidebar" class="home-section">
