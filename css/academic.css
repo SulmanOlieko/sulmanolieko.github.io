@@ -338,7 +338,7 @@
     }
 
     /* hide the checkbox */
-    #read-more-toggle {
+    .read-more-toggle {
       display: none;
     }
 
@@ -350,7 +350,7 @@
     }
 
     /* when checked, expand to show everything */
-    #read-more-toggle:checked ~ .read-more-content {
+    .read-more-toggle:checked ~ .read-more-content {
       max-height: 100vh;       /* large enough to show all */
     }
 
@@ -368,6 +368,6 @@
       content: 'Read more';
     }
     /* toggle text when checked */
-    #read-more-toggle:checked ~ .read-more-trigger::after {
+    .read-more-toggle:checked ~ .read-more-trigger::after {
       content: 'Show less';
     }
