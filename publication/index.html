@@ -46,9 +46,88 @@
     .chart-container {
       height: 300px; /* Reduce height on mobile devices */
     }
-   
-  }
 
+    /* Off‑canvas Read More CSS */
+    :root {
+      --rm-lines: 3;
+      --rm-lh: 1.5;
+      --rm-collapsed: calc(var(--rm-lines) * var(--rm-lh) * 1em);
+      --rm-trigger-colour: #0074D9;
+      --oc-width: 80%;
+      --oc-max: 600px;
+      --trans-fast: 0.35s ease-in-out;
+    }
+
+    /* hide each checkbox */
+    .read-more-toggle {
+      display: none;
+    }
+
+    /* inline preview */
+    .read-more-content {
+      max-height: var(--rm-collapsed);
+      overflow: hidden;
+      transition: max-height var(--trans-fast), opacity var(--trans-fast);
+    }
+
+    /* Read more link */
+    .read-more-trigger {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: var(--rm-trigger-colour);
+      cursor: pointer;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+    .read-more-trigger::after {
+      content: ' Read more';
+    }
+
+    /* hide inline preview when off-canvas open */
+    .read-more-toggle:checked + .read-more-container .read-more-content {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .read-more-toggle:checked + .read-more-container .read-more-trigger::after {
+      content: ' Show less';
+    }
+
+    /* off‑canvas panel */
+    .offcanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: var(--oc-width);
+      max-width: var(--oc-max);
+      height: 100%;
+      background: #fff;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+      transform: translateX(-100%);
+      transition: transform var(--trans-fast);
+      overflow-y: auto;
+      z-index: 1000;
+      padding: 1rem;
+    }
+    /* slide in offcanvas */
+    .read-more-toggle:checked ~ .offcanvas {
+      transform: translateX(0);
+    }
+    /* full expand inside offcanvas */
+    .offcanvas .read-more-content {
+      max-height: none !important;
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+    .offcanvas-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
   </style>
 
   <!-- Google Tag Manager and Analytics Scripts -->
@@ -592,6 +671,43 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
   <script src="/js/academic.min.bcfae8267aba63cc55af53a503896bd9.js"></script>
+<!-- Off‑canvas Read More Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.read-more-container').forEach(container => {
+        const toggle = container.previousElementSibling;
+        const label = container.querySelector('.read-more-trigger');
+        // create offcanvas
+        const offcanvas = document.createElement('aside');
+        offcanvas.className = 'offcanvas';
+        offcanvas.setAttribute('aria-hidden', 'true');
+        // close button
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'offcanvas-close';
+        closeBtn.setAttribute('aria-label', 'Close');
+        closeBtn.innerHTML = '&times;';
+        // body div
+        const bodyDiv = document.createElement('div');
+        bodyDiv.className = 'offcanvas-body';
+        // clone container
+        bodyDiv.appendChild(container.cloneNode(true));
+        offcanvas.appendChild(closeBtn);
+        offcanvas.appendChild(bodyDiv);
+        // insert after container's parent
+        container.parentNode.insertBefore(offcanvas, container.nextSibling);
+
+        // sync aria and toggle
+        toggle.addEventListener('change', () => {
+          label.setAttribute('aria-expanded', toggle.checked);
+          offcanvas.setAttribute('aria-hidden', !toggle.checked);
+        });
+        closeBtn.addEventListener('click', () => {
+          toggle.checked = false;
+          toggle.dispatchEvent(new Event('change'));
+        });
+      });
+    });
+  </script>
 
   <div class="container">
   <footer>
