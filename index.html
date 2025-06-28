@@ -447,32 +447,98 @@
                 <a href="https://hdl.handle.net/10568/170186">https://hdl.handle.net/10568/170186</a>
               </span>.
             </small>
-            <div class="row align-items-center">
-            <div class="col-auto">
-              <a
-                class="btn btn-outline-primary btn-sm mr-2"
-                href="https://cgspace.cgiar.org/bitstreams/8cd0d1d5-eb7a-49c3-a0a6-dc3bcc6bc79d/download"
-                target="_blank"
-                rel="noopener"
-              >
-                PDF
-              </a>
-            </div>
-            <div class="col-auto mr-2">
-              <div
-                class="altmetric-embed"
-                data-badge-type="donut"
-                data-doi="10568/170186"
-              ></div>
-            </div>
-            <div class="col-auto">
-              <span
-                class="__dimensions_badge_embed__"
-                data-doi="10568/170186"
-                data-style="small_circle"
-              ></span>
-            </div>
-          </div>
+<!-- Buttons & badges row -->
+<div class="row align-items-center">
+  <div class="col-auto">
+    <a
+      class="btn btn-outline-primary btn-sm mr-2"
+      href="https://cgspace.cgiar.org/bitstreams/8cd0d1d5-eb7a-49c3-a0a6-dc3bcc6bc79d/download"
+      target="_blank"
+      rel="noopener"
+    >
+      PDF
+    </a>
+  </div>
+  <div class="col-auto mr-2">
+    <div
+      class="altmetric-embed"
+      data-badge-type="donut"
+      data-doi="10568/170186"
+    ></div>
+  </div>
+  <div class="col-auto mr-2">
+    <span
+      class="__dimensions_badge_embed__"
+      data-doi="10568/170186"
+      data-style="small_circle"
+    ></span>
+  </div>
+  <div class="col-auto">
+    <button
+      type="button"
+      class="btn btn-outline-secondary btn-sm"
+      data-toggle="modal"
+      data-target="#citationModal"
+    >
+      Cite this
+    </button>
+  </div>
+</div>
+
+<!-- Citation modal -->
+<div
+  class="modal fade"
+  id="citationModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="citationModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="citationModalLabel">Citation</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="citationText">
+          Owili, S. O. (2025). <em>Title of Publication</em>. <strong>Journal Name</strong>, Vol(Issue), pp. xx–xx. https://doi.org/10.10568/170186
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          id="copyCitationBtn"
+        >
+          Copy to clipboard
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Copy-to-clipboard script (requires Bootstrap’s JS and jQuery) -->
+<script>
+  document.getElementById('copyCitationBtn').addEventListener('click', function() {
+    const text = document.getElementById('citationText').innerText;
+    navigator.clipboard.writeText(text)
+      .then(() => { alert('Citation copied to clipboard'); })
+      .catch(() => { alert('Failed to copy citation.'); });
+  });
+</script>
+
+
+
+
+            
 
           </div>
         </div>
