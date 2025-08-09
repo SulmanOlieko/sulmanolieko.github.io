@@ -149,7 +149,14 @@
       font-size: 1.2rem;
       z-index: 2;
     }
+    .input-group {
+      position: relative;
+    }
+
     .error-message {
+      position: absolute;
+      top: 100%;
+      left: 0;
       font-size: 0.85rem;
       color: red;
       margin-top: 5px;
@@ -237,14 +244,15 @@
           <span class="toggle-password" data-target="login-password"><i class="fas fa-eye"></i></span>
           <div class="error-message" id="login-password-error">Password is required</div>
         </div>
-        <div class="remember-me">
-          <input type="checkbox" id="remember-me">
-          <label for="remember-me">Remember me</label>
+        <div class="d-flex justify-content-between">
+          <div class="remember-me">
+            <input type="checkbox" id="remember-me">
+            <label for="remember-me">Remember me</label>
+          </div>
+          <div class="forgot-password" id="forgot-password" style="font-size: 1rem; cursor: pointer;"><i class="fas fa-question-circle"></i> Forgot password?</div>
         </div>
-        <div class="forgot-password" id="forgot-password">Forgot password?</div>
         <button type="submit" class="btn" style="display: flex;align-items: center;justify-content: center;">Login</button>
       </form>
-      <!--
       <div class="social-login">
         <p>Or sign in with:</p>
         <div class="social-btn">
@@ -252,7 +260,6 @@
           <button class="github-btn"><i class="fab fa-github"></i> GitHub</button>
         </div>
       </div>
-       -->
       <p class="toggle-link" onclick="toggleForm()">Don't have an account? Sign up</p>
     </div>
    
@@ -279,7 +286,6 @@
         </div>
         <button type="submit" class="btn" style="display: flex;align-items: center;justify-content: center;">Sign Up</button>
       </form>
-      <!--
       <div class="social-login">
         <p>Or sign up with:</p>
         <div class="social-btn">
@@ -287,7 +293,6 @@
           <button class="github-btn"><i class="fab fa-github"></i> GitHub</button>
         </div>
       </div>
-      -->
       <p class="toggle-link" onclick="toggleForm()">Already have an account? Login</p>
     </div>
   </div>

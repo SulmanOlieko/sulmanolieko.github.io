@@ -272,11 +272,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // sync aria and toggle
     toggle.addEventListener('change', () => {
       label.setAttribute('aria-expanded', toggle.checked);
-      offcanvas.setAttribute('aria-hidden', !toggle.checked);
-    });
-    closeBtn.addEventListener('click', () => {
-      toggle.checked = false;
-      toggle.dispatchEvent(new Event('change'));
     });
   });
 });
