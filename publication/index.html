@@ -43,34 +43,6 @@
   }
   </style>
 
-  <!-- Google Tag Manager and Analytics Scripts -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-MDK8S5X2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    function trackOutboundLink(url) {
-      gtag('event', 'click', {
-        'event_category': 'outbound',
-        'event_label': url,
-        'transport_type': 'beacon',
-        'event_callback': function () {
-          document.location = url;
-        }
-      });
-      console.debug("Outbound link clicked: " + url);
-    }
-    function onClickCallback(event) {
-      if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
-        return;
-      }
-      trackOutboundLink(event.target);
-    }
-    gtag('js', new Date());
-    gtag('config', 'GTM-MDK8S5X2', {});
-    document.addEventListener('click', onClickCallback, false);
-  </script>
 
   <link rel="alternate" href="/publication/index.xml" type="application/rss+xml" title="Sulman Olieko">
   <link rel="manifest" href="/index.webmanifest">
@@ -255,7 +227,7 @@
         </div>
         <!-- Buttons / Links -->
         <div>
-          <a class="btn btn-outline-primary btn-sm mr-2" href="poster/efficiency/Agroecology_conference_poster-3.pdf" target="_blank" rel="noopener">
+          <a class="btn btn-outline-primary btn-sm" href="poster/efficiency/Agroecology_conference_poster-3.pdf" target="_blank" rel="noopener">
             PDF
           </a>
         </div>
@@ -303,10 +275,10 @@
           <label for="toggle-abstract-2" class="read-more-trigger"></label>
         </div>
         <div>
-          <a class="btn btn-outline-primary btn-sm mr-2" href="report/report2/HOLPA_Country_Report_v6_final.pdf" target="_blank" rel="noopener">
+          <a class="btn btn-outline-primary btn-sm" href="report/report2/HOLPA_Country_Report_v6_final.pdf" target="_blank" rel="noopener">
             PDF
           </a>
-          <a class="btn btn-primary btn-sm" href="https://hdl.handle.net/10568/169052" target="_blank">
+          <a class="btn btn-outline-primary btn-sm" href="https://hdl.handle.net/10568/169052" target="_blank">
             View Online
           </a>
         </div>
@@ -350,10 +322,10 @@
           <label for="toggle-abstract-3" class="read-more-trigger"></label>
         </div>
         <div>
-          <a class="btn btn-outline-primary btn-sm mr-2" href="journal-article/apm-adoption/owili_et_al_2024.pdf" target="_blank" rel="noopener">
+          <a class="btn btn-outline-primary btn-sm" href="journal-article/apm-adoption/owili_et_al_2024.pdf" target="_blank" rel="noopener">
             PDF
           </a>
-          <a class="btn btn-primary btn-sm" href="https://doi.org/10.1080/09670874.2024.2413592" target="_blank">
+          <a class="btn btn-outline-primary btn-sm" href="https://doi.org/10.1080/09670874.2024.2413592" target="_blank">
             View Online
           </a>
         </div>
@@ -397,10 +369,10 @@
           <label for="toggle-abstract-4" class="read-more-trigger"></label>
         </div>
         <div>
-          <a class="btn btn-outline-primary btn-sm mr-2" href="journal-article/abcd/fsufs-08-1449615.pdf" target="_blank" rel="noopener">
+          <a class="btn btn-outline-primary btn-sm" href="journal-article/abcd/fsufs-08-1449615.pdf" target="_blank" rel="noopener">
             PDF
           </a>
-          <a class="btn btn-primary btn-sm" href="https://doi.org/10.3389/fsufs.2024.1449615" target="_blank">
+          <a class="btn btn-outline-primary btn-sm" href="https://doi.org/10.3389/fsufs.2024.1449615" target="_blank">
             View Online
           </a>
         </div>
@@ -444,10 +416,10 @@
           <label for="toggle-abstract-5" class="read-more-trigger"></label>
         </div>
         <div>
-          <a class="btn btn-outline-primary btn-sm mr-2" href="poster/abcd/abcd.pdf" target="_blank" rel="noopener">
+          <a class="btn btn-outline-primary btn-sm" href="poster/abcd/abcd.pdf" target="_blank" rel="noopener">
             PDF
           </a>
-          <a class="btn btn-primary btn-sm" href="http://dx.doi.org/10.13140/RG.2.2.32738.13766" target="_blank">
+          <a class="btn btn-outline-primary btn-sm" href="http://dx.doi.org/10.13140/RG.2.2.32738.13766" target="_blank">
             View Online
           </a>
         </div>
@@ -491,10 +463,10 @@
           <label for="toggle-abstract-6" class="read-more-trigger"></label>
         </div>
         <div>
-          <a class="btn btn-outline-primary btn-sm mr-2" href="report/report1/kenya_20240103-153355.pdf" target="_blank" rel="noopener">
+          <a class="btn btn-outline-primary btn-sm" href="report/report1/kenya_20240103-153355.pdf" target="_blank" rel="noopener">
             PDF
           </a>
-          <a class="btn btn-primary btn-sm" href="https://hdl.handle.net/10568/137468" target="_blank">
+          <a class="btn btn-outline-primary btn-sm" href="https://hdl.handle.net/10568/137468" target="_blank">
             View Online
           </a>
         </div>
@@ -674,354 +646,7 @@
     </div>
   </footer>
 
-  <script>
-    // Scroll to top behavior
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // Dynamic year
-    document.getElementById('dynamicYear').textContent = new Date().getFullYear();
-
-    // Newsletter subscription with better validation
-    function subscribeNewsletter() {
-      const emailInput = document.getElementById('newsletterEmail');
-      const errorMsg = document.getElementById('newsletterError');
-      const email = emailInput.value.trim();
-
-      // Basic email pattern check
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-      if (!email) {
-        errorMsg.textContent = 'Please enter your email address.';
-        errorMsg.style.display = 'block';
-        return;
-      } else if (!emailRegex.test(email)) {
-        errorMsg.textContent = 'Please enter a valid email address.';
-        errorMsg.style.display = 'block';
-        return;
-      }
-
-      // No errors => proceed
-      errorMsg.style.display = 'none';
-      alert(`Thanks for subscribing, ${email}!`);
-
-      // Reset the input (optional)
-      emailInput.value = '';
-    }
-  </script>
-      <script>
-    // Toggle the navigation drawer on button click
-    const toggleButton = document.getElementById('nav-toggle');
-    const navDrawer = document.getElementById('nav-drawer');
-
-    toggleButton.addEventListener('click', () => {
-      navDrawer.classList.toggle('open');
-      // Update ARIA state for accessibility
-      const isOpen = navDrawer.classList.contains('open');
-      navDrawer.setAttribute('aria-hidden', !isOpen);
-    });
-
-    // Close the drawer when a navigation link is clicked
-    document.querySelectorAll('#nav-drawer .nav-link').forEach(link => {
-      link.addEventListener('click', (event) => {
-        navDrawer.classList.remove('open');
-        navDrawer.setAttribute('aria-hidden', 'true');
-        // Smooth scrolling to section
-        event.preventDefault();
-        document.querySelector(link.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
-  </script>
   </div>
- <script>
-document.addEventListener('DOMContentLoaded', function () {
-  // 1. Gather publication data from the container
-  const pubContainer = document.getElementById('container-publications');
-  const publicationElements = pubContainer.querySelectorAll('.isotope-item');
-
-  // Mapping of publication type classes to human-readable names
-  const typeMapping = {
-    'pubtype-1': 'Journal article',
-    'pubtype-2': 'Conference paper',
-    'pubtype-3': 'Preprint',
-    'pubtype-4': 'Working paper',
-    'pubtype-5': 'Report',
-    'pubtype-6': 'Poster',
-    'pubtype-7': 'Others'
-  };
-
-  // Object to store counts per year and type, e.g. { "2024": { "Journal article": 2, "Poster": 1 } }
-  const dataByYear = {};
-
-  publicationElements.forEach(el => {
-    // Get the classes from the element
-    const classes = el.className.split(' ');
-    // Extract all classes that begin with "year-"
-    const years = classes.filter(cls => cls.startsWith('year-'))
-                         .map(cls => cls.replace('year-', ''));
-    // Extract all classes that begin with "pubtype-"
-    const types = classes.filter(cls => cls.startsWith('pubtype-'));
-    // For each year the publication belongs to...
-    years.forEach(year => {
-      if (!dataByYear[year]) {
-        dataByYear[year] = {};
-      }
-      // For each type this publication belongs to...
-      types.forEach(typeCls => {
-        const typeName = typeMapping[typeCls] || typeCls;
-        if (!dataByYear[year][typeName]) {
-          dataByYear[year][typeName] = 0;
-        }
-        dataByYear[year][typeName] += 1;
-      });
-    });
-  });
-
-  // 2. Sort years (x-axis labels)
-  const yearsSorted = Object.keys(dataByYear).sort();
-
-  // 3. Determine all publication types used across years
-  const allTypes = new Set();
-  yearsSorted.forEach(year => {
-    Object.keys(dataByYear[year]).forEach(typeName => {
-      allTypes.add(typeName);
-    });
-  });
-  const allTypesArr = Array.from(allTypes);
-
-  // 4. Prepare Chart.js datasets. For each type, create an array of counts per year.
-  const colors = {
-    'Journal article': 'rgba(75, 192, 192, 0.7)',
-    'Conference paper': 'rgba(54, 162, 235, 0.7)',
-    'Preprint': 'rgba(255, 206, 86, 0.7)',
-    'Working paper': 'rgba(153, 102, 255, 0.7)',
-    'Report': 'rgba(255, 159, 64, 0.7)',
-    'Poster': 'rgba(255, 99, 132, 0.7)',
-    'Others': 'rgba(201, 203, 207, 0.7)'
-  };
-
-  const datasets = allTypesArr.map(typeName => {
-    const counts = yearsSorted.map(year => dataByYear[year][typeName] || 0);
-    return {
-      label: typeName,
-      data: counts,
-      backgroundColor: colors[typeName] || 'rgba(0,0,0,0.7)',
-      borderColor: (colors[typeName] || 'rgba(0,0,0,0.7)').replace('0.7', '1'),
-      borderWidth: 1
-    };
-  });
-
-  // 5. Create a stacked bar chart using Chart.js with responsive and interactive options
-  const ctx = document.getElementById('economicsChart').getContext('2d');
-  const publicationsChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: yearsSorted,
-      datasets: datasets
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        tooltip: {
-          mode: 'index',
-          intersect: false,
-        },
-        legend: {
-          position: 'top',
-        }
-      },
-      scales: {
-        x: {
-          stacked: true,
-          title: {
-            display: true,
-            text: 'Year'
-          },
-          ticks: {
-            // Optionally reduce font size on mobile devices
-            font: {
-              size: window.innerWidth < 600 ? 10 : 12
-            }
-          }
-        },
-        y: {
-          stacked: true,
-          beginAtZero: true,
-          title: {
-            display: true,
-            text: 'Number of Publications'
-          },
-          ticks: {
-            font: {
-              size: window.innerWidth < 600 ? 10 : 12
-            }
-          }
-        }
-      },
-      onClick: (evt, elements) => {
-        if (elements.length > 0) {
-          const firstPoint = elements[0];
-          const clickedYear = publicationsChart.data.labels[firstPoint.index];
-          const clickedType = publicationsChart.data.datasets[firstPoint.datasetIndex].label;
-          console.log(`Clicked on ${clickedType} for the year ${clickedYear}`);
-          // Additional interactivity (e.g., filtering the publication list) can be added here.
-        }
-      }
-    }
-  });
-});
-</script>
-
-  <script>
-document.addEventListener('DOMContentLoaded', function () {
-  // Select all publication elements from the container.
-  const pubContainer = document.getElementById('container-publications');
-  const publicationElements = pubContainer.querySelectorAll('.isotope-item');
-
-  // Objects to store totals per year.
-  // publicationCounts: { "2023": 3, "2024": 5, ... }
-  // citationCounts: { "2023": 0, "2024": 0, "2025": 1, ... }
-  const publicationCounts = {};
-  const citationCounts = {};
-
-  publicationElements.forEach(el => {
-    // Extract all classes that start with "year-"
-    const classes = el.className.split(' ');
-    const yearClasses = classes.filter(cls => cls.startsWith('year-'));
-
-    // Get citation count from the element's data attribute (default to 0 if missing)
-    const citations = parseInt(el.getAttribute('data-citations')) || 0;
-
-    yearClasses.forEach(cls => {
-      const year = cls.replace('year-', '');
-      // Increase publication count for this year
-      if (!publicationCounts[year]) {
-        publicationCounts[year] = 0;
-      }
-      publicationCounts[year] += 1;
-
-      // Add citations for this year
-      if (!citationCounts[year]) {
-        citationCounts[year] = 0;
-      }
-      citationCounts[year] += citations;
-    });
-  });
-
-  // Get a sorted array of years (x-axis labels).
-  const yearsSorted = Object.keys(publicationCounts).sort();
-
-  // Create arrays for total publications and total citations per year.
-  const pubData = yearsSorted.map(year => publicationCounts[year] || 0);
-  const citData = yearsSorted.map(year => citationCounts[year] || 0);
-
-  // Create a mixed chart using Chart.js.
-  const ctx = document.getElementById('combinedChart').getContext('2d');
-  const combinedChart = new Chart(ctx, {
-    data: {
-      labels: yearsSorted,
-      datasets: [
-        {
-          type: 'line',
-          label: 'Total Publications',
-          data: pubData,
-          borderColor: 'rgba(54, 162, 235, 1)',
-          backgroundColor: 'rgba(54, 162, 235, 0.2)',
-          fill: true,
-          tension: 0.4,  // Smooth the line
-          yAxisID: 'y'
-        },
-        {
-          type: 'bar',
-          label: 'Total Citations',
-          data: citData,
-          backgroundColor: 'rgba(75, 192, 192, 0.5)',
-          borderColor: 'rgba(75, 192, 192, 1)',
-          borderWidth: 1,
-          yAxisID: 'y1'
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        tooltip: {
-          mode: 'index',
-          intersect: false,
-        },
-        legend: {
-          position: 'top',
-        }
-      },
-      scales: {
-        x: {
-          title: {
-            display: true,
-            text: 'Year'
-          },
-          ticks: {
-            font: {
-              size: window.innerWidth < 600 ? 10 : 12
-            }
-          }
-        },
-        y: {
-          type: 'linear',
-          display: true,
-          position: 'left',
-          beginAtZero: true,
-          title: {
-            display: true,
-            text: 'Total Publications'
-          },
-          ticks: {
-            font: {
-              size: window.innerWidth < 600 ? 10 : 12
-            }
-          }
-        },
-        y1: {
-          type: 'linear',
-          display: true,
-          position: 'right',
-          beginAtZero: true,
-          title: {
-            display: true,
-            text: 'Total Citations'
-          },
-          grid: {
-            drawOnChartArea: false  // Prevent duplicate grid lines
-          },
-          ticks: {
-            font: {
-              size: window.innerWidth < 600 ? 10 : 12
-            }
-          }
-        }
-      },
-      onClick: (evt, elements) => {
-        if (elements.length > 0) {
-          const firstPoint = elements[0];
-          const clickedYear = combinedChart.data.labels[firstPoint.index];
-          let clickedType = '';
-          // Check which dataset was clicked.
-          if (combinedChart.data.datasets[firstPoint.datasetIndex].type === 'line') {
-            clickedType = 'Publications';
-          } else {
-            clickedType = 'Citations';
-          }
-          console.log(`Clicked on ${clickedType} for the year ${clickedYear}`);
-          // Additional interactivity (e.g., filtering the publication list) can be implemented here.
-        }
-      }
-    }
-  });
-});
-</script>
+  <script src="/js/app.js"></script>
 </body>
 </html>

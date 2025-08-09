@@ -28,20 +28,6 @@
   <script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>
  <!-- PlumX -->
   <script type="text/javascript" src="//cdn.plu.mx/widget-all.js"></script>
-  <!-- Add your PWA's service worker script -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js')
-          .then(registration => {
-            console.log('Service Worker registered!');
-          })
-          .catch(error => {
-            console.error('Service Worker registration failed:', error);
-          });
-      });
-    }
-  </script>
 
   <style> 
     /* Styling for the install popup */
@@ -98,32 +84,6 @@
 }
   </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-MDK8S5X2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-      dataLayer.push(arguments);
-  }
-  function trackOutboundLink(url) {
-    gtag('event', 'click', {
-         'event_category': 'outbound',
-         'event_label': url,
-         'transport_type': 'beacon',
-         'event_callback': function () {
-           document.location = url;
-         }
-    });
-    console.debug("Outbound link clicked: " + url);
-  }
-  function onClickCallback(event) {
-    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
-      return;
-    }
-    trackOutboundLink(event.target);  
-  }
-  gtag('js', new Date());
-  gtag('config', 'GTM-MDK8S5X2', {});
-  document.addEventListener('click', onClickCallback, false);
-</script>
   <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Sulman Olieko">
   <link rel="manifest" href="/index.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon-32.png">
@@ -140,18 +100,6 @@
   <meta property="og:updated_time" content="2022-10-23T00:00:00&#43;00:00">
 <meta name="google-site-verification" content="Baw9PBTcmijlA9KAWXWpf1E9bbdf9oYXLmr-fiX9jFc" />
       <!-- JSON-LD for Search -->
-    <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://sulmanolieko.github.io/?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-          },
-          "url": "https://sulmanolieko.github.io/"
-        }
-    </script>
   <title>Sulman Olieko Owili</title>
 </head>
 
@@ -179,55 +127,6 @@
             </section>
         </div>
     </aside>
-<script>
- document.addEventListener("DOMContentLoaded", function() {
-     const searchForm = document.getElementById("search-box");
-     const searchInput = document.getElementById("search-query");
-     const searchHits = document.getElementById("search-hits");
-     const searchSection = document.getElementById("search");
-     const closeSearchBtn = document.querySelector(".js-search");
-
-     // Function to perform search
-     function performSearch(query) {
-         const results = [
-             { title: "Search Result 1", url: "result1.html" },
-             { title: "Search Result 2", url: "result2.html" },
-             { title: "Search Result 3", url: "result3.html" }
-         ];
-
-         displaySearchResults(results);
-     }
-
-     // Function to display search results
-     function displaySearchResults(results) {
-         searchHits.innerHTML = "";
-         if (results.length === 0) {
-             searchHits.innerHTML = "<p>No results found.</p>";
-         } else {
-             results.forEach(function(result) {
-                 const resultItem = document.createElement("div");
-                 resultItem.innerHTML = `<a href="${result.url}">${result.title}</a>`;
-                 searchHits.appendChild(resultItem);
-             });
-         }
-     }
-
-     // Event listener for search form submission
-     searchForm.addEventListener("submit", function(event) {
-         event.preventDefault();
-         const query = searchInput.value.trim();
-         if (query !== "") {
-             performSearch(query);
-         }
-     });
-
-     // Event listener to close search section
-     closeSearchBtn.addEventListener("click", function(event) {
-         event.preventDefault();
-         searchSection.classList.remove("open");
-     });
- });
- </script>
 
 <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
   <div class="container">
@@ -271,7 +170,7 @@
 <div class="row">
   <div class="col-12 col-lg-3">
     <div id="profile">     
-      <img class="portrait" src="/authors/admin/home_avatar.png" alt="Sorry, the avatar failed to load properly. This is a glitch from our side. Try reloading page later.">
+      <img class="portrait" src="/authors/admin/home_avatar.png" alt="Sulman Olieko Owili">
       <div class="portrait-title">
         <h2>Sulman Olieko Owili</h2>
         <h3>MSc Agricultural and Applied Economics</h3>
@@ -315,7 +214,7 @@
       </ul>
       <div class="share-box article-metadata" aria-hidden="true">
         <h3>Follow Me</h3>
-  <ul class="share">
+  <ul class="share d-flex justify-content-center">
     <li>
         <a href="https://www.linkedin.com/in/olieko-sulman/" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
@@ -360,7 +259,7 @@
 
   <div id="bio" class="col-12 col-lg-6">
     <div class="note-box note-box-pub article-tags card-simple view-card">
-      <div class="button">Bio</div>
+      <a class="btn btn-outline-primary btn-sm" href="#bio">Bio</a>
       <small>
         <span class="article-metadata">
           Sulman is an agricultural and applied economist with a strong commitment to implementing novel research techniques to shape sustainable policies for the agri-food sector. In 2023, he was recognised as the Best Collaborative Masters in Agricultural and Applied Economics (CMAAE) student in the CMAAE programme participated by eight major universities across East and Southern Africa. Earlier that year, he was also acknowledged as the second-best master’s student in the Faculty of Agriculture at the University of Nairobi. Currently, Sulman serves in several roles within the academia and industry. He has been a Research Fellow at the International Institute of Tropical Agriculture (IITA) under the Agroecology Initiative between 2022 and 2024. In 2022, he was also appointed as a Teaching Assistant at the Department of Agricultural Economics of the University of Nairobi. Sulman has served as an Agroecological Systems and Research Analyst consultant at the International Center of Research in Agroforestry (ICRAF) between 2023 and 2024, and Research Associate and Research Assistant consultant at the Alliance of Bioversity and CIAT (ABC) in 2024 and early 2025. Sulman currently serves as a FoodEDU Case Study Co-Facilitator for the American Heart Association. His research interests span production economics, econometrics, statistics, and quantitative modelling, with a special focus on sustainable agricultural technology adoption and innovation systems as avenues for food sovereignty, poverty alleviation and reversal of climate change effects.
@@ -371,19 +270,6 @@
       
   <div id="viewer" style="width: 100%; height: 500px;" class="card-simple view-card"></div>
   <script type="text/javascript" src="https://cloudpdf.io/viewer.min.js"></script>
-  <script>
-    const config = { 
-      documentId: 'ad5db8cf-cccc-4826-b382-849c2bab3c02',
-      darkMode: false, 
-      themeColor:"#795548",
-      appBarColored:true,
-      disableToolbar:false,
-      disableElements:[]
-    };
-    CloudPDF(config, document.getElementById('viewer')).then((instance) => {
-      
-    });
-  </script>
   </div>
      <!-- Sidebar Row -->
       <aside id="sidebar" class="home-section">
@@ -479,7 +365,6 @@
                 data-popup="top" data-badge="false" class="plumx-plum-print-popup" 
                 data-site="plum" data-size="medium" data-hide-when-empty="false">Agro-ecological pest control options for improved eco-efficiency of smallholder farming systems in the face of invasive alien pests
               </a>
-              <script>window.__plumX.widgets.init();</script>
             </div>
           </div>
 
@@ -535,7 +420,6 @@
                 data-popup="top" data-badge="false" class="plumx-plum-print-popup" 
                 data-site="plum" data-size="medium" data-hide-when-empty="false">Behavioural mechanisms and social capital in pro-agroecological transitions--a comparative analysis of two case studies in Kenya
               </a>
-              <script>window.__plumX.widgets.init();</script>
             </div>
           </div>
 
@@ -590,7 +474,6 @@
                 data-popup="top" data-badge="false" class="plumx-plum-print-popup" 
                 data-site="plum" data-size="medium" data-hide-when-empty="false">Evidencing that process matters: Conceptualising and evaluating the contribution of an asset-based and agency-focused engagement approach to strengthening Regreening Africa outcomes in Kenya
               </a>
-              <script>window.__plumX.widgets.init();</script>
             </div>
           </div>
 
@@ -645,7 +528,6 @@
                 data-popup="top" data-badge="false" class="plumx-plum-print-popup" 
                 data-site="plum" data-size="medium" data-hide-when-empty="false">Heterogeneous multidimensional efficiency effects of agro-ecological pest management transition and intensification in smallholder systems: Evidence from mango fruit fly control in Kenya
               </a>
-              <script>window.__plumX.widgets.init();</script>
             </div>
           </div>
 
@@ -700,7 +582,6 @@
                 data-popup="top" data-badge="false" class="plumx-plum-print-popup" 
                 data-site="plum" data-size="medium" data-hide-when-empty="false">Heterogeneous efficiency effects of agro-ecological fruit fly management transition and intensification among smallholder mango farmers: A latent class stochastic metafrontier approach
               </a>
-              <script>window.__plumX.widgets.init();</script>
             </div>
           </div>
 
@@ -754,7 +635,6 @@
                 data-popup="top" data-badge="false" class="plumx-plum-print-popup" 
                 data-site="plum" data-size="medium" data-hide-when-empty="false">Performance assessment of agroecology in Makueni and Kiambu counties, Kenya
               </a>
-              <script>window.__plumX.widgets.init();</script>
             </div>
           </div>
 
@@ -809,7 +689,6 @@
                 data-popup="top" data-badge="false" class="plumx-plum-print-popup" 
                 data-site="plum" data-size="medium" data-hide-when-empty="false">Factors influencing adoption of agro-ecological pest management options for mango fruit fly under information constraints: A two-part fractional regression approach
               </a>
-              <script>window.__plumX.widgets.init();</script>
             </div>
           </div>
             
@@ -864,7 +743,6 @@
                 data-popup="top" data-badge="false" class="plumx-plum-print-popup" 
                 data-site="plum" data-size="medium" data-hide-when-empty="false">Scaling Models for Regreening Africa: Enhancing Agroecological Integration through Smallholders' Assets and Agency in Kenya
               </a>
-              <script>window.__plumX.widgets.init();</script>
             </div>
           </div>
             
@@ -919,7 +797,6 @@
                 data-popup="right" data-badge="false" class="plumx-plum-print-popup" 
                 data-site="top" data-size="medium" data-hide-when-empty="false">Kenya Context Assessment Report: A desk-top review of the context of agroecological principles of Kiambu and Makueni counties
               </a>
-              <script>window.__plumX.widgets.init();</script>
             </div>
           </div>
             
@@ -930,7 +807,7 @@
   </div>
   
 <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
-     <img src="/images/open-doodles/svg/DoogieDoodle.svg" alt="publication doodle" style="width: 200px; height: auto;">
+     <img src="/images/open-doodles/svg/DoogieDoodle.svg" alt="A doodle of a person reading a book" style="width: 200px; height: auto;">
 </div>
       
 <div class="wrapper">
@@ -957,39 +834,6 @@
           <p>Install our app for a better experience!</p>
           <button id="installButton">Install</button>
         </div>
-      
-        <script>
-          window.addEventListener('beforeinstallprompt', (event) => {
-            // Prevent Chrome 67 and earlier from automatically showing the prompt
-            event.preventDefault();
-            // Stash the event so it can be triggered later
-            window.deferredPrompt = event;
-            // Show the install popup
-            document.getElementById('installPopup').classList.add('show');
-          });
-      
-          // Handle the install button click
-          document.getElementById('installButton').addEventListener('click', () => {
-            const deferredPrompt = window.deferredPrompt;
-            if (deferredPrompt) {
-              // Show the install prompt
-              deferredPrompt.prompt();
-              // Wait for the user to respond to the prompt
-              deferredPrompt.userChoice
-                .then((choiceResult) => {
-                  if (choiceResult.outcome === 'accepted') {
-                    console.log('User accepted the install prompt');
-                    // Reset the deferred prompt variable
-                    window.deferredPrompt = null;
-                    // Hide the install popup
-                    document.getElementById('installPopup').classList.remove('show');
-                  } else {
-                    console.log('User dismissed the install prompt');
-                  }
-                });
-            }
-          });
-        </script>
 
        <!-- Boxicons CSS -->
       <link rel="stylesheet" href="style.css" />
@@ -997,14 +841,6 @@
         <script src="script.js" defer></script>
       
     <!-- PushAlert -->
-    <script type="text/javascript">
-            (function(d, t) {
-                    var g = d.createElement(t),
-                    s = d.getElementsByTagName(t)[0];
-                    g.src = "https://cdn.pushalert.co/integrate_90d37d1c064f80a89c562983e6ab05eb.js";
-                    s.parentNode.insertBefore(g, s);
-            }(document, "script"));
-    </script>
     <!-- End PushAlert -->
 
       <script src="cookie.js"></script>
@@ -1014,18 +850,6 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
-          
-    <script>const code_highlighting = true;</script>
-    <script>
-      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
-      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
-      const content_type = {
-        'post': "Posts",
-        'project': "Projects",
-        'publication' : "Publications",
-        'talk' : "Talks"
-        };
-    </script>
     <script id="search-hit-fuse-template" type="text/x-template">
       <div class="search-hit" id="summary-{{key}}">
       <div class="search-hit-content">
@@ -1038,68 +862,6 @@
       </div>
     </script>
     
-    <script type="module">
-  // Import Firebase app and auth modules
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
-  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
-
-  // Your Firebase configuration object
-  const firebaseConfig = {
-    apiKey: "AIzaSyCmsR_JUmxQkUDU0qStBhFr5-AkuuNfoI8",
-    authDomain: "sulmanolieko-35fd6.firebaseapp.com",
-    projectId: "sulmanolieko-35fd6",
-    storageBucket: "sulmanolieko-35fd6.firebasestorage.app",
-    messagingSenderId: "765226130762",
-    appId: "1:765226130762:web:f6e87c0ab5f4e27631b5b3"
-  };
-
-  // Initialize Firebase
-  const appFirebase = initializeApp(firebaseConfig);
-  const auth = getAuth(appFirebase);
-
-  // Listen for auth state changes
-  onAuthStateChanged(auth, user => {
-    const accountSection = document.getElementById('account-section');
-    if (user) {
-      // Use displayName if available; otherwise, fallback to email
-      const displayName = user.displayName || user.email;
-      // Get the first two letters in uppercase
-      const initials = displayName.substring(0, 2).toUpperCase();
-      accountSection.innerHTML = `
-      <a href="#" id="logout-btn" style="color: #FFF; text-decoration: none;">
-        <span class="account-initials" style="
-          display: inline-block;
-          width: 32px;
-          height: 32px;
-          border-radius: 50%;
-          color: #fff;
-          text-align: center;
-          font-weight: bold;
-        ">
-        <i class="fas fa-sign-out-alt"></i> 
-        </span>
-        </a>
-        <i class="fas fa-user" style="color:#FFF"></i>
-      `;
-      document.getElementById('logout-btn').addEventListener('click', e => {
-        e.preventDefault();
-        signOut(auth).then(() => {
-          // Redirect to login page after sign out
-          window.location.href = '/login/index.html';
-        }).catch(error => {
-          console.error("Sign out error:", error);
-        });
-      });
-    } else {
-      // If no user is signed in, show a user icon linking to the login page
-      accountSection.innerHTML = `
-        <a class="nav-item nav-link" href="/login/index.html" style="color: #FFF; text-decoration: none;">
-          <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
-        </a>
-      `;
-    }
-  });
-</script>
         
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
@@ -1167,68 +929,8 @@
     </div>
   </footer>
 
-  <script>
-    // Scroll to top behavior
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // Dynamic year
-    document.getElementById('dynamicYear').textContent = new Date().getFullYear();
-
-    // Newsletter subscription with better validation
-    function subscribeNewsletter() {
-      const emailInput = document.getElementById('newsletterEmail');
-      const errorMsg = document.getElementById('newsletterError');
-      const email = emailInput.value.trim();
-
-      // Basic email pattern check
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-      if (!email) {
-        errorMsg.textContent = 'Please enter your email address.';
-        errorMsg.style.display = 'block';
-        return;
-      } else if (!emailRegex.test(email)) {
-        errorMsg.textContent = 'Please enter a valid email address.';
-        errorMsg.style.display = 'block';
-        return;
-      }
-
-      // No errors => proceed
-      errorMsg.style.display = 'none';
-      alert(`Thanks for subscribing, ${email}!`);
-
-      // Reset the input (optional)
-      emailInput.value = '';
-    }
-  </script>
-      <script>
-    // Toggle the navigation drawer on button click
-    const toggleButton = document.getElementById('nav-toggle');
-    const navDrawer = document.getElementById('nav-drawer');
-
-    toggleButton.addEventListener('click', () => {
-      navDrawer.classList.toggle('open');
-      // Update ARIA state for accessibility
-      const isOpen = navDrawer.classList.contains('open');
-      navDrawer.setAttribute('aria-hidden', !isOpen);
-    });
-
-    // Close the drawer when a navigation link is clicked
-    document.querySelectorAll('#nav-drawer .nav-link').forEach(link => {
-      link.addEventListener('click', (event) => {
-        navDrawer.classList.remove('open');
-        navDrawer.setAttribute('aria-hidden', 'true');
-        // Smooth scrolling to section
-        event.preventDefault();
-        document.querySelector(link.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
-  </script>
 </div>
 </main>
+ <script src="js/app.js" defer></script>
 </body>
 </html>
