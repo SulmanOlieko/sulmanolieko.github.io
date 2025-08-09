@@ -19,6 +19,33 @@
   <link rel="stylesheet" href="/css/academic.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
   
+<script async src="https://www.googletagmanager.com/gtag/js?id=GTM-MDK8S5X2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+  function trackOutboundLink(url) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           document.location = url;
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target);
+  }
+  gtag('js', new Date());
+  gtag('config', 'GTM-MDK8S5X2', {});
+  document.addEventListener('click', onClickCallback, false);
+</script>
  
   <link rel="manifest" href="/index.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon-32.png">
@@ -149,14 +176,7 @@
       font-size: 1.2rem;
       z-index: 2;
     }
-    .input-group {
-      position: relative;
-    }
-
     .error-message {
-      position: absolute;
-      top: 100%;
-      left: 0;
       font-size: 0.85rem;
       color: red;
       margin-top: 5px;
@@ -244,15 +264,14 @@
           <span class="toggle-password" data-target="login-password"><i class="fas fa-eye"></i></span>
           <div class="error-message" id="login-password-error">Password is required</div>
         </div>
-        <div class="d-flex justify-content-between">
-          <div class="remember-me">
-            <input type="checkbox" id="remember-me">
-            <label for="remember-me">Remember me</label>
-          </div>
-          <div class="forgot-password" id="forgot-password" style="font-size: 1rem; cursor: pointer;"><i class="fas fa-question-circle"></i> Forgot password?</div>
+        <div class="remember-me">
+          <input type="checkbox" id="remember-me">
+          <label for="remember-me">Remember me</label>
         </div>
+        <div class="forgot-password" id="forgot-password">Forgot password?</div>
         <button type="submit" class="btn" style="display: flex;align-items: center;justify-content: center;">Login</button>
       </form>
+      <!--
       <div class="social-login">
         <p>Or sign in with:</p>
         <div class="social-btn">
@@ -260,6 +279,7 @@
           <button class="github-btn"><i class="fab fa-github"></i> GitHub</button>
         </div>
       </div>
+       -->
       <p class="toggle-link" onclick="toggleForm()">Don't have an account? Sign up</p>
     </div>
    
@@ -286,6 +306,7 @@
         </div>
         <button type="submit" class="btn" style="display: flex;align-items: center;justify-content: center;">Sign Up</button>
       </form>
+      <!--
       <div class="social-login">
         <p>Or sign up with:</p>
         <div class="social-btn">
@@ -293,6 +314,7 @@
           <button class="github-btn"><i class="fab fa-github"></i> GitHub</button>
         </div>
       </div>
+      -->
       <p class="toggle-link" onclick="toggleForm()">Already have an account? Login</p>
     </div>
   </div>
@@ -312,6 +334,18 @@
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   
+
+    <script>const code_highlighting = true;</script>
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
     <script id="search-hit-fuse-template" type="text/x-template">
       <div class="search-hit" id="summary-{{key}}">
       <div class="search-hit-content">
@@ -323,9 +357,209 @@
       </div>
       </div>
     </script>
+  <!-- Firebase and Login/Signup Logic -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+    import {
+      getAuth,
+      signInWithEmailAndPassword,
+      createUserWithEmailAndPassword,
+      sendPasswordResetEmail,
+      signInWithPopup,
+      GoogleAuthProvider,
+      GithubAuthProvider
+    } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCmsR_JUmxQkUDU0qStBhFr5-AkuuNfoI8",
+      authDomain: "sulmanolieko-35fd6.firebaseapp.com",
+      projectId: "sulmanolieko-35fd6",
+      storageBucket: "sulmanolieko-35fd6.firebasestorage.app",
+      messagingSenderId: "765226130762",
+      appId: "1:765226130762:web:f6e87c0ab5f4e27631b5b3"
+    };
+
+    const appFirebase = initializeApp(firebaseConfig);
+    const auth = getAuth(appFirebase);
+
+    function validateEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    }
+
+    function validateLogin() {
+      let isValid = true;
+      const emailField = document.getElementById('login-username');
+      const passwordField = document.getElementById('login-password');
+      if (!emailField.value.trim()) {
+        document.getElementById('login-username-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('login-username-error').style.display = 'none';
+      }
+      if (!passwordField.value.trim()) {
+        document.getElementById('login-password-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('login-password-error').style.display = 'none';
+      }
+      return isValid;
+    }
+
+    function validateSignup() {
+      let isValid = true;
+      const usernameField = document.getElementById('signup-username');
+      const emailField = document.getElementById('signup-email');
+      const passwordField = document.getElementById('signup-password');
+      if (!usernameField.value.trim()) {
+        document.getElementById('signup-username-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('signup-username-error').style.display = 'none';
+      }
+      if (!emailField.value.trim() || !validateEmail(emailField.value.trim())) {
+        document.getElementById('signup-email-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('signup-email-error').style.display = 'none';
+      }
+      if (!passwordField.value.trim()) {
+        document.getElementById('signup-password-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('signup-password-error').style.display = 'none';
+      }
+      return isValid;
+    }
+
+    document.querySelectorAll('.toggle-password').forEach(toggle => {
+      toggle.addEventListener('click', function() {
+        const targetId = this.getAttribute('data-target');
+        const passwordInput = document.getElementById(targetId);
+        if (passwordInput.type === 'password') {
+          passwordInput.type = 'text';
+          this.innerHTML = '<i class="fas fa-eye-slash"></i>';
+        } else {
+          passwordInput.type = 'password';
+          this.innerHTML = '<i class="fas fa-eye"></i>';
+        }
+      });
+    });
+
+    function toggleForm() {
+      const loginContainer = document.getElementById('login-container');
+      const signupContainer = document.getElementById('signup-container');
+      if (window.getComputedStyle(loginContainer).display !== 'none') {
+        loginContainer.style.display = 'none';
+        signupContainer.style.display = 'block';
+      } else {
+        loginContainer.style.display = 'block';
+        signupContainer.style.display = 'none';
+      }
+    }
+    window.toggleForm = toggleForm;
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const rememberedEmail = localStorage.getItem('rememberedEmail');
+      if (rememberedEmail) {
+        document.getElementById('login-username').value = rememberedEmail;
+        document.getElementById('remember-me').checked = true;
+      }
+    });
+
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (validateLogin()) {
+        const email = document.getElementById('login-username').value.trim();
+        const password = document.getElementById('login-password').value.trim();
+        try {
+          await signInWithEmailAndPassword(auth, email, password);
+          alert('Login successful!');
+          if (document.getElementById('remember-me').checked) {
+            localStorage.setItem('rememberedEmail', email);
+          } else {
+            localStorage.removeItem('rememberedEmail');
+          }
+          window.location.href = "https://sulmanolieko.github.io/index.html";
+        } catch (error) {
+          alert('Login failed: ' + error.message);
+        }
+      }
+    });
+
+    document.getElementById('signup-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (validateSignup()) {
+        const email = document.getElementById('signup-email').value.trim();
+        const password = document.getElementById('signup-password').value.trim();
+        try {
+          await createUserWithEmailAndPassword(auth, email, password);
+          alert('Signup successful!');
+          window.location.href = "https://sulmanolieko.github.io/login/index.html";
+        } catch (error) {
+          alert('Signup failed: ' + error.message);
+        }
+      }
+    });
+
+    document.querySelectorAll('.google-btn').forEach(button => {
+      button.addEventListener('click', async () => {
+        const provider = new GoogleAuthProvider();
+        try {
+          await signInWithPopup(auth, provider);
+          alert('Google login successful!');
+          window.location.href = "https://sulmanolieko.github.io/index.html";
+        } catch (error) {
+          alert('Google login failed: ' + error.message);
+        }
+      });
+    });
+
+    document.querySelectorAll('.github-btn').forEach(button => {
+      button.addEventListener('click', async () => {
+        const provider = new GithubAuthProvider();
+        try {
+          await signInWithPopup(auth, provider);
+          alert('GitHub login successful!');
+          window.location.href = "https://sulmanolieko.github.io/index.html";
+        } catch (error) {
+          alert('GitHub login failed: ' + error.message);
+        }
+      });
+    });
+
+    document.getElementById('forgot-password').addEventListener('click', async () => {
+      const email = prompt('Please enter your email for password reset:');
+      if (email) {
+        try {
+          await sendPasswordResetEmail(auth, email);
+          alert('Password reset email sent!');
+        } catch (error) {
+          alert('Password reset failed: ' + error.message);
+        }
+      }
+    });
+
+    document.getElementById('login-username').addEventListener('input', () => {
+      document.getElementById('login-username-error').style.display = 'none';
+    });
+    document.getElementById('login-password').addEventListener('input', () => {
+      document.getElementById('login-password-error').style.display = 'none';
+    });
+    document.getElementById('signup-username').addEventListener('input', () => {
+      document.getElementById('signup-username-error').style.display = 'none';
+    });
+    document.getElementById('signup-email').addEventListener('input', () => {
+      document.getElementById('signup-email-error').style.display = 'none';
+    });
+    document.getElementById('signup-password').addEventListener('input', () => {
+      document.getElementById('signup-password-error').style.display = 'none';
+    });
+
+  </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
     <script src="/js/academic.min.bcfae8267aba63cc55af53a503896bd9.js"></script>
-    <script src="/js/app.js"></script>
+
 </body>
 </html>
