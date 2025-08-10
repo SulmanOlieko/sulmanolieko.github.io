@@ -519,20 +519,23 @@ Here is some math: $E = mc^2$
         const target = e.target.closest('a');
         if (!target) return;
 
-        e.preventDefault();
-
-        let path;
         if (target.classList.contains('action-menu-trigger')) {
+            e.preventDefault();
             const itemDiv = e.target.closest('.file-item, .folder-item');
-            path = itemDiv.dataset.path;
+            const path = itemDiv.dataset.path;
             const isFolder = itemDiv.classList.contains('folder-item');
             const textExtensions = ["tex", "bib", "bst", "cls", "cfg", "sty", "txt", "rnw"];
             const isText = !isFolder && textExtensions.includes(path.split('.').pop());
             showFileActionMenu(target, path, isFolder, isText);
-            return; // Stop further processing for the menu trigger itself
         }
+    });
 
-        path = target.dataset.path;
+    fileActionList.addEventListener('click', async (e) => {
+        const target = e.target.closest('a');
+        if (!target) return;
+
+        e.preventDefault();
+        const path = target.dataset.path;
         if (!path) return;
 
         if (target.classList.contains('action-edit')) {
