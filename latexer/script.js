@@ -324,20 +324,24 @@ document.addEventListener('DOMContentLoaded', function () {
             modalInput.focus();
         }
 
-        modal.style.display = 'flex';
+        modal.classList.add('visible');
         modalOkCallback = config.callback;
+    }
+
+    function hideModal() {
+        modal.classList.remove('visible');
     }
 
     modalOkBtn.addEventListener('click', () => {
         if (modalInputContainer.style.display === 'none' || modalInput.value) {
-            modal.style.display = 'none';
+            hideModal();
             if (modalOkCallback) modalOkCallback(modalInputContainer.style.display !== 'none' ? modalInput.value : undefined);
         } else {
             modalError.textContent = 'Name cannot be empty.';
             modalError.style.display = 'block';
         }
     });
-    modalCancelBtn.addEventListener('click', () => modal.style.display = 'none');
+    modalCancelBtn.addEventListener('click', hideModal);
 
     // --- Preview Modal Logic ---
     const previewModal = document.getElementById('previewModal');
@@ -351,6 +355,7 @@ document.addEventListener('DOMContentLoaded', function () {
         showModal({ title: 'Create New File', type: 'input', callback: async (name) => {
             if (!name.endsWith('.tex')) name += '.tex';
             await dbPut({ path: name, name: name, type: 'file', content: '' });
+            statusText.textContent = `File "${name}" created.`;
             renderFileTree();
         }});
     });
@@ -358,60 +363,101 @@ document.addEventListener('DOMContentLoaded', function () {
     newFolderBtn.addEventListener('click', () => {
         showModal({ title: 'Create New Folder', type: 'input', callback: async (name) => {
             await dbPut({ path: name + '/', name: name, type: 'folder' });
+            statusText.textContent = `Folder "${name}" created.`;
             renderFileTree();
         }});
     });
 
     uploadFilesInput.addEventListener('change', (e) => {
         const files = e.target.files;
+        if (files.length === 0) return;
+        const textExtensions = ['tex', 'bib', 'txt', 'md', 'csv'];
+
         for (const file of files) {
             const reader = new FileReader();
+            const extension = file.name.split('.').pop().toLowerCase();
+
             reader.onload = async (event) => {
                 const content = event.target.result;
-                const newItem = { path: file.name, name: file.name, type: 'file', content: content };
+                const newItem = {
+                    path: file.name,
+                    name: file.name,
+                    type: 'file',
+                    isText: textExtensions.includes(extension) || file.type.startsWith('text/'),
+                    mimeType: file.type,
+                    content: content
+                };
                 await dbPut(newItem);
                 renderFileTree();
             };
-            reader.readAsText(file);
+
+            if (textExtensions.includes(extension) || file.type.startsWith('text/')) {
+                reader.readAsText(file);
+            } else {
+                reader.readAsDataURL(file);
+            }
         }
     });
 
     // --- Sidebar Click & Drag Handlers ---
+    let selectedPath = null;
+
+    function selectItem(itemDiv) {
+        // Remove previous selection
+        const currentlySelected = fileListSidebar.querySelector('.selected');
+        if (currentlySelected) {
+            currentlySelected.classList.remove('selected');
+        }
+        // Add new selection
+        itemDiv.classList.add('selected');
+        selectedPath = itemDiv.dataset.path;
+    }
+
+    async function openFile(path) {
+        const file = await dbGet(path);
+        if (file && file.type === 'file') {
+            sourceEditor.setValue(file.content || '', -1);
+            currentOpenFile = file;
+            statusText.textContent = `${file.name} loaded.`;
+        }
+    }
+
+    fileListSidebar.addEventListener('dblclick', (e) => {
+        const itemDiv = e.target.closest('.file-item, .folder-item');
+        if (!itemDiv) return;
+
+        if (itemDiv.classList.contains('file-item')) {
+            openFile(itemDiv.dataset.path);
+        } else {
+            const childTree = itemDiv.nextElementSibling;
+            if (childTree && childTree.tagName === 'UL') {
+                const icon = itemDiv.querySelector('.fas');
+                const isVisible = childTree.style.display !== 'none';
+                childTree.style.display = isVisible ? 'none' : 'block';
+                icon.classList.toggle('fa-folder', isVisible);
+                icon.classList.toggle('fa-folder-open', !isVisible);
+            }
+        }
+    });
+
     fileListSidebar.addEventListener('click', async (e) => {
         const itemDiv = e.target.closest('.file-item, .folder-item');
         if (!itemDiv) return;
 
         const actionLink = e.target.closest('.file-actions a');
+        selectItem(itemDiv);
 
-        // If the click is on the name part, not an action icon
         if (!actionLink) {
-            if (itemDiv.classList.contains('file-item')) {
-                const path = itemDiv.dataset.path;
-                const file = await dbGet(path);
-                if (file) {
-                    sourceEditor.setValue(file.content, -1);
-                    currentOpenFile = file;
-                    statusText.textContent = `${file.name} loaded.`;
-                }
-            } else { // It's a folder, toggle visibility
-                const childTree = itemDiv.nextElementSibling;
-                if (childTree && childTree.tagName === 'UL') {
-                    const icon = itemDiv.querySelector('.fas');
-                    const isVisible = childTree.style.display !== 'none';
-                    childTree.style.display = isVisible ? 'none' : 'block';
-                    icon.classList.toggle('fa-folder', isVisible);
-                    icon.classList.toggle('fa-folder-open', !isVisible);
-                }
-            }
-        }
-        // Action logic
-        else {
+            // Single click selects, handled by selectItem.
+        } else { // Action logic
             e.preventDefault();
             const path = itemDiv.dataset.path;
             const name = path.endsWith('/') ? path.slice(0, -1) : path;
             const action = actionLink.title;
 
-            if (action === 'Delete') {
+            if (action === 'Edit') {
+                openFile(path);
+            } else if (action === 'Delete') {
                 showModal({
                     title: 'Confirm Delete', type: 'confirm', message: `Delete "${name}"? This cannot be undone.`,
                     callback: async () => {
@@ -428,6 +474,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             sourceEditor.setValue('');
                             currentOpenFile = null;
                         }
+                        statusText.textContent = `Deleted "${name}".`;
                         renderFileTree();
                     }
                 });
@@ -440,17 +487,44 @@ document.addEventListener('DOMContentLoaded', function () {
                 link.click();
                 URL.revokeObjectURL(link.href);
             } else if (action === 'Preview') {
-                 const file = await dbGet(path);
-                 previewTitle.textContent = `Preview: ${file.name}`;
-                 previewContent.innerHTML = ''; // Clear previous
-                 const previewEditor = document.createElement('div');
-                 previewEditor.style.height = '100%';
-                 previewContent.appendChild(previewEditor);
-                 const acePreview = ace.edit(previewEditor);
-                 acePreview.setTheme(editorThemeSelect.value); // Use current theme
-                 acePreview.setReadOnly(true);
-                 acePreview.setValue(file.content, -1);
-                 previewModal.style.display = 'flex';
+                const file = await dbGet(path);
+                previewTitle.textContent = `Preview: ${file.name}`;
+                previewContent.innerHTML = ''; // Clear previous
+
+                if (file.isText) {
+                    const previewEditor = document.createElement('div');
+                    previewEditor.style.height = '100%';
+                    previewContent.appendChild(previewEditor);
+                    const acePreview = ace.edit(previewEditor);
+                    acePreview.setTheme(editorThemeSelect.value);
+                    acePreview.setReadOnly(true);
+                    acePreview.setValue(file.content, -1);
+                } else if (file.mimeType.startsWith('image/')) {
+                    previewContent.innerHTML = `<img src="${file.content}" style="max-width: 100%; max-height: 100%; object-fit: contain;">`;
+                } else if (file.mimeType === 'application/pdf') {
+                    const canvas = document.createElement('canvas');
+                    previewContent.appendChild(canvas);
+
+                    // Use PDF.js
+                    const pdfjsLib = window['pdfjs-dist/build/pdf'];
+                    pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js`;
+
+                    // Decode Data URL
+                    const pdfData = atob(file.content.substring(file.content.indexOf(',') + 1));
+                    const loadingTask = pdfjsLib.getDocument({data: pdfData});
+
+                    loadingTask.promise.then(pdf => {
+                        pdf.getPage(1).then(page => {
+                            const viewport = page.getViewport({scale: 1.5});
+                            canvas.height = viewport.height;
+                            canvas.width = viewport.width;
+                            page.render({ canvasContext: canvas.getContext('2d'), viewport: viewport });
+                        });
+                    });
+                } else {
+                    previewContent.innerHTML = `<p>Cannot preview this file type.</p>`;
+                }
+                previewModal.style.display = 'flex';
             } else if (action === 'Rename') {
                 const oldPath = path;
                 const isFolder = oldPath.endsWith('/');
@@ -479,6 +553,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             file.name = newName;
                             await dbPut(file);
                         }
+                        statusText.textContent = `Renamed to "${newName}".`;
                         renderFileTree();
                     }
                 });
@@ -503,9 +578,10 @@ document.addEventListener('DOMContentLoaded', function () {
     fileListSidebar.addEventListener('drop', async (e) => {
         e.preventDefault();
         const destFolderDiv = e.target.closest('.folder-item');
-        if (!destFolderDiv || !draggedPath) return;
+        // If dropped on the sidebar but not in a folder, treat root as destination
+        const destPath = destFolderDiv ? destFolderDiv.dataset.path : '';
 
-        const destPath = destFolderDiv.dataset.path;
+        if (draggedPath === null) return;
         const oldPath = draggedPath;
         const itemName = oldPath.endsWith('/') ? oldPath.slice(0, -1).split('/').pop() : oldPath.split('/').pop();
         const newPath = destPath + itemName + (oldPath.endsWith('/') ? '/' : '');
@@ -531,6 +607,7 @@ document.addEventListener('DOMContentLoaded', function () {
             file.path = newPath;
             await dbPut(file);
         }
+        statusText.textContent = `Moved "${itemName}" to "${destPath || 'root'}".`;
         renderFileTree();
         draggedPath = null;
     });

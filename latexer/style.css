@@ -114,6 +114,10 @@ body {
 .file-item:hover, .folder-item:hover {
   background: #586e75;
 }
+.file-item.selected, .folder-item.selected {
+  background: #268bd2;
+  color: #fff;
+}
 
 .toggle-icon {
   margin-right: 5px;
