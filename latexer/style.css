@@ -70,13 +70,13 @@ body {
   margin: 0;
 }
 
-#pdfContainer, #dockerConsoleContainer {
+#pdfContainer, #dockerConsoleContainer, #htmlPreview {
   overflow-y: auto;
-  /* height is controlled by Split.js */
+  flex-grow: 1;
 }
 
 #dockerConsoleContainer {
-  /* height is controlled by Split.js */
+  height: 20%; /* Initial height */
 }
 
 /* Common Container Styles */
