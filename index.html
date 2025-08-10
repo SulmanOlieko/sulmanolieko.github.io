@@ -18,7 +18,7 @@
   <link href="css/pattern.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.4/css/academicons.min.css">
-  <link rel="stylesheet" href="/css/new-style.css">
+  
 
   <!-- Add your PWA's manifest file -->
   <link rel="index.webmanifest" href="/index.webmanifest">
@@ -118,7 +118,7 @@
     if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
       return;
     }
-    trackOutboundLink(event.target);
+    trackOutboundLink(event.target);  
   }
   gtag('js', new Date());
   gtag('config', 'GTM-MDK8S5X2', {});
@@ -381,6 +381,7 @@
       disableElements:[]
     };
     CloudPDF(config, document.getElementById('viewer')).then((instance) => {
+      
     });
   </script>
   </div>
@@ -990,39 +991,6 @@
           });
         </script>
 
-        <script>
-          window.addEventListener('beforeinstallprompt', (event) => {
-            // Prevent Chrome 67 and earlier from automatically showing the prompt
-            event.preventDefault();
-            // Stash the event so it can be triggered later
-            window.deferredPrompt = event;
-            // Show the install popup
-            document.getElementById('installPopup').classList.add('show');
-          });
-
-          // Handle the install button click
-          document.getElementById('installButton').addEventListener('click', () => {
-            const deferredPrompt = window.deferredPrompt;
-            if (deferredPrompt) {
-              // Show the install prompt
-              deferredPrompt.prompt();
-              // Wait for the user to respond to the prompt
-              deferredPrompt.userChoice
-                .then((choiceResult) => {
-                  if (choiceResult.outcome === 'accepted') {
-                    console.log('User accepted the install prompt');
-                    // Reset the deferred prompt variable
-                    window.deferredPrompt = null;
-                    // Hide the install popup
-                    document.getElementById('installPopup').classList.remove('show');
-                  } else {
-                    console.log('User dismissed the install prompt');
-                  }
-                });
-            }
-          });
-        </script>
-
        <!-- Boxicons CSS -->
       <link rel="stylesheet" href="style.css" />
       <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
@@ -1046,6 +1014,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+          
     <script>const code_highlighting = true;</script>
     <script>
       const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
@@ -1107,7 +1076,7 @@
           text-align: center;
           font-weight: bold;
         ">
-        <i class="fas fa-sign-out-alt"></i>
+        <i class="fas fa-sign-out-alt"></i> 
         </span>
         </a>
         <i class="fas fa-user" style="color:#FFF"></i>
