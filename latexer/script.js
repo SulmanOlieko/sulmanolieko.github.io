@@ -394,8 +394,6 @@ Here is some math: $E = mc^2$
             const item = tree[name];
             const li = document.createElement('li');
             const isFolder = item.type === 'folder';
-            const textExtensions = ["tex", "bib", "bst", "cls", "cfg", "sty", "txt", "rnw"];
-            const isText = !isFolder && textExtensions.includes(item.name.split('.').pop());
 
             li.innerHTML = `
                 <div class="${isFolder ? 'folder-item' : 'file-item'}" data-path="${item.path || (name + '/')}" draggable="true">
@@ -404,11 +402,7 @@ Here is some math: $E = mc^2$
                         ${item.name || name}
                     </div>
                     <div class="file-actions">
-                        ${isText ? `<a href="#" class="action-edit" title="Edit"><i class="fas fa-edit"></i></a>` : ''}
-                        <a href="#" class="action-preview" title="Preview"><i class="fas fa-eye"></i></a>
-                        <a href="#" class="action-rename" title="Rename"><i class="fas fa-pencil-alt"></i></a>
-                        ${!isFolder ? `<a href="#" class="action-download" title="Download"><i class="fas fa-download"></i></a>` : ''}
-                        <a href="#" class="action-delete" title="Delete"><i class="fas fa-trash"></i></a>
+                        <a href="#" class="action-menu-trigger" title="Actions"><i class="fas fa-ellipsis-v"></i></a>
                     </div>
                 </div>
             `;
@@ -428,6 +422,42 @@ Here is some math: $E = mc^2$
     const previewContent = document.getElementById('preview-content');
     const previewCloseBtn = document.getElementById('previewClose');
     previewCloseBtn.addEventListener('click', () => previewModal.style.display = 'none');
+
+    // --- File Action Menu Logic ---
+    const fileActionMenu = document.getElementById('fileActionMenu');
+    const fileActionList = document.getElementById('fileActionList');
+
+    document.addEventListener('click', (e) => {
+        // Close the menu if clicked outside
+        if (!fileActionMenu.contains(e.target) && !e.target.classList.contains('action-menu-trigger')) {
+            fileActionMenu.style.display = 'none';
+        }
+    });
+
+    function showFileActionMenu(target, path, isFolder, isText) {
+        fileActionList.innerHTML = ''; // Clear previous items
+
+        const actions = [];
+        if (!isFolder) {
+            if (isText) actions.push({ label: 'Edit', class: 'action-edit' });
+            actions.push({ label: 'Preview', class: 'action-preview' });
+            actions.push({ label: 'Download', class: 'action-download' });
+        }
+        actions.push({ label: 'Rename', class: 'action-rename' });
+        actions.push({ label: 'Delete', class: 'action-delete' });
+
+        actions.forEach(action => {
+            const li = document.createElement('li');
+            li.innerHTML = `<a href="#" class="${action.class}" data-path="${path}">${action.label}</a>`;
+            fileActionList.appendChild(li);
+        });
+
+        const rect = target.getBoundingClientRect();
+        fileActionMenu.style.display = 'block';
+        fileActionMenu.style.top = `${rect.bottom}px`;
+        fileActionMenu.style.left = `${rect.left}px`;
+    }
+
 
     dbRequest.onsuccess = function(event) {
         db = event.target.result;
@@ -464,15 +494,24 @@ Here is some math: $E = mc^2$
 
     uploadFilesInput.addEventListener('change', (e) => {
         const files = e.target.files;
+        const textExtensions = ["tex", "bib", "bst", "cls", "cfg", "sty", "txt", "rnw", "js", "css", "html", "json", "md"];
+
         for (const file of files) {
             const reader = new FileReader();
+            const extension = file.name.split('.').pop().toLowerCase();
+
             reader.onload = async (event) => {
                 const content = event.target.result;
                 const newItem = { path: file.name, name: file.name, type: 'file', content: content };
                 await dbPut(newItem); // Use put to overwrite if exists
                 renderFileTree();
             };
-            reader.readAsText(file);
+
+            if (textExtensions.includes(extension)) {
+                reader.readAsText(file);
+            } else {
+                reader.readAsDataURL(file); // For images, PDFs, etc.
+            }
         }
     });
 
@@ -480,11 +519,23 @@ Here is some math: $E = mc^2$
         const target = e.target.closest('a');
         if (!target) return;
 
-        const itemDiv = e.target.closest('.file-item, .folder-item');
-        const path = itemDiv.dataset.path;
+        e.preventDefault();
+
+        let path;
+        if (target.classList.contains('action-menu-trigger')) {
+            const itemDiv = e.target.closest('.file-item, .folder-item');
+            path = itemDiv.dataset.path;
+            const isFolder = itemDiv.classList.contains('folder-item');
+            const textExtensions = ["tex", "bib", "bst", "cls", "cfg", "sty", "txt", "rnw"];
+            const isText = !isFolder && textExtensions.includes(path.split('.').pop());
+            showFileActionMenu(target, path, isFolder, isText);
+            return; // Stop further processing for the menu trigger itself
+        }
+
+        path = target.dataset.path;
+        if (!path) return;
 
         if (target.classList.contains('action-edit')) {
-            e.preventDefault();
             const request = await dbGet(path);
             request.onsuccess = () => {
                 const file = request.result;
@@ -495,7 +546,6 @@ Here is some math: $E = mc^2$
                 }
             }
         } else if (target.classList.contains('action-delete')) {
-            e.preventDefault();
             showModal({
                 title: 'Confirm Delete',
                 type: 'confirm',
@@ -521,7 +571,6 @@ Here is some math: $E = mc^2$
                 }
             });
         } else if (target.classList.contains('action-rename')) {
-            e.preventDefault();
             const oldPath = path;
             const isFolder = oldPath.endsWith('/');
             const oldName = isFolder ? oldPath.slice(0, -1).split('/').pop() : oldPath.split('/').pop();
@@ -561,13 +610,17 @@ Here is some math: $E = mc^2$
                 }
             });
         } else if (target.classList.contains('action-preview')) {
-            e.preventDefault();
             const request = await dbGet(path);
             request.onsuccess = (e) => {
                 const file = e.target.result;
                 previewTitle.textContent = `Preview: ${file.name}`;
                 previewContent.innerHTML = ''; // Clear previous
-                if (file.type === 'file') {
+
+                const extension = file.name.split('.').pop().toLowerCase();
+                const textExtensions = ["tex", "bib", "bst", "cls", "cfg", "sty", "txt", "rnw", "js", "css", "html", "json", "md"];
+                const imageExtensions = ["png", "jpg", "jpeg", "gif", "svg"];
+
+                if (textExtensions.includes(extension)) {
                     const previewEditor = document.createElement('div');
                     previewEditor.style.height = '100%';
                     previewContent.appendChild(previewEditor);
@@ -575,11 +628,17 @@ Here is some math: $E = mc^2$
                     acePreview.setTheme("ace/theme/solarized_dark");
                     acePreview.setReadOnly(true);
                     acePreview.setValue(file.content, -1);
+                } else if (imageExtensions.includes(extension)) {
+                    previewContent.innerHTML = `<img src="${file.content}" style="max-width: 100%; max-height: 100%;">`;
+                } else if (extension === 'pdf') {
+                    previewContent.innerHTML = `<object data="${file.content}" type="application/pdf" style="width: 100%; height: 100%;"><p>It appears you don't have a PDF plugin for this browser.</p></object>`;
+                } else {
+                    previewContent.innerHTML = `<p>Preview is not available for this file type. You can download it instead.</p>`;
                 }
+
                 previewModal.style.display = 'flex';
             };
         } else if (target.classList.contains('action-download')) {
-            e.preventDefault();
             const request = await dbGet(path);
             request.onsuccess = (e) => {
                 const file = e.target.result;
@@ -591,6 +650,7 @@ Here is some math: $E = mc^2$
                 URL.revokeObjectURL(link.href);
             };
         }
+        fileActionMenu.style.display = 'none';
     });
 
     downloadAllBtn.addEventListener('click', async () => {
@@ -735,7 +795,7 @@ Here is some math: $E = mc^2$
                 dockerConsole.setValue('Compilation successful.\n');
                 dockerConsole.insert(result.log);
 
-                pdfViewUI.innerHTML = `<iframe src="${pdfUrl}" style="width: 100%; height: 100%; border: none;"></iframe>`;
+                pdfViewUI.innerHTML = `<object data="${pdfUrl}" type="application/pdf" style="width: 100%; height: 100%;"><p>It appears you don't have a PDF plugin for this browser. You can <a href="${pdfUrl}">click here to download the PDF file.</a></p></object>`;
 
             } else if (result.status === 'error' && result.log) {
                 dockerConsole.setValue('Compilation failed with errors:\n');
