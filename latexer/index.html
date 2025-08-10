@@ -190,6 +190,10 @@
     .modal-footer { margin-top: 10px; display: flex; justify-content: flex-end; gap: 10px; }
     #previewModal .modal-content { width: 80vw; height: 80vh; }
     #preview-content { height: calc(100% - 80px); overflow: auto; }
+    .action-menu { background-color: #002b36; border: 1px solid #586e75; color: #93a1a1; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+    .action-menu ul { list-style: none; margin: 0; padding: 5px 0; }
+    .action-menu ul li a { display: block; padding: 8px 15px; color: #93a1a1; text-decoration: none; cursor: pointer; }
+    .action-menu ul li a:hover { background-color: #586e75; }
   </style>
 
   <!-- Preview Modal -->
@@ -201,6 +205,13 @@
         <button id="previewClose" class="btn btn-secondary">Close</button>
       </div>
     </div>
+  </div>
+
+  <!-- File Action Context Menu -->
+  <div id="fileActionMenu" class="action-menu" style="display: none; position: absolute; z-index: 1200;">
+    <ul id="fileActionList">
+      <!-- Actions will be populated by JS -->
+    </ul>
   </div>
 </body>
 </html>
