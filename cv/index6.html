@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scrollable PDF Viewer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Use Poppins to match the site’s typography -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+
+  <!-- Include PDF.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.5.141/pdf.min.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.5.141/pdf.worker.min.js';
+  </script>
+
+  <style>
+    :root {
+      --primary-color: #795548;
+      --primary-hover: #49332b;
+      --background-color: #f8f9fa;
+      --text-color: #212529;
+      --sidebar-width: 33%;
+      --toolbar-height: 50px;
+      --outline-font-size: 0.8rem;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      overflow: hidden;
+    }
+
+    /* Toolbar styling */
+    #toolbar {
+      display: flex;
+      align-items: center;
+      height: var(--toolbar-height);
+      padding: 0 10px;
+      background-color: var(--primary-color);
+      color: #fff;
+      z-index: 100;
+    }
+    #toolbar button,
+    #toolbar input,
+    #toolbar span {
+      margin-right: 8px;
+    }
+    #toolbar button {
+      background-color: var(--primary-color);
+      color: #fff;
+      border: none;
+      padding: 6px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    #toolbar button:hover {
+      background-color: var(--primary-hover);
+    }
+    #toolbar input[type="number"] {
+      width: 60px;
+      padding: 4px;
+      border-radius: 4px;
+      border: none;
+    }
+    #toolbar input[type="text"] {
+      padding: 4px 6px;
+      border-radius: 4px;
+      border: none;
+      width: 200px;
+    }
+    #search_info {
+      font-size: 14px;
+    }
+
+    /* Layout wrapper */
+    #container {
+      display: flex;
+      height: calc(100vh - var(--toolbar-height));
+      overflow: hidden;
+    }
+
+    /* Sidebar with tabs for outline and thumbnails */
+    #sidebar {
+      width: var(--sidebar-width);
+      flex-basis: var(--sidebar-width);
+      background-color: #fff;
+      border-right: 1px solid #ddd;
+      overflow-y: auto;
+      transition: transform 0.3s ease;
+    }
+    #sidebar.collapsed {
+      /* Collapse sidebar completely by reducing width/flex-basis to zero */
+      transform: translateX(0);
+      width: 0 !important;
+      flex-basis: 0 !important;
+    }
+    #sidebarTabs {
+      display: flex;
+      justify-content: space-around;
+      border-bottom: 1px solid #ddd;
+      background-color: var(--background-color);
+      padding: 5px 0;
+    }
+    #sidebarTabs button {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: var(--primary-color);
+    }
+    #sidebarTabs button.active {
+      color: var(--primary-hover);
+    }
+    /* Content areas inside sidebar */
+    .sidebar-content {
+      display: none;
+      padding: 8px;
+    }
+    .sidebar-content.active {
+      display: block;
+    }
+    /* Outline file tree */
+    #outlineList {
+      list-style: none;
+      padding-left: 0;
+      font-size: var(--outline-font-size);
+    }
+    #outlineList li {
+      cursor: pointer;
+      margin: 4px 0;
+    }
+    #outlineList li:hover {
+      text-decoration: underline;
+    }
+    /* Indent nested outlines */
+    #outlineList .level-1 { margin-left: 10px; }
+    #outlineList .level-2 { margin-left: 20px; }
+    #outlineList .level-3 { margin-left: 30px; }
+
+    /* Thumbnails */
+    #thumbsList {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .thumb-item {
+      margin-bottom: 10px;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      width: 90px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .thumb-item canvas {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .thumb-item.active canvas {
+      border-color: var(--primary-color);
+    }
+    .thumb-item .page-label {
+      position: absolute;
+      bottom: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      font-size: 12px;
+      padding: 1px 4px;
+      border-radius: 2px;
+      pointer-events: none;
+    }
+
+    /* Divider style */
+    #divider {
+      width: 4px;
+      background-color: #ddd;
+      cursor: col-resize;
+    }
+
+    /* Search navigation floating box */
+    #searchNavigation {
+      position: fixed;
+      top: var(--toolbar-height);
+      left: 50%;
+      transform: translateX(-50%);
+      display: none;
+      background-color: rgba(255,255,255,0.9);
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 4px 8px;
+      z-index: 200;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      align-items: center;
+      gap: 6px;
+    }
+    #searchNavigation button {
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      padding: 4px 6px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    #searchNavigation button:hover {
+      background: var(--primary-hover);
+    }
+    #searchNavigation span {
+      font-size: 14px;
+      color: var(--text-color);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      :root {
+        --toolbar-height: 45px;
+      }
+      #sidebar {
+        width: 60%;
+      }
+      #container {
+        flex-direction: column;
+      }
+      #viewerContainer {
+        flex-grow: 1;
+        height: auto;
+      }
+      #toolbar button, #toolbar input, #toolbar span {
+        margin-right: 4px;
+      }
+      #toolbar input[type="text"] {
+        width: 120px;
+      }
+    }
+
+    /* Bottom page navigation */
+    #pageNavigation {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 300;
+      font-size: 14px;
+      backdrop-filter: blur(4px);
+    }
+    #pageNavigation button {
+      background: none;
+      border: none;
+      color: inherit;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 0 6px;
+    }
+
+    /* Viewer container: holds all pages, scrollable */
+    #viewerContainer {
+      flex-grow: 1;
+      overflow-y: auto;
+      position: relative;
+      padding: 10px;
+    }
+    .pdf-page {
+      position: relative;
+      margin-bottom: 20px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+      background-color: #fff;
+    }
+    .pdf-page canvas.pdfCanvas {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .pdf-page canvas.hlCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="toolbar">
+    <button id="toggleSidebar">&#9776;</button>
+    <button id="prev">&#8592;</button>
+    <button id="next">&#8594;</button>
+    <!-- Page navigation removed from toolbar; moved to floating nav -->
+    <button id="zoom_out">&#8722;</button>
+    <button id="zoom_in">&#43;</button>
+    <button id="fit_width" title="Fit to width">&#8596;</button>
+    <button id="fit_page" title="Fit to page">&#8597;</button>
+    <input type="text" id="search_input" placeholder="Search...">
+    <button id="search_btn">Search</button>
+    <span id="search_info"></span>
+    <!-- Rotate controls -->
+    <button id="rotate_left" title="Rotate left">&#8634;</button>
+    <button id="rotate_right" title="Rotate right">&#8635;</button>
+    <button id="downloadBtn" title="Download">&#10515;</button>
+    <button id="fullscreenBtn" title="Fullscreen">&#x26F6;</button>
+    <!-- floating search navigation added later -->
+  </div>
+
+  <!-- Floating search navigation for navigating search results -->
+  <div id="searchNavigation">
+    <button id="searchPrev">&#8593;</button>
+    <span id="searchPosition"></span>
+    <button id="searchNext">&#8595;</button>
+  </div>
+  <div id="container">
+    <div id="sidebar" class="collapsed">
+      <div id="sidebarTabs">
+        <button id="outlineToggle" title="Outline">&#128196;</button>
+        <button id="thumbToggle" title="Thumbnails">&#x25A6;</button>
+      </div>
+      <div id="outlineList" class="sidebar-content"></div>
+      <div id="thumbsList" class="sidebar-content"></div>
+    </div>
+    <!-- Divider between sidebar and viewer for resizing -->
+    <div id="divider" style="width:4px;cursor:col-resize; background-color:#ddd; display:none;"></div>
+    <div id="viewerContainer">
+      <div id="errorMessage" style="display:none;color:red;margin:10px;"></div>
+    </div>
+  </div>
+
+  <!-- Floating bottom navigation for page control -->
+  <div id="pageNavigation" style="display:none;">
+    <button id="pagePrev">&#8592;</button>
+    <span id="pageInfo">-- / --</span>
+    <button id="pageNext">&#8594;</button>
+  </div>
+
+  <script>
+    let pdfDoc = null;
+    let pages = [];
+    let scale = 1.0;
+    let currentQuery = '';
+    let rotation = 0;
+    // Debounce timer for search
+    let searchTimeout = null;
+
+    // Current page tracking
+    let currentPage = 1;
+    let totalPages = 0;
+
+    // Mode to determine how scale is computed: 'width', 'page', or 'custom'
+    let fitMode = 'width';
+    // Search result management
+    let searchResults = [];
+    let currentSearchIndex = -1;
+    // Intersection observer for lazy rendering
+    let observer = null;
+    // Thumbnails cache
+    const thumbCache = {};
+
+    // Default PDF: change or override via ?file=
+    const DEFAULT_URL = 'sample.pdf';
+
+    /**
+     * Calculate an appropriate scale factor so the pages fit within the
+     * available viewer width.  We use the width of the first page as reference.
+     */
+    async function computeScaleForWidth(page) {
+      const container = document.getElementById('viewerContainer');
+      const containerWidth = container.clientWidth - 20; // account for padding
+      const viewport = page.getViewport({ scale: 1.0, rotation: rotation });
+      // If container width is zero (e.g., not yet laid out), return default scale
+      if (!containerWidth || containerWidth <= 0) return 1.0;
+      return containerWidth / viewport.width;
+    }
+
+    /**
+     * Render all pages of the document at the current scale.  Creates
+     * individual page containers with a PDF canvas and a separate highlight
+     * canvas on top.  Stores each page's text content for later search.
+     */
+    async function renderAllPages() {
+      const viewer = document.getElementById('viewerContainer');
+      // Clear previous pages and disconnect observer
+      viewer.innerHTML = '<div id="errorMessage" style="display:none;color:red;margin:10px;"></div>';
+      if (observer) observer.disconnect();
+      pages = [];
+      // Determine scale based on fit mode
+      const firstPage = await pdfDoc.getPage(1);
+      if (fitMode === 'width') {
+        scale = await computeScaleForWidth(firstPage);
+      } else if (fitMode === 'page') {
+        const containerHeight = viewer.clientHeight - 20;
+        const viewport = firstPage.getViewport({ scale: 1.0, rotation: rotation });
+        scale = containerHeight > 0 ? containerHeight / viewport.height : 1.0;
+      } // if custom, keep existing scale
+      // Create page containers without rendering; lazy render via IntersectionObserver
+      for (let i = 1; i <= pdfDoc.numPages; i++) {
+        const page = await pdfDoc.getPage(i);
+        const viewport = page.getViewport({ scale: scale, rotation: rotation });
+        const pageDiv = document.createElement('div');
+        pageDiv.classList.add('pdf-page');
+        pageDiv.setAttribute('data-page-number', i);
+        // Create canvases
+        const canvas = document.createElement('canvas');
+        canvas.classList.add('pdfCanvas');
+        const hlCanvas = document.createElement('canvas');
+        hlCanvas.classList.add('hlCanvas');
+        // High DPI rendering
+        const ratio = window.devicePixelRatio || 1;
+        // Set actual pixel dimensions
+        canvas.width = viewport.width * ratio;
+        canvas.height = viewport.height * ratio;
+        hlCanvas.width = viewport.width * ratio;
+        hlCanvas.height = viewport.height * ratio;
+        // Set CSS display size
+        canvas.style.width = viewport.width + 'px';
+        canvas.style.height = viewport.height + 'px';
+        hlCanvas.style.width = viewport.width + 'px';
+        hlCanvas.style.height = viewport.height + 'px';
+        const context = canvas.getContext('2d');
+        const hlContext = hlCanvas.getContext('2d');
+        // Scale contexts to handle device pixel ratio
+        context.scale(ratio, ratio);
+        hlContext.scale(ratio, ratio);
+        pageDiv.appendChild(canvas);
+        pageDiv.appendChild(hlCanvas);
+        viewer.appendChild(pageDiv);
+        const textContent = await page.getTextContent();
+        pages.push({ page, viewport, canvas, context, hlCanvas, hlContext, textContent, rendered: false });
+      }
+      // Setup intersection observer to render pages when visible
+      const options = {
+        root: viewer,
+        rootMargin: '100px',
+        threshold: 0.1
+      };
+      observer = new IntersectionObserver(entries => {
+        let visiblePages = [];
+        entries.forEach(entry => {
+          const pageNumber = parseInt(entry.target.getAttribute('data-page-number'));
+          if (entry.isIntersecting) {
+            renderPage(pageNumber);
+            visiblePages.push({ pageNumber, ratio: entry.intersectionRatio, top: entry.boundingClientRect.top });
+          }
+        });
+        if (visiblePages.length > 0) {
+          // Determine current page: the lowest page number among visible pages with highest intersection
+          visiblePages.sort((a, b) => a.pageNumber - b.pageNumber);
+          currentPage = visiblePages[0].pageNumber;
+          updatePageInfo();
+        }
+      }, options);
+      document.querySelectorAll('.pdf-page').forEach(div => observer.observe(div));
+      // Generate thumbnails and outline
+      generateThumbnails();
+      populateOutline();
+      // Update total pages in navigation info
+      totalPages = pdfDoc.numPages;
+      updatePageInfo();
+      // Show page navigation control
+      const pageNav = document.getElementById('pageNavigation');
+      if (pageNav) pageNav.style.display = 'flex';
+    }
+
+    /**
+     * Highlight search matches on a particular page.  Clears previous
+     * highlights on that page's highlight canvas and draws semi-transparent
+     * rectangles where the query appears.
+     */
+    function highlightPage(pageIndex) {
+      if (!currentQuery) return;
+      const pageObj = pages[pageIndex - 1];
+      const { textContent, hlCanvas, hlContext, viewport } = pageObj;
+      // Clear previous highlights
+      hlContext.clearRect(0, 0, hlCanvas.width, hlCanvas.height);
+      const query = currentQuery.toLowerCase();
+      const items = textContent.items;
+      items.forEach(item => {
+        const text = item.str;
+        if (!text) return;
+        const lowerText = text.toLowerCase();
+        let startIndex = 0;
+        while (true) {
+          const idx = lowerText.indexOf(query, startIndex);
+          if (idx === -1) break;
+          // Compute highlight box
+          const transform = pdfjsLib.Util.transform(viewport.transform, item.transform);
+          const x = transform[4];
+          // y coordinate: PDF.js defines transform[5] as baseline; adjust by height
+          const y = transform[5] - item.height * scale;
+          // width per character
+          const charWidth = (item.width * scale) / text.length;
+          const highlightWidth = charWidth * query.length;
+          const highlightX = x + charWidth * idx;
+          const highlightY = y;
+          const highlightHeight = item.height * scale;
+          hlContext.fillStyle = 'rgba(255, 255, 0, 0.4)';
+          hlContext.fillRect(highlightX, highlightY, highlightWidth, highlightHeight);
+          startIndex = idx + query.length;
+        }
+      });
+    }
+
+    /**
+     * Render a specific page if it hasn't been rendered yet.  Uses the stored
+     * page object and viewport to draw the PDF image.  After rendering, it
+     * applies highlights if there is a current search query.
+     */
+    function renderPage(pageIndex) {
+      const pageObj = pages[pageIndex - 1];
+      if (!pageObj || pageObj.rendered) return;
+      const { page, viewport, canvas, context } = pageObj;
+      page.render({ canvasContext: context, viewport: viewport }).promise.then(() => {
+        pageObj.rendered = true;
+        if (currentQuery) highlightPage(pageIndex);
+      });
+    }
+
+    /**
+     * Apply highlights across all pages based on currentQuery.  Called after
+     * performing a search.
+     */
+    function highlightAllPages() {
+      if (!currentQuery) {
+        // Clear all highlight canvases
+        pages.forEach(p => p.hlContext.clearRect(0, 0, p.hlCanvas.width, p.hlCanvas.height));
+        return;
+      }
+      pages.forEach((p, index) => {
+        highlightPage(index + 1);
+      });
+    }
+
+    /**
+     * Update the visibility and status of the floating search navigation.  When
+     * there are search results, shows the navigation box and scrolls to the
+     * first occurrence.  Otherwise hides the box.
+     */
+    function updateSearchNavigation() {
+      const navBox = document.getElementById('searchNavigation');
+      const positionSpan = document.getElementById('searchPosition');
+      if (currentQuery && searchResults.length > 0) {
+        navBox.style.display = 'flex';
+        currentSearchIndex = 0;
+        goToSearchResult(0);
+        positionSpan.textContent = `${currentSearchIndex + 1} / ${searchResults.length}`;
+      } else {
+        navBox.style.display = 'none';
+        currentSearchIndex = -1;
+        positionSpan.textContent = '';
+      }
+    }
+
+    /**
+     * Scroll to the specified search result index.  Updates active thumbnail and
+     * page input field and highlights the relevant page.
+     */
+    function goToSearchResult(index) {
+      if (index < 0 || index >= searchResults.length) return;
+      const pageNum = searchResults[index];
+      const target = document.querySelector(`.pdf-page[data-page-number="${pageNum}"]`);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        updateActiveThumbnail(pageNum);
+        renderPage(pageNum);
+        currentPage = pageNum;
+        updatePageInfo();
+        currentSearchIndex = index;
+        document.getElementById('searchPosition').textContent = `${currentSearchIndex + 1} / ${searchResults.length}`;
+      }
+    }
+
+    function prevSearch() {
+      if (!searchResults.length) return;
+      let idx = currentSearchIndex - 1;
+      if (idx < 0) idx = searchResults.length - 1;
+      goToSearchResult(idx);
+    }
+    function nextSearch() {
+      if (!searchResults.length) return;
+      let idx = currentSearchIndex + 1;
+      if (idx >= searchResults.length) idx = 0;
+      goToSearchResult(idx);
+    }
+
+    /**
+     * Update the page navigation display with currentPage and totalPages.
+     */
+    function updatePageInfo() {
+      const infoEl = document.getElementById('pageInfo');
+      if (infoEl) {
+        infoEl.textContent = `${currentPage} / ${totalPages || '--'}`;
+      }
+    }
+
+    /**
+     * Perform a search across the document.  Counts pages containing the
+     * query and then highlights all occurrences.
+     */
+    async function performSearch(query) {
+      currentQuery = query.trim().toLowerCase();
+      const infoEl = document.getElementById('search_info');
+      if (!currentQuery) {
+        infoEl.textContent = '';
+        highlightAllPages();
+        return;
+      }
+      let pagesWithMatch = 0;
+      let totalMatches = 0;
+      searchResults = [];
+      currentSearchIndex = -1;
+      for (const pageObj of pages) {
+        const itemsText = pageObj.textContent.items.map(it => it.str).join(' ').toLowerCase();
+        if (itemsText.includes(currentQuery)) {
+          pagesWithMatch++;
+          // Record page index for navigation
+          searchResults.push(pages.indexOf(pageObj) + 1);
+        }
+        // Count occurrences per page
+        let startIdx = 0;
+        while (true) {
+          const idx = itemsText.indexOf(currentQuery, startIdx);
+          if (idx === -1) break;
+          totalMatches++;
+          startIdx = idx + currentQuery.length;
+        }
+      }
+      infoEl.textContent = `${totalMatches} result${totalMatches !== 1 ? 's' : ''} in ${pagesWithMatch} page${pagesWithMatch !== 1 ? 's' : ''}`;
+      highlightAllPages();
+
+      // Set up search navigation
+      updateSearchNavigation();
+    }
+
+    /**
+     * Generate thumbnails in the sidebar.  Each thumbnail is scaled down and
+     * displays its page number below the image.  Clicking navigates to the
+     * corresponding page by scrolling.
+     */
+    function generateThumbnails() {
+      const thumbsContainer = document.getElementById('thumbsList');
+      thumbsContainer.innerHTML = '';
+      pages.forEach((pageObj, idx) => {
+        const i = idx + 1;
+        const thumbItem = document.createElement('div');
+        thumbItem.classList.add('thumb-item');
+        if (i === 1) thumbItem.classList.add('active');
+        // Thumbnail canvas
+        const canvas = document.createElement('canvas');
+        canvas.width = 80;
+        canvas.height = 100;
+        const ctxThumb = canvas.getContext('2d');
+        thumbItem.appendChild(canvas);
+        // Page number overlay
+        const label = document.createElement('div');
+        label.classList.add('page-label');
+        label.textContent = i;
+        thumbItem.appendChild(label);
+        // Render thumbnail
+        if (thumbCache[i]) {
+          ctxThumb.drawImage(thumbCache[i], 0, 0, canvas.width, canvas.height);
+        } else {
+          const { page } = pageObj;
+        const viewport = page.getViewport({ scale: 0.2, rotation: rotation });
+          const tmpCanvas = document.createElement('canvas');
+          tmpCanvas.width = viewport.width;
+          tmpCanvas.height = viewport.height;
+          const tmpCtx = tmpCanvas.getContext('2d');
+          page.render({ canvasContext: tmpCtx, viewport: viewport }).promise.then(() => {
+            thumbCache[i] = tmpCanvas;
+            ctxThumb.drawImage(tmpCanvas, 0, 0, canvas.width, canvas.height);
+          });
+        }
+        // Click event: scroll to page
+        thumbItem.addEventListener('click', () => {
+          const targetDiv = document.querySelector(`.pdf-page[data-page-number="${i}"]`);
+          targetDiv.scrollIntoView({ behavior: 'smooth' });
+          updateActiveThumbnail(i);
+          // update page number input
+          document.getElementById('page_num').value = i;
+        });
+        thumbsContainer.appendChild(thumbItem);
+      });
+    }
+    function updateActiveThumbnail(current) {
+      const items = document.querySelectorAll('.thumb-item');
+      items.forEach((item, idx) => {
+        item.classList.toggle('active', idx + 1 === current);
+      });
+    }
+
+    /**
+     * Populate the outline as a nested list up to 3 levels deep.  Each item
+     * scrolls to the corresponding page when clicked.
+     */
+    async function populateOutline() {
+      const outline = await pdfDoc.getOutline();
+      const container = document.getElementById('outlineList');
+      container.innerHTML = '';
+      function addItems(items, parent, level) {
+        if (!items || level > 3) return;
+        items.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = item.title;
+          li.classList.add(`level-${level}`);
+          li.addEventListener('click', async () => {
+            if (item.dest) {
+              const dest = await pdfDoc.getDestination(item.dest);
+              const pageIndex = (await pdfDoc.getPageIndex(dest[0])) + 1;
+              const target = document.querySelector(`.pdf-page[data-page-number="${pageIndex}"]`);
+              if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+                updateActiveThumbnail(pageIndex);
+                document.getElementById('page_num').value = pageIndex;
+              }
+            } else if (item.url) {
+              window.open(item.url, '_blank');
+            }
+          });
+          parent.appendChild(li);
+          if (item.items) addItems(item.items, parent, level + 1);
+        });
+      }
+      addItems(outline, container, 1);
+    }
+
+    /**
+     * Determine file parameter from query string.
+     */
+    function getQueryParameter(name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    }
+
+    /**
+     * Load a PDF document from URL and initialise viewer.
+     */
+    function loadPdf(url) {
+      pdfjsLib.getDocument(url).promise.then(async pdf => {
+        pdfDoc = pdf;
+        // Hide any previous error
+        const errEl = document.getElementById('errorMessage');
+        if (errEl) errEl.style.display = 'none';
+        await renderAllPages();
+        setDownloadLink(url);
+        // Scroll to first page
+        currentPage = 1;
+        updatePageInfo();
+      }).catch(err => {
+        console.error('Error loading PDF:', err);
+        const viewer = document.getElementById('viewerContainer');
+        const errEl = document.getElementById('errorMessage');
+        if (errEl) {
+          errEl.textContent = 'Failed to load PDF: ' + (err.message || err);
+          errEl.style.display = 'block';
+        }
+      });
+    }
+
+    /**
+     * Set up the download link for the document.
+     */
+    function setDownloadLink(url) {
+      document.getElementById('downloadBtn').onclick = () => {
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = url.split('/').pop();
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      };
+    }
+
+    /**
+     * Adjust the scale to fit the page width or height and re-render all pages.
+     */
+    async function fitToWidth() {
+      if (!pdfDoc) return;
+      fitMode = 'width';
+      await renderAllPages();
+      highlightAllPages();
+    }
+    async function fitToPage() {
+      if (!pdfDoc) return;
+      fitMode = 'page';
+      await renderAllPages();
+      highlightAllPages();
+    }
+
+    // Navigation via Prev/Next buttons
+    function goToPrev() {
+      if (currentPage > 1) {
+        const newPage = currentPage - 1;
+        const target = document.querySelector(`.pdf-page[data-page-number="${newPage}"]`);
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+        updateActiveThumbnail(newPage);
+        renderPage(newPage);
+        currentPage = newPage;
+        updatePageInfo();
+      }
+    }
+    function goToNext() {
+      if (currentPage < pages.length) {
+        const newPage = currentPage + 1;
+        const target = document.querySelector(`.pdf-page[data-page-number="${newPage}"]`);
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+        updateActiveThumbnail(newPage);
+        renderPage(newPage);
+        currentPage = newPage;
+        updatePageInfo();
+      }
+    }
+
+    /**
+     * Event listeners
+     */
+    document.getElementById('toggleSidebar').addEventListener('click', () => {
+      const sidebar = document.getElementById('sidebar');
+      const divider = document.getElementById('divider');
+      sidebar.classList.toggle('collapsed');
+      if (sidebar.classList.contains('collapsed')) {
+        // hide divider and center viewer
+        divider.style.display = 'none';
+        // viewer container centered using margin auto
+        document.getElementById('viewerContainer').style.margin = '0 auto';
+      } else {
+        // show divider and remove centering
+        divider.style.display = 'block';
+        document.getElementById('viewerContainer').style.margin = '0';
+      }
+    });
+    document.getElementById('outlineToggle').addEventListener('click', () => {
+      document.getElementById('outlineToggle').classList.add('active');
+      document.getElementById('thumbToggle').classList.remove('active');
+      document.getElementById('outlineList').classList.add('active');
+      document.getElementById('thumbsList').classList.remove('active');
+    });
+    document.getElementById('thumbToggle').addEventListener('click', () => {
+      document.getElementById('thumbToggle').classList.add('active');
+      document.getElementById('outlineToggle').classList.remove('active');
+      document.getElementById('thumbsList').classList.add('active');
+      document.getElementById('outlineList').classList.remove('active');
+    });
+    // Set default active tab: outline
+    document.getElementById('outlineToggle').classList.add('active');
+    document.getElementById('outlineList').classList.add('active');
+    document.getElementById('thumbToggle').classList.remove('active');
+    document.getElementById('thumbsList').classList.remove('active');
+
+    // Adjust divider visibility based on initial sidebar state
+    const initialSidebar = document.getElementById('sidebar');
+    const initialDivider = document.getElementById('divider');
+    const initialViewer = document.getElementById('viewerContainer');
+    if (initialSidebar.classList.contains('collapsed')) {
+      initialDivider.style.display = 'none';
+      initialViewer.style.margin = '0 auto';
+    } else {
+      initialDivider.style.display = 'block';
+      initialViewer.style.margin = '0';
+    }
+
+    document.getElementById('prev').addEventListener('click', goToPrev);
+    document.getElementById('next').addEventListener('click', goToNext);
+    document.getElementById('zoom_in').addEventListener('click', async () => {
+      fitMode = 'custom';
+      scale *= 1.25;
+      await renderAllPages();
+      highlightAllPages();
+    });
+    document.getElementById('zoom_out').addEventListener('click', async () => {
+      fitMode = 'custom';
+      scale /= 1.25;
+      await renderAllPages();
+      highlightAllPages();
+    });
+    document.getElementById('fit_width').addEventListener('click', fitToWidth);
+    document.getElementById('fit_page').addEventListener('click', fitToPage);
+    document.getElementById('search_btn').addEventListener('click', () => {
+      performSearch(document.getElementById('search_input').value);
+    });
+    document.getElementById('search_input').addEventListener('keypress', e => {
+      if (e.key === 'Enter') performSearch(e.target.value);
+    });
+    // Real-time search: debounce input events
+    document.getElementById('search_input').addEventListener('input', () => {
+      const value = document.getElementById('search_input').value;
+      if (searchTimeout) clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        performSearch(value);
+      }, 300);
+    });
+    document.getElementById('fullscreenBtn').addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    });
+
+    // Rotation controls
+    document.getElementById('rotate_left').addEventListener('click', async () => {
+      rotation = (rotation - 90 + 360) % 360;
+      await renderAllPages();
+      highlightAllPages();
+    });
+    document.getElementById('rotate_right').addEventListener('click', async () => {
+      rotation = (rotation + 90) % 360;
+      await renderAllPages();
+      highlightAllPages();
+    });
+
+    // Search navigation controls
+    document.getElementById('searchPrev').addEventListener('click', prevSearch);
+    document.getElementById('searchNext').addEventListener('click', nextSearch);
+    // Bottom page navigation controls
+    document.getElementById('pagePrev').addEventListener('click', () => {
+      goToPrev();
+    });
+    document.getElementById('pageNext').addEventListener('click', () => {
+      goToNext();
+    });
+
+    // Determine file parameter
+    const fileParam = getQueryParameter('file');
+    if (fileParam) {
+      loadPdf(fileParam);
+    } else {
+      loadPdf(DEFAULT_URL);
+    }
+
+    // Divider drag functionality
+    let isDraggingDivider = false;
+    const divider = document.getElementById('divider');
+    const sidebarEl = document.getElementById('sidebar');
+    const containerEl = document.getElementById('container');
+    divider.addEventListener('mousedown', e => {
+      isDraggingDivider = true;
+      document.body.style.cursor = 'col-resize';
+    });
+    document.addEventListener('mousemove', e => {
+      if (!isDraggingDivider) return;
+      // compute relative position within container
+      const rect = containerEl.getBoundingClientRect();
+      const offsetX = e.clientX - rect.left;
+      let newPercent = (offsetX / rect.width) * 100;
+      // constrain between 10% and 70%
+      newPercent = Math.max(10, Math.min(70, newPercent));
+      sidebarEl.style.width = newPercent + '%';
+      // update CSS variable
+      document.documentElement.style.setProperty('--sidebar-width', newPercent + '%');
+    });
+    document.addEventListener('mouseup', () => {
+      if (isDraggingDivider) {
+        isDraggingDivider = false;
+        document.body.style.cursor = '';
+      }
+    });
+  </script>
+</body>
+</html>
