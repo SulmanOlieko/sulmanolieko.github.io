@@ -8,6 +8,9 @@
   <!-- Use Poppins to match the site’s typography -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
 
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="../css/font-awesome.min.css">
+
   <!-- Include PDF.js library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.5.141/pdf.min.js"></script>
   <script>
@@ -297,37 +300,37 @@
 </head>
 <body>
   <div id="toolbar">
-    <button id="toggleSidebar" title="Toggle sidebar">&#128682;</button>
+    <button id="toggleSidebar" title="Toggle sidebar"><i class="fa fa-bars"></i></button>
     <!-- Removed prev/next buttons from toolbar -->
     <!-- Page navigation removed from toolbar; moved to floating nav -->
-    <button id="zoom_out">&#8722;</button>
-    <button id="zoom_in">&#43;</button>
-    <button id="fit_width" title="Fit to width">&#8596;</button>
-    <button id="fit_page" title="Fit to page">&#8597;</button>
+    <button id="zoom_out"><i class="fa fa-search-minus"></i></button>
+    <button id="zoom_in"><i class="fa fa-search-plus"></i></button>
+    <button id="fit_width" title="Fit to width"><i class="fa fa-arrows-h"></i></button>
+    <button id="fit_page" title="Fit to page"><i class="fa fa-arrows-v"></i></button>
     <!-- Search icon opens search bar -->
-    <button id="openSearchBtn" title="Search">&#128269;</button>
+    <button id="openSearchBtn" title="Search"><i class="fa fa-search"></i></button>
     <!-- Rotate controls -->
-    <button id="rotate_left" title="Rotate left">&#8634;</button>
-    <button id="rotate_right" title="Rotate right">&#8635;</button>
-    <button id="downloadBtn" title="Download">&#10515;</button>
-    <button id="fullscreenBtn" title="Fullscreen">&#x26F6;</button>
+    <button id="rotate_left" title="Rotate left"><i class="fa fa-rotate-left"></i></button>
+    <button id="rotate_right" title="Rotate right"><i class="fa fa-rotate-right"></i></button>
+    <button id="downloadBtn" title="Download"><i class="fa fa-download"></i></button>
+    <button id="fullscreenBtn" title="Fullscreen"><i class="fa fa-expand"></i></button>
     <!-- floating search navigation added later -->
   </div>
 
   <!-- Collapsible search bar (appears when search icon is clicked) -->
   <div id="searchBar">
     <input type="text" id="searchBarInput" placeholder="Search...">
-    <button id="searchBarPrev" title="Previous result">&#8249;</button>
-    <button id="searchBarNext" title="Next result">&#8250;</button>
+    <button id="searchBarPrev" title="Previous result"><i class="fa fa-chevron-left"></i></button>
+    <button id="searchBarNext" title="Next result"><i class="fa fa-chevron-right"></i></button>
     <span id="searchBarInfo"></span>
-    <button id="searchBarClose" title="Close search">&#10005;</button>
+    <button id="searchBarClose" title="Close search"><i class="fa fa-times"></i></button>
   </div>
 
   <div id="container">
     <div id="sidebar" class="collapsed">
       <div id="sidebarTabs">
-        <button id="outlineToggle" title="Outline">&#9776;</button>
-        <button id="thumbToggle" title="Thumbnails">&#x25A6;</button>
+        <button id="outlineToggle" title="Outline"><i class="fa fa-list-ul"></i></button>
+        <button id="thumbToggle" title="Thumbnails"><i class="fa fa-th-large"></i></button>
       </div>
       <div id="outlineList" class="sidebar-content"></div>
       <div id="thumbsList" class="sidebar-content"></div>
@@ -341,9 +344,9 @@
 
   <!-- Floating bottom navigation for page control -->
   <div id="pageNavigation" style="display:none;">
-    <button id="pagePrev">&#8592;</button>
+    <button id="pagePrev"><i class="fa fa-arrow-left"></i></button>
     <span id="pageInfo">-- / --</span>
-    <button id="pageNext">&#8594;</button>
+    <button id="pageNext"><i class="fa fa-arrow-right"></i></button>
   </div>
 
   <script>
@@ -393,6 +396,7 @@
      * canvas on top.  Stores each page's text content for later search.
      */
     async function renderAllPages() {
+      console.log('renderAllPages called.');
       const viewer = document.getElementById('viewerContainer');
       // Clear previous pages and disconnect observer
       viewer.innerHTML = '<div id="errorMessage" style="display:none;color:red;margin:10px;"></div>';
@@ -648,17 +652,15 @@
 
     /**
      * Renders a single thumbnail for a given page number and replaces its
-     * placeholder.
+     * placeholder. This version is optimized for performance by rendering
+     * at a low resolution.
      */
     async function renderThumbnail(pageNumber, thumbItemElement) {
       const pageObj = pages[pageNumber - 1];
-      if (!pageObj) return;
+      if (!pageObj || thumbCache[pageNumber]) return;
 
       const { page } = pageObj;
-      const sidebarEl = document.getElementById('sidebar');
-      let sidebarWidth = sidebarEl.offsetWidth;
-      if (sidebarWidth <= 0) sidebarWidth = 220; // fallback
-      const thumbWidth = sidebarWidth * 0.8;
+      const thumbWidth = 100; // Fixed width for thumbnails
 
       // Use the page's viewport to maintain aspect ratio
       const pageViewport = page.getViewport({ scale: 1.0 });
@@ -678,10 +680,19 @@
       // Render the page to the canvas
       await page.render({ canvasContext: ctxThumb, viewport: viewport }).promise;
 
+      // Cache the thumbnail
+      thumbCache[pageNumber] = canvas.toDataURL();
+
       // Replace placeholder with the rendered canvas
       const placeholder = thumbItemElement.querySelector('.thumb-placeholder');
       if (placeholder) {
-        thumbItemElement.insertBefore(canvas, placeholder);
+        const img = new Image();
+        img.src = thumbCache[pageNumber];
+        img.style.width = '80%';
+        img.style.height = 'auto';
+        img.style.border = '1px solid #ccc';
+        img.style.borderRadius = '4px';
+        thumbItemElement.insertBefore(img, placeholder);
         thumbItemElement.removeChild(placeholder);
       }
     }
@@ -695,15 +706,13 @@
       const thumbsContainer = document.getElementById('thumbsList');
       thumbsContainer.innerHTML = '';
 
-      // Disconnect previous observer if it exists
       if (thumbnailObserver) {
         thumbnailObserver.disconnect();
       }
 
-      // Set up the IntersectionObserver for lazy-loading thumbnails
       const observerOptions = {
         root: thumbsContainer,
-        rootMargin: '100px', // Load thumbnails before they are visible
+        rootMargin: '100px',
         threshold: 0.1
       };
 
@@ -713,13 +722,11 @@
             const thumbItem = entry.target;
             const pageIndex = parseInt(thumbItem.dataset.pageNumber, 10);
             renderThumbnail(pageIndex, thumbItem);
-            // Stop observing once rendered
             observer.unobserve(thumbItem);
           }
         });
       }, observerOptions);
 
-      // Create placeholders for each thumbnail
       pages.forEach((pageObj, idx) => {
         const i = idx + 1;
         const thumbItem = document.createElement('div');
@@ -730,30 +737,23 @@
           thumbItem.classList.add('active');
         }
 
-        // Determine dynamic thumbnail size based on sidebar width
-        const sidebarEl = document.getElementById('sidebar');
-        let sidebarWidth = sidebarEl.offsetWidth;
-        if (sidebarWidth <= 0) sidebarWidth = 220; // fallback
-        const thumbWidth = sidebarWidth * 0.8;
-        const pageViewport = pageObj.viewport;
+        const thumbWidth = 100;
+        const pageViewport = pageObj.page.getViewport({ scale: 1.0 });
         const aspectRatio = pageViewport.height / pageViewport.width;
         const thumbHeight = thumbWidth * aspectRatio;
 
-        // Create a placeholder with a fixed size to prevent layout shifts
         const placeholder = document.createElement('div');
         placeholder.classList.add('thumb-placeholder');
         placeholder.style.width = thumbWidth + 'px';
         placeholder.style.height = thumbHeight + 'px';
-        placeholder.style.backgroundColor = '#e0e0e0'; // A light gray placeholder
+        placeholder.style.backgroundColor = '#e0e0e0';
         thumbItem.appendChild(placeholder);
 
-        // Page number below the thumbnail
         const label = document.createElement('div');
         label.classList.add('page-number');
         label.textContent = i;
         thumbItem.appendChild(label);
 
-        // Click event: scroll to page
         thumbItem.addEventListener('click', () => {
           const targetDiv = document.querySelector(`.pdf-page[data-page-number="${i}"]`);
           if (targetDiv) {
@@ -766,7 +766,6 @@
         });
 
         thumbsContainer.appendChild(thumbItem);
-        // Observe the placeholder for lazy loading
         thumbnailObserver.observe(thumbItem);
       });
     }
@@ -826,7 +825,9 @@
      * Load a PDF document from URL and initialise viewer.
      */
     function loadPdf(url) {
+      console.log('loadPdf called with URL:', url);
       pdfjsLib.getDocument(url).promise.then(async pdf => {
+        console.log('PDF document loaded successfully.');
         pdfDoc = pdf;
         // Hide any previous error
         const errEl = document.getElementById('errorMessage');
@@ -918,6 +919,8 @@
         divider.style.display = 'block';
         document.getElementById('viewerContainer').style.margin = '0';
       }
+      // Re-render the PDF to fit the new container size
+      fitToWidth();
     });
     document.getElementById('outlineToggle').addEventListener('click', () => {
       document.getElementById('outlineToggle').classList.add('active');
