@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Scrollable PDF Viewer</title>
+  <title>CV</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Use Poppins to match the site’s typography -->
@@ -36,7 +36,7 @@
       font-family: 'Poppins', sans-serif;
       background-color: var(--background-color);
       color: var(--text-color);
-      /*overflow: hidden;*/
+      overflow: hidden;
     }
 
     /* Toolbar styling */
@@ -195,6 +195,7 @@
       #sidebar {
         width: var(--sidebar-width-small);
         flex-basis: var(--sidebar-width-small);
+        z-index:99999; /* */
       }
       #container {
         flex-direction: column;
@@ -285,12 +286,12 @@
       background-color: #fff;
     }
     .pdf-page canvas.pdfCanvas {
-      width: 100%;
+      width: auto;/*100%*/
       height: auto;
       display: block;
     }
     .pdf-page canvas.hlCanvas {
-      position: absolute;
+      position: auto; /*absolute*/
       top: 0;
       left: 0;
       z-index: 10;
