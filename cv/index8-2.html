@@ -173,6 +173,10 @@
     .thumb-item.active canvas {
       border-color: var(--primary-color);
     }
+    .thumb-item.active .page-number {
+      color: var(--primary-color);
+      font-weight: bold;
+    }
     /* Page number displayed below each thumbnail rather than overlay */
     .thumb-item .page-number {
       margin-top: 4px;
@@ -187,6 +191,16 @@
       cursor: col-resize;
     }
 
+    /* Backdrop for mobile sidebar */
+    #backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 400;
+    }
 
     /* Responsive adjustments */
     @media (max-width: 768px) {
@@ -194,22 +208,37 @@
         --toolbar-height: 45px;
       }
       #sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
         width: var(--sidebar-width-small);
-        flex-basis: var(--sidebar-width-small);
-        z-index:99999; /* */
+        flex-basis: auto;
+        z-index: 500;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+      #sidebar.collapsed {
+        transform: translateX(-100%);
+      }
+      #sidebar:not(.collapsed) {
+        transform: translateX(0);
       }
       #container {
-        flex-direction: column;
+        flex-direction: row; /* Back to row for mobile overlay */
       }
       #viewerContainer {
         flex-grow: 1;
-        height: auto;
+        height: calc(100vh - var(--toolbar-height));
       }
       #toolbar button, #toolbar input, #toolbar span {
         margin-right: 4px;
       }
       #toolbar input[type="text"] {
         width: 120px;
+      }
+      #divider {
+        display: none !important; /* Divider not needed on mobile */
       }
     }
 
@@ -298,9 +327,28 @@
       z-index: 10;
       pointer-events: none;
     }
+    /* Loader styles */
+    #loader {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 50px;
+      height: 50px;
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid var(--primary-color);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      z-index: 999;
+    }
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
   </style>
 </head>
 <body>
+  <div id="loader" style="display: none;"></div>
+  <div id="backdrop" style="display: none;"></div>
   <div id="toolbar">
     <button id="toggleSidebar" title="Toggle sidebar"><i class="fa fa-bars"></i></button>
     <!-- Removed prev/next buttons from toolbar -->
@@ -425,23 +473,30 @@
         canvas.classList.add('pdfCanvas');
         const hlCanvas = document.createElement('canvas');
         hlCanvas.classList.add('hlCanvas');
-        // High DPI rendering
+
+        // High-quality rendering
+        const qualityFactor = 1.5;
         const ratio = window.devicePixelRatio || 1;
-        // Set actual pixel dimensions
-        canvas.width = viewport.width * ratio;
-        canvas.height = viewport.height * ratio;
-        hlCanvas.width = viewport.width * ratio;
-        hlCanvas.height = viewport.height * ratio;
+
+        // Set actual pixel dimensions for high quality
+        canvas.width = viewport.width * ratio * qualityFactor;
+        canvas.height = viewport.height * ratio * qualityFactor;
+        hlCanvas.width = viewport.width * ratio * qualityFactor;
+        hlCanvas.height = viewport.height * ratio * qualityFactor;
+
         // Set CSS display size
         canvas.style.width = viewport.width + 'px';
         canvas.style.height = viewport.height + 'px';
         hlCanvas.style.width = viewport.width + 'px';
         hlCanvas.style.height = viewport.height + 'px';
+
         const context = canvas.getContext('2d');
         const hlContext = hlCanvas.getContext('2d');
-        // Scale contexts to handle device pixel ratio
-        context.scale(ratio, ratio);
-        hlContext.scale(ratio, ratio);
+
+        // Scale contexts for high quality
+        context.scale(ratio * qualityFactor, ratio * qualityFactor);
+        hlContext.scale(ratio * qualityFactor, ratio * qualityFactor);
+
         pageDiv.appendChild(canvas);
         pageDiv.appendChild(hlCanvas);
         viewer.appendChild(pageDiv);
@@ -460,14 +515,16 @@
           const pageNumber = parseInt(entry.target.getAttribute('data-page-number'));
           if (entry.isIntersecting) {
             renderPage(pageNumber);
-            visiblePages.push({ pageNumber, ratio: entry.intersectionRatio, top: entry.boundingClientRect.top });
+            visiblePages.push({ pageNumber, ratio: entry.intersectionRatio });
           }
         });
+
         if (visiblePages.length > 0) {
-          // Determine current page: the lowest page number among visible pages with highest intersection
-          visiblePages.sort((a, b) => a.pageNumber - b.pageNumber);
+          // Find the page with the highest intersection ratio
+          visiblePages.sort((a, b) => b.ratio - a.ratio);
           currentPage = visiblePages[0].pageNumber;
           updatePageInfo();
+          updateActiveThumbnail(currentPage);
         }
       }, options);
       document.querySelectorAll('.pdf-page').forEach(div => observer.observe(div));
@@ -662,7 +719,8 @@
       if (!pageObj || thumbCache[pageNumber]) return;
 
       const { page } = pageObj;
-      const thumbWidth = 100; // Fixed width for thumbnails
+      const thumbWidth = 150; // Increased width for better quality
+      const qualityFactor = 1.5;
 
       // Use the page's viewport to maintain aspect ratio
       const pageViewport = page.getViewport({ scale: 1.0 });
@@ -671,13 +729,17 @@
 
       const canvas = document.createElement('canvas');
       const ratio = window.devicePixelRatio || 1;
-      canvas.width = viewport.width * ratio;
-      canvas.height = viewport.height * ratio;
+
+      // Set actual pixel dimensions for high quality
+      canvas.width = viewport.width * ratio * qualityFactor;
+      canvas.height = viewport.height * ratio * qualityFactor;
+
+      // Set CSS display size
       canvas.style.width = viewport.width + 'px';
       canvas.style.height = viewport.height + 'px';
 
       const ctxThumb = canvas.getContext('2d');
-      ctxThumb.scale(ratio, ratio);
+      ctxThumb.scale(ratio * qualityFactor, ratio * qualityFactor);
 
       // Render the page to the canvas
       await page.render({ canvasContext: ctxThumb, viewport: viewport }).promise;
@@ -827,18 +889,21 @@
      * Load a PDF document from URL and initialise viewer.
      */
     function loadPdf(url) {
-      console.log('loadPdf called with URL:', url);
+      const loader = document.getElementById('loader');
+      loader.style.display = 'block';
+
       pdfjsLib.getDocument(url).promise.then(async pdf => {
-        console.log('PDF document loaded successfully.');
         pdfDoc = pdf;
-        // Hide any previous error
         const errEl = document.getElementById('errorMessage');
         if (errEl) errEl.style.display = 'none';
+
         await renderAllPages();
+
         setDownloadLink(url);
-        // Scroll to first page
         currentPage = 1;
         updatePageInfo();
+
+        loader.style.display = 'none';
       }).catch(err => {
         console.error('Sorry, but we did not find this PDF:', err);
         const viewer = document.getElementById('viewerContainer');
@@ -847,6 +912,7 @@
           errEl.textContent = 'Sorry, but the system cound not load this PDF: ' + (err.message || err);
           errEl.style.display = 'block';
         }
+        loader.style.display = 'none';
       });
     }
 
@@ -909,20 +975,28 @@
      */
     document.getElementById('toggleSidebar').addEventListener('click', () => {
       const sidebar = document.getElementById('sidebar');
-      const divider = document.getElementById('divider');
       sidebar.classList.toggle('collapsed');
-      if (sidebar.classList.contains('collapsed')) {
-        // hide divider and center viewer
-        divider.style.display = 'none';
-        // viewer container centered using margin auto
-        document.getElementById('viewerContainer').style.margin = '0 auto';
+
+      if (window.innerWidth <= 768) {
+        const backdrop = document.getElementById('backdrop');
+        backdrop.style.display = sidebar.classList.contains('collapsed') ? 'none' : 'block';
       } else {
-        // show divider and remove centering
-        divider.style.display = 'block';
-        document.getElementById('viewerContainer').style.margin = '0';
+        const divider = document.getElementById('divider');
+        if (sidebar.classList.contains('collapsed')) {
+          divider.style.display = 'none';
+          document.getElementById('viewerContainer').style.margin = '0 auto';
+        } else {
+          divider.style.display = 'block';
+          document.getElementById('viewerContainer').style.margin = '0';
+        }
+        // Re-render the PDF to fit the new container size
+        fitToWidth();
       }
-      // Re-render the PDF to fit the new container size
-      fitToWidth();
+    });
+
+    document.getElementById('backdrop').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.add('collapsed');
+      document.getElementById('backdrop').style.display = 'none';
     });
     document.getElementById('outlineToggle').addEventListener('click', () => {
       document.getElementById('outlineToggle').classList.add('active');
