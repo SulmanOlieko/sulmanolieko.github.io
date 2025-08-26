@@ -366,6 +366,8 @@
     let currentSearchIndex = -1;
     // Intersection observer for lazy rendering
     let observer = null;
+    // Intersection observer for lazy-loading thumbnails
+    let thumbnailObserver = null;
     // Thumbnails cache
     const thumbCache = {};
 
@@ -645,59 +647,112 @@
     }
 
     /**
-     * Generate thumbnails in the sidebar.  Each thumbnail is scaled down and
-     * displays its page number below the image.  Clicking navigates to the
-     * corresponding page by scrolling.
+     * Renders a single thumbnail for a given page number and replaces its
+     * placeholder.
+     */
+    async function renderThumbnail(pageNumber, thumbItemElement) {
+      const pageObj = pages[pageNumber - 1];
+      if (!pageObj) return;
+
+      const { page } = pageObj;
+      const sidebarEl = document.getElementById('sidebar');
+      let sidebarWidth = sidebarEl.offsetWidth;
+      if (sidebarWidth <= 0) sidebarWidth = 220; // fallback
+      const thumbWidth = sidebarWidth * 0.8;
+
+      // Use the page's viewport to maintain aspect ratio
+      const pageViewport = page.getViewport({ scale: 1.0 });
+      const thumbScale = thumbWidth / pageViewport.width;
+      const viewport = page.getViewport({ scale: thumbScale, rotation: rotation });
+
+      const canvas = document.createElement('canvas');
+      const ratio = window.devicePixelRatio || 1;
+      canvas.width = viewport.width * ratio;
+      canvas.height = viewport.height * ratio;
+      canvas.style.width = viewport.width + 'px';
+      canvas.style.height = viewport.height + 'px';
+
+      const ctxThumb = canvas.getContext('2d');
+      ctxThumb.scale(ratio, ratio);
+
+      // Render the page to the canvas
+      await page.render({ canvasContext: ctxThumb, viewport: viewport }).promise;
+
+      // Replace placeholder with the rendered canvas
+      const placeholder = thumbItemElement.querySelector('.thumb-placeholder');
+      if (placeholder) {
+        thumbItemElement.insertBefore(canvas, placeholder);
+        thumbItemElement.removeChild(placeholder);
+      }
+    }
+
+    /**
+     * Generate placeholder thumbnails in the sidebar and set up an
+     * IntersectionObserver to lazy-load the actual thumbnail images when
+     * they scroll into view.
      */
     function generateThumbnails() {
       const thumbsContainer = document.getElementById('thumbsList');
       thumbsContainer.innerHTML = '';
+
+      // Disconnect previous observer if it exists
+      if (thumbnailObserver) {
+        thumbnailObserver.disconnect();
+      }
+
+      // Set up the IntersectionObserver for lazy-loading thumbnails
+      const observerOptions = {
+        root: thumbsContainer,
+        rootMargin: '100px', // Load thumbnails before they are visible
+        threshold: 0.1
+      };
+
+      thumbnailObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const thumbItem = entry.target;
+            const pageIndex = parseInt(thumbItem.dataset.pageNumber, 10);
+            renderThumbnail(pageIndex, thumbItem);
+            // Stop observing once rendered
+            observer.unobserve(thumbItem);
+          }
+        });
+      }, observerOptions);
+
+      // Create placeholders for each thumbnail
       pages.forEach((pageObj, idx) => {
         const i = idx + 1;
         const thumbItem = document.createElement('div');
         thumbItem.classList.add('thumb-item');
-        if (i === 1) thumbItem.classList.add('active');
-        const canvas = document.createElement('canvas');
+        thumbItem.dataset.pageNumber = i;
+
+        if (i === 1) {
+          thumbItem.classList.add('active');
+        }
+
         // Determine dynamic thumbnail size based on sidebar width
         const sidebarEl = document.getElementById('sidebar');
         let sidebarWidth = sidebarEl.offsetWidth;
         if (sidebarWidth <= 0) sidebarWidth = 220; // fallback
         const thumbWidth = sidebarWidth * 0.8;
-        // Use the first page to compute aspect ratio; pageObj.viewport provides ratio
         const pageViewport = pageObj.viewport;
         const aspectRatio = pageViewport.height / pageViewport.width;
         const thumbHeight = thumbWidth * aspectRatio;
-        // High DPI
-        const ratio = window.devicePixelRatio || 1;
-        canvas.width = thumbWidth * ratio;
-        canvas.height = thumbHeight * ratio;
-        canvas.style.width = thumbWidth + 'px';
-        canvas.style.height = thumbHeight + 'px';
-        const ctxThumb = canvas.getContext('2d');
-        ctxThumb.scale(ratio, ratio);
-        thumbItem.appendChild(canvas);
+
+        // Create a placeholder with a fixed size to prevent layout shifts
+        const placeholder = document.createElement('div');
+        placeholder.classList.add('thumb-placeholder');
+        placeholder.style.width = thumbWidth + 'px';
+        placeholder.style.height = thumbHeight + 'px';
+        placeholder.style.backgroundColor = '#e0e0e0'; // A light gray placeholder
+        thumbItem.appendChild(placeholder);
+
         // Page number below the thumbnail
         const label = document.createElement('div');
         label.classList.add('page-number');
         label.textContent = i;
         thumbItem.appendChild(label);
-        // Render thumbnail
-        if (thumbCache[i]) {
-          ctxThumb.drawImage(thumbCache[i], 0, 0, thumbWidth, thumbHeight);
-        } else {
-          const { page } = pageObj;
-          // Compute thumbnail scale based on thumbWidth
-          const thumbScale = thumbWidth / pageViewport.width;
-          const viewport = page.getViewport({ scale: thumbScale, rotation: rotation });
-          const tmpCanvas = document.createElement('canvas');
-          tmpCanvas.width = viewport.width;
-          tmpCanvas.height = viewport.height;
-          const tmpCtx = tmpCanvas.getContext('2d');
-          page.render({ canvasContext: tmpCtx, viewport: viewport }).promise.then(() => {
-            thumbCache[i] = tmpCanvas;
-            ctxThumb.drawImage(tmpCanvas, 0, 0, thumbWidth, thumbHeight);
-          });
-        }
+
         // Click event: scroll to page
         thumbItem.addEventListener('click', () => {
           const targetDiv = document.querySelector(`.pdf-page[data-page-number="${i}"]`);
@@ -709,7 +764,10 @@
             updatePageInfo();
           }
         });
+
         thumbsContainer.appendChild(thumbItem);
+        // Observe the placeholder for lazy loading
+        thumbnailObserver.observe(thumbItem);
       });
     }
     function updateActiveThumbnail(current) {
