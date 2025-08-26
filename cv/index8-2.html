@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Scrollable PDF Viewer</title>
+  <title>CV</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Use Poppins to match the site’s typography -->
@@ -137,7 +137,7 @@
       margin: 4px 0;
     }
     #outlineList li:hover {
-      text-decoration: underline;
+      text-decoration: bold underline;
     }
     /* Indent nested outlines */
     #outlineList .level-1 { margin-left: 10px; }
@@ -153,6 +153,7 @@
     }
     #thumbsList.active {
       display: flex;
+      
     }
     .thumb-item {
       margin-bottom: 10px;
@@ -315,12 +316,12 @@
       background-color: #fff;
     }
     .pdf-page canvas.pdfCanvas {
-      width: 100%;
+      width: auto;/*100%*/
       height: auto;
       display: block;
     }
     .pdf-page canvas.hlCanvas {
-      position: absolute;
+      position: auto; /*absolute*/
       top: 0;
       left: 0;
       z-index: 10;
@@ -904,10 +905,11 @@
 
         loader.style.display = 'none';
       }).catch(err => {
-        console.error('Error loading PDF:', err);
+        console.error('Sorry, but we did not find this PDF:', err);
+        const viewer = document.getElementById('viewerContainer');
         const errEl = document.getElementById('errorMessage');
         if (errEl) {
-          errEl.textContent = 'Failed to load PDF: ' + (err.message || err);
+          errEl.textContent = 'Sorry, but the system cound not load this PDF: ' + (err.message || err);
           errEl.style.display = 'block';
         }
         loader.style.display = 'none';
@@ -1107,7 +1109,7 @@
       if (searchTimeout) clearTimeout(searchTimeout);
       searchTimeout = setTimeout(() => {
         performSearch(value);
-      }, 300);
+      }, 400);
     });
 
     // Determine file parameter
@@ -1133,8 +1135,8 @@
       const rect = containerEl.getBoundingClientRect();
       const offsetX = e.clientX - rect.left;
       let newPercent = (offsetX / rect.width) * 100;
-      // constrain between 10% and 70%
-      newPercent = Math.max(10, Math.min(70, newPercent));
+      // constrain between 10% and 30%
+      newPercent = Math.max(10, Math.min(30, newPercent));
       sidebarEl.style.width = newPercent + '%';
       // update CSS variable
       document.documentElement.style.setProperty('--sidebar-width', newPercent + '%');
