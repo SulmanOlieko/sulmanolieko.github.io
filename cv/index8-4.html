@@ -41,6 +41,8 @@
 
     /* Toolbar styling */
     #toolbar {
+      position: sticky;
+      top: 0;
       display: flex;
       align-items: center;
       height: var(--toolbar-height);
@@ -86,6 +88,7 @@
 
     /* Sidebar with tabs for outline and thumbnails */
     #sidebar {
+      position: relative; /* Needed for viewport indicator positioning */
       width: var(--sidebar-width);
       flex-basis: var(--sidebar-width);
       background-color: #fff;
@@ -168,21 +171,23 @@
       height: auto;
     }
     .thumb-item.active canvas {
-      border: 2px solid var(--primary-color);
+      border: 3px solid var(--primary-color);
     }
     .thumb-item.active .page-number {
-      color: var(--primary-color);
-      font-weight: bold;
-      border: 1px solid var(--primary-color);
-      border-radius: 4px;
-      padding: 2px;
-      display: inline-block;
+      background-color: var(--primary-color);
+      color: #fff;
+      border-color: var(--primary-color);
     }
     /* Page number displayed below each thumbnail rather than overlay */
     .thumb-item .page-number {
       margin-top: 4px;
       font-size: 12px;
       color: #333;
+      padding: 2px 4px;
+      border-radius: 4px;
+      background-color: rgba(0,0,0,0.1);
+      border: 1px solid transparent;
+      display: inline-block;
     }
 
     /* Divider style */
@@ -272,7 +277,8 @@
     /* Search bar (CloudPDF-like) */
     #searchBar {
       display: none;
-      position: relative;
+      position: sticky;
+      top: var(--toolbar-height);
       background-color: rgba(255, 255, 255, 0.95);
       padding: 6px 10px;
       border-bottom: 1px solid #ddd;
@@ -342,6 +348,18 @@
       0% { transform: translate(-50%, -50%) rotate(0deg); }
       100% { transform: translate(-50%, -50%) rotate(360deg); }
     }
+
+    /* Viewport indicator styles */
+    #viewportIndicator {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      background: rgba(121, 85, 72, 0.2); /* Semi-transparent primary color */
+      border: 1px solid var(--primary-hover);
+      z-index: 600;
+      pointer-events: none;
+      transition: top 0.1s, height 0.1s;
+    }
   </style>
 </head>
 <body>
@@ -382,6 +400,7 @@
       </div>
       <div id="outlineList" class="sidebar-content"></div>
       <div id="thumbsList" class="sidebar-content"></div>
+      <div id="viewportIndicator"></div>
     </div>
     <!-- Divider between sidebar and viewer for resizing -->
     <div id="divider" style="width:4px;cursor:col-resize; background-color:#ddd; display:none;"></div>
@@ -455,7 +474,7 @@
         hlCanvas.classList.add('hlCanvas');
         
         // High-quality rendering
-        const qualityFactor = 1.5;
+        const qualityFactor = 2.0;
         const ratio = window.devicePixelRatio || 1;
         
         // Set actual pixel dimensions for high quality
@@ -710,7 +729,7 @@
 
       const { page } = pageObj;
       const thumbWidth = 150; // Increased width for better quality
-      const qualityFactor = 1.5;
+      const qualityFactor = 2.0;
 
       // Use the page's viewport to maintain aspect ratio
       const pageViewport = page.getViewport({ scale: 1.0 });
@@ -890,6 +909,7 @@
         setDownloadLink(url);
         currentPage = 1;
         updatePageInfo();
+        updateViewportIndicator();
         
         loader.style.display = 'none';
       }).catch(err => {
@@ -1005,6 +1025,7 @@
       document.getElementById('outlineToggle').classList.remove('active');
       document.getElementById('thumbsList').classList.add('active');
       document.getElementById('outlineList').classList.remove('active');
+      updateViewportIndicator();
     });
     // Set default active tab: outline
     document.getElementById('outlineToggle').classList.add('active');
@@ -1108,6 +1129,35 @@
       }, 300);
     });
 
+    /**
+     * Updates the position and size of the viewport indicator in the sidebar.
+     */
+    function updateViewportIndicator() {
+      const thumbsList = document.getElementById('thumbsList');
+      if (thumbsList.classList.contains('active')) {
+        const indicator = document.getElementById('viewportIndicator');
+        const docHeight = document.documentElement.scrollHeight;
+        const thumbHeight = thumbsList.scrollHeight;
+        const scrollTop = window.scrollY;
+        const windowHeight = window.innerHeight;
+
+        const scrollRatio = scrollTop / docHeight;
+        const indicatorTop = scrollRatio * thumbHeight;
+
+        const viewRatio = windowHeight / docHeight;
+        let indicatorHeight = viewRatio * thumbHeight;
+        
+        // Ensure indicator has a minimum height
+        indicatorHeight = Math.max(indicatorHeight, 20);
+
+        indicator.style.top = `${indicatorTop}px`;
+        indicator.style.height = `${indicatorHeight}px`;
+        indicator.style.display = 'block';
+      } else {
+        document.getElementById('viewportIndicator').style.display = 'none';
+      }
+    }
+
     // Determine file parameter
     const fileParam = getQueryParameter('file');
     if (fileParam) {
@@ -1115,6 +1165,9 @@
     } else {
       loadPdf(DEFAULT_URL);
     }
+
+    window.addEventListener('scroll', updateViewportIndicator);
+    window.addEventListener('resize', updateViewportIndicator);
 
     // Divider drag functionality
     let isDraggingDivider = false;
