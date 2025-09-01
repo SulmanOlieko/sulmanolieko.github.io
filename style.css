@@ -16,7 +16,7 @@ body {
 }
 .wrapper {
   position: fixed;
-  bottom: 50px;
+  bottom: 5px;
   right: -370px;
   max-width: 345px;
   width: 100%;
@@ -25,6 +25,9 @@ body {
   padding: 1px 0;
   transition: right 0.3s ease;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  overflow-x: hidden;  /* removes horizontal scroll bar */
+  overflow-y: auto;
 }
 .wrapper.show {
   right: 20px;
@@ -85,6 +88,7 @@ header h2 {
   background-color: #795548;
   color: #fff;
 }
+
 
 
 
