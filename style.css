@@ -9,7 +9,7 @@
 }
 body {
   min-height: 100vh;
-  background-color: #795548;
+  background-color: #008080;
 }
 .wrapper {
   position: fixed;
@@ -32,11 +32,11 @@ body {
   column-gap: 15px;
 }
 header i {
-  color: #795548;
+  color: #008080;
   font-size: 32px;
 }
 header h2 {
-  color: #795548;
+  color: #008080;
   font-weight: 500;
 }
 .wrapper .data {
@@ -47,7 +47,7 @@ header h2 {
   font-size: 16px;
 }
 .data p a {
-  color: #795548;
+  color: #008080;
   text-decoration: none;
 }
 .data p a:hover {
@@ -65,20 +65,21 @@ header h2 {
   color: #fff;
   padding: 8px 0;
   border-radius: 4px;
-  background: #795548;
+  background: #008080;
   cursor: pointer;
   width: calc(100% / 2 - 10px);
   transition: all 0.2s ease;
 }
 .buttons #acceptBtn:hover {
-  background-color: #795548;
+  background-color: #008080;
 }
 #declineBtn {
-  border: 2px solid #795548;
+  border: 2px solid #008080;
   background-color: #fff;
-  color: #795548;
+  color: #008080;
 }
 #declineBtn:hover {
-  background-color: #795548;
+  background-color: #008080;
   color: #fff;
 }
+
