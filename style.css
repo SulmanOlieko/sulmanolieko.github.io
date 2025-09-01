@@ -10,7 +10,6 @@
 body {
   min-height: 100vh;
   background-color: #795548;
-  overflow: hidden;
 }
 .wrapper {
   position: fixed;
@@ -83,6 +82,7 @@ header h2 {
   background-color: #795548;
   color: #fff;
 }
+
 
 
 
