@@ -86,6 +86,19 @@ header h2 {
   color: #fff;
 }
 
+/* Default icon when collapsed */
+.navbar-toggler .fa-rectangle-xmark {
+  display: none;
+}
+
+/* Show X icon when expanded */
+.navbar-toggler[aria-expanded="true"] .fa-bars-staggered {
+  display: none;
+}
+.navbar-toggler[aria-expanded="true"] .fa-rectangle-xmark {
+  display: inline-block;
+}
+
 
 
 
