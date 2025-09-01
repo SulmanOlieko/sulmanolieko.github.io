@@ -25,7 +25,6 @@ body {
   padding: 1px 0;
   transition: right 0.3s ease;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  max-width: 100%;
   overflow-x: hidden;  /* removes horizontal scroll bar */
   overflow-y: auto;
 }
@@ -88,6 +87,7 @@ header h2 {
   background-color: #795548;
   color: #fff;
 }
+
 
 
 
