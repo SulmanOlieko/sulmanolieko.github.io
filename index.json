@@ -128,3 +128,374 @@
     "type": "publication"
   }
 ]
+[
+  {
+    "authors": [
+      "Nyawira Sylvia",
+      "Bolo Peter",
+      "Ntinyari Winnie",
+      "Orero Levi",
+      "Onyango Kevin",
+      "Manjella Aurillia",
+      "Sakha Michael",
+      "Owili Sulman Olieko",
+      "Gumo Pius",
+      "Mbelwa Machio",
+      "Korir Hezekiah",
+      "Fuchs Lisa Elena"
+    ],
+    "categories": "report",
+    "content": "",
+    "date": 1666483200,
+    "expirydate": -62135596800,
+    "kind": "page",
+    "lang": "en",
+    "lastmod": 1666483200,
+    "objectID": "000a0000b000c0001",
+    "permalink": "https://hdl.handle.net/10568/137468",
+    "publishdate": "2023-12-31T03:00:00Z",
+    "relpermalink": "https://hdl.handle.net/10568/137468",
+    "section": "publication",
+    "summary": "The main objective of this context assessment is to provide a comprehensive geographical description of the Agroecological Living Landscapes (ALLs) in Makueni and Kiambu counties in Kenya. The report covers the economic, environmental, social, and political aspects of the two ALLs and assesses the extent to which agroecological principles have been implemented or practiced within these areas.",
+    "tags": null,
+    "title": "Kenya Context Assessment Report: A desk-top review of the context of agroecological principles of Kiambu and Makueni counties",
+    "type": "publication"
+  },
+  {
+    "authors": [
+      "Fuchs Lisa Elena",
+      "Orero Levi",
+      "Kipkorir Lang'at",
+      "Apondi Victoria",
+      "Owili Sulman Olieko"
+    ],
+    "categories": "journal article",
+    "content": "",
+    "date": 1731369600,
+    "expirydate": -62135596800,
+    "kind": "page",
+    "lang": "en",
+    "lastmod": 1731369600,
+    "objectID": "000a0000b000c0005",
+    "permalink": "https://doi.org/10.3389/fsufs.2024.1449615",
+    "publishdate": "2024-11-11T00:00:00Z",
+    "relpermalink": "https://doi.org/10.3389/fsufs.2024.1449615",
+    "section": "publication",
+    "summary": "Urgent action is needed to address climate change, land degradation, and biodiversity loss. The Regreening Africa project (2017–2023), recognized as a UN World Restoration Flagship, aimed to reverse land degradation over large areas of land for triple benefits. The project introduced Asset-Based Community-driven Development (ABCD) sessions to selected community groups, demonstrating that deliberate community engagement and co-design accelerate agroecological integration and sustainable adoption of regreening practices.",
+    "tags": null,
+    "title": "Scaling models for Regreening Africa: enhancing agroecological integration through smallholders’ assets and agency in Kenya",
+    "type": "publication"
+  },
+  {
+    "authors": [
+      "Owili Sulman Olieko",
+      "Otieno David Jakinda",
+      "Chimoita Evans Ligare",
+      "Baijukya Frederick Philbert"
+    ],
+    "categories": "journal article",
+    "content": "",
+    "date": 1727740800,
+    "expirydate": -62135596800,
+    "kind": "page",
+    "lang": "en",
+    "lastmod": 1727740800,
+    "objectID": "000a0000b000c0006",
+    "permalink": "https://doi.org/10.1080/09670874.2024.2413592",
+    "publishdate": "2024-10-01T00:00:00Z",
+    "relpermalink": "https://doi.org/10.1080/09670874.2024.2413592",
+    "section": "publication",
+    "summary": "Transitioning away from synthetic insecticides, the study uses a two-part fractional regression to model adoption and intensity of agro-ecological pest management (APM) among Kenyan smallholder mango farmers. Although adoption rates are moderate, socio-psychological attributes and factors like information constraints, resource endowment, gender and inter-generational dynamics influence intensity decisions. The findings underscore the need for awareness, training and knowledge co-creation to promote sustainable pest management.",
+    "tags": null,
+    "title": "Factors influencing adoption of agro-ecological pest management options for mango fruit fly under information constraints: a two-part fractional regression approach",
+    "type": "publication"
+  },
+  {
+    "authors": [
+      "Fuchs Lisa Elena",
+      "Urbani Ilaria",
+      "Howland Fanny"
+    ],
+    "categories": "learning note",
+    "content": "",
+    "date": 1695513600,
+    "expirydate": -62135596800,
+    "kind": "page",
+    "lang": "en",
+    "lastmod": 1695513600,
+    "objectID": "000a0000b000c0007",
+    "permalink": "https://hdl.handle.net/10568/155371",
+    "publishdate": "2024-09-24T00:00:00Z",
+    "relpermalink": "https://hdl.handle.net/10568/155371",
+    "section": "publication",
+    "summary": "Session exploring realist contribution analysis led by Lisa Elena Fuchs and Sulman Olieko Owili. It covered leveraging data from realist contribution analysis to understand not just outcomes but mechanisms, contexts and actors driving change. The approach offers valuable insights for agroecology and community development interventions.",
+    "tags": null,
+    "title": "Exploring Realist Contribution Analysis: A Dive into Data Use and Modelling",
+    "type": "publication"
+  },
+  {
+    "authors": [
+      "Owili Sulman Olieko",
+      "Otieno David Jakinda",
+      "Chimoita Evans Ligare",
+      "Baijukya Frederick Philbert"
+    ],
+    "categories": "poster",
+    "content": "",
+    "date": 1727827200,
+    "expirydate": -62135596800,
+    "kind": "page",
+    "lang": "en",
+    "lastmod": 1727827200,
+    "objectID": "000a0000b000c0008",
+    "permalink": "https://sulmanolieko.github.io/publication/poster/Agroecology_conference_poster-3.pdf",
+    "publishdate": "2024-10-02T00:00:00Z",
+    "relpermalink": "https://sulmanolieko.github.io/publication/poster/Agroecology_conference_poster-3.pdf",
+    "section": "publication",
+    "summary": "Poster summarising the efficiency effects of transitioning and intensifying agro‑ecological pest management practices among Kenyan mango farmers using a latent class stochastic metafrontier approach.",
+    "tags": null,
+    "title": "Heterogeneous efficiency effects of agro‑ecological fruit fly management transition and intensification among smallholder mango farmers: a latent class stochastic metafrontier approach",
+    "type": "publication"
+  },
+  {
+    "authors": [
+      "Sulman Olieko"
+    ],
+    "categories": "blog post",
+    "content": "",
+    "date": 1739491200,
+    "expirydate": -62135596800,
+    "kind": "page",
+    "lang": "en",
+    "lastmod": 1739491200,
+    "objectID": "blog-2025-reflection",
+    "permalink": "https://sulmanolieko.github.io/post/reflection/",
+    "publishdate": "2025-02-14T00:00:00Z",
+    "relpermalink": "https://sulmanolieko.github.io/post/reflection/",
+    "section": "post",
+    "summary": "The article introduces the reflection problem identified by Manski, explaining how simultaneous social interactions make it difficult to separate peer effects from contextual or correlated effects. It discusses endogeneity in group formation, describes advanced econometric methods and network-based approaches, and highlights policy implications for education, agriculture and public health. The author emphasises careful identification strategies and robust econometric techniques to distinguish genuine peer effects from spurious correlations.",
+    "tags": [
+      "econometrics",
+      "peer effects"
+    ],
+    "title": "The Reflection Problem in Econometrics",
+    "type": "post"
+  },
+  {
+    "authors": [
+      "Sulman Olieko"
+    ],
+    "categories": "blog post",
+    "content": "",
+    "date": 1737849600,
+    "expirydate": -62135596800,
+    "kind": "page",
+    "lang": "en",
+    "lastmod": 1737849600,
+    "objectID": "blog-2025-magic-bullet",
+    "permalink": "https://sulmanolieko.github.io/post/magic_bullet/",
+    "publishdate": "2025-01-26T00:00:00Z",
+    "relpermalink": "https://sulmanolieko.github.io/post/magic_bullet/",
+    "section": "post",
+    "summary": "The article argues that there is no single “magic bullet” for causal inference using observational data. It critiques shortcut methods such as propensity score matching, sensitivity analyses and automated machine learning, noting that they cannot fully address biases from unobserved confounders. Instead, the author advocates for a multi-method approach that integrates robust statistical techniques with domain expertise and careful consideration of assumptions to draw credible causal insights.",
+    "tags": [
+      "causal inference",
+      "observational"
+    ],
+    "title": "Why There is No “Magic Bullet” for Causal Inference using Observational Data",
+    "type": "post"
+  },
+  {
+    "authors": [
+      "Sulman Olieko"
+    ],
+    "categories": "blog post",
+    "content": "",
+    "date": 1696550400,
+    "expirydate": -62135596800,
+    "kind": "page",
+    "lang": "en",
+    "lastmod": 1696550400,
+    "objectID": "blog-2023-collatz",
+    "permalink": "https://sulmanolieko.github.io/post/Collatz/",
+    "publishdate": "2023-10-06T00:00:00Z",
+    "relpermalink": "https://sulmanolieko.github.io/post/Collatz/",
+    "section": "post",
+    "summary": "Introduces the Collatz conjecture and demonstrates the CollatzR R package for exploring Collatz sequences. The post explains functions like compute_collatz(), generate_collatz(), and visualize_collatz(), which compute, generate and visualize the sequences. It discusses applications of the conjecture in algorithmic efficiency, detecting mathematical patterns and teaching recursion and iteration. The author concludes that although the conjecture remains unsolved, tools like CollatzR facilitate experimentation and understanding of this fascinating problem.",
+    "tags": [
+      "R",
+      "number theory",
+      "Collatz"
+    ],
+    "title": "Exploring the Collatz Conjecture with CollatzR",
+    "type": "post"
+  },
+  {
+    "authors": [
+      "Sulman Olieko"
+    ],
+    "categories": "page",
+    "content": "",
+    "date": null,
+    "expirydate": -62135596800,
+    "kind": "page",
+    "lang": "en",
+    "lastmod": null,
+    "objectID": "page-home",
+    "permalink": "https://sulmanolieko.github.io/",
+    "publishdate": "2025-01-06T00:00:00Z",
+    "relpermalink": "https://sulmanolieko.github.io/",
+    "section": "page",
+    "summary": "Homepage featuring Sulman Olieko’s biography, research interests and links to featured publications and blog posts.",
+    "tags": null,
+    "title": "Homepage",
+    "type": "page"
+  },
+  {
+    "authors": [
+      "Sulman Olieko"
+    ],
+    "categories": "page",
+    "content": "",
+    "date": null,
+    "expirydate": -62135596800,
+    "kind": "page",
+    "lang": "en",
+    "lastmod": null,
+    "objectID": "page-publications",
+    "permalink": "https://sulmanolieko.github.io/publication/",
+    "publishdate": "2025-01-06T00:00:00Z",
+    "relpermalink": "https://sulmanolieko.github.io/publication/",
+    "section": "publication",
+    "summary": "Listing of publications with abstracts and external links to journal articles, reports and posters.",
+    "tags": null,
+    "title": "Publications",
+    "type": "page"
+  },
+  {
+    "authors": [
+      "Sulman Olieko"
+    ],
+    "categories": "page",
+    "content": "",
+    "date": null,
+    "expirydate": -62135596800,
+    "kind": "page",
+    "lang": "en",
+    "lastmod": null,
+    "objectID": "page-blog-index",
+    "permalink": "https://sulmanolieko.github.io/post/",
+    "publishdate": "2025-01-06T00:00:00Z",
+    "relpermalink": "https://sulmanolieko.github.io/post/",
+    "section": "post",
+    "summary": "Index page listing all blog posts on topics such as econometrics, causal inference and mathematical exploration.",
+    "tags": null,
+    "title": "Blog Posts",
+    "type": "page"
+  },
+  {
+    "authors": [
+      "Sulman Olieko"
+    ],
+    "categories": "page",
+    "content": "",
+    "date": null,
+    "expirydate": -62135596800,
+    "kind": "page",
+    "lang": "en",
+    "lastmod": null,
+    "objectID": "page-cv",
+    "permalink": "https://sulmanolieko.github.io/cv/",
+    "publishdate": "2025-01-06T00:00:00Z",
+    "relpermalink": "https://sulmanolieko.github.io/cv/",
+    "section": "cv",
+    "summary": "Interactive CV page that uses a PDF viewer to display Sulman Olieko’s curriculum vitae.",
+    "tags": null,
+    "title": "Curriculum Vitae",
+    "type": "page"
+  },
+  {
+    "authors": [
+      "Sulman Olieko"
+    ],
+    "categories": "page",
+    "content": "",
+    "date": null,
+    "expirydate": -62135596800,
+    "kind": "page",
+    "lang": "en",
+    "lastmod": null,
+    "objectID": "page-latexer",
+    "permalink": "https://sulmanolieko.github.io/latexer/",
+    "publishdate": "2025-01-06T00:00:00Z",
+    "relpermalink": "https://sulmanolieko.github.io/latexer/",
+    "section": "page",
+    "summary": "LaTeXeR web app providing an interactive interface for converting and rendering LaTeX expressions in the browser.",
+    "tags": null,
+    "title": "LaTeXeR",
+    "type": "page"
+  },
+  {
+    "authors": [
+      "Sulman Olieko"
+    ],
+    "categories": "page",
+    "content": "",
+    "date": null,
+    "expirydate": -62135596800,
+    "kind": "page",
+    "lang": "en",
+    "lastmod": null,
+    "objectID": "page-categories",
+    "permalink": "https://sulmanolieko.github.io/categories/",
+    "publishdate": "2025-01-06T00:00:00Z",
+    "relpermalink": "https://sulmanolieko.github.io/categories/",
+    "section": "page",
+    "summary": "Categories page listing the various categories of posts and publications.",
+    "tags": null,
+    "title": "Categories",
+    "type": "page"
+  },
+  {
+    "authors": [
+      "Sulman Olieko"
+    ],
+    "categories": "page",
+    "content": "",
+    "date": null,
+    "expirydate": -62135596800,
+    "kind": "page",
+    "lang": "en",
+    "lastmod": null,
+    "objectID": "page-landing",
+    "permalink": "https://sulmanolieko.github.io/landing/",
+    "publishdate": "2025-01-06T00:00:00Z",
+    "relpermalink": "https://sulmanolieko.github.io/landing/",
+    "section": "page",
+    "summary": "Landing page providing a concise introduction to the website along with contact information and navigation links.",
+    "tags": null,
+    "title": "Landing",
+    "type": "page"
+  },
+  {
+    "authors": [
+      "Sulman Olieko"
+    ],
+    "categories": "page",
+    "content": "",
+    "date": null,
+    "expirydate": -62135596800,
+    "kind": "page",
+    "lang": "en",
+    "lastmod": null,
+    "objectID": "page-login",
+    "permalink": "https://sulmanolieko.github.io/login/",
+    "publishdate": "2025-01-06T00:00:00Z",
+    "relpermalink": "https://sulmanolieko.github.io/login/",
+    "section": "page",
+    "summary": "Login page for accessing restricted features on the site.",
+    "tags": null,
+    "title": "Login",
+    "type": "page"
+  }
+]
