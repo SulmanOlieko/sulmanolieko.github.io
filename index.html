@@ -400,13 +400,8 @@ empowerment of marginalised communities and groups, while mitigating the impacts
     });
   </script>
   </div>
-
-<aside id="sidebar">
-  <h5>Contents</h5>
-  <nav id="content-tree"></nav>
-</aside>
   
-     <!-- Sidebar Row 
+     <!-- Sidebar Row -->
       <aside id="sidebar" class="home-section">
         <small><h5>On this page</h5></small>
         <nav>
@@ -435,65 +430,7 @@ empowerment of marginalised communities and groups, while mitigating the impacts
         </nav>
       </aside>
   </div>
--->
-<script>
-function buildContentTree() {
-  const headings = document.querySelectorAll('main h1, main h2, main h3, main h4');
-  if (!headings.length) return;
-  const tree = [];
-  let lastH2Li = null, lastH3Li = null;
 
-  const ul = document.createElement('ul');
-  ul.className = 'file-tree';
-
-  headings.forEach(heading => {
-    if (!heading.id) heading.id = heading.textContent.trim().replace(/\s+/g, '-').toLowerCase();
-    const navLink = document.createElement('a');
-    navLink.href = '#' + heading.id;
-    navLink.textContent = heading.textContent;
-    navLink.className = 'nav-link';
-
-    const li = document.createElement('li');
-    li.appendChild(navLink);
-
-    if (heading.tagName === 'H1') {
-      ul.appendChild(li);
-      lastH2Li = null;
-      lastH3Li = null;
-    } else if (heading.tagName === 'H2') {
-      let subUl = li.querySelector('ul');
-      if (!subUl) {
-        subUl = document.createElement('ul');
-      }
-      li.appendChild(subUl);
-      ul.appendChild(li);
-      lastH2Li = li;
-      lastH3Li = null;
-    } else if (heading.tagName === 'H3' && lastH2Li) {
-      let subUl = lastH2Li.querySelector('ul');
-      if (!subUl) {
-        subUl = document.createElement('ul');
-        lastH2Li.appendChild(subUl);
-      }
-      subUl.appendChild(li);
-      lastH3Li = li;
-    } else if (heading.tagName === 'H4' && lastH3Li) {
-      let subUl = lastH3Li.querySelector('ul');
-      if (!subUl) {
-        subUl = document.createElement('ul');
-        lastH3Li.appendChild(subUl);
-      }
-      subUl.appendChild(li);
-    } else {
-      ul.appendChild(li);
-    }
-  });
-  document.getElementById('content-tree').appendChild(ul);
-}
-buildContentTree();
-</script>
-  
-  
     <style>
     /* Research Section */
     .research-grid {
