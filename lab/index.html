@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ekonly Labs</title>
+
   <style>
     /* Reset & Base Styles */
     * {
@@ -21,81 +16,54 @@
       max-width: 1200px;
       margin: auto;
     }
-    /* Header */
-    header {
-      background: #fff;
-      border-bottom: 1px solid #ddd;
-      padding: 20px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .header-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: #2c3e50;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: #2c3e50;
-      transition: color 0.3s;
-    }
-    nav ul li a:hover {
-      color: #e67e22;
-    }
-    /* Hero Section */
-    .hero {
-      background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
-      height: 90vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    
+    
+    
+    
+
+
+
+    
+   
+    /* Contact Section */
+    .contact {
+      padding: 60px 0;
       text-align: center;
-      color: #fff;
-      position: relative;
     }
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-    }
-    .hero-content h2 {
-      font-size: 3rem;
+    .contact h2 {
       margin-bottom: 20px;
+      color: #2c3e50;
     }
-    .hero-content p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-    }
-    .btn {
-      padding: 10px 20px;
-      background: #e67e22;
-      color: #fff;
+    .contact a {
+      color: #e67e22;
       text-decoration: none;
-      border-radius: 5px;
-      transition: background 0.3s;
     }
-    .btn:hover {
-      background: #cf711f;
+    /* Footer */
+    footer {
+      background: #2c3e50;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 0.9rem;
     }
+  </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Research Section -->
+  <!-- Chart.js CDN for interactive data visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
     /* Research Section */
     .research {
       padding: 60px 0;
@@ -144,111 +112,9 @@
       height: 400px;
       width: 100%;
     }
-    /* Team Section */
-    .team {
-      padding: 60px 0;
-      background: #f9f9f9;
-    }
-    .team h2 {
-      text-align: center;
-      margin-bottom: 40px;
-      color: #2c3e50;
-    }
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      text-align: center;
-    }
-    .team-member {
-      background: #fff;
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
-    .team-member img {
-      border-radius: 50%;
-      margin-bottom: 15px;
-    }
-    /* Events Section */
-    .events {
-      padding: 60px 0;
-    }
-    .events h2 {
-      text-align: center;
-      margin-bottom: 40px;
-      color: #2c3e50;
-    }
-    .events ul {
-      list-style: none;
-      max-width: 800px;
-      margin: auto;
-    }
-    .events li {
-      background: #fff;
-      padding: 20px;
-      margin-bottom: 20px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
-    .events li h3 {
-      color: #e67e22;
-      margin-bottom: 10px;
-    }
-    /* Contact Section */
-    .contact {
-      padding: 60px 0;
-      text-align: center;
-    }
-    .contact h2 {
-      margin-bottom: 20px;
-      color: #2c3e50;
-    }
-    .contact a {
-      color: #e67e22;
-      text-decoration: none;
-    }
-    /* Footer */
-    footer {
-      background: #2c3e50;
-      color: #fff;
-      padding: 20px 0;
-      text-align: center;
-      font-size: 0.9rem;
-    }
+  
   </style>
-  <!-- Chart.js CDN for interactive data visualization -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-  <!-- Header with navigation -->
-  <header>
-    <div class="container header-container">
-      <h1 class="logo">Ekonly Labs</h1>
-      <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#research">Research</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="#events">Events</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
-  <!-- Main content -->
-  <main>
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <h2>Pioneering Economics Research</h2>
-        <p>Where classic scholarship meets modern innovation.</p>
-        <a href="#research" class="btn">Explore Research</a>
-      </div>
-    </section>
-
-    <!-- Research Section -->
     <section id="research" class="research">
       <div class="container">
         <h2>Our Research</h2>
@@ -275,48 +141,10 @@
     <!-- Interactive Data Visualization Section -->
     <section id="data-visualization" class="visualization">
       <div class="container">
-        <h2>Interactive Data Visualization</h2>
+        <h2>Citation Index</h2>
         <div class="chart-container">
           <canvas id="economicsChart"></canvas>
         </div>
-      </div>
-    </section>
-
-    <!-- Team Section -->
-    <section id="team" class="team">
-      <div class="container">
-        <h2>Meet the Team</h2>
-        <div class="team-grid">
-          <div class="team-member">
-            <img src="https://via.placeholder.com/150" alt="Dr. Jane Doe">
-            <h3>Dr. Jane Doe</h3>
-            <p>Lead Economist</p>
-          </div>
-          <div class="team-member">
-            <img src="https://via.placeholder.com/150" alt="Dr. John Smith">
-            <h3>Dr. John Smith</h3>
-            <p>Research Analyst</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Events Section -->
-    <section id="events" class="events">
-      <div class="container">
-        <h2>Upcoming Events</h2>
-        <ul>
-          <li>
-            <h3>Economics Symposium 2025</h3>
-            <p>Date: May 10, 2025</p>
-            <a href="#">Learn More</a>
-          </li>
-          <li>
-            <h3>Research Webinar</h3>
-            <p>Date: June 15, 2025</p>
-            <a href="#">Learn More</a>
-          </li>
-        </ul>
       </div>
     </section>
 
@@ -324,17 +152,9 @@
     <section id="contact" class="contact">
       <div class="container">
         <h2>Contact Us</h2>
-        <p>For inquiries, please email us at <a href="mailto:admin@ekonly.org">admin@ekonly.org</a>.</p>
+        <p>For inquiries, please email me at <a href="mailto:oliekosulman@gmail.com">oliekosulman[at]gmail.com</a>.</p>
       </div>
     </section>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Ekonly Labs. All rights reserved.</p>
-    </div>
-  </footer>
 
   <!-- JavaScript -->
   <script>
@@ -368,5 +188,4 @@
       });
     });
   </script>
-</body>
-</html>
+
