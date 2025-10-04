@@ -443,6 +443,93 @@ empowerment of marginalised communities and groups, while mitigating the impacts
         </div>
       </div> 
   -->
+
+
+    <style>
+    /* Research Section */
+    .research {
+      padding: 60px 0;
+      background: #f9f9f9;
+    }
+    .research h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #2c3e50;
+    }
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .research-item {
+      background: #fff;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      transition: transform 0.3s;
+    }
+    .research-item:hover {
+      transform: translateY(-5px);
+    }
+    .research-item h3 {
+      margin-bottom: 10px;
+      color: #e67e22;
+    }
+    .research-item a {
+      text-decoration: none;
+      color: #e67e22;
+      font-weight: bold;
+    }
+    /* Visualization Section */
+    .visualization {
+      padding: 60px 0;
+    }
+    .visualization h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #2c3e50;
+    }
+    .chart-container {
+      position: relative;
+      height: 400px;
+      width: 100%;
+    }
+  
+  </style>
+
+    <div id="research" class="research">
+      <div class="container">
+        <h2>Our Research</h2>
+        <div class="research-grid">
+          <article class="research-item">
+            <h3>Publication Title One</h3>
+            <p>A brief description of this groundbreaking study in economics.</p>
+            <a href="#">Read More</a>
+          </article>
+          <article class="research-item">
+            <h3>Publication Title Two</h3>
+            <p>A brief description of another impactful study in our lab.</p>
+            <a href="#">Read More</a>
+          </article>
+          <article class="research-item">
+            <h3>Publication Title Three</h3>
+            <p>A brief description highlighting innovative research methodologies.</p>
+            <a href="#">Read More</a>
+          </article>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+  
+
+  
+  
       <div id="featured-research" style="max-width: 950px; margin: 0 auto; padding: 0 2px;">
       <div class="section-heading" style="align-items: center;">
         <h2>Featured research</h2>
@@ -943,6 +1030,53 @@ empowerment of marginalised communities and groups, while mitigating the impacts
       </div>
         
   </div>
+
+      <!-- Interactive Data Visualization Section -->
+    <div id="data-visualization" class="visualization">
+      <div class="container">
+        <h2>Citation Index</h2>
+        <div class="chart-container">
+          <canvas id="economicsChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Section -->
+  <style>
+    .contact {
+      padding: 60px 0;
+      text-align: center;
+    }
+    .contact h2 {
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+    .contact a {
+      color: #e67e22;
+      text-decoration: none;
+    }
+    /* Footer */
+    footer {
+      background: #2c3e50;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  </style>
+    <div id="contact" class="contact">
+      <div class="container">
+        <h2>Contact Us</h2>
+        <p>For inquiries, please email me at <a href="mailto:oliekosulman@gmail.com">oliekosulman[at]gmail.com</a>.</p>
+      </div>
+    </div>
+
+
+
+
+
+
+  
   
 <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
      <img src="/images/open-doodles/svg/DoogieDoodle.svg" alt="publication doodle" style="width: 200px; height: auto;">
@@ -1240,6 +1374,41 @@ empowerment of marginalised communities and groups, while mitigating the impacts
         document.querySelector(link.getAttribute('href')).scrollIntoView({
           behavior: 'smooth'
         });
+      });
+    });
+  </script>
+
+  <!-- JavaScript -->
+  <!-- Chart.js CDN for interactive data visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Get the context of the canvas element for Chart.js
+      const ctx = document.getElementById('economicsChart').getContext('2d');
+      // Create an interactive line chart showing a sample economic growth trend
+      const economicsChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['2023', '2024', '2025'],
+          datasets: [{
+            label: 'Citation (counts)',
+            data: [2, 4, 0],
+            backgroundColor: 'rgba(230, 126, 34, 0.2)',
+            borderColor: 'rgba(230, 126, 34, 1)',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.3,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+            }
+          }
+        }
       });
     });
   </script>
