@@ -1,0 +1,365 @@
+/* ==============================================================================
+//                        LaTeXeR - Main Stylesheet
+// ==============================================================================
+// This file contains all the custom styles for the application, including the
+// light and dark themes, layout, and component-specific styling. The design
+// is based on the color palette from sulmanolieko.github.io.
+// ==============================================================================
+
+// ----------------------------------
+//         CSS VARIABLES
+// ----------------------------------
+// Centralized color palette for easy theme management.
+*/
+:root {
+  /* Light Theme Palette */
+  --font-family: 'Poppins', sans-serif;
+  --bg-light: #e2d4d0;
+  --bg-light-accent: #d8c6c0;
+  --surface-light: #f7e6e1;
+  --primary-light: #795548;
+  --primary-light-hover: #593f35;
+  --text-light: #313131;
+  --text-light-muted: #6c757d;
+  --border-light: #c5b5b0;
+
+  /* Dark Theme Palette */
+  --bg-dark: #282a36;
+  --bg-dark-accent: #23252f;
+  --surface-dark: #343a40;
+  --primary-dark: #98a6ad;
+  --primary-dark-hover: #b0b8bf;
+  --text-dark: #f8f8f2;
+  --text-dark-muted: #98a6ad;
+  --border-dark: #44475a;
+
+  /* Universal Variables */
+  --font-size-base: 16px;
+  --header-height: 60px;
+  --border-radius: 5px;
+  --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ==============================================================================
+//                      GLOBAL & THEME STYLES
+// ============================================================================== */
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Light Theme (Default) */
+body {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+}
+
+#app-container {
+  background-color: var(--bg-light);
+}
+
+/* Dark Theme */
+body.dark {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+body.dark #app-container {
+  background-color: var(--bg-dark);
+}
+
+body.dark h1, body.dark h2, body.dark h3, body.dark h4 {
+  color: var(--text-dark-muted);
+}
+
+/* ==============================================================================
+//                      LAYOUT & STRUCTURE
+// ============================================================================== */
+
+#app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+header {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border-light);
+  background-color: var(--surface-light);
+}
+
+body.dark header {
+  border-bottom-color: var(--border-dark);
+  background-color: var(--surface-dark);
+}
+
+#main-content {
+  display: flex;
+  height: calc(100vh - var(--header-height));
+  width: 100%;
+}
+
+.split {
+  padding: 10px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+/* Split.js Gutter Styling */
+.gutter {
+  background-color: var(--bg-light-accent);
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+.gutter.gutter-horizontal {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bM/5+BgYkBgYkBiUUgC8HwBwA9sQZ0GkiMIQAAAABJRU5ErkJggg==');
+  cursor: col-resize;
+}
+.gutter.gutter-vertical {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIE0wAbAMBQAAHw4qRXAAAAAElFTkSuQmCC');
+  cursor: row-resize;
+}
+body.dark .gutter {
+  background-color: var(--bg-dark-accent);
+}
+
+/* ==============================================================================
+//                          HEADER & LOGO
+// ============================================================================== */
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 40px;
+  margin-right: 15px;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* ==============================================================================
+//                      BUTTONS & ACTIONS
+// ============================================================================== */
+
+.btn, .btn-compile, .btn-icon, .btn-secondary {
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-compile {
+  background-color: var(--primary-light);
+  color: white;
+}
+.btn-compile:hover {
+  background-color: var(--primary-light-hover);
+  transform: translateY(-2px);
+}
+
+.btn-icon {
+  background: none;
+  border: 1px solid var(--border-light);
+  color: var(--text-light-muted);
+  padding: 8px;
+}
+.btn-icon:hover {
+  background-color: var(--bg-light-accent);
+}
+
+body.dark .btn-compile {
+  background-color: var(--primary-dark);
+  color: var(--bg-dark);
+}
+body.dark .btn-compile:hover {
+  background-color: var(--primary-dark-hover);
+}
+
+body.dark .btn-icon {
+  border-color: var(--border-dark);
+  color: var(--text-dark-muted);
+}
+body.dark .btn-icon:hover {
+  background-color: var(--bg-dark-accent);
+}
+
+/* ==============================================================================
+//                        SIDEBARS & FILE LIST
+// ============================================================================== */
+
+#file-sidebar, #editor-area, #preview-area {
+  background-color: var(--surface-light);
+  border-right: 1px solid var(--border-light);
+}
+
+#preview-area {
+  border-right: none;
+}
+
+body.dark #file-sidebar, body.dark #editor-area, body.dark #preview-area {
+  background-color: var(--surface-dark);
+  border-right-color: var(--border-dark);
+}
+
+.sidebar-section {
+  margin-bottom: 20px;
+}
+
+.sidebar-section h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--text-light-muted);
+}
+body.dark .sidebar-section h4 {
+  color: var(--text-dark-muted);
+}
+
+.file-tree {
+  list-style: none;
+  padding: 0;
+}
+
+.file-item, .folder-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  transition: background-color 0.2s;
+}
+.file-item:hover, .folder-item:hover {
+  background-color: var(--bg-light-accent);
+}
+body.dark .file-item:hover, body.dark .folder-item:hover {
+  background-color: var(--bg-dark-accent);
+}
+
+.file-name, .folder-name {
+  flex-grow: 1;
+}
+.file-actions, .folder-actions {
+  display: flex;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.file-item:hover .file-actions, .folder-item:hover .folder-actions {
+  opacity: 1;
+}
+
+.file-actions a, .folder-actions a {
+  color: var(--text-light-muted);
+  text-decoration: none;
+}
+body.dark .file-actions a, body.dark .folder-actions a {
+  color: var(--text-dark-muted);
+}
+
+/* ==============================================================================
+//                      EDITOR & STATUS BAR
+// ============================================================================== */
+
+#editor-area {
+  padding: 0;
+}
+
+#status-bar {
+  height: 30px;
+  line-height: 30px;
+  padding: 0 15px;
+  font-size: 0.8rem;
+  background-color: var(--bg-light-accent);
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-light-muted);
+}
+body.dark #status-bar {
+  background-color: var(--bg-dark-accent);
+  border-bottom-color: var(--border-dark);
+  color: var(--text-dark-muted);
+}
+
+.ace_editor {
+  border: none !important;
+}
+
+/* ==============================================================================
+//                      PREVIEW & LOGS
+// ============================================================================== */
+
+#preview-area {
+  padding: 0;
+}
+
+#preview-split {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#pdf-container, #docker-console-container {
+  padding: 15px;
+  overflow: auto;
+}
+
+#pdf-container h4, #docker-console-container h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+#pdfViewUI, #pdfViewUI object {
+  width: 100%;
+  height: 100%;
+}
+
+/* ==============================================================================
+//                      SETTINGS PANEL
+// ============================================================================== */
+
+#settings-panel {
+  display: none;
+  position: fixed;
+  top: var(--header-height);
+  right: 20px;
+  width: 300px;
+  background-color: var(--surface-light);
+  border: 1px solid var(--border-light);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 20px;
+  z-index: 1100;
+}
+body.dark #settings-panel {
+  background-color: var(--surface-dark);
+  border-color: var(--border-dark);
+}
+
+#settings-panel h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
