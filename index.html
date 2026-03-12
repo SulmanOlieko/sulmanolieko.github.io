@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en-US" data-bs-theme="light">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
@@ -26,6 +26,7 @@
 
 <!-- pkgdown -->
 <script src="pkgdown.js"></script>
+<script src="lightswitch.js"></script>
 <link href="extra.css" rel="stylesheet">
 
 <style>
@@ -122,6 +123,33 @@
 body {
   padding-top: 80px; 
 }
+/* Dark Mode Inline Overrides */
+[data-bs-theme="dark"] .pub-card {
+  border-color: var(--bs-border-color) !important;
+}
+[data-bs-theme="dark"] .badge-wp {
+  background-color: rgba(206, 212, 218, 0.1); 
+  color: #ced4da; 
+}
+[data-bs-theme="dark"] .badge-journal {
+  background-color: rgba(106, 217, 171, 0.15); 
+  color: #6ad9ab; 
+}
+[data-bs-theme="dark"] .tag-pill {
+  background-color: rgba(106, 217, 171, 0.1);
+  color: #6ad9ab;
+  border-color: rgba(106, 217, 171, 0.2);
+}
+[data-bs-theme="dark"] .tag-pill:hover {
+  background-color: rgba(106, 217, 171, 0.2);
+}
+[data-bs-theme="dark"] .pub-thumbnail {
+  border-color: var(--bs-border-color);
+  opacity: 0.85;
+}
+[data-bs-theme="dark"] .text-muted {
+  color: #adb5bd !important;
+}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
 </head>
@@ -144,6 +172,16 @@ body {
         <li class="nav-item"><a class="nav-link" href="#papers">Working Papers</a></li>
       </ul>
       <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Toggle theme (light)">
+            <span class="fa fa-sun"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-lightswitch">
+            <li><button class="dropdown-item" data-bs-theme-value="light"><span class="fa fa-sun me-2"></span> Light</button></li>
+            <li><button class="dropdown-item" data-bs-theme-value="dark"><span class="fa fa-moon me-2"></span> Dark</button></li>
+            <li><button class="dropdown-item" data-bs-theme-value="auto"><span class="fa fa-adjust me-2"></span> Auto</button></li>
+          </ul>
+        </li>
         <li class="nav-item"><a class="external-link nav-link" href="https://github.com/SulmanOlieko" aria-label="GitHub"><span class="fa fab fa-github"></span></a></li>
       </ul>
     </div>
