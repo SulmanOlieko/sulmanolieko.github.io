@@ -1,0 +1,188 @@
+/* ==========================================================================
+   metafrontieR pkgdown — extra.css
+   Custom styles layered on top of Bootstrap 5 / Flatly
+   ========================================================================== */
+
+/* ---------- CSS Variables ------------------------------------------------- */
+:root {
+  --mfr-green-dark:   #1a6b4e;
+  --mfr-green-mid:    #2d8f65;
+  --mfr-green-light:  #e8f5ef;
+  --mfr-accent:       #f0a500;
+  --mfr-code-bg:      #f6f8fa;
+  --mfr-border:       #dee2e6;
+  --mfr-shadow:       0 4px 24px rgba(26, 107, 78, 0.10);
+  --mfr-radius:       0.6rem;
+}
+
+/* ---------- Global body --------------------------------------------------- */
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  color: #1c1c1e;
+}
+
+/* ---------- Navbar --------------------------------------------------------- */
+.navbar {
+  box-shadow: 0 2px 12px rgba(0,0,0,.08);
+  border-bottom: 2px solid var(--mfr-green-dark);
+}
+
+.navbar-brand img {
+  border-radius: 6px;
+}
+
+/* ---------- Hero / Home page ---------------------------------------------- */
+.jumbotron, .homepage-hero {
+  background: linear-gradient(135deg, var(--mfr-green-dark) 0%, var(--mfr-green-mid) 100%);
+  color: #fff;
+  border-radius: var(--mfr-radius);
+  padding: 3rem 2.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--mfr-shadow);
+}
+
+/* Home page title badge strip */
+#pkgdown-sidebar .list-unstyled li a {
+  transition: color 0.2s;
+}
+
+/* ---------- Headings ------------------------------------------------------- */
+h1, h2, h3, .h1, .h2, .h3 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h2.hasAnchor, h3.hasAnchor {
+  border-left: 4px solid var(--mfr-green-mid);
+  padding-left: 0.75rem;
+  margin-left: -0.75rem;
+}
+
+/* ---------- Sidebar (reference + articles) -------------------------------- */
+.sidebar {
+  background: var(--mfr-green-light);
+  border-radius: var(--mfr-radius);
+  padding: 1.25rem 1rem;
+  border: 1px solid var(--mfr-border);
+}
+
+.sidebar h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mfr-green-dark);
+  font-weight: 700;
+  border-bottom: 1px solid var(--mfr-border);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ---------- Code blocks ---------------------------------------------------- */
+pre, .sourceCode {
+  background: var(--mfr-code-bg) !important;
+  border: 1px solid var(--mfr-border);
+  border-radius: var(--mfr-radius);
+  box-shadow: inset 0 1px 4px rgba(0,0,0,.05);
+}
+
+/* Inline code */
+code:not([class]) {
+  background: #e8f5ef;
+  color: var(--mfr-green-dark);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  font-size: 0.88em;
+}
+
+/* ---------- Reference page tiles ------------------------------------------ */
+.ref-index .ref-description {
+  color: #555;
+  font-size: 0.92rem;
+}
+
+/* ---------- Tables --------------------------------------------------------- */
+table.table {
+  border-radius: var(--mfr-radius);
+  overflow: hidden;
+  font-size: 0.9rem;
+}
+
+table.table thead th {
+  background: var(--mfr-green-dark);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+}
+
+table.table tbody tr:hover {
+  background: var(--mfr-green-light);
+  transition: background 0.15s;
+}
+
+/* ---------- Badges --------------------------------------------------------- */
+.badge-version {
+  background: var(--mfr-green-dark) !important;
+  font-size: 0.75rem;
+  border-radius: 4px;
+}
+
+/* ---------- Callout blocks (pkgdown 2.x notes / tips) --------------------- */
+.callout {
+  border-radius: var(--mfr-radius);
+  border-left: 5px solid;
+}
+.callout-note   { border-color: #17a2b8; background: #e8f8fb; }
+.callout-tip    { border-color: var(--mfr-green-mid); background: var(--mfr-green-light); }
+.callout-warning{ border-color: #f0a500; background: #fdf5e0; }
+.callout-danger { border-color: #dc3545; background: #fde8ea; }
+
+/* ---------- Cards ---------------------------------------------------------- */
+.card {
+  border: 1px solid var(--mfr-border);
+  border-radius: var(--mfr-radius);
+  box-shadow: var(--mfr-shadow);
+  transition: box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 8px 32px rgba(26, 107, 78, 0.15);
+}
+
+.card-header {
+  background: linear-gradient(90deg, var(--mfr-green-dark), var(--mfr-green-mid));
+  color: #fff;
+  font-weight: 600;
+  border-radius: var(--mfr-radius) var(--mfr-radius) 0 0 !important;
+}
+
+/* ---------- Link colours --------------------------------------------------- */
+a { color: var(--mfr-green-dark); }
+a:hover { color: var(--mfr-green-mid); text-decoration: underline; }
+
+/* Navbar links */
+.navbar-nav .nav-link {
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+/* ---------- Footer --------------------------------------------------------- */
+footer {
+  background: #f4f4f4;
+  border-top: 2px solid var(--mfr-green-dark);
+  padding: 1.5rem 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* ---------- Scroll-to-top / anchor micro-animation ----------------------- */
+.hasAnchor:target {
+  scroll-margin-top: 80px;
+}
+
+/* ---------- Responsive tweaks --------------------------------------------- */
+@media (max-width: 768px) {
+  h2.hasAnchor, h3.hasAnchor {
+    padding-left: 0.5rem;
+    margin-left: -0.5rem;
+  }
+}
