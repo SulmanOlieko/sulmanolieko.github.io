@@ -123,6 +123,33 @@
 body {
   padding-top: 80px; 
 }
+/* Dark Mode Inline Overrides */
+[data-bs-theme="dark"] .pub-card {
+  border-color: var(--bs-border-color) !important;
+}
+[data-bs-theme="dark"] .badge-wp {
+  background-color: rgba(206, 212, 218, 0.1); 
+  color: #ced4da; 
+}
+[data-bs-theme="dark"] .badge-journal {
+  background-color: rgba(106, 217, 171, 0.15); 
+  color: #6ad9ab; 
+}
+[data-bs-theme="dark"] .tag-pill {
+  background-color: rgba(106, 217, 171, 0.1);
+  color: #6ad9ab;
+  border-color: rgba(106, 217, 171, 0.2);
+}
+[data-bs-theme="dark"] .tag-pill:hover {
+  background-color: rgba(106, 217, 171, 0.2);
+}
+[data-bs-theme="dark"] .pub-thumbnail {
+  border-color: var(--bs-border-color);
+  opacity: 0.85;
+}
+[data-bs-theme="dark"] .text-muted {
+  color: #adb5bd !important;
+}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
 </head>

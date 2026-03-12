@@ -18,7 +18,7 @@
 /* ---------- Global body --------------------------------------------------- */
 body {
   font-family: "Inter", system-ui, -apple-system, sans-serif;
-  color: #1c1c1e;
+  color: var(--bs-body-color, #1c1c1e);
 }
 
 /* ---------- Navbar --------------------------------------------------------- */
@@ -167,11 +167,11 @@ a:hover { color: var(--mfr-green-mid); text-decoration: underline; }
 
 /* ---------- Footer --------------------------------------------------------- */
 footer {
-  background: #f4f4f4;
-  border-top: 2px solid var(--mfr-green-dark);
+  background: var(--bs-tertiary-bg, #f4f4f4);
+  border-top: 2px solid var(--mfr-border);
   padding: 1.5rem 0;
   font-size: 0.85rem;
-  color: #666;
+  color: var(--bs-secondary-color, #666);
 }
 
 /* ---------- Scroll-to-top / anchor micro-animation ----------------------- */
@@ -185,4 +185,26 @@ footer {
     padding-left: 0.5rem;
     margin-left: -0.5rem;
   }
+}
+
+/* ---------- Dark Mode Overrides ------------------------------------------- */
+[data-bs-theme="dark"] {
+  --mfr-green-dark:   #6ad9ab; 
+  --mfr-green-mid:    #2d8f65;
+  --mfr-green-light:  #14241d;
+  --mfr-border:       #3d4542;
+  --mfr-code-bg:      #181a1b;
+  --mfr-shadow:       0 4px 24px rgba(0, 0, 0, 0.7);
+}
+
+[data-bs-theme="dark"] .ref-index .ref-description {
+  color: #adb5bd;
+}
+
+[data-bs-theme="dark"] a {
+  color: #6ad9ab;
+}
+
+[data-bs-theme="dark"] a:hover {
+  color: #8beac3;
 }
