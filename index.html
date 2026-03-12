@@ -1,1284 +1,382 @@
 <!DOCTYPE html>
-<html lang="en-us">
-
+<html lang="en-US">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="Sulman is an award-winning agricultural and applied economist dedicated to implementing innovative research techniques to inform sustainable policies for rural development and the agri-food sector. In 2023, he was recognised as the Best Collaborative Masters in Agricultural and Applied Economics (CMAAE) student, an accolade awarded within the CMAAE programme that included eight major universities across Eastern and Southern Africa. Earlier that year, he was also acknowledged as the second-best master’s student in the Faculty of Agriculture at the University of Nairobi. Sulman is currently a Research Fellow at the International Institute of Tropical Agriculture (IITA) and has undertaken numerous consultancy engagements with international research organisations, including IITA, World Agroforestry (CIFOR-ICRAF), the American Heart Association (AHA), and the Alliance of Bioversity International and CIAT. His research interests span production and ecological economics, causal analysis, microeconomics, Bayesian econometrics, statistics, and quantitative modelling, with a bias towards sustainable technology adoption and innovation systems as pathways to food sovereignty, poverty alleviation, and the empowerment of marginalised communities and groups, while mitigating the impacts of climate change.">
-  <link rel="alternate" hreflang="en-us" href="https://sulmanolieko.github.io/">
-  <meta name="theme-color" content="#795548">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
-  <link rel="stylesheet" href="/css/academic.css">
-  <link href="css/pattern.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.4/css/academicons.min.css">
-  
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Sulman Olieko Owili</title>
+<meta name="description" content="Sulman is an award-winning agricultural and applied economist dedicated to implementing innovative research techniques to inform sustainable policies for rural development and the agri-food sector.">
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" sizes="any" href="favicon.ico">
 
-  <!-- Add your PWA's manifest file -->
-  <link rel="index.webmanifest" href="/index.webmanifest">
-  <!-- Altmetric -->
-  <script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
-  <!-- Dimensions -->
-  <script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>
- <!-- PlumX -->
-  <script type="text/javascript" src="//cdn.plu.mx/widget-all.js"></script>
-  <!-- Add your PWA's service worker script -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js')
-          .then(registration => {
-            console.log('Service Worker registered!');
-          })
-          .catch(error => {
-            console.error('Service Worker registration failed:', error);
-          });
-      });
-    }
-  </script>
+<script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script>
+<link href="deps/Inter-0.4.10/font.css" rel="stylesheet">
+<link href="deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet">
+<link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script>
+<script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script>
+<script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script>
 
-  <style> 
-    /* Styling for the install popup */
-    #installPopup {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #ffffff;
-      border: 1px solid #cccccc;
-      padding: 20px;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-      border-radius: 5px;
-      z-index: 999;
-    }
+<!-- pkgdown -->
+<script src="pkgdown.js"></script>
+<link href="extra.css" rel="stylesheet">
 
-    #installPopup.show {
-      display: block;
-    }
+<style>
+/* Custom Card Styles */
+.pub-card {
+  border-left: 4px solid #795548;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 8px;
+  background-color: #fdfdfd;
+}
+.pub-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+.pub-card-wp {
+  border-left-color: #3f51b5;
+}
+.pub-badge {
+  font-size: 0.8rem;
+  padding: 0.3em 0.6em;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  border-radius: 4px;
+}
+.badge-wp { background-color: #e8eaf6; color: #3f51b5; }
+.badge-journal { background-color: #efebe9; color: #795548; }
 
-    #installButton {
-      background-color: #4caf50;
-      color: #ffffff;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-  #installButton:hover {
-      background-color: #45a049;
-    }
-.xicon {
-    width: 22px;
-    height: 22px;
-    transition: transform 0.3s ease;
+/* Bio Section styling */
+.bio-avatar {
+  width: 100%;
+  max-width: 250px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.network-icons {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.network-icons a {
+  color: #795548;
+  font-size: 1.5rem;
+}
+.network-icons a:hover {
+  color: #5d4037;
 }
 
-/* Light mode styles */
-.xicon {
-    color: black; /* Default color in light mode */
+/* Make sure the main content is appropriately padded from the fixed navbar */
+body {
+  padding-top: 80px; 
 }
-
-/* Dark mode styles */
-@media (prefers-color-scheme: dark) {
-    .xicon {
-        color: white; /* Change to white in dark mode */
-    }
-}
-.xicon:hover {
-      transform: scale(1.2);
-}
-  </style>
-<script async src="https://www.googletagmanager.com/gtag/js?id=GTM-MDK8S5X2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-      dataLayer.push(arguments);
-  }
-  function trackOutboundLink(url) {
-    gtag('event', 'click', {
-         'event_category': 'outbound',
-         'event_label': url,
-         'transport_type': 'beacon',
-         'event_callback': function () {
-           document.location = url;
-         }
-    });
-    console.debug("Outbound link clicked: " + url);
-  }
-  function onClickCallback(event) {
-    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
-      return;
-    }
-    trackOutboundLink(event.target);  
-  }
-  gtag('js', new Date());
-  gtag('config', 'GTM-MDK8S5X2', {});
-  document.addEventListener('click', onClickCallback, false);
-</script>
-  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Sulman Olieko">
-  <link rel="manifest" href="/index.webmanifest">
-  <link rel="icon" type="image/png" href="/img/icon-32.png">
-  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
-  <link rel="canonical" href="https://sulmanolieko.github.io/">
-  <meta property="twitter:card" content="summary">
-  <meta property="og:site_name" content="Sulman Olieko">
-  <meta property="og:url" content="https://sulmanolieko.github.io/">
-  <meta property="og:title" content="Sulman Olieko">
-  <meta property="og:description" content="">
-  <meta property="og:image" content="/img/icon-192.png">
-  <meta property="twitter:image" content="/img/icon-192.png">
-  <meta property="og:locale" content="en-us">
-  <meta property="og:updated_time" content="2022-10-23T00:00:00&#43;00:00">
-<meta name="google-site-verification" content="Baw9PBTcmijlA9KAWXWpf1E9bbdf9oYXLmr-fiX9jFc" />
-      <!-- JSON-LD for Search -->
-    <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://sulmanolieko.github.io/?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-          },
-          "url": "https://sulmanolieko.github.io/"
-        }
-    </script>
-  <title>Sulman Olieko Owili</title>
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
 </head>
+<body>
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" >
-
-   <!-- Search Section -->
-    <aside class="search-results" id="search">
-        <div class="container">
-            <section class="search-header">
-                <div class="row no-gutters justify-content-between mb-3">
-                    <div class="col-6">
-                        <h1>Search</h1>
-                    </div>
-                    <div class="col-6 col-search-close">
-                        <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-                <div id="search-box">
-                    <input name="q" id="search-query" placeholder="Enter Search term(s)" autocapitalize="off"
-                    autocomplete="on" autocorrect="on" spellcheck="true" type="search">
-                </div>
-            </section>
-            <section class="section-search-results">
-                <div id="search-hits"></div>
-            </section>
-        </div>
-    </aside>
-<script>
- document.addEventListener("DOMContentLoaded", function() {
-     const searchForm = document.getElementById("search-box");
-     const searchInput = document.getElementById("search-query");
-     const searchHits = document.getElementById("search-hits");
-     const searchSection = document.getElementById("search");
-     const closeSearchBtn = document.querySelector(".js-search");
-
-     // Function to perform search
-     function performSearch(query) {
-         const results = [
-             { title: "Search Result 1", url: "result1.html" },
-             { title: "Search Result 2", url: "result2.html" },
-             { title: "Search Result 3", url: "result3.html" }
-         ];
-
-         displaySearchResults(results);
-     }
-
-     // Function to display search results
-     function displaySearchResults(results) {
-         searchHits.innerHTML = "";
-         if (results.length === 0) {
-             searchHits.innerHTML = "<p>No results found.</p>";
-         } else {
-             results.forEach(function(result) {
-                 const resultItem = document.createElement("div");
-                 resultItem.innerHTML = `<a href="${result.url}">${result.title}</a>`;
-                 searchHits.appendChild(resultItem);
-             });
-         }
-     }
-
-     // Event listener for search form submission
-     searchForm.addEventListener("submit", function(event) {
-         event.preventDefault();
-         const query = searchInput.value.trim();
-         if (query !== "") {
-             performSearch(query);
-         }
-     });
-
-     // Event listener to close search section
-     closeSearchBtn.addEventListener("click", function(event) {
-         event.preventDefault();
-         searchSection.classList.remove("open");
-     });
- });
- </script>
-
-<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+<nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation">
   <div class="container">
-      <a class="navbar-brand" href="/">
-    <img src="/img/ekonly-logo.svg" alt="Ekonly Logo" style="height: 40px; position: relative;">
+    <a class="navbar-brand me-2" href="index.html">
+      <img src="img/ekonly-logo.svg" alt="Ekonly Logo" style="height: 30px; position: relative; margin-right: 10px;">
+      Sulman Olieko Owili
     </a>
-    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-      data-target="#navbar-content" aria-controls="navbar-content"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="toggler-icon">
-        <i class="fa-solid fa-bars-staggered"></i>
-        <i class="fa-regular fa-rectangle-xmark"></i>
-      </span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
-      <ul class="navbar-nav d-md-inline-flex">
-        <li class="nav-item">
-          <a class="nav-link " href="/" data-target="index.html"><span>Homepage</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="/publication/" data-target="/publication/index.html"><span>Publications</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="/post/" data-target="/post/index.html"><span>Blogs</span></a>
-        </li>
+
+    <div id="navbar" class="collapse navbar-collapse ms-3">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
+        <li class="nav-item"><a class="nav-link" href="#papers">Working Papers</a></li>
+        <li class="nav-item"><a class="nav-link" href="#publications">Recent Publications</a></li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="external-link nav-link" href="https://github.com/SulmanOlieko" aria-label="GitHub"><span class="fa fab fa-github"></span></a></li>
       </ul>
     </div>
-    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
-      <li class="nav-item">
-        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
-      </li>
-      <!--
-      <li class="nav-item" id="account-section">
-        <!-- This will be populated by Firebase auth state --><!--
-      </li>
-      -->
-    </ul>
   </div>
 </nav>
-<span class="js-widget-page d-none"></span>
-<main>
 
-<div id="about" class="home-section wg-about">
-<div class="row">
-  <div class="col-12 col-lg-3">
-    <div id="profile">     
-      <img class="portrait" src="/authors/admin/home_avatar.png" alt="Sorry, the avatar failed to load properly. This is a glitch from our side. Try reloading page later.">
-      <div class="portrait-title">
-        <h2>Sulman Olieko Owili</h2>
-        <h3>MSc Agricultural and Applied Economics</h3>
-        <h3>
-          <a href="https://www.uonbi.ac.ke/" target="_blank" rel="noopener">
-          <span>University of Nairobi</span>
-          </a>
-        </h3>
-      </div>
-      <ul class="network-icon" aria-hidden="true"> 
-        <li>
-          <a href="https://www.webofscience.com/wos/author/record/MIN-3034-2025" target="_blank" rel="noopener">
-            <i class="ai ai-clarivate-square big-icon"></i>
-          </a>
-        </li> 
-        <li>
-          <a href="https://orcid.org/0000-0001-7401-5326" target="_blank" rel="noopener">
-            <i class="fab fa-orcid big-icon"></i>
-          </a>
-        </li> 
-        <li>
-          <a href="https://www.researchgate.net/profile/Sulman-Owili" target="_blank" rel="noopener">
-              <i class="fab fa-researchgate big-icon"></i>
-          </a>
-        </li> 
-        <li>
-          <a href="https://scholar.google.com/citations?user=WYivQV4AAAAJ&hl=en" target="_blank" rel="noopener">
-            <i class="ai ai-google-scholar big-icon"></i>
-          </a>
-        </li> 
-        <li>
-          <a href="https://github.com/SulmanOlieko" target="_blank" rel="noopener">
-            <i class="fab fa-github big-icon"></i>
-          </a>
-        </li>      
-        <li>
-           <a href="#viewer" target="#viewer">
-            <i class="ai ai-cv big-icon"></i>
-          </a>
-        </li> 
-      </ul>
-      <div class="share-box article-metadata" aria-hidden="true">
-        <h3>Follow Me</h3>
-  <ul class="share">
-    <li>
-        <a href="https://www.linkedin.com/in/olieko-sulman/" target="_blank" rel="noopener" class="share-btn-linkedin">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-      </li>
-      <li>
-          <a href="https://x.com/olieko_sulman" target="_blank" rel="noopener" class="share-btn-twitter">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="fab fa-tweeter">
-                  <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/>
-              </svg>
-          </a>
-        </li>
-     <li>
-        <a href="https://api.whatsapp.com/send?phone=+254710209720&text=Hello!%20I%20came%20across%20your%20website%20and%20would%20like%20to%20learn%20more%20about%20your%20services.%20Can%20you%20please%20assist%20me%3F" target="_blank" rel="noopener" class="share-btn-whatsapp">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-      </li>
-      <li>
-        <a href="mailto:oliekosulman@gmail.com" target="_blank" rel="noopener" class="share-btn-email">
-          <i class="fas fa-envelope"></i>
-        </a>
-      </li>
-      <li>
-        <a href="https://service.weibo.com/" target="_blank" rel="noopener" class="share-btn-weibo">
-          <i class="fab fa-weibo"></i>
-        </a>
-      </li>
-  </ul>
-      </div>
-       
-    </div>
-    <!--
-    <i class="fa fa-quote-left fa-3x fa-pull-left fa-border" aria-hidden="true"></i>
-    <div class="card-simple">
-      <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
-      <img src="/images/open-doodles/svg/PlantDoodle.svg" alt="plant doodle" style="width: 200px; height: auto;">
-      </div>
-     <span class="article-metadata">Like a tree, we grow with time&mdash;Shedding leaves, gaining new ones...</span>
-    </div>
-    -->
-  </div>
+<div class="container template-home">
+  <div class="row">
+    <main id="main" class="col-md-9">
 
-  <div id="bio" class="col-12 col-lg-6">
-    <div class="note-box note-box-pub article-tags card-simple view-card">
-      <div class="button">Bio</div>
-      <small>
-        <span class="article-metadata">
-          Sulman is an award-winning agricultural and applied economist dedicated to implementing innovative research techniques to inform
-sustainable policies for rural development and the agri-food sector. In 2023, he was recognised as the Best Collaborative Masters in
-Agricultural and Applied Economics (CMAAE) student, an accolade awarded within the CMAAE programme that included eight major
-universities across Eastern and Southern Africa. Earlier that year, he was also acknowledged as the second-best master’s student in the
-Faculty of Agriculture at the University of Nairobi. Sulman is currently a Research Fellow at the International Institute of Tropical Agriculture
-(IITA) and has undertaken numerous consultancy engagements with international research organisations, including IITA, World Agroforestry
-(CIFOR-ICRAF), the American Heart Association (AHA), and the Alliance of Bioversity International and CIAT. His research interests span
-production and ecological economics, causal analysis, microeconomics, Bayesian econometrics, statistics, and quantitative modelling, with
-a bias towards sustainable technology adoption and innovation systems as pathways to food sovereignty, poverty alleviation, and the
-empowerment of marginalised communities and groups, while mitigating the impacts of climate change.
-        </span>
-      </small>
-      </div>
-        <h2>CV</h2>
-      
-  <div id="viewer" style="width: 100%; height: 500px;" class="card-simple view-card"></div>
-  <script type="text/javascript" src="https://cloudpdf.io/viewer.min.js"></script>
-  <script>
-    const config = { 
-      documentId: '5989eddc-5615-40e9-a0c1-4de5fb532a37',
-      darkMode: false, 
-      themeColor:"#795548",
-      appBarColored:true,
-      disableToolbar:false,
-      disableElements:[]
-    };
-    CloudPDF(config, document.getElementById('viewer')).then((instance) => {
-      
-    });
-  </script>
-  </div>
-  
-     <!-- Sidebar Row -->
-      <aside id="sidebar" class="home-section">
-        <small><h5>On this page</h5></small>
-        <nav>
-          <ul class="file-tree">
-            <li>
-              <small><a class="nav-link active" href="#profile">About me</a></small>
-              <ul>
-                <li>
-                  <small><a class="nav-link" href="#profile">Biography</a></small>
-                </li>
-                <li>
-                  <small><a class="nav-link" href="#viewer">CV</a></small>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <small><a class="nav-link" href="#research">Working papers</a></small>
-            </li>
-            <li>
-              <small><a class="nav-link" href="#featured-research">Recent publications</a></small>
-            </li>
-            <li>
-              <small><a class="nav-link" href="#contact">Contact me</a></small>
-            </li>
-          </ul>
-        </nav>
-      </aside>
-  </div>
-
-    <style>
-    /* Research Section */
-    .research-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    /* Visualization Section */
-    .visualization {
-      padding: 60px 0;
-    }
-    .visualization h2 {
-      text-align: center;
-      margin-bottom: 40px;
-      color: #2c3e50;
-    }
-    .chart-container {
-      position: relative;
-      height: 400px;
-      width: 100%;
-    }
-  
-  </style>
-
-      <div id="research" style="max-width: 950px; margin: 0 auto; padding: 0 2px;">
-      <div class="section-heading" style="align-items: center;">
-       <h2>Working papers</h2>
-      <div class="research-grid">
-<!-- In order from under review to most incomplete -->
-          <div class="note-box note-box-pub article-tags pub-list-item card-simple view-card" style="margin-bottom: 1rem">
-            <div>
-              <a class="btn btn-primary btn-sm" href="https://sulmanolieko.github.io/publication/wp/heterogeneous_efficiency__.pdf" target="_blank">Working paper (under review)</a>
-            </div>
-            <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
-            <small>
-              <span class="article-metadata li-cite-author">
-                <span><i>Owili, S.O.</i>; Otieno, D. J.; Chimoita, E. L.; Baijukya, F. P </span>
-              </span>
-              (2025).
-              <span><strong>Heterogeneous multidimensional efficiency effects of agro-ecological pest management transition and intensification in smallholder systems: Evidence from mango fruit fly control in Kenya</strong>.
-              <i>Preprint</i>.
-                <a href="https://sulmanolieko.github.io/publication/wp/heterogeneous_efficiency__.pdf"</a>
-              </span>.
-            </small>
-            <div class="row align-items-center">
-            <div class="col-auto">
-              <a
-                class="btn btn-outline-primary btn-sm mr-2"
-                href="https://sulmanolieko.github.io/publication/wp/heterogeneous_efficiency__.pdf"
-                target="_blank"
-                rel="noopener"
-              >
-                PDF
-              </a>
-            </div>
-          </div>
-          </div>
-
-            <div class="note-box note-box-pub article-tags pub-list-item card-simple view-card" style="margin-bottom: 1rem">
-            <div>
-              <a class="btn btn-primary btn-sm" href="https://sulmanolieko.github.io/publication/wp/" target="_blank">Working paper (original draft)</a>
-            </div>
-            <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
-            <small>
-              <span class="article-metadata li-cite-author">
-                <span>Fuchs, L.E., Orero, L., van Dien, L.C., Apondi, V., Kipkorir, L., Kamau, A., Muia, D., Michuki, G., Njiru, R., and <i>Owili, S.O.</i> </span>
-              </span>
-              (2025).
-              <span><strong>Heterogeneous pathways of an asset-based, agency-focused approach to sustainable land and livelihoods restoration in Kenya: A mixed-methods approach</strong>.
-              <i>Working paper</i>.
-                <a href="https://sulmanolieko.github.io/publication/wp/"</a>
-              </span>.
-            </small>
-            <div class="row align-items-center">
-            <div class="col-auto">
-              <a
-                class="btn btn-outline-primary btn-sm mr-2"
-                href="https://sulmanolieko.github.io/publication/wp/"
-                target="_blank"
-                rel="noopener"
-              >
-                PDF
-              </a>
-            </div>
-          </div>
-          </div>  
-
-           <div class="note-box note-box-pub article-tags pub-list-item card-simple view-card" style="margin-bottom: 1rem">
-            <div>
-              <a class="btn btn-primary btn-sm" href="https://sulmanolieko.github.io/publication/wp/" target="_blank">Working paper (original draft)</a>
-            </div>
-            <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
-            <small>
-              <span class="article-metadata li-cite-author">
-                <span>Fuchs, L.E., Orero, L., van Dien, L.C., Apondi, V., Kipkorir, L., and <i>Owili, S.O.</i> </span>
-              </span>
-              (2025).
-              <span><strong>Gendered impact of asset-based community development on sustainable forest, tree and agroforestry systems: An analysis of farmer perspectives</strong>.
-              <i>Working paper</i>.
-                <a href="https://sulmanolieko.github.io/publication/wp/"</a>
-              </span>.
-            </small>
-            <div class="row align-items-center">
-            <div class="col-auto">
-              <a
-                class="btn btn-outline-primary btn-sm mr-2"
-                href="https://sulmanolieko.github.io/publication/wp/"
-                target="_blank"
-                rel="noopener"
-              >
-                PDF
-              </a>
-            </div>
-          </div>
-          </div> 
-
-            <div class="note-box note-box-pub article-tags pub-list-item card-simple view-card" style="margin-bottom: 1rem">
-            <div>
-              <a class="btn btn-primary btn-sm" href="https://sulmanolieko.github.io/publication/wp/" target="_blank">Working paper (original draft)</a>
-            </div>
-            <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
-            <small>
-              <span class="article-metadata li-cite-author">
-                <span> Nyawira, S.S., Bolo, P., Onyango, K., Korir, H., <i>Owili, S.O.</i>, Baijukya, F. P., Sanchez, A.C., and Jones, S.K.</span>
-              </span>
-              (2025).
-              <span><strong>Assessing the agroecological performance of smallholder households in Kiambu and Makueni counties in Kenya</strong>.
-              <i>Working paper</i>.
-                <a href="https://sulmanolieko.github.io/publication/wp/"</a>
-              </span>.
-            </small>
-            <div class="row align-items-center">
-            <div class="col-auto">
-              <a
-                class="btn btn-outline-primary btn-sm mr-2"
-                href="https://sulmanolieko.github.io/publication/wp/"
-                target="_blank"
-                rel="noopener"
-              >
-                PDF
-              </a>
-            </div>
-          </div>
-          </div>
-
-
-
-            <div class="note-box note-box-pub article-tags pub-list-item card-simple view-card" style="margin-bottom: 1rem">
-            <div>
-              <a class="btn btn-primary btn-sm" href="https://sulmanolieko.github.io/publication/wp/agroecology-behavioural.pdf" target="_blank">Working paper (original draft)</a>
-            </div>
-            <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
-            <small>
-              <span class="article-metadata li-cite-author">
-                <span> <i>Owili, S.O.</i> Korir, H., Onyango, K., Bolo P., Baijukya, F.P., Nyawira, S.S., Anyango, E., Adoyo, B., and Geck, M.</span>
-              </span>
-              (2025).
-              <span><strong>Behavioural mechanisms and social capital in pro-agroecological transitions-a comparative analysis of two case studies in Kenya</strong>.
-              <i>Working paper</i>.
-                <a href="https://sulmanolieko.github.io/publication/wp/agroecology-behavioural.pdf"</a>
-              </span>.
-            </small>
-            <div class="row align-items-center">
-            <div class="col-auto">
-              <a
-                class="btn btn-outline-primary btn-sm mr-2"
-                href="https://sulmanolieko.github.io/publication/wp/agroecology-behavioural.pdf"
-                target="_blank"
-                rel="noopener"
-              >
-                PDF
-              </a>
-            </div>
-          </div>
-          </div>
-
-            <div class="note-box note-box-pub article-tags pub-list-item card-simple view-card" style="margin-bottom: 1rem">
-            <div>
-              <a class="btn btn-primary btn-sm" href="/publication/wp/" target="_blank">Working paper (original draft)</a>
-            </div>
-            <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
-            <small>
-              <span class="article-metadata li-cite-author">
-                <span><i>Owili, S.O.</i> </span>
-              </span>
-              (2025).
-              <span><strong>Agro-ecological pest control options for improved eco-efficiency of smallholder farming systems in the face of invasive alien pests</strong>.
-              <i>Book chapter</i>.
-                <a href="https://sulmanolieko.github.io/publication/wp/"</a>
-              </span>.
-            </small>
-            <div class="row align-items-center">
-            <div class="col-auto">
-              <a
-                class="btn btn-outline-primary btn-sm mr-2"
-                href="https://sulmanolieko.github.io/publication/wp/"
-                target="_blank"
-                rel="noopener"
-              >
-                PDF
-              </a>
-            </div>
-            </div>
-          </div>
-
-
-
-        </div>
-      </div>
-    </div>
-
-
-
-<!-- Recent publications-->
-
-      <div id="featured-research" style="max-width: 950px; margin: 0 auto; padding: 0 2px;">
-      <div class="section-heading" style="align-items: center;">
-        <h2>Recent publications</h2>
-      </div>
-
-      <div class="row">
-        <div class="col-12">
-          <div class="note-box article-tags pub-list-item card-simple view-card" style="margin-bottom: 1rem">
-            <div>
-              <a class="btn btn-primary btn-sm" href="http://dx.doi.org/10.1080/09670874.2024.2413592" target="_blank">Journal article</a>
-            </div>
-            <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
-            <small>
-              <span class="article-metadata li-cite-author">
-                <span> <i>Owili, S.O.</i>; Otieno, D. J.; Chimoita, E. L.; Baijukya, F. P </span>
-              </span>
-              (2024).
-              <span><strong>Factors influencing adoption of agro-ecological pest management options for mango fruit fly under information constraints: A two-part fractional regression approach</strong>.
-                <i>International Journal of Pest Management</i>.
-                <a href="https://doi.org/10.1080/09670874.2024.2413592">DOI:10.1080/09670874.2024.2413592</a>
-              </span>.
-            </small>
-            <div class="row align-items-center">
-            <div class="col-auto">
-              <a
-                class="btn btn-outline-primary btn-sm mr-2"
-                href="https://www.tandfonline.com/doi/epdf/10.1080/09670874.2024.2413592"
-                target="_blank"
-                rel="noopener"
-              >
-                PDF
-              </a>
-            </div>
-            <div class="col-auto mr-2">
-              <div
-                class="altmetric-embed"
-                data-badge-type="donut"
-                data-doi="10.1080/09670874.2024.2413592"
-              ></div>
-            </div>
-            <div class="col-auto">
-              <span
-                class="__dimensions_badge_embed__"
-                data-doi="10.1080/09670874.2024.2413592"
-                data-style="small_circle"
-              ></span>
-            </div>
-              <div class="col-auto">
-              <a href="https://plu.mx/plum/a/?doi=10.1080/09670874.2024.2413592" 
-                data-popup="top" data-badge="false" class="plumx-plum-print-popup" 
-                data-site="plum" data-size="medium" data-hide-when-empty="false">Factors influencing adoption of agro-ecological pest management options for mango fruit fly under information constraints: A two-part fractional regression approach
-              </a>
-              <script>window.__plumX.widgets.init();</script>
-            </div>
-          </div>
+      <section id="about" class="mb-5" style="padding-top: 20px;">
+        <div class="row">
+          <div class="col-md-4 text-center">
+            <img class="bio-avatar" src="img/home_avatar.png" alt="Sulman Olieko Owili">
+            <h3>Sulman Olieko Owili</h3>
+            <p class="text-muted mb-2">MSc Agricultural and Applied Economics</p>
+            <p><a href="https://www.uonbi.ac.ke/" target="_blank" rel="noopener">University of Nairobi</a></p>
             
+            <ul class="network-icons mt-3"> 
+              <li><a href="https://www.webofscience.com/wos/author/record/MIN-3034-2025" target="_blank" title="Web of Science"><i class="ai ai-clarivate-square"></i></a></li> 
+              <li><a href="https://orcid.org/0000-0001-7401-5326" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a></li> 
+              <li><a href="https://www.researchgate.net/profile/Sulman-Owili" target="_blank" title="ResearchGate"><i class="fab fa-researchgate"></i></a></li> 
+              <li><a href="https://scholar.google.com/citations?user=WYivQV4AAAAJ&hl=en" target="_blank" title="Google Scholar"><i class="ai ai-google-scholar"></i></a></li> 
+              <li><a href="https://github.com/SulmanOlieko" target="_blank" title="GitHub"><i class="fab fa-github"></i></a></li>      
+            </ul>
           </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-12">
-          <div class="note-box article-tags pub-list-item card-simple view-card" style="margin-bottom: 1rem">
-            <div>
-              <a class="btn btn-primary btn-sm" href="http://dx.doi.org/10.3389/fsufs.2024.1449615" target="_blank">Journal article</a>
-            </div>
-            <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
-            <small>
-              <span class="article-metadata li-cite-author">
-                <span> Fuchs, L.E.; Orero, L; Kipkorir, L.; Apondi, V; <i>Owili, S.O</i> </span>
-              </span>
-              (2024).
-              <span><strong>Scaling Models for Regreening Africa: Enhancing Agroecological Integration through Smallholders' Assets and Agency in Kenya</strong>.
-              <i>Frontiers in Sustainable Food Systems</i>.
-                <a href="http://dx.doi.org/10.3389/fsufs.2024.1449615">DOI:10.3389/fsufs.2024.1449615</a>
-              </span>.
-            </small>
-            <div class="row align-items-center">
-            <div class="col-auto">
-              <a
-                class="btn btn-outline-primary btn-sm mr-2"
-                href="http://dx.doi.org/10.3389/fsufs.2024.1449615"
-                target="_blank"
-                rel="noopener"
-              >
-                PDF
-              </a>
-            </div>
-            <div class="col-auto mr-2">
-              <div
-                class="altmetric-embed"
-                data-badge-type="donut"
-                data-doi="10.3389/fsufs.2024.1449615"
-              ></div>
-            </div>
-            <div class="col-auto">
-              <span
-                class="__dimensions_badge_embed__"
-                data-doi="10.3389/fsufs.2024.1449615"
-                data-style="small_circle"
-              ></span>
-            </div>
-              <div class="col-auto">
-              <a href="https://plu.mx/plum/a/?doi=10.3389/fsufs.2024.1449615" 
-                data-popup="top" data-badge="false" class="plumx-plum-print-popup" 
-                data-site="plum" data-size="medium" data-hide-when-empty="false">Scaling Models for Regreening Africa: Enhancing Agroecological Integration through Smallholders' Assets and Agency in Kenya
-              </a>
-              <script>window.__plumX.widgets.init();</script>
-            </div>
-          </div>
-            
-          </div>
-        </div>
-      </div>
-
-
-    <!-- Techncal reports -->
-
-      <div class="row">
-        <div class="col-12">
-          <div class="note-box article-tags pub-list-item card-simple view-card" style="margin-bottom: 1rem">
-            <div>
-              <a class="btn btn-primary btn-sm" href="https://hdl.handle.net/10568/169052" target="_blank">Technical report</a>
-            </div>
-            <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
-            <small>
-              <span class="article-metadata li-cite-author">
-                <span>Nyawira, S.S.; Korir, H.; Bolo, P..; Omondi, K..; <i>Owili, S.O.</i>; Letty, B.; Wamaitha, C..; Njogu, M..; Anyango, E.; Baijukya, F.</span>
-              </span>
-              (2024).
-              <span><strong>Performance assessment of agroecology in Makueni and Kiambu counties, Kenya</strong>. 
-                <i>CGSpace</i>.
-                <a href="https://hdl.handle.net/10568/169052">https://hdl.handle.net/10568/169052</a></span>.
-            </small>
-            <div class="row align-items-center">
-            <div class="col-auto">
-              <a
-                class="btn btn-outline-primary btn-sm mr-2"
-                href="https://hdl.handle.net/10568/169052"
-                target="_blank"
-                rel="noopener"
-              >
-                PDF
-              </a>
-            </div>
-          </div>
-
-          </div>
-        </div>
-      </div>
-        
-
-      <div class="row">
-        <div class="col-12">
-          <div class="note-box article-tags pub-list-item card-simple view-card" style="margin-bottom: 1rem">
-            <div>
-              <a class="btn btn-primary btn-sm" href="http://dx.doi.org/10.13140/RG.2.2.36127.53928" target="_blank">Technical report</a>
-            </div>
-            <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
-            <small>
-              <span class="article-metadata li-cite-author">
-                <span>Nyawira, S.; Bolo, P.; Ntinyari, W.; Orero, L.; Onyango, K.; Manjella, A.; Sakha, M.; <i>Owili, S.O.</i>; Gumo, P.; Mbelwa, M.; Korir, H.; Fuchs, L.E.</span>
-              </span>
-              (2023).
-              <span><strong>Kenya Context Assessment Report: A desk-top review of the context of agroecological principles of Kiambu and Makueni counties</strong>.
-              <i>CGSpace</i>.
-                <a href="http://dx.doi.org/10.13140/RG.2.2.36127.53928">DOI:10.13140/RG.2.2.36127.53928</a>
-              </span>.
-            </small>
-            <div class="row align-items-center">
-            <div class="col-auto">
-              <a
-                class="btn btn-outline-primary btn-sm mr-2"
-                href="http://dx.doi.org/10.13140/RG.2.2.36127.53928"
-                target="_blank"
-                rel="noopener"
-              >
-                PDF
-              </a>
-            </div>
-          </div>
-            
-          </div>
-        </div>
-      </div>
-
-<!-- Posters -->
-
-      <div class="row">
-        <div class="col-12">
-          <div class="note-box article-tags pub-list-item card-simple view-card" style="margin-bottom: 1rem">
-            <div>
-              <a class="btn btn-primary btn-sm" href="https://hdl.handle.net/10568/170186" target="_blank">Poster</a>
-            </div>
-            <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
-            <small>
-              <span class="article-metadata li-cite-author">
-                <span>Nyawira, S.S., Bolo, P., Onyango, K., Korir, H., <i>Owili, S.O.</i>, Baijukya, F. P., Sanchez, A.C., and Jones, S.K.</span>
-              </span>
-              (2025).
-              <span><strong>Assessing the agroecological performance of smallholder households in Kiambu and Makueni counties in Kenya</strong>.
-              <i>Tropentag. Bonn, Germany</i>.
-                <a href="https://www.tropentag.de/2025/abstracts/posters/725.pdf">https://www.tropentag.de/2025/abstracts/posters/725.pdf</a>
-              </span>.
-            </small>
-            <div class="row align-items-center">
-            <div class="col-auto">
-              <a
-                class="btn btn-outline-primary btn-sm mr-2"
-                href="https://www.tropentag.de/2025/abstracts/posters/725.pdf"
-                target="_blank"
-                rel="noopener"
-              >
-                PDF
-              </a>
-            </div>
-          </div>
-
-          </div>
-        </div>
-      </div>
-        
-      <div class="row">
-        <div class="col-12">
-          <div class="note-box article-tags pub-list-item card-simple view-card" style="margin-bottom: 1rem">
-            <div>
-              <a class="btn btn-primary btn-sm" href="https://hdl.handle.net/10568/170186" target="_blank">Poster</a>
-            </div>
-            <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
-            <small>
-              <span class="article-metadata li-cite-author">
-                <span><i>Owili, S.O.</i>; Otieno, D. J.; Chimoita, E. L.; Baijukya, F. P </span>
-              </span>
-              (2024).
-              <span><strong>Heterogeneous efficiency effects of agro-ecological fruit fly management transition and intensification among smallholder mango farmers: A latent class stochastic metafrontier approach</strong>.
-              <i>Agroecology Workshop, World Agroforestry (CIFOR-ICRAF). Nairobi, Kenya</i>.
-                <a href="https://hdl.handle.net/10568/170186">https://hdl.handle.net/10568/170186</a>
-              </span>.
-            </small>
-            <div class="row align-items-center">
-            <div class="col-auto">
-              <a
-                class="btn btn-outline-primary btn-sm mr-2"
-                href="https://cgspace.cgiar.org/bitstreams/8cd0d1d5-eb7a-49c3-a0a6-dc3bcc6bc79d/download"
-                target="_blank"
-                rel="noopener"
-              >
-                PDF
-              </a>
-            </div>
-          </div>
-
-          </div>
-        </div>
-      </div>
-
-
-      <!-- Interactive Data Visualization Section -->
-    <div id="data-visualization" class="visualization">
-      <div class="container">
-        <h2>Citation Index</h2>
-        <div class="chart-container">
-          <canvas id="economicsChart"></canvas>
-        </div>
-      </div>
-    </div>
-
-    <!-- Contact Section -->
-  <style>
-    .contact {
-      padding: 60px 0;
-      text-align: center;
-    }
-    .contact h2 {
-      margin-bottom: 20px;
-      color: #2c3e50;
-    }
-    .contact a {
-      color: #e67e22;
-      text-decoration: none;
-    }
-    
-  </style>
-    <div id="contact" class="contact">
-      <div class="container">
-        <h2>Contact Me</h2>
-        <p>For inquiries, please email me at <a href="mailto:oliekosulman@gmail.com">oliekosulman[at]gmail.com</a>.</p>
-      </div>
-    </div>
-
-
-
-
-
-
-  
-  
-<div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
-     <img src="/images/open-doodles/svg/DoogieDoodle.svg" alt="publication doodle" style="width: 200px; height: auto;">
-</div>
-      
-<div class="wrapper">
-      <header>
-        <i class="bx bx-cookie card-transparent"></i>
-        <h2>Cookies Consent</h2>
-      </header>
-      <div class="data">
-        <p>This website uses cookies to help you have a superior and more relevant browsing experience on the website. <a href="/privacy/"> Read more</a></p>
-      </div>
-      <div class="buttons">
-        <button class="button" id="acceptBtn">Accept</button>
-        <button class="button" id="declineBtn">Not now</button>
-      </div>
-    </div>
-      
- <a href="https://api.whatsapp.com/send?phone=+254710209720&text=Hello!%20I%20came%20across%20your%20website%20and%20would%20like%20to%20learn%20more%20about%20your%20services.%20Can%20you%20please%20assist%20me%3F" 
-   class="floating" target="_blank">
-   <i class="fab fa-whatsapp float-button"></i>
-    </a>
-  
-        <!-- Install PWA popup -->
-        <div id="installPopup">
-          <p>Install our app for a better experience!</p>
-          <button id="installButton">Install</button>
-        </div>
-      
-        <script>
-          window.addEventListener('beforeinstallprompt', (event) => {
-            // Prevent Chrome 67 and earlier from automatically showing the prompt
-            event.preventDefault();
-            // Stash the event so it can be triggered later
-            window.deferredPrompt = event;
-            // Show the install popup
-            document.getElementById('installPopup').classList.add('show');
-          });
-      
-          // Handle the install button click
-          document.getElementById('installButton').addEventListener('click', () => {
-            const deferredPrompt = window.deferredPrompt;
-            if (deferredPrompt) {
-              // Show the install prompt
-              deferredPrompt.prompt();
-              // Wait for the user to respond to the prompt
-              deferredPrompt.userChoice
-                .then((choiceResult) => {
-                  if (choiceResult.outcome === 'accepted') {
-                    console.log('User accepted the install prompt');
-                    // Reset the deferred prompt variable
-                    window.deferredPrompt = null;
-                    // Hide the install popup
-                    document.getElementById('installPopup').classList.remove('show');
-                  } else {
-                    console.log('User dismissed the install prompt');
-                  }
-                });
-            }
-          });
-        </script>
-
-       <!-- Boxicons CSS -->
-      <link rel="stylesheet" href="style.css" />
-      <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
-        <script src="script.js" defer></script>
-      
-    <!-- PushAlert -->
-    <script type="text/javascript">
-            (function(d, t) {
-                    var g = d.createElement(t),
-                    s = d.getElementsByTagName(t)[0];
-                    g.src = "https://cdn.pushalert.co/integrate_90d37d1c064f80a89c562983e6ab05eb.js";
-                    s.parentNode.insertBefore(g, s);
-            }(document, "script"));
-    </script>
-    <!-- End PushAlert -->
-
-      <script src="cookie.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
           
-    <script>const code_highlighting = true;</script>
-    <script>
-      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
-      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
-      const content_type = {
-        'post': "Posts",
-        'project': "Projects",
-        'publication' : "Publications",
-        'talk' : "Talks"
-        };
-    </script>
-    <script id="search-hit-fuse-template" type="text/x-template">
-      <div class="search-hit" id="summary-{{key}}">
-      <div class="search-hit-content">
-        <div class="search-hit-name">
-          <a href="{{relpermalink}}">{{title}}</a>
-          <div class="article-metadata search-hit-type">{{type}}</div>
-          <p class="search-hit-description">{{snippet}}</p>
+          <div class="col-md-8">
+            <div class="card mb-4 pub-card p-3">
+              <div class="card-body">
+                <h4 class="card-title">Biography</h4>
+                <p class="card-text text-muted" style="font-size: 0.95rem; line-height: 1.6;">
+                  Sulman is an award-winning agricultural and applied economist dedicated to implementing innovative research techniques to inform sustainable policies for rural development and the agri-food sector. In 2023, he was recognised as the Best Collaborative Masters in Agricultural and Applied Economics (CMAAE) student, an accolade awarded within the CMAAE programme that included eight major universities across Eastern and Southern Africa. Earlier that year, he was also acknowledged as the second-best master’s student in the Faculty of Agriculture at the University of Nairobi. Sulman is currently a Research Fellow at the International Institute of Tropical Agriculture (IITA) and has undertaken numerous consultancy engagements with international research organisations. His research interests span production and ecological economics, causal analysis, microeconomics, Bayesian econometrics, statistics, and quantitative modelling.
+                </p>
+              </div>
+            </div>
+
+            <h4 class="mt-4 mb-3">Curriculum Vitae</h4>
+            <div id="viewer" style="width: 100%; height: 500px;" class="card pub-card mb-4"></div>
+            <script type="text/javascript" src="https://cloudpdf.io/viewer.min.js"></script>
+            <script>
+              const config = { 
+                documentId: '5989eddc-5615-40e9-a0c1-4de5fb532a37',
+                darkMode: false, 
+                themeColor:"#795548",
+                appBarColored:true,
+                disableToolbar:false,
+                disableElements:[]
+              };
+              CloudPDF(config, document.getElementById('viewer'));
+            </script>
+          </div>
+        </div>
+      </section>
+
+      <hr>
+
+      <section id="papers" class="mb-5" style="padding-top: 80px; margin-top: -80px;">
+        <h2 class="mb-4">Working Papers</h2>
+
+         <div class="card pub-card pub-card-wp mb-3">
+          <div class="card-body">
+            <span class="pub-badge badge-wp">Working paper (under review)</span>
+            <p class="mb-1">
+              <em>Owili, S.O.</em>; Otieno, D. J.; Chimoita, E. L.; Baijukya, F. P (2025). 
+              <strong>Heterogeneous multidimensional efficiency effects of agro-ecological pest management transition and intensification in smallholder systems: Evidence from mango fruit fly control in Kenya.</strong> <i>Preprint</i>.
+            </p>
+            <div>
+              <a class="btn btn-outline-primary btn-sm mt-2" href="https://sulmanolieko.github.io/publication/wp/heterogeneous_efficiency__.pdf" target="_blank">PDF</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card pub-card pub-card-wp mb-3">
+          <div class="card-body">
+            <span class="pub-badge badge-wp">Working paper (original draft)</span>
+            <p class="mb-1">
+              Fuchs, L.E., Orero, L., van Dien, L.C., Apondi, V., Kipkorir, L., Kamau, A., Muia, D., Michuki, G., Njiru, R., and <em>Owili, S.O.</em> (2025). 
+              <strong>Heterogeneous pathways of an asset-based, agency-focused approach to sustainable land and livelihoods restoration in Kenya: A mixed-methods approach.</strong> <i>Working paper</i>.
+            </p>
+            <div>
+              <a class="btn btn-outline-primary btn-sm mt-2" href="https://sulmanolieko.github.io/publication/wp/" target="_blank">PDF</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card pub-card pub-card-wp mb-3">
+          <div class="card-body">
+            <span class="pub-badge badge-wp">Working paper (original draft)</span>
+            <p class="mb-1">
+              Fuchs, L.E., Orero, L., van Dien, L.C., Apondi, V., Kipkorir, L., and <em>Owili, S.O.</em> (2025). 
+              <strong>Gendered impact of asset-based community development on sustainable forest, tree and agroforestry systems: An analysis of farmer perspectives.</strong> <i>Working paper</i>.
+            </p>
+            <div>
+              <a class="btn btn-outline-primary btn-sm mt-2" href="https://sulmanolieko.github.io/publication/wp/" target="_blank">PDF</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card pub-card pub-card-wp mb-3">
+          <div class="card-body">
+            <span class="pub-badge badge-wp">Working paper (original draft)</span>
+            <p class="mb-1">
+              Nyawira, S.S., Bolo, P., Onyango, K., Korir, H., <em>Owili, S.O.</em>, Baijukya, F. P., Sanchez, A.C., and Jones, S.K. (2025). 
+              <strong>Assessing the agroecological performance of smallholder households in Kiambu and Makueni counties in Kenya.</strong> <i>Working paper</i>.
+            </p>
+            <div>
+               <a class="btn btn-outline-primary btn-sm mt-2" href="https://sulmanolieko.github.io/publication/wp/" target="_blank">PDF</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card pub-card pub-card-wp mb-3">
+          <div class="card-body">
+            <span class="pub-badge badge-wp">Working paper (original draft)</span>
+            <p class="mb-1">
+              <em>Owili, S.O.</em> Korir, H., Onyango, K., Bolo P., Baijukya, F.P., Nyawira, S.S., Anyango, E., Adoyo, B., and Geck, M. (2025). 
+              <strong>Behavioural mechanisms and social capital in pro-agroecological transitions-a comparative analysis of two case studies in Kenya.</strong> <i>Working paper</i>.
+            </p>
+            <div>
+               <a class="btn btn-outline-primary btn-sm mt-2" href="https://sulmanolieko.github.io/publication/wp/agroecology-behavioural.pdf" target="_blank">PDF</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card pub-card pub-card-wp mb-3">
+          <div class="card-body">
+            <span class="pub-badge badge-wp">Book chapter</span>
+            <p class="mb-1">
+              <em>Owili, S.O.</em> (2025). 
+              <strong>Agro-ecological pest control options for improved eco-efficiency of smallholder farming systems in the face of invasive alien pests.</strong> <i>Book chapter</i>.
+            </p>
+            <div>
+               <a class="btn btn-outline-primary btn-sm mt-2" href="/publication/wp/" target="_blank">PDF</a>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <hr>
+
+      <section id="publications" class="mb-5" style="padding-top: 80px; margin-top: -80px;">
+        <h2 class="mb-4">Recent Publications</h2>
+
+        <div class="card pub-card mb-3">
+          <div class="card-body">
+            <span class="pub-badge badge-journal">Journal article</span>
+            <p class="mb-1">
+              <em>Owili, S.O.</em>; Otieno, D. J.; Chimoita, E. L.; Baijukya, F. P (2024). 
+              <strong>Factors influencing adoption of agro-ecological pest management options for mango fruit fly under information constraints: A two-part fractional regression approach.</strong> <i>International Journal of Pest Management</i>.
+              <a href="https://doi.org/10.1080/09670874.2024.2413592">DOI:10.1080/09670874.2024.2413592</a>
+            </p>
+            <div class="d-flex align-items-center mt-2">
+              <a class="btn btn-outline-primary btn-sm me-3" href="https://www.tandfonline.com/doi/epdf/10.1080/09670874.2024.2413592" target="_blank">PDF</a>
+               <!-- Altmetric Integration -->
+              <div class="altmetric-embed me-3" data-badge-type="donut" data-doi="10.1080/09670874.2024.2413592"></div>
+              <span class="__dimensions_badge_embed__ me-3" data-doi="10.1080/09670874.2024.2413592" data-style="small_circle"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card pub-card mb-3">
+          <div class="card-body">
+            <span class="pub-badge badge-journal">Journal article</span>
+            <p class="mb-1">
+              Fuchs, L.E.; Orero, L; Kipkorir, L.; Apondi, V; <em>Owili, S.O.</em> (2024). 
+              <strong>Scaling Models for Regreening Africa: Enhancing Agroecological Integration through Smallholders' Assets and Agency in Kenya.</strong> <i>Frontiers in Sustainable Food Systems</i>.
+              <a href="http://dx.doi.org/10.3389/fsufs.2024.1449615">DOI:10.3389/fsufs.2024.1449615</a>
+            </p>
+             <div class="d-flex align-items-center mt-2">
+              <a class="btn btn-outline-primary btn-sm me-3" href="http://dx.doi.org/10.3389/fsufs.2024.1449615" target="_blank">PDF</a>
+              <div class="altmetric-embed me-3" data-badge-type="donut" data-doi="10.3389/fsufs.2024.1449615"></div>
+              <span class="__dimensions_badge_embed__ me-3" data-doi="10.3389/fsufs.2024.1449615" data-style="small_circle"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card pub-card mb-3">
+          <div class="card-body">
+            <span class="pub-badge badge-journal">Technical report</span>
+            <p class="mb-1">
+              Nyawira, S.S.; Korir, H.; Bolo, P..; Omondi, K..; <em>Owili, S.O.</em>; Letty, B.; Wamaitha, C..; Njogu, M..; Anyango, E.; Baijukya, F. (2024). 
+              <strong>Performance assessment of agroecology in Makueni and Kiambu counties, Kenya.</strong> <i>CGSpace</i>.
+              <a href="https://hdl.handle.net/10568/169052">https://hdl.handle.net/10568/169052</a>
+            </p>
+             <div class="mt-2">
+              <a class="btn btn-outline-primary btn-sm" href="https://hdl.handle.net/10568/169052" target="_blank">PDF</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card pub-card mb-3">
+          <div class="card-body">
+            <span class="pub-badge badge-journal">Technical report</span>
+            <p class="mb-1">
+              Nyawira, S.; Bolo, P.; Ntinyari, W.; Orero, L.; Onyango, K.; Manjella, A.; Sakha, M.; <em>Owili, S.O.</em>; Gumo, P.; Mbelwa, M.; Korir, H.; Fuchs, L.E. (2023). 
+              <strong>Kenya Context Assessment Report: A desk-top review of the context of agroecological principles of Kiambu and Makueni counties.</strong> <i>CGSpace</i>.
+              <a href="http://dx.doi.org/10.13140/RG.2.2.36127.53928">DOI:10.13140/RG.2.2.36127.53928</a>
+            </p>
+             <div class="mt-2">
+              <a class="btn btn-outline-primary btn-sm" href="http://dx.doi.org/10.13140/RG.2.2.36127.53928" target="_blank">PDF</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card pub-card mb-3">
+          <div class="card-body">
+            <span class="pub-badge badge-journal">Poster</span>
+            <p class="mb-1">
+              Nyawira, S.S., Bolo, P., Onyango, K., Korir, H., <em>Owili, S.O.</em>, Baijukya, F. P., Sanchez, A.C., and Jones, S.K. (2025). 
+              <strong>Assessing the agroecological performance of smallholder households in Kiambu and Makueni counties in Kenya.</strong> <i>Tropentag. Bonn, Germany</i>.
+              <a href="https://www.tropentag.de/2025/abstracts/posters/725.pdf">https://www.tropentag.de/2025/abstracts/posters/725.pdf</a>
+            </p>
+             <div class="mt-2">
+              <a class="btn btn-outline-primary btn-sm" href="https://www.tropentag.de/2025/abstracts/posters/725.pdf" target="_blank">PDF</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card pub-card mb-3">
+          <div class="card-body">
+            <span class="pub-badge badge-journal">Poster</span>
+            <p class="mb-1">
+              <em>Owili, S.O.</em>; Otieno, D. J.; Chimoita, E. L.; Baijukya, F. P (2024). 
+              <strong>Heterogeneous efficiency effects of agro-ecological fruit fly management transition and intensification among smallholder mango farmers: A latent class stochastic metafrontier approach.</strong> <i>Agroecology Workshop, World Agroforestry (CIFOR-ICRAF). Nairobi, Kenya</i>.
+              <a href="https://hdl.handle.net/10568/170186">https://hdl.handle.net/10568/170186</a>
+            </p>
+             <div class="mt-2">
+              <a class="btn btn-outline-primary btn-sm" href="https://cgspace.cgiar.org/bitstreams/8cd0d1d5-eb7a-49c3-a0a6-dc3bcc6bc79d/download" target="_blank">PDF</a>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+    <aside class="col-md-3">
+      <div class="sticky-top" style="top: 100px;">
+        <h5 class="mt-4 mb-3">On this page</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="#papers">Working Papers</a></li>
+          <li class="nav-item"><a class="nav-link" href="#publications">Recent Publications</a></li>
+        </ul>
+
+        <div class="mt-5">
+          <h5 class="mb-3">Contact Me</h5>
+          <p class="text-muted" style="font-size: 0.9rem;">
+            For inquiries, please email me at:<br>
+            <a href="mailto:oliekosulman@gmail.com">oliekosulman[at]gmail.com</a>
+          </p>
         </div>
       </div>
-      </div>
-    </script>
-    
-    <script type="module">
-  // Import Firebase app and auth modules
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
-  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
-
-  // Your Firebase configuration object
-  const firebaseConfig = {
-    apiKey: "AIzaSyCmsR_JUmxQkUDU0qStBhFr5-AkuuNfoI8",
-    authDomain: "sulmanolieko-35fd6.firebaseapp.com",
-    projectId: "sulmanolieko-35fd6",
-    storageBucket: "sulmanolieko-35fd6.firebasestorage.app",
-    messagingSenderId: "765226130762",
-    appId: "1:765226130762:web:f6e87c0ab5f4e27631b5b3"
-  };
-
-  // Initialize Firebase
-  const appFirebase = initializeApp(firebaseConfig);
-  const auth = getAuth(appFirebase);
-
-  // Listen for auth state changes
-  onAuthStateChanged(auth, user => {
-    const accountSection = document.getElementById('account-section');
-    if (user) {
-      // Use displayName if available; otherwise, fallback to email
-      const displayName = user.displayName || user.email;
-      // Get the first two letters in uppercase
-      const initials = displayName.substring(0, 2).toUpperCase();
-      accountSection.innerHTML = `
-      <a href="#" id="logout-btn" style="color: #FFF; text-decoration: none;">
-        <span class="account-initials" style="
-          display: inline-block;
-          width: 32px;
-          height: 32px;
-          border-radius: 50%;
-          color: #fff;
-          text-align: center;
-          font-weight: bold;
-        ">
-        <i class="fas fa-sign-out-alt"></i> 
-        </span>
-        </a>
-        <i class="fas fa-user" style="color:#FFF"></i>
-      `;
-      document.getElementById('logout-btn').addEventListener('click', e => {
-        e.preventDefault();
-        signOut(auth).then(() => {
-          // Redirect to login page after sign out
-          window.location.href = '/login/index.html';
-        }).catch(error => {
-          console.error("Sign out error:", error);
-        });
-      });
-    } else {
-      // If no user is signed in, show a user icon linking to the login page
-      accountSection.innerHTML = `
-        <a class="nav-item nav-link" href="/login/index.html" style="color: #FFF; text-decoration: none;">
-          <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
-        </a>
-      `;
-    }
-  });
-</script>
-        
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
-    <script src="/js/academic.min.bcfae8267aba63cc55af53a503896bd9.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
-  <footer>
-    <div class="footer-content">
-      <!-- Left Section -->
-      <div class="footer-left">
-        <!-- Dynamic year -->
-        <p>&copy; <span id="dynamicYear"></span> Sulman Olieko Owili. All Rights Reserved.</p>
-      </div>
-
-      <!-- Center Section: Newsletter -->
-      <div class="footer-center">
-        <div class="newsletter-box">
-          <input type="email" id="newsletterEmail" placeholder="Your Email" required />
-          <button type="button" onclick="subscribeNewsletter()">Subscribe</button>
-        </div>
-        <!-- error message container -->
-        <span id="newsletterError" class="error-message" style="display: none;"></span>
-        
-      </div>
-
-      <!-- Right Section: Academic / Social Links -->
-      <div class="footer-right">
-        <ul class="network-icon" aria-hidden="true"> 
-        <li>
-          <a href="https://www.webofscience.com/wos/author/record/MIN-3034-2025" target="_blank" rel="noopener">
-            <i class="ai ai-clarivate-square big-icon"></i>
-          </a>
-        </li> 
-        <li>
-          <a href="https://orcid.org/0000-0001-7401-5326" target="_blank" rel="noopener">
-            <i class="fab fa-orcid big-icon"></i>
-          </a>
-        </li> 
-        <li>
-          <a href="https://www.researchgate.net/profile/Sulman-Owili" target="_blank" rel="noopener">
-              <i class="fab fa-researchgate big-icon"></i>
-          </a>
-        </li> 
-        <li>
-          <a href="https://scholar.google.com/citations?user=WYivQV4AAAAJ&hl=en" target="_blank" rel="noopener">
-            <i class="ai ai-google-scholar big-icon"></i>
-          </a>
-        </li> 
-        <li>
-          <a href="https://github.com/SulmanOlieko" target="_blank" rel="noopener">
-            <i class="fab fa-github big-icon"></i>
-          </a>
-        </li>      
-        <li>
-           <a href="#viewer" target="#viewer">
-            <i class="ai ai-cv big-icon"></i>
-          </a>
-        </li> 
-      </ul>
-      </div>
-
-    <div class="back-to-top">
-      <button onclick="scrollToTop()">↑</button>
-    </div>
-    </div>
-  </footer>
-
-  <script>
-    // Scroll to top behavior
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // Dynamic year
-    document.getElementById('dynamicYear').textContent = new Date().getFullYear();
-
-    // Newsletter subscription with better validation
-    function subscribeNewsletter() {
-      const emailInput = document.getElementById('newsletterEmail');
-      const errorMsg = document.getElementById('newsletterError');
-      const email = emailInput.value.trim();
-
-      // Basic email pattern check
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-      if (!email) {
-        errorMsg.textContent = 'Please enter your email address.';
-        errorMsg.style.display = 'block';
-        return;
-      } else if (!emailRegex.test(email)) {
-        errorMsg.textContent = 'Please enter a valid email address.';
-        errorMsg.style.display = 'block';
-        return;
-      }
-
-      // No errors => proceed
-      errorMsg.style.display = 'none';
-      alert(`Thanks for subscribing, ${email}!`);
-
-      // Reset the input (optional)
-      emailInput.value = '';
-    }
-  </script>
-      <script>
-    // Toggle the navigation drawer on button click
-    const toggleButton = document.getElementById('nav-toggle');
-    const navDrawer = document.getElementById('nav-drawer');
-
-    toggleButton.addEventListener('click', () => {
-      navDrawer.classList.toggle('open');
-      // Update ARIA state for accessibility
-      const isOpen = navDrawer.classList.contains('open');
-      navDrawer.setAttribute('aria-hidden', !isOpen);
-    });
-
-    // Close the drawer when a navigation link is clicked
-    document.querySelectorAll('#nav-drawer .nav-link').forEach(link => {
-      link.addEventListener('click', (event) => {
-        navDrawer.classList.remove('open');
-        navDrawer.setAttribute('aria-hidden', 'true');
-        // Smooth scrolling to section
-        event.preventDefault();
-        document.querySelector(link.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
-  </script>
-
-  <!-- JavaScript -->
-  <!-- Chart.js CDN for interactive data visualization -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Get the context of the canvas element for Chart.js
-      const ctx = document.getElementById('economicsChart').getContext('2d');
-      // Create an interactive line chart showing a sample economic growth trend
-      const economicsChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['2023', '2024', '2025'],
-          datasets: [{
-            label: 'Citation (counts)',
-            data: [2, 4, 0],
-            backgroundColor: 'rgba(230, 126, 34, 0.2)',
-            borderColor: 'rgba(230, 126, 34, 1)',
-            borderWidth: 2,
-            fill: true,
-            tension: 0.3,
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            y: {
-              beginAtZero: true,
-            }
-          }
-        }
-      });
-    });
-  </script>
+    </aside>
+  </div>
 </div>
-</main>
+
+<footer class="bg-light text-center py-4 mt-5 border-top">
+  <div class="container">
+    <p class="text-muted mb-0">
+      &copy; <span id="dynamicYear"></span> Sulman Olieko Owili. All Rights Reserved.<br>
+    </p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('dynamicYear').textContent = new Date().getFullYear();
+</script>
+
+<!-- Altmetric and Dimensions Badge Scripts -->
+<script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
+<script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>
+
 </body>
 </html>
