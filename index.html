@@ -224,6 +224,17 @@ body {
             })();
             </script>
             <!-- end Google Calendar Appointment Scheduling -->
+
+            <script src="https://bookings.nimbuspop.com/assets/embed.js"></script>
+            <script>
+            	Bookings.buttonModal({
+            		url: "https://ekonlylabs.zohobookings.com/portal-embed#/4937636000000032048",
+            		text: "Book now",
+            		color: "#076612",
+            		textColor: "#ffffff",
+            		position: "bottom-right"
+            	});
+            </script>
             
           </div>
           
@@ -248,30 +259,6 @@ body {
             </div>
 
           </div>
-
-
-
-          <div>
-            <!-- Zoho booking -->
-
-            <script src="https://bookings.nimbuspop.com/assets/embed.js"></script>
-            <div id="inline-container"></div>
-            <script>
-            	// Initialize inline embed after script loads
-            	window.onload = function() {
-            		Bookings.inlineEmbed({
-            			url: "https://ekonlylabs.zohobookings.com/portal-embed#/4937636000000032048",
-            			parent: "#inline-container",
-            			height: "600px"
-            		});
-            	};
-            </script>
-          </div>
-
-
-
-
-          
         </div>
 
         <div class="row mt-4">
