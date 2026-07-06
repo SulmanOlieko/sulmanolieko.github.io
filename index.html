@@ -289,6 +289,57 @@ body {
       <section id="publications" class="mb-5" style="padding-top: 80px; margin-top: -80px;">
         <h2 class="mb-4">Recent Publications</h2>
 
+                <div class="card pub-card mb-3" style="border-left-color: #2E7D7E !important;">
+          <div class="card-body d-flex align-items-start">
+            <div class="flex-grow-1">
+              <span class="pub-badge badge-journal">R package</span>
+              <p class="mb-1">
+                <em>Owili, S.O.</em> (2026). 
+                <strong>fracreg: Fractional Response Regressions.</strong> <i>R package version 1.0.0.</i> <i>Github</i>.
+                <a href="https://github.com/SulmanOlieko/fracreg">https://github.com/SulmanOlieko/fracreg</a>
+              </p>
+              <div class="d-flex align-items-center mt-2">
+                <a class="btn btn-outline-primary btn-sm me-3" href="https://github.com/SulmanOlieko/fracreg/fracreg-manual.pdf" target="_blank">PDF</a>
+                <button type="button" class="btn btn-outline-secondary btn-sm me-3" data-bs-toggle="modal" data-bs-target="#bib-fracregModal"><i class="fa fa-quote-right me-1"></i>BibTeX</button>
+                <div class="modal fade text-dark" id="bib-fracregModal" tabindex="-1" aria-hidden="true" style="font-family: sans-serif;">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">BibTeX Citation</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body text-start">
+                        <pre class="bg-light p-3 rounded mb-0" style="white-space: pre-wrap; font-size: 0.85rem;"><code id="bib-smfa">@Manual{owili2026fracreg,
+    title = {fracreg: Fractional Response Regressions.},
+    author = {Sulman Olieko Owili},
+    year = {2026},
+    note = {R package version 1.0.0},
+    url = {https://github.com/SulmanOlieko/fracreg},
+  }
+}</code></pre>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary btn-sm" onclick="navigator.clipboard.writeText(document.getElementById('bib-fracreg').innerText); this.innerText='Copied!'; setTimeout(() => this.innerText='Copy to Clipboard', 2000);">Copy to Clipboard</button>
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                 <!-- Altmetric Integration -->
+                <div class="altmetric-embed me-3" data-badge-type="donut" data-doi="#"></div>
+                <span class="__dimensions_badge_embed__ me-3" data-doi="#" data-style="small_circle"></span>
+                <a href="https://plu.mx/plum/a/?doi=#" 
+                  data-popup="top" data-badge="false" class="plumx-plum-print-popup" 
+                  data-site="plum" data-size="medium" data-hide-when-empty="false">
+                </a>
+              </div>
+            </div>
+            <div class="ms-3 d-none d-md-block">
+              <img src="img/logo.png" alt="smfa logo" class="pub-thumbnail">
+            </div>
+          </div>
+        </div>
+
 
         <div class="card pub-card mb-3" style="border-left-color: #2E7D7E !important;">
           <div class="card-body d-flex align-items-start">
