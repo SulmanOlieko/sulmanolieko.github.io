@@ -20,27 +20,18 @@ Welcome to my personal website! This repository contains the source code and con
 
 ## About Me
 
-I'm Sulman Olieko, an agricultural economist based in Kenya. I'm passionate about Econometrics, Production Economics, Bayesian Statistics, High-dimensional Statistics, and Quantitative Modelling, and I love coding, cycling, swimming, and adventure.
+I'm an agricultural economist based in Kenya. I'm passionate about Econometrics, Production Economics, Bayesian Statistics, High-dimensional Statistics, and Quantitative Modelling. I love coding, cycling, swimming, and adventure. I ha
 
 On this website, you'll find more information about my background, education, and professional journey. Feel free to explore and learn more about who I am.
 
 ## Education
-I am currently studying Master of Science in Agricultural and Applied Economics at the University of Nairobi. I am hoping to graduate soonest and embark on a PhD journey. 
-
-## Research
-Oops, this is coming soon...
-You will find more details about my research soon in the "My Research" section of my website.
-
-## Blog
-
-I also write about Econometrics, Production Economics, Bayesian Statistics, High-dimensional Statistics, Quantitative Modelling, and other fields as well. 
-Check out some of my latest blog posts under the "Blogs" section of my site.
+I have a Master of Science in Agricultural and Applied Economics from the University of Nairobi and is currently looking for PhD opportunities. 
 
 ## Contact
 
 I'd love to connect with you! You can reach out to me through the following channels:
 
-- Email: olieko AT students.uonbi.ac.ke 
+- Email: oliekosulman AT gmail.com 
 - LinkedIn: https://www.linkedin.com/in/olieko-sulman/
 - X (formerly Twitter): https://twitter.com/olieko_sulman
 - Personal Website: https://sulmanolieko.github.io/
