@@ -1,210 +1,383 @@
 /* ==========================================================================
-   metafrontieR pkgdown — extra.css
-   Custom styles layered on top of Bootstrap 5 / Flatly
+   Premium UI Overhaul for Sulman Olieko Owili Portfolio
    ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 
 /* ---------- CSS Variables ------------------------------------------------- */
 :root {
-  --mfr-green-dark:   #1a6b4e;
-  --mfr-green-mid:    #2d8f65;
-  --mfr-green-light:  #e8f5ef;
-  --mfr-accent:       #f0a500;
-  --mfr-code-bg:      #f6f8fa;
-  --mfr-border:       #dee2e6;
-  --mfr-shadow:       0 4px 24px rgba(26, 107, 78, 0.10);
-  --mfr-radius:       0.6rem;
+  /* New Vibrant Color Palette */
+  --mfr-green-dark:   #064e3b;
+  --mfr-green-mid:    #059669;
+  --mfr-green-light:  #d1fae5;
+  --mfr-accent:       #f59e0b;
+  
+  --mfr-bg:           #ffffff;
+  --mfr-text:         #0f172a;
+  
+  --mfr-code-bg:      #f1f5f9;
+  --mfr-border:       #e2e8f0;
+  --mfr-shadow:       0 10px 40px -10px rgba(5, 150, 105, 0.15);
+  --mfr-radius:       16px;
+  
+  --glass-bg:         rgba(255, 255, 255, 0.85);
+  --glass-border:     rgba(255, 255, 255, 0.5);
+  --glass-blur:       16px;
+}
+
+[data-bs-theme="dark"] {
+  --mfr-green-dark:   #34d399; 
+  --mfr-green-mid:    #10b981;
+  --mfr-green-light:  #022c22;
+  --mfr-accent:       #fbbf24;
+  
+  --mfr-bg:           #0f172a;
+  --mfr-text:         #f8fafc;
+  
+  --mfr-border:       #1e293b;
+  --mfr-code-bg:      #020617;
+  --mfr-shadow:       0 10px 40px -10px rgba(0, 0, 0, 0.5);
+  
+  --glass-bg:         rgba(15, 23, 42, 0.85);
+  --glass-border:     rgba(255, 255, 255, 0.05);
 }
 
 /* ---------- Global body --------------------------------------------------- */
 body {
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
-  color: var(--bs-body-color, #1c1c1e);
+  font-family: 'Outfit', "Inter", system-ui, -apple-system, sans-serif;
+  color: var(--mfr-text);
+  background-color: var(--mfr-bg);
+  padding-top: 100px; /* Space for glass navbar */
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* ---------- Navbar --------------------------------------------------------- */
-.navbar {
-  box-shadow: 0 2px 12px rgba(0,0,0,.08);
-  border-bottom: 2px solid var(--mfr-green-dark);
+/* ---------- Typography ---------------------------------------------------- */
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--mfr-text);
 }
 
-.navbar-brand img {
-  border-radius: 6px;
-}
-
-/* ---------- Hero / Home page ---------------------------------------------- */
-.jumbotron, .homepage-hero {
-  background: linear-gradient(135deg, var(--mfr-green-dark) 0%, var(--mfr-green-mid) 100%);
-  color: #fff;
-  border-radius: var(--mfr-radius);
-  padding: 3rem 2.5rem;
+h2 {
+  font-size: 2rem;
   margin-bottom: 2rem;
-  box-shadow: var(--mfr-shadow);
+  position: relative;
+  display: inline-block;
+}
+h2::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 4px;
+  background: var(--mfr-green-mid);
+  border-radius: 4px;
 }
 
-/* Home page title badge strip */
-#pkgdown-sidebar .list-unstyled li a {
-  transition: color 0.2s;
-}
-
-/* ---------- Headings ------------------------------------------------------- */
-h1, h2, h3, .h1, .h2, .h3 {
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-
-h2.hasAnchor, h3.hasAnchor {
-  border-left: 4px solid var(--mfr-green-mid);
-  padding-left: 0.75rem;
-  margin-left: -0.75rem;
-}
-
-/* ---------- Sidebar (reference + articles) -------------------------------- */
-.sidebar {
-  background: var(--mfr-green-light);
-  border-radius: var(--mfr-radius);
-  padding: 1.25rem 1rem;
-  border: 1px solid var(--mfr-border);
-}
-
-.sidebar h2 {
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--mfr-green-dark);
-  font-weight: 700;
+/* ---------- Navbar -------------------------------------------------------- */
+.navbar {
+  background: var(--mfr-bg) !important;
   border-bottom: 1px solid var(--mfr-border);
-  padding-bottom: 0.5rem;
-  margin-bottom: 0.75rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease;
+  padding: 0.5rem 0;
 }
 
-/* ---------- Code blocks ---------------------------------------------------- */
-pre, .sourceCode {
-  background: var(--mfr-code-bg) !important;
-  border: 1px solid var(--mfr-border);
-  border-radius: var(--mfr-radius);
-  box-shadow: inset 0 1px 4px rgba(0,0,0,.05);
+[data-bs-theme="dark"] .navbar {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* Inline code */
-code:not([class]) {
-  background: #e8f5ef;
-  color: var(--mfr-green-dark);
-  padding: 0.1em 0.35em;
-  border-radius: 4px;
-  font-size: 0.88em;
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--mfr-text) !important;
 }
 
-/* ---------- Reference page tiles ------------------------------------------ */
-.ref-index .ref-description {
-  color: #555;
-  font-size: 0.92rem;
-}
-
-/* ---------- Tables --------------------------------------------------------- */
-table.table {
-  border-radius: var(--mfr-radius);
-  overflow: hidden;
-  font-size: 0.9rem;
-}
-
-table.table thead th {
-  background: var(--mfr-green-dark);
-  color: #fff;
-  font-weight: 600;
-  border: none;
-}
-
-table.table tbody tr:hover {
-  background: var(--mfr-green-light);
-  transition: background 0.15s;
-}
-
-/* ---------- Badges --------------------------------------------------------- */
-.badge-version {
-  background: var(--mfr-green-dark) !important;
-  font-size: 0.75rem;
-  border-radius: 4px;
-}
-
-/* ---------- Callout blocks (pkgdown 2.x notes / tips) --------------------- */
-.callout {
-  border-radius: var(--mfr-radius);
-  border-left: 5px solid;
-}
-.callout-note   { border-color: #17a2b8; background: #e8f8fb; }
-.callout-tip    { border-color: var(--mfr-green-mid); background: var(--mfr-green-light); }
-.callout-warning{ border-color: #f0a500; background: #fdf5e0; }
-.callout-danger { border-color: #dc3545; background: #fde8ea; }
-
-/* ---------- Cards ---------------------------------------------------------- */
-.card {
-  border: 1px solid var(--mfr-border);
-  border-radius: var(--mfr-radius);
-  box-shadow: var(--mfr-shadow);
-  transition: box-shadow 0.2s;
-}
-
-.card:hover {
-  box-shadow: 0 8px 32px rgba(26, 107, 78, 0.15);
-}
-
-.card-header {
-  background: linear-gradient(90deg, var(--mfr-green-dark), var(--mfr-green-mid));
-  color: #fff;
-  font-weight: 600;
-  border-radius: var(--mfr-radius) var(--mfr-radius) 0 0 !important;
-}
-
-/* ---------- Link colours --------------------------------------------------- */
-a { color: var(--mfr-green-dark); }
-a:hover { color: var(--mfr-green-mid); text-decoration: underline; }
-
-/* Navbar links */
 .navbar-nav .nav-link {
   font-weight: 500;
-  transition: color 0.15s;
+  color: var(--mfr-text) !important;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
 }
 
-/* ---------- Footer --------------------------------------------------------- */
-footer {
-  background: var(--bs-tertiary-bg, #f4f4f4);
-  border-top: 2px solid var(--mfr-border);
-  padding: 1.5rem 0;
+.navbar-nav .nav-link:hover {
+  background: rgba(5, 150, 105, 0.1);
+  transform: translateY(-1px);
+  color: var(--mfr-green-mid) !important;
+}
+
+/* ---------- Premium Cards (.pub-card) ------------------------------------- */
+.pub-card {
+  border: 1px solid var(--mfr-border) !important;
+  border-left: 4px solid var(--mfr-green-mid) !important;
+  border-radius: var(--mfr-radius) !important;
+  background: var(--mfr-bg) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2rem !important;
+}
+
+.pub-card:hover {
+  border-left-color: var(--mfr-accent) !important;
+  border-color: var(--mfr-green-mid) !important;
+}
+
+/* Hide ugly inline styles of border tops from previous version */
+.pub-card[style*="border-top: 4px solid"] {
+  border-top: 1px solid var(--mfr-border) !important;
+}
+
+/* ---------- Avatar -------------------------------------------------------- */
+.bio-avatar {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: block;
+  padding: 8px;
+  background: linear-gradient(135deg, var(--mfr-green-mid), var(--mfr-accent));
+  box-shadow: 0 15px 35px rgba(5, 150, 105, 0.2);
+}
+
+/* ---------- Network Icons ------------------------------------------------- */
+.network-icons {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.network-icons a {
+  color: var(--mfr-green-mid);
+  background: rgba(5, 150, 105, 0.08);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  text-decoration: none;
+}
+
+.network-icons a:hover {
+  background: var(--mfr-green-mid);
+  color: #fff;
+}
+
+[data-bs-theme="dark"] .network-icons a {
+  color: var(--mfr-green-mid);
+  background: rgba(16, 185, 129, 0.1);
+}
+
+[data-bs-theme="dark"] .network-icons a:hover {
+  background: var(--mfr-green-mid);
+  color: #fff;
+}
+
+/* ---------- Tags & Badges ------------------------------------------------- */
+.research-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: left;
+  margin-top: 20px;
+}
+
+.tag-pill {
+  background: linear-gradient(135deg, rgba(5, 150, 105, 0.1), rgba(5, 150, 105, 0.02));
+  backdrop-filter: blur(4px);
+  color: var(--mfr-green-dark);
+  border: 1px solid rgba(5, 150, 105, 0.2);
+  padding: 6px 18px;
+  border-radius: 40px;
   font-size: 0.85rem;
-  color: var(--bs-secondary-color, #666);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: default;
 }
 
-/* ---------- Scroll-to-top / anchor micro-animation ----------------------- */
-.hasAnchor:target {
-  scroll-margin-top: 80px;
+.tag-pill:hover {
+  background: linear-gradient(135deg, rgba(5, 150, 105, 0.2), rgba(5, 150, 105, 0.1));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(5, 150, 105, 0.15);
+  border-color: rgba(5, 150, 105, 0.4);
 }
 
-/* ---------- Responsive tweaks --------------------------------------------- */
-@media (max-width: 768px) {
-  h2.hasAnchor, h3.hasAnchor {
-    padding-left: 0.5rem;
-    margin-left: -0.5rem;
-  }
-}
-
-/* ---------- Dark Mode Overrides ------------------------------------------- */
-[data-bs-theme="dark"] {
-  --mfr-green-dark:   #6ad9ab; 
-  --mfr-green-mid:    #2d8f65;
-  --mfr-green-light:  #14241d;
-  --mfr-border:       #3d4542;
-  --mfr-code-bg:      #181a1b;
-  --mfr-shadow:       0 4px 24px rgba(0, 0, 0, 0.7);
-}
-
-[data-bs-theme="dark"] .ref-index .ref-description {
-  color: #adb5bd;
-}
-
-[data-bs-theme="dark"] a {
+[data-bs-theme="dark"] .tag-pill {
   color: #6ad9ab;
 }
 
-[data-bs-theme="dark"] a:hover {
-  color: #8beac3;
+.pub-badge {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.4em 0.8em;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.badge-journal {
+  background-color: rgba(5, 150, 105, 0.1); 
+  color: var(--mfr-green-mid);
+  border: 1px solid rgba(5, 150, 105, 0.2);
+}
+
+.badge-wp {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: #d97706;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+/* ---------- Buttons ------------------------------------------------------- */
+.btn-outline-primary {
+  border-radius: 8px;
+  font-weight: 600;
+  border-color: var(--mfr-green-mid);
+  color: var(--mfr-green-mid);
+  border-width: 2px;
+  padding: 0.4rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover, .btn-primary {
+  background: var(--mfr-green-mid);
+  border-color: var(--mfr-green-mid);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(5, 150, 105, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-outline-secondary {
+  border-radius: 8px;
+  font-weight: 600;
+  border-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ---------- Thumbnails ---------------------------------------------------- */
+.pub-thumbnail {
+  width: 140px;
+  max-width: 140px;
+  border: 1px solid var(--mfr-border);
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 768px) {
+  .pub-thumbnail {
+    display: none;
+  }
+  
+  /* Google Calendar Iframe Fix */
+  iframe[src*="calendar.google.com/calendar/appointments/schedules"] {
+    width: 100vw !important;
+    height: 100vh !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 999999 !important;
+    border-radius: 0 !important;
+  }
+}
+
+/* ---------- Modal Overrides ----------------------------------------------- */
+.modal-content {
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+.modal-header {
+  background: var(--mfr-bg);
+  border-bottom: 1px solid var(--mfr-border);
+}
+.modal-footer {
+  background: var(--mfr-bg);
+  border-top: 1px solid var(--mfr-border);
+}
+
+/* ---------- Text Utilities ------------------------------------------------ */
+.text-muted {
+  color: #64748b !important;
+}
+[data-bs-theme="dark"] .text-muted {
+  color: #94a3b8 !important;
+}
+
+/* ---------- Custom Scrollbar ---------------------------------------------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--mfr-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(5, 150, 105, 0.3);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(5, 150, 105, 0.5);
+}
+
+/* Fade in animation for elements */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.template-home main > section {
+  animation: fadeInUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+/* ---------- Footer -------------------------------------------------------- */
+.app-footer {
+  border-top: 1px solid var(--mfr-border);
+  background: var(--mfr-bg);
+  transition: all 0.4s ease;
+}
+
+/* ---------- CV Card ------------------------------------------------------- */
+.cv-header {
+  background: rgba(5, 150, 105, 0.05);
+  border-bottom: 1px solid var(--mfr-border) !important;
+}
+[data-bs-theme="dark"] .cv-header {
+  background: rgba(16, 185, 129, 0.05);
+}
+.cv-title {
+  color: var(--mfr-green-mid);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* ---------- Grid Layout for Full Width ------------------------------------ */
+.pubs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  gap: 1.5rem;
+}
+.pubs-grid .card {
+  margin-bottom: 0 !important;
+  height: 100%;
 }
