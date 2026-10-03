@@ -374,10 +374,15 @@ h2::after {
 /* ---------- Grid Layout for Full Width ------------------------------------ */
 .pubs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 450px), 1fr));
   gap: 1.5rem;
 }
 .pubs-grid .card {
   margin-bottom: 0 !important;
   height: 100%;
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
 }
